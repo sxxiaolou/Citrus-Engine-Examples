@@ -1,3 +1,5 @@
+[Get the full engine here](https://github.com/alamboley/Citrus-Engine)
+
 ![](http://aymericlamboley.fr/blog/wp-content/uploads/2012/08/citrus.png)
 
 The [Citrus Engine](http://citrusengine.com/) is a professional-grade, scalable Flash game engine built for industry-quality games. It is built upon modern Flash programming practices, allowing you to focus on making your game awesome! It comes built-in with a "platformer" starter-kit, which you can use to easily make awesome 2D sidescrolling games.
@@ -22,7 +24,6 @@ Project Setup
 - bin : pictures, animations, levels, ... loaded at runtime.
 - embed : embedded assets (e.g. fonts, pictures, texture atlas, ...).
 - fla : two levels used in the box2dstarling demo, and two animate characters in two versions one for SpriteArt and one for StarlingArt thanks to the DynamicTextureAtlas class (loaded at runtime).
-- libs : all the libs used, included the Citrus Engine. Select just one Nape swc.
 - src : different demos ready to use! You just need to copy & paste the Main from the package you want into the src/Main.as and the demo will run. Be careful with package & import.
 
 [API](http://www.aymericlamboley.fr/ce-doc/)
