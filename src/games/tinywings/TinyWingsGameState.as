@@ -43,6 +43,7 @@ package games.tinywings {
 			
 			super.update(timeDelta);
 			
+			// update the hills here to remove the displacement made by StarlingArt. Called after all operations done.
 			_hillsTexture.update();
 		}
 	}
