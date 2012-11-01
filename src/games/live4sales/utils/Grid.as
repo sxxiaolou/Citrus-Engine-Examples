@@ -10,7 +10,7 @@ package games.live4sales.utils {
 
 		public static var tabObjects:Array;
 
-		public static var tabBaddies:Array;
+		public static var tabEnemies:Array;
 
 		private static const CASE_WIDTH:uint = 96;
 		private static const CASE_HEIGHT:uint = 38;
@@ -26,13 +26,13 @@ package games.live4sales.utils {
 			tabObjects[4] = [false, false, false, false, false];
 			tabObjects[5] = [false, false, false, false, false];
 
-			tabBaddies = new Array(6);
-			tabBaddies[0] = false; //always false
-			tabBaddies[1] = false;
-			tabBaddies[2] = false;
-			tabBaddies[3] = false;
-			tabBaddies[4] = false;
-			tabBaddies[5] = false;
+			tabEnemies = new Array(6);
+			tabEnemies[0] = false; //always false
+			tabEnemies[1] = false;
+			tabEnemies[2] = false;
+			tabEnemies[3] = false;
+			tabEnemies[4] = false;
+			tabEnemies[5] = false;
 
 			_addNewLine(96, 130, 0, 190);
 			_addNewLine(192, 130, 0, 190);
@@ -87,7 +87,7 @@ package games.live4sales.utils {
 			return positions;
 		}
 		
-		public static function getBaddyPosition(posX:uint, posY:int):Array {
+		public static function getEnemyPosition(posX:uint, posY:int):Array {
 			
 			var caseId:Array = getCaseId(posX, posY);
 			var positions:Array = [0, 0, 0];

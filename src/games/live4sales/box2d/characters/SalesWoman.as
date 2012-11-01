@@ -50,7 +50,7 @@ package games.live4sales.box2d.characters {
 				Grid.tabObjects[tab[1]][tab[0]] = false;
 			}
 			
-			if (Grid.tabBaddies[group])
+			if (Grid.tabEnemies[group])
 				_firing = true;
 			else
 				_firing = false;

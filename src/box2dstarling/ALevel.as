@@ -14,7 +14,7 @@ package box2dstarling {
 	import com.citrusengine.math.MathVector;
 	import com.citrusengine.objects.Box2DPhysicsObject;
 	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.objects.platformer.box2d.Baddy;
+	import com.citrusengine.objects.platformer.box2d.Enemy;
 	import com.citrusengine.objects.platformer.box2d.Hero;
 	import com.citrusengine.objects.platformer.box2d.Platform;
 	import com.citrusengine.objects.platformer.box2d.Sensor;
@@ -68,7 +68,7 @@ package box2dstarling {
 			restartLevel = new Signal();
 			
 			// Useful for not forgetting to import object from the Level Editor
-			var objectsUsed:Array = [Hero, Platform, Baddy, Sensor, CitrusSprite];
+			var objectsUsed:Array = [Hero, Platform, Enemy, Sensor, CitrusSprite];
 		}
 
 		override public function initialize():void {
@@ -107,7 +107,7 @@ package box2dstarling {
 			// create objects from our level made with Flash Pro
 			ObjectMaker2D.FromMovieClip(_level);
 			
-			// the hero view come from a sprite sheet, for the baddy that was a swf
+			// the hero view come from a sprite sheet, for the enemy that was a swf
 			bitmap = new _heroPng();
 			var texture:Texture = Texture.fromBitmap(bitmap);
 			var xml:XML = XML(new _heroConfig());

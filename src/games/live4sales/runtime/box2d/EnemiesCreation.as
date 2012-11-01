@@ -13,7 +13,7 @@ package games.live4sales.runtime.box2d {
 	/**
 	 * @author Aymeric
 	 */
-	public class BaddiesCreation {
+	public class EnemiesCreation {
 		
 		private var _ce:CitrusEngine;
 		
@@ -21,7 +21,7 @@ package games.live4sales.runtime.box2d {
 		
 		private var _timerShopsWomen:Timer;
 		
-		public function BaddiesCreation() {
+		public function EnemiesCreation() {
 			
 			_ce = CitrusEngine.getInstance();
 			
@@ -58,7 +58,7 @@ package games.live4sales.runtime.box2d {
 
 		private function _tick(tEvt:TimerEvent):void {
 			
-			var casePosition:Array = Grid.getBaddyPosition(0, Grid.getRandomHeight());
+			var casePosition:Array = Grid.getEnemyPosition(0, Grid.getRandomHeight());
 			
 			var shopsWomanAnim:AnimationSequence = new AnimationSequence(Assets.getTextureAtlas("Objects"), ["walk", "attack"], "walk");
 				
@@ -66,7 +66,7 @@ package games.live4sales.runtime.box2d {
 			_ce.state.add(shopswomanBox2D);
 			shopswomanBox2D.onTouchLeftSide.add(_endGame);
 			
-			Grid.tabBaddies[casePosition[2]] = true;
+			Grid.tabEnemies[casePosition[2]] = true;
 		}
 		
 		private function _endGame():void {

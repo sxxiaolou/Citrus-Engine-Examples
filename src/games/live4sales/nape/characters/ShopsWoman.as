@@ -60,9 +60,9 @@ package games.live4sales.nape.characters {
 			
 			if (life == 0) {
 				kill = true;
-				Grid.tabBaddies[group] = false;
+				Grid.tabEnemies[group] = false;
 			} else {
-				Grid.tabBaddies[group] = true;
+				Grid.tabEnemies[group] = true;
 			}
 			
 			updateAnimation();

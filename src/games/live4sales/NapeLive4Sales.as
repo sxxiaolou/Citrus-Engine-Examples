@@ -7,7 +7,7 @@ package games.live4sales {
 	import games.live4sales.nape.objects.Block;
 	import games.live4sales.nape.objects.Cash;
 	import games.live4sales.runtime.CoinsCreation;
-	import games.live4sales.runtime.nape.BaddiesCreation;
+	import games.live4sales.runtime.nape.EnemiesCreation;
 	import games.live4sales.ui.Hud;
 	import games.live4sales.utils.Grid;
 
@@ -35,7 +35,7 @@ package games.live4sales {
 		private var _ce:CitrusEngine;
 		private var _hud:Hud;
 		private var _coinsCreation:CoinsCreation;
-		private var _baddiesCreation:BaddiesCreation;
+		private var _enemiesCreation:EnemiesCreation;
 
 		public function NapeLive4Sales() {
 			
@@ -69,7 +69,7 @@ package games.live4sales {
 			var background:CitrusSprite = new CitrusSprite("background", {view:Image.fromBitmap(new Assets.BackgroundPng())});
 			add(background);
 
-			_baddiesCreation = new BaddiesCreation();
+			_enemiesCreation = new EnemiesCreation();
 		}
 			
 		override public function destroy():void {
@@ -80,7 +80,7 @@ package games.live4sales {
 			_coinsCreation.destroy();
 			removeChild(_coinsCreation, true);
 			
-			_baddiesCreation.destroy();
+			_enemiesCreation.destroy();
 			
 			super.destroy();
 		}
