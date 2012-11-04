@@ -27,4 +27,4 @@ Project Setup
 - fla : two levels used in the box2dstarling demo, and two animate characters in two versions one for SpriteArt and one for StarlingArt thanks to the DynamicTextureAtlas class (loaded at runtime).
 - src : different demos ready to use! You just need to copy & paste the Main from the package you want into the src/Main.as and the demo will run. Be careful with package & import.
 
-[API](http://www.aymericlamboley.fr/ce-doc/)
+[API](http://citrusengine.com/api/)
