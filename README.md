@@ -1,6 +1,6 @@
 [Get the full engine here](https://github.com/alamboley/Citrus-Engine)
 
-![](http://aymericlamboley.fr/blog/wp-content/uploads/2012/08/citrus.png)
+![](http://aymericlamboley.fr/blog/wp-content/uploads/2012/11/citrus-logo-2D.png)
 
 The [Citrus Engine](http://citrusengine.com/) is a professional-grade, scalable Flash game engine built for industry-quality games. It is built upon modern Flash programming practices, allowing you to focus on making your game awesome! It comes built-in with a "platformer" starter-kit, which you can use to easily make awesome 2D sidescrolling games.
 
