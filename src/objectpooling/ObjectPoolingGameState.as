@@ -7,8 +7,8 @@ package objectpooling {
 	import com.citrusengine.objects.platformer.nape.Platform;
 	import com.citrusengine.physics.nape.Nape;
 	import com.citrusengine.view.spriteview.SpriteArt;
-	import flash.utils.setTimeout;
 
+	import flash.utils.setTimeout;
 
 	/**
 	 * @author Aymeric
