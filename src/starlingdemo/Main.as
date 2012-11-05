@@ -1,7 +1,5 @@
 package starlingdemo {
 
-	import starlingdemo.StarlingDemoGameState;
-
 	import com.citrusengine.core.StarlingCitrusEngine;
 
 	[SWF(frameRate="60")]
