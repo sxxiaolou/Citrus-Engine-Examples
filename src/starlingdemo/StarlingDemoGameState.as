@@ -55,7 +55,7 @@ package starlingdemo {
 			var xml:XML = XML(new _heroConfig());
 			var sTextureAtlas:TextureAtlas = new TextureAtlas(texture, xml);
 			
-			var hero:Hero = new Hero("hero", {x:100, y:350, width:60, height:135});
+			var hero:Hero = new Hero("hero", {x:100, y:350, width:60, height:135, hurtVelocityX:5, hurtVelocityY:8});
 			add(hero);
 			hero.view = new AnimationSequence(sTextureAtlas, ["walk", "duck", "idle", "jump", "hurt"], "idle");
 			hero.onGiveDamage.add(heroAttack);
