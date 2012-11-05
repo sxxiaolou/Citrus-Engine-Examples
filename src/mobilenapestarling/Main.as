@@ -22,7 +22,7 @@ package mobilenapestarling {
 			if (compileForMobile) {
 				
 				// detect if iPad
-				isIpad = (stage.fullScreenWidth == 768 || stage.fullScreenWidth == 1536);
+				isIpad = Mobile.isIpad();
 				
 				if (isIpad)
 					setUpStarling(true, 1, new Rectangle(32, 64, stage.fullScreenWidth, stage.fullScreenHeight));
