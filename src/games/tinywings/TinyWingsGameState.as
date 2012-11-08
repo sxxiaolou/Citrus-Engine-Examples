@@ -1,15 +1,27 @@
 package games.tinywings {
 
+	import starling.textures.Texture;
+	import starling.textures.TextureAtlas;
+
 	import com.citrusengine.core.StarlingState;
 	import com.citrusengine.math.MathVector;
 	import com.citrusengine.physics.nape.Nape;
+	import com.citrusengine.view.starlingview.AnimationSequence;
+	import com.citrusengine.view.starlingview.StarlingArt;
 
+	import flash.display.Bitmap;
 	import flash.geom.Rectangle;
 
 	/**
 	 * @author Aymeric
 	 */
 	public class TinyWingsGameState extends StarlingState {
+		
+		[Embed(source="/../embed/1x/heroMobile.xml", mimeType="application/octet-stream")]
+		public static const HeroConfig:Class;
+
+		[Embed(source="/../embed/1x/heroMobile.png")]
+		public static const HeroPng:Class;
 		
 		private var _nape:Nape;
 		private var _hero:BirdHero;
@@ -28,7 +40,14 @@ package games.tinywings {
 			//_nape.visible = true;
 			add(_nape);
 			
-			_hero = new BirdHero("hero", {radius:20});
+			var bitmap:Bitmap = new HeroPng();
+			var texture:Texture = Texture.fromBitmap(bitmap);
+			var xml:XML = XML(new HeroConfig());
+			var sTextureAtlas:TextureAtlas = new TextureAtlas(texture, xml);
+			var heroAnim:AnimationSequence = new AnimationSequence(sTextureAtlas, ["fly", "descent", "stop", "ascent", "throughPortal", "jump", "ground"], "fly", 30, true);
+			StarlingArt.setLoopAnimations(["fly"]);
+			
+			_hero = new BirdHero("hero", {radius:20, view:heroAnim, group:1});
 			add(_hero);
 			
 			_hillsTexture = new HillsTexture();
