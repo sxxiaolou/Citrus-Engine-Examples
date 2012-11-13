@@ -3,8 +3,8 @@ package starlingtiles
 	import com.citrusengine.core.CitrusEngine;
 	import com.citrusengine.core.StarlingState;
 	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.CitrusSprite;
 	import com.citrusengine.objects.Box2DPhysicsObject;
+	import com.citrusengine.objects.CitrusSprite;
 	import com.citrusengine.objects.platformer.box2d.Hero;
 	import com.citrusengine.objects.platformer.box2d.Platform;
 	import com.citrusengine.objects.platformer.box2d.Sensor;
@@ -27,13 +27,14 @@ package starlingtiles
 	/**
 	 * @author Nick Pinkham
 	 */
-	public class StarlingTilesGameState extends StarlingState 
+	public class StarlingTilesArrayGameState extends StarlingState 
 	{
 		[Embed(source="../../embed/crate.png")]
 		private var _cratePng:Class;
 		
 		[Embed(source = "../../embed/hero_static.png")]
 		private var _heroPng:Class;
+		
 		
 		public var lvlEnded:Signal;
 		public var restartLevel:Signal;
@@ -43,7 +44,7 @@ package starlingtiles
 		
 		private var _hero:Hero;
 		
-		public function StarlingTilesGameState(level:MovieClip = null) 
+		public function StarlingTilesArrayGameState(level:MovieClip = null) 
 		{
 			super();
 			
@@ -81,14 +82,13 @@ package starlingtiles
 			view.setupCamera(_hero, new MathVector(400, 300), new Rectangle(0, 0, 4096, 1024), new MathVector(0.25, 0.15));
 			
 			
-			// movieclip on stage converted to tiles
+			// bitmaps in array converted to tiles
 			var tileSprite:CitrusSprite = new CitrusSprite("tile_bg_sprite_0", { x:0, y:0, parallax:0.6 } );
-			var tileSystem:StarlingTileSystem = new StarlingTileSystem(MovieClip(_level.getChildByName("tile_background_0")));
+			var tiles:Array = MyTiles.tile_0;
+			var tileSystem:StarlingTileSystem = new StarlingTileSystem(tiles);
 			
 			tileSystem.parallax = 0.6;
 			tileSystem.name = "tile_bg_tiles_0";
-			tileSystem.tileWidth = 2048;
-			tileSystem.tileHeight = 1024;
 			tileSystem.blendMode = BlendMode.NONE;
 			tileSystem.touchable = false;
 			tileSystem.init();
@@ -102,12 +102,11 @@ package starlingtiles
 				
 				// add upper background
 				tileSprite = new CitrusSprite("tile_bg_sprite_1", { x:0, y:0, parallax:0.8 } );
-				tileSystem = new StarlingTileSystem(MovieClip(_level.getChildByName("tile_background_1")));
+				tiles = MyTiles.tile_1;
+				tileSystem = new StarlingTileSystem(tiles);
 				
 				tileSystem.parallax = 0.8;
 				tileSystem.name = "tile_bg_tiles_1";
-				tileSystem.tileWidth = 2048;
-				tileSystem.tileHeight = 1024;
 				tileSystem.touchable = false;
 				tileSystem.init();
 				
@@ -119,11 +118,10 @@ package starlingtiles
 			
 			// add top plane tiles via flash stage
 			tileSprite = new CitrusSprite("tile_bg_sprite_2", { x:0, y:0 } );
-			tileSystem = new StarlingTileSystem(MovieClip(_level.getChildByName("tile_background_2")));
+			tiles = MyTiles.tile_2;
+			tileSystem = new StarlingTileSystem(tiles);
 			
 			tileSystem.name = "tile_bg_tiles_2";;
-			tileSystem.tileWidth = 2048;
-			tileSystem.tileHeight = 1024;
 			tileSystem.touchable = false;
 			tileSystem.init();
 			
