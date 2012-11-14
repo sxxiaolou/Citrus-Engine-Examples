@@ -26,9 +26,9 @@ package objectpooling {
 			
 			super.initialize();
 			
-			var box2D:Nape = new Nape("Nape");
-			box2D.visible = true;
-			add(box2D);
+			var nape:Nape = new Nape("nape");
+			nape.visible = true;
+			add(nape);
 			
 			add(new Platform("platformBot", {x:0, y:380, width:4000, height:20}));
 			
@@ -42,6 +42,7 @@ package objectpooling {
 				
 				var physicsNode:DoublyLinkedListNode = _poolPhysics.create({x:i * 40 + 60, view:"crate.png"});
 				addChild(_poolGraphic.create(physicsNode.data).data);
+				// in the SpriteArt class, we need the Citrus Object as an argument. That's why here it is physicsNode.data and not physicsNode.data.view
 			}
 			
 			setTimeout(removeAndAddObjects, 3000);
