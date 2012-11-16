@@ -37,11 +37,11 @@ package entity {
 			
 			_heroEntity = new Entity("heroEntity");
 			
-			_physics = new DraggableHeroPhysicsComponent("physics", {x:200, y:270, width:40, height:60, entity:_heroEntity});
-			var input:InputComponent = new InputComponent("input", {entity:_heroEntity});
-			var collision:HeroCollisionComponent = new HeroCollisionComponent("collision", {entity:_heroEntity});
-			var move:HeroMovementComponent = new HeroMovementComponent("move", {entity:_heroEntity});
-			_view = new HeroViewComponent("view", {view:"PatchSpriteArt.swf", entity:_heroEntity});
+			_physics = new DraggableHeroPhysicsComponent("physics", {x:200, y:270, width:40, height:60});
+			var input:InputComponent = new InputComponent("input");
+			var collision:HeroCollisionComponent = new HeroCollisionComponent("collision");
+			var move:HeroMovementComponent = new HeroMovementComponent("move");
+			_view = new HeroViewComponent("view", {view:"PatchSpriteArt.swf"});
 			
 			_heroEntity.add(_physics).add(input).add(collision).add(move).add(_view);
 			_heroEntity.initialize();
