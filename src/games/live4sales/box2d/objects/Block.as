@@ -5,8 +5,8 @@ package games.live4sales.box2d.objects {
 	import games.live4sales.box2d.characters.ShopsWoman;
 	import games.live4sales.utils.Grid;
 
-	import com.citrusengine.objects.Box2DPhysicsObject;
 	import com.citrusengine.objects.platformer.box2d.Platform;
+	import com.citrusengine.physics.box2d.Box2DUtils;
 
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
@@ -62,7 +62,7 @@ package games.live4sales.box2d.objects {
 
 		override public function handleBeginContact(contact:b2Contact):void {
 			
-			if (Box2DPhysicsObject.CollisionGetOther(this, contact) is ShopsWoman) {
+			if (Box2DUtils.CollisionGetOther(this, contact) is ShopsWoman) {
 				
 				if (!_timerHurt.running)
 					_timerHurt.start();
@@ -71,7 +71,7 @@ package games.live4sales.box2d.objects {
 
 		override public function handleEndContact(contact:b2Contact):void {
 			
-			if (Box2DPhysicsObject.CollisionGetOther(this, contact) is ShopsWoman) {
+			if (Box2DUtils.CollisionGetOther(this, contact) is ShopsWoman) {
 				
 				if (_timerHurt && _timerHurt.running)
 					_timerHurt.stop();

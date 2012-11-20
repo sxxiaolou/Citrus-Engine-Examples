@@ -6,7 +6,6 @@ package soundpatchdemo {
 	import com.citrusengine.core.CitrusObject;
 	import com.citrusengine.core.State;
 	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.Box2DPhysicsObject;
 	import com.citrusengine.objects.CitrusSprite;
 	import com.citrusengine.objects.platformer.box2d.Coin;
 	import com.citrusengine.objects.platformer.box2d.Crate;
@@ -15,6 +14,8 @@ package soundpatchdemo {
 	import com.citrusengine.objects.platformer.box2d.Platform;
 	import com.citrusengine.objects.platformer.box2d.Sensor;
 	import com.citrusengine.physics.box2d.Box2D;
+	import com.citrusengine.physics.box2d.Box2DUtils;
+	import com.citrusengine.physics.box2d.IBox2DPhysicsObject;
 	import com.citrusengine.utils.ObjectMaker2D;
 
 	import flash.display.MovieClip;
@@ -97,7 +98,7 @@ package soundpatchdemo {
 
 		private function handleEnterSign(contact:b2Contact):void {
 			
-			var other:Box2DPhysicsObject = Box2DPhysicsObject.CollisionGetOther(_sign, contact);
+			var other:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(_sign, contact);
 			
 			if (other is Hero) {
 				addChild(_signMessage);
@@ -108,7 +109,7 @@ package soundpatchdemo {
 
 		private function handleExitSign(contact:b2Contact):void {
 			
-			var other:Box2DPhysicsObject = Box2DPhysicsObject.CollisionGetOther(_sign, contact);
+			var other:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(_sign, contact);
 			
 			if (other is Hero) {
 				removeChild(_signMessage);
@@ -126,16 +127,16 @@ package soundpatchdemo {
 
 		private function handleJewelCollected(contact:b2Contact):void {
 			
-			var self:Box2DPhysicsObject;
+			var self:IBox2DPhysicsObject;
 			for each (var jewel:Coin in _jewels) {
 				
-				self = Box2DPhysicsObject.CollisionGetSelf(jewel, contact);
+				self = Box2DUtils.CollisionGetSelf(jewel, contact);
 				
 				if (self == jewel)
 					break;
 			}
 					
-			if (Box2DPhysicsObject.CollisionGetOther(self, contact) != _hero)
+			if (Box2DUtils.CollisionGetOther(self, contact) != _hero)
 				return;
 
 			_ce.sound.playSound("Collect", 1, 0);

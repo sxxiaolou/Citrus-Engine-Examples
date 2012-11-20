@@ -12,13 +12,13 @@ package box2dstarling {
 	import com.citrusengine.core.CitrusEngine;
 	import com.citrusengine.core.StarlingState;
 	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.Box2DPhysicsObject;
 	import com.citrusengine.objects.CitrusSprite;
 	import com.citrusengine.objects.platformer.box2d.Enemy;
 	import com.citrusengine.objects.platformer.box2d.Hero;
 	import com.citrusengine.objects.platformer.box2d.Platform;
 	import com.citrusengine.objects.platformer.box2d.Sensor;
 	import com.citrusengine.physics.box2d.Box2D;
+	import com.citrusengine.physics.box2d.Box2DUtils;
 	import com.citrusengine.utils.ObjectMaker2D;
 	import com.citrusengine.view.starlingview.AnimationSequence;
 
@@ -122,7 +122,7 @@ package box2dstarling {
 		
 		protected function _changeLevel(contact:b2Contact):void {
 			
-			if (Box2DPhysicsObject.CollisionGetOther(Sensor(getObjectByName("endLevel")), contact) is Hero) {
+			if (Box2DUtils.CollisionGetOther(Sensor(getObjectByName("endLevel")), contact) is Hero) {
 				lvlEnded.dispatch();
 			}
 		}

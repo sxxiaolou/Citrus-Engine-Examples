@@ -10,6 +10,8 @@ package games.live4sales.box2d.characters {
 
 	import com.citrusengine.objects.Box2DPhysicsObject;
 	import com.citrusengine.physics.PhysicsCollisionCategories;
+	import com.citrusengine.physics.box2d.Box2DUtils;
+	import com.citrusengine.physics.box2d.IBox2DPhysicsObject;
 
 	import org.osflash.signals.Signal;
 	
@@ -85,7 +87,7 @@ package games.live4sales.box2d.characters {
 
 		override public function handleBeginContact(contact:b2Contact):void {
 			
-			var other:Box2DPhysicsObject = Box2DPhysicsObject.CollisionGetOther(this, contact);
+			var other:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(this, contact);
 			
 			if (other is SalesWoman || other is Block || other is Cash)
 				_fighting = true;
@@ -98,7 +100,7 @@ package games.live4sales.box2d.characters {
 			
 		override public function handleEndContact(contact : b2Contact) : void {
 		
-			var other:Box2DPhysicsObject = Box2DPhysicsObject.CollisionGetOther(this, contact);
+			var other:IBox2DPhysicsObject = Box2DUtils.CollisionGetOther(this, contact);
 			
 			if (other is SalesWoman || other is Block || other is Cash)
 				_fighting = false;

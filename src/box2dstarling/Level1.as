@@ -9,9 +9,9 @@ package box2dstarling {
 	import starling.textures.Texture;
 	import starling.utils.Color;
 
-	import com.citrusengine.objects.Box2DPhysicsObject;
 	import com.citrusengine.objects.platformer.box2d.Hero;
 	import com.citrusengine.objects.platformer.box2d.Sensor;
+	import com.citrusengine.physics.box2d.Box2DUtils;
 
 	import flash.display.MovieClip;
 
@@ -68,14 +68,14 @@ package box2dstarling {
 		
 		private function _showPopUp(contact:b2Contact):void {
 			
-			if (Box2DPhysicsObject.CollisionGetOther(_popUp, contact) is Hero) {
+			if (Box2DUtils.CollisionGetOther(_popUp, contact) is Hero) {
 				_bmpFontTF.visible = true;
 			}
 		}
 		
 		private function _hidePopUp(contact:b2Contact):void {
 			
-			if (Box2DPhysicsObject.CollisionGetOther(_popUp, contact) is Hero) {
+			if (Box2DUtils.CollisionGetOther(_popUp, contact) is Hero) {
 				_bmpFontTF.visible = false;
 			}
 		}
