@@ -2,6 +2,7 @@ package entity {
 
 	import com.citrusengine.core.CitrusObject;
 	import com.citrusengine.core.State;
+	import com.citrusengine.objects.platformer.box2d.Enemy;
 	import com.citrusengine.objects.platformer.box2d.Platform;
 	import com.citrusengine.physics.box2d.Box2D;
 	import com.citrusengine.system.Entity;
@@ -9,9 +10,9 @@ package entity {
 	import com.citrusengine.system.components.box2d.hero.HeroCollisionComponent;
 	import com.citrusengine.system.components.box2d.hero.HeroMovementComponent;
 	import com.citrusengine.system.components.box2d.hero.HeroViewComponent;
+
 	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
-
 
 	/**
 	 * @author Aymeric
@@ -32,7 +33,7 @@ package entity {
 			super.initialize();
 			
 			var box2d:Box2D = new Box2D("box2D");
-			//box2d.visible = true;
+			box2d.visible = true;
 			add(box2d);
 			
 			_heroEntity = new Entity("heroEntity");
@@ -54,6 +55,10 @@ package entity {
 			stage.addEventListener(MouseEvent.MOUSE_UP, _handleRelease);
 			
 			add(new Platform("platform", {x:600, y:350, width:1800, height:20}));
+			
+			var enemy:Enemy = new Enemy("enemy", {x:stage.stageWidth - 50, y:350, width:46, height:68, leftBound:20, rightBound:stage.stageWidth - 20});
+			add(enemy);
+			enemy.enemyClass = DraggableHeroPhysicsComponent;
 		}
 		
 		private function _handleGrab(mEvt:MouseEvent):void {
