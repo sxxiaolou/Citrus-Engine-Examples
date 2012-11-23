@@ -69,7 +69,7 @@ package games.tinywings {
 		public function deleteHill(index:uint):void {
 			
 			removeChild(_images[index], true);
-			_images.slice(index, 1);
+			_images.splice(index, 1);
 		}
 	}
 }
