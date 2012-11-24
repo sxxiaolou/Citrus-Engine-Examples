@@ -102,5 +102,108 @@ package starlingtiles
 		
 		public static const tile_2:Array = [[tile_2_01, tile_2_02, tile_2_03, tile_2_04],
 			[tile_2_05, tile_2_06, tile_2_07, tile_2_08]];
+		
+		
+		
+		
+		
+		/**
+		 * ATF LEVELS
+		 */
+		
+		
+		/**
+		 * Bottom layer 0
+		 */
+		/*
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_0_01.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_0_01:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_0_02.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_0_02:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_0_03.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_0_03:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_0_04.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_0_04:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_0_05.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_0_05:Class;
+		
+		public static const tile_atf_0:Array = [[tile_atf_0_01, tile_atf_0_02, tile_atf_0_03, tile_atf_0_04, tile_atf_0_05]];
+		*/
+		
+		
+		/**
+		 * Player layer 1
+		 */
+		/*
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_1_01.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_1_01:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_1_02.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_1_02:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_1_03.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_1_03:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_1_04.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_1_04:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_1_05.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_1_05:Class;
+		
+		public static const tile_atf_1:Array = [[tile_atf_1_01, tile_atf_1_02, tile_atf_1_03, tile_atf_1_04, tile_atf_1_05]];
+		*/
+		
+		/**
+		 * layer 2
+		 */
+		/*
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_2_01.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_2_01:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_2_02.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_2_02:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_2_03.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_2_03:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_2_04.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_2_04:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_2_05.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_2_05:Class;
+		
+		public static const tile_atf_2:Array = [[tile_atf_2_01, tile_atf_2_02, tile_atf_2_03, tile_atf_2_04, tile_atf_2_05]];
+		*/
+		
+		/**
+		 * layer 3
+		 */
+		/*
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_3_01.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_3_01:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_3_02.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_3_02:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_3_03.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_3_03:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_3_04.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_3_04:Class;
+		
+		[Embed(source="../../embed/starlingtiles/starlingtiles_atf_3_05.atf", mimeType="application/octet-stream")]
+		public static const tile_atf_3_05:Class;
+		
+		public static const tile_atf_3:Array = [[tile_atf_3_01, tile_atf_3_02, tile_atf_3_03, tile_atf_3_04, tile_atf_3_05]];
+		*/
+
+		
+		
+		
+		
 	}
 }
