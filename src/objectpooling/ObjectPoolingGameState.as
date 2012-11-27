@@ -1,12 +1,10 @@
 package objectpooling {
 
 	import com.citrusengine.core.State;
-	import com.citrusengine.datastructures.DoublyLinkedListNode;
 	import com.citrusengine.datastructures.PoolObject;
 	import com.citrusengine.objects.NapePhysicsObject;
 	import com.citrusengine.objects.platformer.nape.Platform;
 	import com.citrusengine.physics.nape.Nape;
-	import com.citrusengine.view.spriteview.SpriteArt;
 
 	import flash.utils.setTimeout;
 
@@ -15,8 +13,7 @@ package objectpooling {
 	 */
 	public class ObjectPoolingGameState extends State {
 		
-		private var _poolPhysics:PoolObject;
-		private var _poolGraphic:PoolObject;
+		private var _poolObject:PoolObject;
 
 		public function ObjectPoolingGameState() {
 			super();
@@ -32,55 +29,29 @@ package objectpooling {
 			
 			add(new Platform("platformBot", {x:0, y:380, width:4000, height:20}));
 			
-			// the Citrus Engine separates physics from art so we use two PoolObjects.
 			// all objects in a PoolObject must have the same type.
-			// PoolObject isn't render through the state, you have to manage it in your GameState.
-			_poolPhysics = new PoolObject(NapePhysicsObject, 50, 5, true);
-			_poolGraphic = new PoolObject(SpriteArt, 50, 5, false);
+			_poolObject = new PoolObject(NapePhysicsObject, 50, 5, true);
 			
-			for (var i:uint = 0; i < 5; ++i) {
-				
-				var physicsNode:DoublyLinkedListNode = _poolPhysics.create({x:i * 40 + 60, view:"crate.png"});
-				addChild(_poolGraphic.create(physicsNode.data).data);
-				// in the SpriteArt class, we need the Citrus Object as an argument. That's why here it is physicsNode.data and not physicsNode.data.view
-			}
+			addPoolObject(_poolObject);
+			
+			for (var i:uint = 0; i < 5; ++i)
+				_poolObject.create({x:i * 40 + 60, view:"crate.png"});
+			
+			refreshPoolObjectArt(_poolObject);
 			
 			setTimeout(removeAndAddObjects, 3000);
-		}
-			
-		override public function destroy():void {
-			
-			_poolPhysics.disposeAll();
-			
-			// for the graphic pool, we have to removeChild each object, it can't be made in the PoolObject since it's not a display object.
-			while (_poolGraphic.head)
-				removeChild(_poolGraphic.disposeNode(_poolGraphic.head).data);
-			
-			super.destroy();
-		}
-		
-		override public function update(timeDelta:Number):void {
-			
-			super.update(timeDelta);
-			
-			// update pool objects
-			_poolPhysics.updatePhysics(timeDelta);
-			_poolGraphic.updateArt(view);
 		}
 		
 		public function removeAndAddObjects():void {
 			
-			_poolPhysics.disposeAll();
-			
-			while (_poolGraphic.head)
-				removeChild(_poolGraphic.disposeNode(_poolGraphic.head).data);
+			refreshPoolObjectArt(_poolObject, _poolObject.length);
+			_poolObject.disposeAll();
 				
 			// reassign object
-			for (var i:uint = 0; i < 7; ++i) {
-				var physicsNode:DoublyLinkedListNode = _poolPhysics.create({x:i * 40 + 150, view:"crate.png"});
-				addChild(_poolGraphic.create(physicsNode.data).data);
-			}
+			for (var i:uint = 0; i < 7; ++i)
+				_poolObject.create({x:i * 40 + 150, view:"muffin.png"});
 			
+			refreshPoolObjectArt(_poolObject);
 		}
 
 	}
