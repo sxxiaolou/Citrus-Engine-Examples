@@ -8,6 +8,7 @@ package tiledmap {
 	import com.citrusengine.utils.ObjectMaker2D;
 	import com.citrusengine.view.spriteview.SpriteArt;
 
+	import flash.display.Bitmap;
 	import flash.geom.Rectangle;
 	
 	/**
@@ -36,7 +37,11 @@ package tiledmap {
 			//box2D.visible = true;
 			add(box2D);
 			
-			ObjectMaker2D.FromTiledMap(XML(new _Map()), _ImgTiles);
+			var bmp:Bitmap = new _ImgTiles();
+			// we must add the image name so we know which image is chosen.
+			bmp.name = "Genetica-tiles.png";
+			
+			ObjectMaker2D.FromTiledMap(XML(new _Map()), [bmp]);
 			
 			var hero:Hero = getObjectByName("hero") as Hero;
 			
