@@ -5,7 +5,7 @@ package awayphysics.cadet3d {
 
 	import com.citrusengine.core.State;
 	import com.citrusengine.physics.awayphysics.AwayPhysics;
-	import com.citrusengine.utils.ObjectMaker3D;
+	import com.citrusengine.utils.objectmakers.ObjectMaker3D;
 	import com.citrusengine.view.CitrusView;
 	import com.citrusengine.view.away3dview.Away3DView;
 

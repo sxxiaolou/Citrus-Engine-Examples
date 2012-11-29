@@ -16,7 +16,7 @@ package soundpatchdemo {
 	import com.citrusengine.physics.box2d.Box2D;
 	import com.citrusengine.physics.box2d.Box2DUtils;
 	import com.citrusengine.physics.box2d.IBox2DPhysicsObject;
-	import com.citrusengine.utils.ObjectMaker2D;
+	import com.citrusengine.utils.objectmakers.ObjectMaker2D;
 
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;

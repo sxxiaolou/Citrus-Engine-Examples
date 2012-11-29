@@ -19,7 +19,7 @@ package box2dstarling {
 	import com.citrusengine.objects.platformer.box2d.Sensor;
 	import com.citrusengine.physics.box2d.Box2D;
 	import com.citrusengine.physics.box2d.Box2DUtils;
-	import com.citrusengine.utils.ObjectMaker2D;
+	import com.citrusengine.utils.objectmakers.ObjectMaker2D;
 	import com.citrusengine.view.starlingview.AnimationSequence;
 
 	import org.osflash.signals.Signal;

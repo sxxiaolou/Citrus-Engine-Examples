@@ -1,4 +1,4 @@
-package tiledmap {
+package tiledmap.displaylist {
 
 	import com.citrusengine.core.CitrusEngine;
 
