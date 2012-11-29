@@ -75,6 +75,7 @@ package dragonbones {
 			// the character is build on the left
 			(_armature.display as Sprite).scaleX = -0.5;
 
+			//the design wasn't made on the center registration point but close to the top left.
 			var dragon:Hero = new Hero("dragon", {x:150, width:60, height:135, offsetY:135 / 2, view:_armature, registration:"topLeft"});
 			add(dragon);
 
