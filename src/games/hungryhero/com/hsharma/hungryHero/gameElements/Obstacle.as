@@ -13,15 +13,13 @@
 
 package games.hungryhero.com.hsharma.hungryHero.gameElements {
 
-	import com.citrusengine.objects.CitrusSprite;
 	import games.hungryhero.Assets;
 	import games.hungryhero.GameConstants;
 
-	import starling.core.Starling;
 	import starling.display.Image;
 	import starling.display.MovieClip;
-	import starling.display.Sprite;
-	import starling.utils.deg2rad;
+
+	import com.citrusengine.objects.CitrusSprite;
 	
 	/**
 	 * This class defines the obstacles in the game.
@@ -67,7 +65,7 @@ package games.hungryhero.com.hsharma.hungryHero.gameElements {
 		public function Obstacle(name:String, params:Object = null)
 		{
 			super(name, params);
-			//_type:int, _distance:int, _lookOut:Boolean = true, _speed:int = 0
+			
 			_alreadyHit = false;
 		}
 		
@@ -204,16 +202,13 @@ package games.hungryhero.com.hsharma.hungryHero.gameElements {
 			resetForReuse();
 			
 			// If reusing, hide previous animation/image, based on what is necessary this time.
-			hidePreviousInstance();
+			//hidePreviousInstance();
 			
 			// Create Obstacle Art.
 			createObstacleArt();
 			
-			// Create the Crash Art.
-			createObstacleCrashArt();
-			
 			// Create look-out animation.
-			createLookOutAnimation();
+			//createLookOutAnimation();
 		}
 		
 		/**
@@ -250,6 +245,8 @@ package games.hungryhero.com.hsharma.hungryHero.gameElements {
 			
 			if (value)
 			{
+				// Create the Crash Art.
+				createObstacleCrashArt();
 				obstacleCrashImage.visible = true;
 				if (_typeObstacle == GameConstants.OBSTACLE_TYPE_4)
 				{
@@ -290,7 +287,7 @@ package games.hungryhero.com.hsharma.hungryHero.gameElements {
 		{
 			this.alreadyHit = false;
 			this.lookOut = true;
-			this.rotation = (0);
+			this.rotation = 0;
 		}
 	}
 }

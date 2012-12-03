@@ -3,6 +3,7 @@ package mobilenapestarling {
 	import mobilenapestarling.assets.Assets;
 
 	import nape.callbacks.InteractionCallback;
+	import nape.geom.Vec2;
 
 	import starling.core.Starling;
 	import starling.display.Image;
@@ -64,7 +65,7 @@ package mobilenapestarling {
 
 			Assets.contentScaleFactor = Starling.current.contentScaleFactor;
 			
-			var nape:Nape = new Nape("nape");
+			var nape:Nape = new Nape("nape", {gravity:new Vec2(0, 150)});
 			//nape.visible = true;
 			add(nape);
 			

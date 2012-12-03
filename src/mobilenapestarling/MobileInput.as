@@ -5,8 +5,8 @@ package mobilenapestarling {
 	import starling.events.TouchPhase;
 
 	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.Input;
 	import com.citrusengine.core.StarlingCitrusEngine;
+	import com.citrusengine.input.Input;
 
 	/**
 	 * @author Aymeric
