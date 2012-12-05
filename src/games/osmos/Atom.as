@@ -104,7 +104,7 @@ package games.osmos {
                 var b:Body = bodies.at(i);
                 if(!b.isDynamic()) continue;
                 _hand.body2 = b;
-                _hand.anchor2 = b.worldToLocal(mp);
+                _hand.anchor2 = b.worldPointToLocal(mp);
                 _hand.active = true;
                 break;
             }
