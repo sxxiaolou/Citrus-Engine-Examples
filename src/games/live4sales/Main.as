@@ -3,6 +3,7 @@ package games.live4sales {
 	import com.citrusengine.core.StarlingCitrusEngine;
 	import com.citrusengine.utils.Mobile;
 
+	import flash.display.Stage;
 	import flash.geom.Rectangle;
 
 	[SWF(backgroundColor="#000000", frameRate="60")]
@@ -24,9 +25,9 @@ package games.live4sales {
 				isIpad = Mobile.isIpad();
 				
 				if (isIpad)
-					setUpStarling(true, 1, new Rectangle(64, 128, stage.fullScreenWidth, stage.fullScreenHeight));
+					setUpStarling(true, 1, stage, new Rectangle(64, 128, stage.fullScreenWidth, stage.fullScreenHeight));
 				else
-					setUpStarling(true, 1, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
+					setUpStarling(true, 1, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
 			} else 
 				setUpStarling(true);
 			
@@ -35,9 +36,9 @@ package games.live4sales {
 			//state = new Box2DLive4Sales();
 		}
 		
-		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewport:Rectangle = null):void {
+		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, flashStage:Stage = null, viewport:Rectangle = null):void {
 			
-			super.setUpStarling(debugMode, antiAliasing, viewport);
+			super.setUpStarling(debugMode, antiAliasing, flashStage, viewport);
 			
 			if (compileForMobile) {
 				// set iPhone & iPad size, used for Starling contentScaleFactor
