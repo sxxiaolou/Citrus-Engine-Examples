@@ -2,17 +2,17 @@
 <!-- Created with TexturePacker http://texturepacker.com-->
 <!-- $TexturePacker:SmartUpdate:5c33fac8cab382f1764ab43dcf2ab7d8$ -->
 <TextureAtlas imagePath="Braid.png">
-    <SubTexture name="BraidClaw/claw-chomping-1" x="1043" y="1094" width="104" height="164"/>
+    <SubTexture name="BraidClaw/claw-chomping-01" x="1043" y="1094" width="104" height="164"/>
     <SubTexture name="BraidClaw/claw-chomping-10" x="332" y="1327" width="104" height="164"/>
     <SubTexture name="BraidClaw/claw-chomping-11" x="1464" y="699" width="104" height="164"/>
-    <SubTexture name="BraidClaw/claw-chomping-2" x="1570" y="871" width="115" height="166"/>
-    <SubTexture name="BraidClaw/claw-chomping-3" x="1570" y="230" width="125" height="165"/>
-    <SubTexture name="BraidClaw/claw-chomping-4" x="2" y="806" width="133" height="165"/>
-    <SubTexture name="BraidClaw/claw-chomping-5" x="137" y="682" width="133" height="165"/>
-    <SubTexture name="BraidClaw/claw-chomping-6" x="2" y="639" width="133" height="165"/>
-    <SubTexture name="BraidClaw/claw-chomping-7" x="551" y="362" width="133" height="167"/>
-    <SubTexture name="BraidClaw/claw-chomping-8" x="1229" y="513" width="115" height="170"/>
-    <SubTexture name="BraidClaw/claw-chomping-9" x="1464" y="533" width="104" height="164"/>
+    <SubTexture name="BraidClaw/claw-chomping-02" x="1570" y="871" width="115" height="166"/>
+    <SubTexture name="BraidClaw/claw-chomping-03" x="1570" y="230" width="125" height="165"/>
+    <SubTexture name="BraidClaw/claw-chomping-04" x="2" y="806" width="133" height="165"/>
+    <SubTexture name="BraidClaw/claw-chomping-05" x="137" y="682" width="133" height="165"/>
+    <SubTexture name="BraidClaw/claw-chomping-06" x="2" y="639" width="133" height="165"/>
+    <SubTexture name="BraidClaw/claw-chomping-07" x="551" y="362" width="133" height="167"/>
+    <SubTexture name="BraidClaw/claw-chomping-08" x="1229" y="513" width="115" height="170"/>
+    <SubTexture name="BraidClaw/claw-chomping-09" x="1464" y="533" width="104" height="164"/>
     <SubTexture name="BraidMonster/monster-bounce-1" x="1110" y="475" width="117" height="113"/>
     <SubTexture name="BraidMonster/monster-bounce-2" x="1921" y="960" width="115" height="117"/>
     <SubTexture name="BraidMonster/monster-bounce-3" x="1915" y="1219" width="113" height="119"/>
@@ -32,7 +32,7 @@
     <SubTexture name="BraidMonster/monster-up-down_transition-2" x="1687" y="872" width="115" height="120"/>
     <SubTexture name="BraidMonster/monster-up-down_transition-3" x="1804" y="1049" width="115" height="113"/>
     <SubTexture name="BraidMonster/monster-up-down_transition-4" x="1688" y="756" width="116" height="114"/>
-    <SubTexture name="BraidMonster/monster-walking-1" x="1781" y="1282" width="111" height="108"/>
+    <SubTexture name="BraidMonster/monster-walking-01" x="1781" y="1282" width="111" height="108"/>
     <SubTexture name="BraidMonster/monster-walking-10" x="1214" y="949" width="112" height="111"/>
     <SubTexture name="BraidMonster/monster-walking-11" x="871" y="660" width="113" height="109"/>
     <SubTexture name="BraidMonster/monster-walking-12" x="1668" y="1236" width="111" height="109"/>
@@ -40,14 +40,14 @@
     <SubTexture name="BraidMonster/monster-walking-14" x="361" y="945" width="110" height="108"/>
     <SubTexture name="BraidMonster/monster-walking-15" x="1894" y="1340" width="111" height="107"/>
     <SubTexture name="BraidMonster/monster-walking-16" x="226" y="992" width="110" height="107"/>
-    <SubTexture name="BraidMonster/monster-walking-2" x="1552" y="1275" width="111" height="108"/>
-    <SubTexture name="BraidMonster/monster-walking-3" x="871" y="771" width="113" height="108"/>
-    <SubTexture name="BraidMonster/monster-walking-4" x="1328" y="1041" width="112" height="108"/>
-    <SubTexture name="BraidMonster/monster-walking-5" x="1555" y="1164" width="111" height="109"/>
-    <SubTexture name="BraidMonster/monster-walking-6" x="1326" y="1151" width="111" height="109"/>
-    <SubTexture name="BraidMonster/monster-walking-7" x="1665" y="1347" width="111" height="107"/>
-    <SubTexture name="BraidMonster/monster-walking-8" x="1099" y="984" width="112" height="108"/>
-    <SubTexture name="BraidMonster/monster-walking-9" x="1442" y="1109" width="111" height="109"/>
+    <SubTexture name="BraidMonster/monster-walking-02" x="1552" y="1275" width="111" height="108"/>
+    <SubTexture name="BraidMonster/monster-walking-03" x="871" y="771" width="113" height="108"/>
+    <SubTexture name="BraidMonster/monster-walking-04" x="1328" y="1041" width="112" height="108"/>
+    <SubTexture name="BraidMonster/monster-walking-05" x="1555" y="1164" width="111" height="109"/>
+    <SubTexture name="BraidMonster/monster-walking-06" x="1326" y="1151" width="111" height="109"/>
+    <SubTexture name="BraidMonster/monster-walking-07" x="1665" y="1347" width="111" height="107"/>
+    <SubTexture name="BraidMonster/monster-walking-08" x="1099" y="984" width="112" height="108"/>
+    <SubTexture name="BraidMonster/monster-walking-09" x="1442" y="1109" width="111" height="109"/>
     <SubTexture name="BraidRabit/rabbit-arcing-1" x="161" y="576" width="137" height="104"/>
     <SubTexture name="BraidRabit/rabbit-arcing-2" x="300" y="610" width="135" height="106"/>
     <SubTexture name="BraidRabit/rabbit-arcing-3" x="304" y="496" width="137" height="112"/>
@@ -133,7 +133,7 @@
     <SubTexture name="Tim/flying_upward-1" x="827" y="1013" width="106" height="138" frameX="-46" frameY="-30" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/flying_upward-2" x="799" y="1289" width="104" height="138" frameX="-46" frameY="-30" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/flying_upward-3" x="443" y="529" width="106" height="138" frameX="-46" frameY="-30" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/idle-1" x="86" y="1517" width="82" height="138" frameX="-58" frameY="-30" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/idle-01" x="86" y="1517" width="82" height="138" frameX="-58" frameY="-30" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/idle-10" x="2" y="1493" width="82" height="140" frameX="-57" frameY="-28" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/idle-11" x="2" y="1664" width="82" height="140" frameX="-57" frameY="-28" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/idle-12" x="1882" y="1857" width="82" height="140" frameX="-57" frameY="-28" frameWidth="200" frameHeight="200"/>
@@ -148,13 +148,13 @@
     <SubTexture name="Tim/idle-20" x="674" y="1908" width="82" height="138" frameX="-58" frameY="-30" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/idle-21" x="590" y="1908" width="82" height="138" frameX="-58" frameY="-30" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/idle-22" x="506" y="1908" width="82" height="138" frameX="-58" frameY="-30" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/idle-3" x="422" y="1908" width="82" height="138" frameX="-58" frameY="-30" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/idle-4" x="338" y="1908" width="82" height="138" frameX="-58" frameY="-30" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/idle-5" x="254" y="1908" width="82" height="138" frameX="-58" frameY="-30" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/idle-6" x="170" y="1908" width="82" height="138" frameX="-57" frameY="-30" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/idle-7" x="86" y="1908" width="82" height="138" frameX="-57" frameY="-30" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/idle-8" x="2" y="1908" width="82" height="138" frameX="-57" frameY="-30" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/idle-9" x="1454" y="1854" width="82" height="140" frameX="-57" frameY="-28" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/idle-03" x="422" y="1908" width="82" height="138" frameX="-58" frameY="-30" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/idle-04" x="338" y="1908" width="82" height="138" frameX="-58" frameY="-30" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/idle-05" x="254" y="1908" width="82" height="138" frameX="-58" frameY="-30" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/idle-06" x="170" y="1908" width="82" height="138" frameX="-57" frameY="-30" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/idle-07" x="86" y="1908" width="82" height="138" frameX="-57" frameY="-30" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/idle-08" x="2" y="1908" width="82" height="138" frameX="-57" frameY="-30" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/idle-09" x="1454" y="1854" width="82" height="140" frameX="-57" frameY="-28" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/jump_prep_(unused)-1" x="338" y="1055" width="108" height="132" frameX="-53" frameY="-37" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/jump_prep_(unused)-2" x="1692" y="490" width="120" height="130" frameX="-43" frameY="-39" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/jump_prep_(unused)-3" x="1832" y="136" width="126" height="128" frameX="-39" frameY="-40" frameWidth="200" frameHeight="200"/>
@@ -172,7 +172,7 @@
     <SubTexture name="Tim/opening_door-3" x="256" y="1493" width="78" height="140" frameX="-59" frameY="-29" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/opening_door-4" x="254" y="1635" width="78" height="138" frameX="-60" frameY="-31" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/opening_door-5" x="1966" y="1845" width="80" height="138" frameX="-59" frameY="-31" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/running-1" x="1570" y="397" width="120" height="130" frameX="-39" frameY="-34" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/running-01" x="1570" y="397" width="120" height="130" frameX="-39" frameY="-34" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/running-10" x="1751" y="1536" width="96" height="136" frameX="-58" frameY="-33" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/running-11" x="1849" y="1587" width="96" height="134" frameX="-59" frameY="-32" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/running-12" x="1424" y="1580" width="100" height="134" frameX="-56" frameY="-33" frameWidth="200" frameHeight="200"/>
@@ -183,7 +183,7 @@
     <SubTexture name="Tim/running-17" x="496" y="878" width="110" height="128" frameX="-46" frameY="-35" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/running-18" x="1647" y="1456" width="102" height="130" frameX="-54" frameY="-35" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/running-19" x="657" y="1445" width="104" height="130" frameX="-52" frameY="-37" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/running-2" x="1812" y="672" width="118" height="130" frameX="-40" frameY="-35" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/running-02" x="1812" y="672" width="118" height="130" frameX="-40" frameY="-35" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/running-20" x="770" y="1429" width="104" height="132" frameX="-53" frameY="-36" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/running-21" x="438" y="1530" width="98" height="132" frameX="-57" frameY="-37" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/running-22" x="758" y="1792" width="94" height="136" frameX="-61" frameY="-36" frameWidth="200" frameHeight="200"/>
@@ -192,13 +192,13 @@
     <SubTexture name="Tim/running-25" x="935" y="1041" width="106" height="136" frameX="-51" frameY="-34" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/running-26" x="384" y="807" width="110" height="136" frameX="-47" frameY="-34" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/running-27" x="986" y="788" width="112" height="134" frameX="-44" frameY="-34" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/running-3" x="1692" y="622" width="118" height="132" frameX="-39" frameY="-35" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/running-4" x="1219" y="815" width="114" height="132" frameX="-43" frameY="-36" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/running-5" x="800" y="1153" width="106" height="134" frameX="-50" frameY="-37" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/running-6" x="905" y="1319" width="104" height="134" frameX="-52" frameY="-37" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/running-7" x="1439" y="1331" width="102" height="132" frameX="-55" frameY="-37" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/running-8" x="1533" y="1519" width="100" height="134" frameX="-55" frameY="-36" frameWidth="200" frameHeight="200"/>
-    <SubTexture name="Tim/running-9" x="1526" y="1655" width="96" height="134" frameX="-59" frameY="-37" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/running-03" x="1692" y="622" width="118" height="132" frameX="-39" frameY="-35" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/running-04" x="1219" y="815" width="114" height="132" frameX="-43" frameY="-36" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/running-05" x="800" y="1153" width="106" height="134" frameX="-50" frameY="-37" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/running-06" x="905" y="1319" width="104" height="134" frameX="-52" frameY="-37" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/running-07" x="1439" y="1331" width="102" height="132" frameX="-55" frameY="-37" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/running-08" x="1533" y="1519" width="100" height="134" frameX="-55" frameY="-36" frameWidth="200" frameHeight="200"/>
+    <SubTexture name="Tim/running-09" x="1526" y="1655" width="96" height="134" frameX="-59" frameY="-37" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/up-down_transition-1" x="908" y="1179" width="104" height="138" frameX="-47" frameY="-30" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/up-down_transition-2" x="1149" y="1179" width="104" height="136" frameX="-47" frameY="-31" frameWidth="200" frameHeight="200"/>
     <SubTexture name="Tim/up-down_transition-3" x="224" y="1233" width="106" height="136" frameX="-47" frameY="-32" frameWidth="200" frameHeight="200"/>
