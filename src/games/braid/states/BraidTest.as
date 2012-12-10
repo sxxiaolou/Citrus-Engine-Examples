@@ -1,5 +1,7 @@
 package games.braid.states
 {
+	import com.citrusengine.input.controllers.starling.VirtualButtons;
+	import com.citrusengine.input.controllers.starling.VirtualJoystick;
 	import games.braid.assets.Assets;
 	import com.citrusengine.core.CitrusEngine;
 	import com.citrusengine.core.StarlingState;
@@ -124,6 +126,14 @@ package games.braid.states
 			new Rectangle(0, 0, 2400, 1200), new MathVector(.25, .25));
 			
 			add(overlay);
+			
+			var vj:VirtualJoystick = new VirtualJoystick("joy",{radius:120});
+			vj.circularBounds = true;
+			
+			var vb:VirtualButtons = new VirtualButtons("buttons",{buttonradius:40});
+			vb.button1Action = "timeshift";
+			vb.button1Channel = 16;
+			vb.button2Action = "jump";
 		}
 		
 		private function changeOverlay(speed:Number):void
