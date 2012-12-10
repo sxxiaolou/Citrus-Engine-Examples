@@ -193,7 +193,7 @@ package games.braid.objects.nape
 		protected function updateAnimation():void
 		{
 			
-			_animation = _shape.sensorEnabled ? "BraidMonster/monster-dyingMonster" : "BraidMonster/monster-walking";
+			_animation = _shape.sensorEnabled ? "monster-dyingMonster" : "monster-walking";
 		}
 		
 		protected function endHurtState():void

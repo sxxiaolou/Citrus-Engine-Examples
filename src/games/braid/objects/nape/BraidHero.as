@@ -84,29 +84,29 @@ package games.braid.objects.nape
 			
 			if (_onGround)
 			{
-				_animation = "Tim/idle";
+				_animation = "idle";
 				//_inverted = false;
 				
 				if (_ce.input.isDoing("up", inputChannel))
 				{
-					_animation = "Tim/looking_upward";
+					_animation = "looking_upward";
 					camTarget.y = _body.position.y - 200;
 				}
 				if (_ce.input.isDoing("down", inputChannel))
 				{
-					_animation = "Tim/looking_downward";
+					_animation = "looking_downward";
 					camTarget.y = _body.position.y + 200;
 				}
 			}
 			else if (_body.velocity.y > 0)
 			{
-				_animation = "Tim/falling_downward";
+				_animation = "falling_downward";
 			}
 			
 			if (_ce.input.isDoing("right", inputChannel))
 			{
 				if (_onGround)
-					_animation = "Tim/running";
+					_animation = "running";
 				_body.velocity.x += 30;
 				_inverted = false;
 			}
@@ -114,7 +114,7 @@ package games.braid.objects.nape
 			if (_ce.input.isDoing("left", inputChannel))
 			{
 				if (_onGround)
-					_animation = "Tim/running";
+					_animation = "running";
 				_body.velocity.x -= 30;
 				_inverted = true;
 			}
@@ -122,7 +122,7 @@ package games.braid.objects.nape
 			if (_ce.input.justDid("jump", inputChannel) && _onGround)
 			{
 				_body.velocity.y -= 500;
-				_animation = "Tim/jump_prep_straight";
+				_animation = "jump_prep_straight";
 				_onGround = false;
 			}
 			

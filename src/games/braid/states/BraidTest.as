@@ -73,22 +73,22 @@ package games.braid.states
 			add(floor2);
 
 			var Tatlas:TextureAtlas = new TextureAtlas(Texture.fromBitmap(new Assets.braid()), new XML(new Assets.braidXML()));
-			var anim:AnimationSequence = new AnimationSequence(Tatlas, ["Tim/idle", "Tim/jump_prep_straight", "Tim/running", "Tim/fidget","Tim/falling_downward","Tim/looking_downward","Tim/looking_upward"], "Tim/idle", 30, true);
+			var anim:AnimationSequence = new AnimationSequence(Tatlas, ["idle", "jump_prep_straight", "running", "fidget","falling_downward","looking_downward","looking_upward"], "idle", 30, true);
 			hero = new BraidHero("hero", { x:40, y:10, width:80, height:130, view: anim } );
 			add(hero);
 			
-			var anim2:AnimationSequence = new AnimationSequence(Tatlas, ["Tim/idle", "Tim/jump_prep_straight", "Tim/running", "Tim/fidget", "Tim/falling_downward", "Tim/looking_downward", "Tim/looking_upward"], "Tim/idle", 30, true);
+			var anim2:AnimationSequence = new AnimationSequence(Tatlas, ["idle", "jump_prep_straight", "running", "fidget", "falling_downward", "looking_downward", "looking_upward"], "idle", 30, true);
 			//hero 2 is immune to timeShift.
 			var hero2:BraidHero = new BraidHero("hero2", { x:1200, y:600, width:80, height:130, inverted:true, view: anim2 } );
 			hero2.inputChannel = 1;
 			add(hero2);
 			
-			var coin:Coin = new Coin("key", { x: 1280, y: 600, height: 50, width: 50, view: new Image(Tatlas.getTexture("icons_full size/key1")) } );
+			var coin:Coin = new Coin("key", { x: 1280, y: 600, height: 50, width: 50, view: new Image(Tatlas.getTexture("key1")) } );
 			coin.view.scaleX = coin.view.scaleY = 0.8;
 			coin.collectorClass = BraidHero;
 			add(coin);
 			
-			var enemyanim:AnimationSequence = new AnimationSequence(Tatlas, ["BraidMonster/monster-walking","BraidMonster/monster-dyingMonster","BraidMonster/monster-falling"], "BraidMonster/monster-walking", 30, true);
+			var enemyanim:AnimationSequence = new AnimationSequence(Tatlas, ["monster-walking","monster-dyingMonster","monster-falling"], "monster-walking", 30, true);
 			var enemy:BraidEnemy = new BraidEnemy("enemy", { leftBound:350, rightBound:550, x:500, y:500, width:100, height:90, view:enemyanim } );
 			enemy.enemyClass = BraidHero;
 			add(enemy);
@@ -115,7 +115,7 @@ package games.braid.states
 			keyboard.addKeyAction("right", Keyboard.D,1);
 			keyboard.addKeyAction("jump", Keyboard.H,1);
 			
-			StarlingArt.setLoopAnimations(["Tim/idle", "Tim/running","BraidMonster/monster-walking"]);
+			StarlingArt.setLoopAnimations(["idle", "running","monster-walking"]);
 			
 			this.scaleX = 0.5;
 			this.scaleY = 0.5;
