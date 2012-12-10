@@ -34,16 +34,24 @@ package games.braid.states
 		public var overlayQuadYellow:Quad;
 		
 		private var hero:BraidHero ;
-		
 		private var timeshifter:TimeShifter;
 		
-		private var speedDir:int = 0;
-		private var changedDir:Boolean = true;
-		private var alphaOverlay:Number = 0.2;
+		private var currentAlphaOverlay:Number = 0;
+		private var targetAlphaOverlay:Number = 0;
+		
+		//screen shaking.
+		private var _shake:Boolean = false;
+		
+		//overlay easing.
+		private var _easeTimer:uint = 0;
+		private var _easeDuration:uint = 40;
+		private var _easeFunc:Function;
 		
 		public function BraidTest()
 		{
 			super();
+			
+			_easeFunc = Tween_easeOut;
 		}
 		
 		override public function initialize():void
@@ -60,11 +68,10 @@ package games.braid.states
 			
 			overlay = new CitrusSprite("overlay", {parallax:0});
 			overlayQuadBlue = new Quad(stage.stageWidth*2, stage.stageHeight*2, 0x0000FF);
-			overlayQuadBlue.alpha = 0.3;
+			overlayQuadYellow = new Quad(stage.stageWidth * 2, stage.stageHeight * 2, 0xFFFF00);
 			overlayQuadBlue.blendMode = BlendMode.MULTIPLY;
-			overlayQuadYellow = new Quad(stage.stageWidth*2, stage.stageHeight*2, 0xFFFF00);
-			overlayQuadYellow.alpha = 0.1;
 			overlayQuadYellow.blendMode = BlendMode.ADD;
+			
 			
 			var floor:Platform = new Platform("floor2", { x:400, y:590, width:800, height:30 } );
 			floor.view = new Quad(800, 30, 0x000044);
@@ -108,6 +115,10 @@ package games.braid.states
 			timeshifter.onDeactivated.add(hero.attachPhysics);
 			timeshifter.onDeactivated.add(enemy.attachPhysics);
 			
+			timeshifter.onActivated.add(function():void { _shake = true; });
+			timeshifter.onDeactivated.add(function():void { _shake = false; x = 0; y = 0; } );
+			timeshifter.onDeactivated.add(function():void { changeOverlay(0); } );
+			
 			var keyboard:Keyboard = CitrusEngine.getInstance().input.keyboard as Keyboard;
 			keyboard.addKeyAction("timeshift", Keyboard.SHIFT, 16);
 			
@@ -125,7 +136,6 @@ package games.braid.states
 			view.setupCamera(hero.camTarget, new MathVector(stage.stageWidth / 2  , stage.stageHeight / 2 ),
 			new Rectangle(0, 0, 2400, 1200), new MathVector(.25, .25));
 			
-			add(overlay);
 			
 			var vj:VirtualJoystick = new VirtualJoystick("joy",{radius:120});
 			vj.circularBounds = true;
@@ -134,61 +144,60 @@ package games.braid.states
 			vb.button1Action = "timeshift";
 			vb.button1Channel = 16;
 			vb.button2Action = "jump";
+			
+			add(overlay);
+		}
+		
+		private function shakeState():void
+		{
+			x = Math.random() * 1 - 1;
+			y = Math.random() * 1 - 1;
 		}
 		
 		private function changeOverlay(speed:Number):void
 		{
+			_easeTimer = 0;
 			if (speed < 0)
 			{
 				overlay.view = overlayQuadYellow;
-				alphaOverlay = - speed / 10;
+				targetAlphaOverlay = - speed / 10;
 			}
 			else if (speed > 0)
 			{
 				overlay.view = overlayQuadBlue;
-				alphaOverlay = speed / 20;
+				targetAlphaOverlay = speed / 10;
 			}
-			
-			changedDir = true;
-			
-			if(speed < 0 && timeshifter.speed < 0)
-				changedDir = false;
-			else if (speed > 0 && timeshifter.speed > 0)
-				changedDir = false;
+			else if (speed == 0)
+			{
+				targetAlphaOverlay = 0;
+			}
 		}
 		
 		override public function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
 			
-			if (hero.y > 1400 && !timeshifter.paused)
+			if (_shake)
+			{
+				shakeState();
+			}
+			
+			if (hero.y > 1700 && !timeshifter.paused)
 			{
 				timeshifter.pause();
 			}
-				
-				if (timeshifter.targetSpeed == 0 && changedDir)
-				{
-					overlayQuadBlue.alpha = (1 - timeshifter.easeFactor) * alphaOverlay; 
-					overlayQuadYellow.alpha = (1 - timeshifter.easeFactor) * alphaOverlay;
-				}
-				else if (changedDir)
-				{
-					overlayQuadBlue.alpha = timeshifter.easeFactor * alphaOverlay; 
-					overlayQuadYellow.alpha = timeshifter.easeFactor * alphaOverlay;
-				}
-				
-				if (!changedDir)
-				{
-					overlayQuadBlue.alpha = overlayQuadBlue.alpha + timeshifter.easeFactor * (alphaOverlay - overlayQuadBlue.alpha);
-					overlayQuadYellow.alpha = overlayQuadYellow.alpha + timeshifter.easeFactor * (alphaOverlay - overlayQuadYellow.alpha);
-				}
 			
-			if (!CitrusEngine.getInstance().input.isDoing("timeshift", 16))
+			if (_easeTimer < _easeDuration)
 			{
-				overlay.view = null;
+				_easeTimer++;
+				currentAlphaOverlay = _easeFunc(_easeTimer, currentAlphaOverlay, targetAlphaOverlay - currentAlphaOverlay, _easeDuration);
 			}
+			overlayQuadBlue.alpha = overlayQuadYellow.alpha = currentAlphaOverlay;
+			
 			
 		}
+		
+		private function Tween_easeOut(t:Number, b:Number, c:Number, d:Number):Number { t /= d; return -c * t*(t-2) + b; }
 	
 	}
 

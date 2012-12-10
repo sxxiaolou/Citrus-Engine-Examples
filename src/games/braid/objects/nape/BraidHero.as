@@ -159,7 +159,7 @@ package games.braid.objects.nape
 				_animation = "falling_downward";
 			}
 			
-			if (body.position.y > 800)
+			if (body.position.y > 1200)
 			{
 				animation = "dying_loop";
 			}
