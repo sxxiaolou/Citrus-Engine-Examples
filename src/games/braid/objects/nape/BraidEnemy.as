@@ -177,19 +177,6 @@ package games.braid.objects.nape
 			_body.angularVel = 0.4;
 		}
 		
-		override public function handleBeginContact(callback:InteractionCallback):void
-		{
-			
-			var collider:NapePhysicsObject = callback.int2.castBody.userData.myData;
-			trace("begin.");
-			trace(callback.int2.castBody);
-			trace(collider);
-			if (collider is _enemyClass)
-			{
-				trace("lol");
-			}
-		}
-		
 		protected function updateAnimation():void
 		{
 			

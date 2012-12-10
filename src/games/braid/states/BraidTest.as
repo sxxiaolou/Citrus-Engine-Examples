@@ -1,22 +1,22 @@
 package games.braid.states
 {
-	import com.citrusengine.input.controllers.starling.VirtualButtons;
-	import com.citrusengine.input.controllers.starling.VirtualJoystick;
-	import games.braid.assets.Assets;
 	import com.citrusengine.core.CitrusEngine;
 	import com.citrusengine.core.StarlingState;
 	import com.citrusengine.input.controllers.Keyboard;
+	import com.citrusengine.input.controllers.starling.VirtualButtons;
+	import com.citrusengine.input.controllers.starling.VirtualJoystick;
 	import com.citrusengine.input.controllers.TimeShifter;
 	import com.citrusengine.math.MathVector;
 	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.objects.platformer.nape.Coin;
 	import com.citrusengine.objects.platformer.nape.Platform;
 	import com.citrusengine.physics.nape.Nape;
 	import com.citrusengine.view.starlingview.AnimationSequence;
 	import com.citrusengine.view.starlingview.StarlingArt;
 	import flash.geom.Rectangle;
+	import games.braid.assets.Assets;
 	import games.braid.objects.nape.BraidEnemy;
 	import games.braid.objects.nape.BraidHero;
+	import games.braid.objects.nape.Key;
 	import starling.display.BlendMode;
 	import starling.display.Image;
 	import starling.display.Quad;
@@ -86,16 +86,15 @@ package games.braid.states
 			hero = new BraidHero("hero", { x:40, y:10, width:80, height:130, view: anim } );
 			add(hero);
 			
-			var anim2:AnimationSequence = new AnimationSequence(Tatlas, ["idle", "jump_prep_straight", "running", "fidget", "falling_downward", "looking_downward", "looking_upward","dying","dying_loop"], "idle", 30, true);
+			/*var anim2:AnimationSequence = new AnimationSequence(Tatlas, ["idle", "jump_prep_straight", "running", "fidget", "falling_downward", "looking_downward", "looking_upward","dying","dying_loop"], "idle", 30, true);
 			//hero 2 is immune to timeShift.
 			var hero2:BraidHero = new BraidHero("hero2", { x:1200, y:600, width:80, height:130, inverted:true, view: anim2 } );
 			hero2.inputChannel = 1;
-			add(hero2);
+			add(hero2);*/
 			
-			var coin:Coin = new Coin("key", { x: 1280, y: 600, height: 50, width: 50, view: new Image(Tatlas.getTexture("key1")) } );
-			coin.view.scaleX = coin.view.scaleY = 0.8;
-			coin.collectorClass = BraidHero;
-			add(coin);
+			var key:Key = new Key("key", { x: 1280, y: 600, height: 50, width: 50, view: new Image(Tatlas.getTexture("key1")) } );
+			key.view.scaleX = key.view.scaleY = 0.8;
+			add(key);
 			
 			var enemyanim:AnimationSequence = new AnimationSequence(Tatlas, ["monster-walking","monster-dyingMonster","monster-falling"], "monster-walking", 30, true);
 			var enemy:BraidEnemy = new BraidEnemy("enemy", { leftBound:350, rightBound:550, x:500, y:500, width:100, height:90, view:enemyanim } );
@@ -105,7 +104,8 @@ package games.braid.states
 			timeshifter = new TimeShifter(20);
 			timeshifter.onSpeedChanged.add(changeOverlay);
 			
-			timeshifter.addBufferSet( { object:hero, continuous:["x", "y"], discrete:["dead","inverted", "collideable", "animation", "animationFrame"] } );
+			timeshifter.addBufferSet( { object:hero, continuous:["x", "y"], discrete:["dead","inverted", "collideable", "animation", "animationFrame","keySlot"] } );
+			timeshifter.addBufferSet( { object:key, continuous:["x", "y"], discrete:["inverted"] } );
 			timeshifter.addBufferSet( { object:hero.camTarget, continuous:["x", "y"] } );
 			timeshifter.addBufferSet( { object:enemy.body, discrete:["allowRotation", "angularVel","rotation"] } );
 			timeshifter.addBufferSet( { object:enemy, continuous:["x", "y"], discrete:["inverted","collideable","animation","animationFrame"] } );
