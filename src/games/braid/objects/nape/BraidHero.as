@@ -22,7 +22,8 @@ package games.braid.objects.nape
 		
 		public static const BRAID_HERO:CbType = new CbType();
 		
-		public var camTarget:Object = {x: 0, y: 0};
+		public var camTarget:Object = { x: 0, y: 0 };
+		public var dead:Boolean = false;
 		
 		private var _collideable:Boolean = true;
 		
@@ -71,6 +72,23 @@ package games.braid.objects.nape
 			_body.velocity.x = _body.velocity.y = 0;
 		}
 		
+		public function noCollide():void
+		{
+			_shape.sensorEnabled = true;
+		}
+		
+		public function doCollide():void
+		{
+			_shape.sensorEnabled = false;
+		}
+		
+		public function killNow():void
+		{
+			noCollide();
+			_body.velocity.y -= 150;
+			dead = true;
+		}
+		
 		override public function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
@@ -80,7 +98,16 @@ package games.braid.objects.nape
 			camTarget.x = _body.position.x;
 			camTarget.y = _body.position.y;
 			
-			//------------------
+			if (dead)
+			{
+				if (_animation == "dying" && animationFrame == 6)
+				{
+					_animation = "dying_loop";
+				}
+				else if( _animation != "dying_loop")
+					_animation = "dying";
+				return;
+			}
 			
 			if (_onGround)
 			{
@@ -97,10 +124,6 @@ package games.braid.objects.nape
 					_animation = "looking_downward";
 					camTarget.y = _body.position.y + 200;
 				}
-			}
-			else if (_body.velocity.y > 0)
-			{
-				_animation = "falling_downward";
 			}
 			
 			if (_ce.input.isDoing("right", inputChannel))
@@ -130,6 +153,16 @@ package games.braid.objects.nape
 				velocity.x = 35;
 			else if (velocity.x < -35)
 				velocity.x = -35;
+				
+			if (body.interactingBodies().length == 0 && _body.velocity.y > 0)
+			{
+				_animation = "falling_downward";
+			}
+			
+			if (body.position.y > 800)
+			{
+				animation = "dying_loop";
+			}
 		
 		}
 		
@@ -138,7 +171,7 @@ package games.braid.objects.nape
 			var body2:Body = e.int2.castBody;
 			_groundContacts.push(body2);
 			
-			if (e.arbiters.length > 0 && e.arbiters.at(0).collisionArbiter)
+			if (e.arbiters.length > 0 && e.arbiters.at(0).collisionArbiter && e.int1.castBody.userData.myData == this)
 			{
 				var angle:Number = e.arbiters.at(0).collisionArbiter.normal.angle * 180 / Math.PI;
 				if ((45 < angle) && (angle < 135))
@@ -146,11 +179,10 @@ package games.braid.objects.nape
 					_onGround = true;
 					
 					if (body2.userData.myData is BraidEnemy)
-					{
 						(body2.userData.myData as BraidEnemy).killNow();
-					}
 					
-				}
+				}else if ((angle == -180 || angle == 0|| angle == 180) && body2.userData.myData is BraidEnemy)
+					killNow();
 			}
 		}
 		

@@ -73,11 +73,11 @@ package games.braid.states
 			add(floor2);
 
 			var Tatlas:TextureAtlas = new TextureAtlas(Texture.fromBitmap(new Assets.braid()), new XML(new Assets.braidXML()));
-			var anim:AnimationSequence = new AnimationSequence(Tatlas, ["idle", "jump_prep_straight", "running", "fidget","falling_downward","looking_downward","looking_upward"], "idle", 30, true);
+			var anim:AnimationSequence = new AnimationSequence(Tatlas, ["idle", "jump_prep_straight", "running", "fidget","falling_downward","looking_downward","looking_upward","dying","dying_loop"], "idle", 30, true);
 			hero = new BraidHero("hero", { x:40, y:10, width:80, height:130, view: anim } );
 			add(hero);
 			
-			var anim2:AnimationSequence = new AnimationSequence(Tatlas, ["idle", "jump_prep_straight", "running", "fidget", "falling_downward", "looking_downward", "looking_upward"], "idle", 30, true);
+			var anim2:AnimationSequence = new AnimationSequence(Tatlas, ["idle", "jump_prep_straight", "running", "fidget", "falling_downward", "looking_downward", "looking_upward","dying","dying_loop"], "idle", 30, true);
 			//hero 2 is immune to timeShift.
 			var hero2:BraidHero = new BraidHero("hero2", { x:1200, y:600, width:80, height:130, inverted:true, view: anim2 } );
 			hero2.inputChannel = 1;
@@ -96,7 +96,7 @@ package games.braid.states
 			timeshifter = new TimeShifter(20);
 			timeshifter.onSpeedChanged.add(changeOverlay);
 			
-			timeshifter.addBufferSet( { object:hero, continuous:["x", "y"], discrete:["inverted","animation","animationFrame"] } );
+			timeshifter.addBufferSet( { object:hero, continuous:["x", "y"], discrete:["dead","inverted", "collideable", "animation", "animationFrame"] } );
 			timeshifter.addBufferSet( { object:hero.camTarget, continuous:["x", "y"] } );
 			timeshifter.addBufferSet( { object:enemy.body, discrete:["allowRotation", "angularVel","rotation"] } );
 			timeshifter.addBufferSet( { object:enemy, continuous:["x", "y"], discrete:["inverted","collideable","animation","animationFrame"] } );
@@ -115,7 +115,7 @@ package games.braid.states
 			keyboard.addKeyAction("right", Keyboard.D,1);
 			keyboard.addKeyAction("jump", Keyboard.H,1);
 			
-			StarlingArt.setLoopAnimations(["idle", "running","monster-walking"]);
+			StarlingArt.setLoopAnimations(["idle", "running","monster-walking","dying_loop"]);
 			
 			this.scaleX = 0.5;
 			this.scaleY = 0.5;
@@ -150,6 +150,11 @@ package games.braid.states
 		override public function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
+			
+			if (hero.y > 1400 && !timeshifter.paused)
+			{
+				timeshifter.pause();
+			}
 				
 				if (timeshifter.targetSpeed == 0 && changedDir)
 				{
