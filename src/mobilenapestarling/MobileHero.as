@@ -1,14 +1,8 @@
 package mobilenapestarling {
 
-	import nape.callbacks.CbType;
-	import nape.callbacks.InteractionType;
-	import nape.callbacks.PreCallback;
-	import nape.callbacks.PreFlag;
-	import nape.callbacks.PreListener;
 	import nape.geom.Vec2;
 
 	import com.citrusengine.objects.platformer.nape.Hero;
-	import com.citrusengine.objects.platformer.nape.Platform;
 
 	/**
 	 * @author Aymeric
@@ -18,7 +12,6 @@ package mobilenapestarling {
 		public var jumpDecceleration:Number = 7;
 
 		private var _mobileInput:MobileInput;
-		private var _preListener:PreListener;
 
 		public function MobileHero(name:String, params:Object = null) {
 			
@@ -29,9 +22,6 @@ package mobilenapestarling {
 		}
 
 		override public function destroy():void {
-			
-			_preListener.space = null;
-			_preListener = null;
 			
 			_mobileInput.destroy();
 
@@ -72,22 +62,6 @@ package mobilenapestarling {
 				_animation = "fly";
 			else
 				_animation = "descent";
-		}
-
-		override protected function createConstraint():void {
-			
-			super.createConstraint();
-
-			_preListener = new PreListener(InteractionType.ANY, CbType.ANY_BODY, CbType.ANY_BODY, handlePreContact);
-			_body.space.listeners.add(_preListener);
-		}
-
-		override public function handlePreContact(callback:PreCallback):PreFlag {
-			
-			if (callback.int2.userData.myData is Platform)
-				_onGround = true;
-
-			return PreFlag.ACCEPT;
 		}
 	}
 }

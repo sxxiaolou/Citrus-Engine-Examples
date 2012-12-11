@@ -20,6 +20,7 @@ package mobilenapestarling {
 	import com.citrusengine.objects.CitrusSprite;
 	import com.citrusengine.objects.platformer.nape.Platform;
 	import com.citrusengine.physics.nape.Nape;
+	import com.citrusengine.physics.nape.NapeUtils;
 	import com.citrusengine.view.starlingview.AnimationSequence;
 	import com.citrusengine.view.starlingview.StarlingArt;
 
@@ -170,7 +171,7 @@ package mobilenapestarling {
 			}
 		}
 
-		private function _particleTouched(interactionCallback:InteractionCallback):void {
+		private function _particleTouched(callback:InteractionCallback):void {
 			
 			_particlePickedMC.visible = true;
 			_particlePickedMC.currentFrame = 0;
@@ -178,7 +179,7 @@ package mobilenapestarling {
 			
 			_score.text = String(uint(_score.text)+1);
 			
-			interactionCallback.int1.userData.myData.kill = true;
+			NapeUtils.CollisionGetOther(_mobileHero, callback).kill = true;
 		}
 
 		private function _hideParticlePickedMc(evt:Event):void {
