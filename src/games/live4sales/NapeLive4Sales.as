@@ -3,7 +3,6 @@ package games.live4sales {
 	import games.live4sales.assets.Assets;
 	import games.live4sales.events.MoneyEvent;
 	import games.live4sales.nape.characters.SalesWoman;
-	import games.live4sales.nape.characters.ShopsWoman;
 	import games.live4sales.nape.objects.Block;
 	import games.live4sales.nape.objects.Cash;
 	import games.live4sales.runtime.CoinsCreation;
@@ -11,10 +10,6 @@ package games.live4sales {
 	import games.live4sales.ui.Hud;
 	import games.live4sales.utils.Grid;
 
-	import nape.callbacks.CbEvent;
-	import nape.callbacks.CbType;
-	import nape.callbacks.InteractionListener;
-	import nape.callbacks.InteractionType;
 	import nape.geom.Vec2;
 
 	import starling.core.Starling;
