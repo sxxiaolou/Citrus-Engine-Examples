@@ -17,6 +17,7 @@ package games.braid.states
 	import games.braid.objects.nape.BraidEnemy;
 	import games.braid.objects.nape.BraidHero;
 	import games.braid.objects.nape.Key;
+	import games.braid.SoundPlaybackControl;
 	import starling.display.BlendMode;
 	import starling.display.Image;
 	import starling.display.Quad;
@@ -146,6 +147,11 @@ package games.braid.states
 			vb.button2Action = "jump";
 			
 			add(overlay);
+			
+			var s:SoundPlaybackControl = new SoundPlaybackControl(new Assets.sound1());
+			timeshifter.onSpeedChanged.add(function(val:Number):void { s.playbackSpeed = (val != 0)?val:0.01; } );
+			timeshifter.onEndOfBuffer.add(function():void { s.playbackSpeed = 0.01; } );
+			timeshifter.onDeactivated.add(function():void { s.playbackSpeed = 1; } );
 		}
 		
 		private function shakeState():void

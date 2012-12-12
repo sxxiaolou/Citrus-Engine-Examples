@@ -180,7 +180,7 @@ package games.braid.objects.nape
 					if (body2.userData.myData is BraidEnemy)
 					{
 						(body2.userData.myData as BraidEnemy).killNow();
-						_body.velocity.y -= 300;
+						_body.velocity.y -= 150;
 					}
 					
 				}else if (body2.userData.myData is BraidEnemy)
