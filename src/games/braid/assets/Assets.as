@@ -12,7 +12,7 @@ package games.braid.assets
 		public static const braidXML:Class;
 		
 		// Gymnopedie no.3 composed by Eric Satie, rendition by KevinMcLeod (http://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100785)
-		[Embed(source = "Gymnopedie No 3.mp3")]
+		[Embed(source = "Gymnopedie No 3_compressed.mp3")]
 		public static const sound1:Class;
 		
 	}
