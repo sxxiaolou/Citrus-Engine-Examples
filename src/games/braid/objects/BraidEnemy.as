@@ -26,6 +26,7 @@ package games.braid.objects {
 				_ce.state.remove(_particle);
 		}
 		
+		// In the original Braid game, an object with green particle isn't subject to time.
 		public function addParticle(particle:PDParticleSystem):void {
 			
 			_particle = new CitrusSprite("particle", {view:particle, x:300, y:300});

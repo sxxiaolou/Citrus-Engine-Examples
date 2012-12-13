@@ -67,6 +67,7 @@ package games.braid {
 			background.view.scaleX =background.view.scaleY = 2;
 			add(background);
 			
+			// the overlay will be above everything thanks to the grou property
 			overlay = new CitrusSprite("overlay", {parallax:0, group:1});
 			overlayQuadBlue = new Quad(stage.stageWidth*2, stage.stageHeight*2, 0x0000FF);
 			overlayQuadYellow = new Quad(stage.stageWidth * 2, stage.stageHeight * 2, 0xFFFF00);
@@ -74,13 +75,8 @@ package games.braid {
 			overlayQuadYellow.blendMode = BlendMode.ADD;
 			add(overlay);
 			
-			var floor:Platform = new Platform("floor2", { x:400, y:590, width:800, height:30 } );
-			floor.view = new Quad(800, 30, 0x000044);
-			add(floor);
-			
-			var floor2:Platform = new Platform("floor", { x:1200, y:700, width:800, height:30 } );
-			floor2.view = new Quad(800, 30, 0x000044);
-			add(floor2);
+			add(new Platform("floor1", { x:400, y:590, width:800, height:30, view:new Quad(800, 30, 0x000044)}));
+			add(new Platform("floor2", { x:1200, y:700, width:800, height:30, view:new Quad(800, 30, 0x000044)}));
 
 			var Tatlas:TextureAtlas = new TextureAtlas(Texture.fromBitmap(new Assets.braid()), new XML(new Assets.braidXML()));
 			var anim:AnimationSequence = new AnimationSequence(Tatlas, ["idle", "jump_prep_straight", "running", "fidget","falling_downward","looking_downward","looking_upward","dying","dying_loop"], "idle", 30, true);
@@ -102,6 +98,7 @@ package games.braid {
 			add(enemyWithoutTimeManagement);
 			enemyWithoutTimeManagement.addParticle(new PDParticleSystem(psconfig, psTexture));
 			
+			// we register a buffer of 20 seconds.
 			timeshifter = new TimeShifter(20);
 			timeshifter.onSpeedChanged.add(changeOverlay);
 			
