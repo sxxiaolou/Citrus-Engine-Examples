@@ -144,10 +144,7 @@ package games.braid {
 				vb.button2Action = "jump";
 			}
 			
-			var s:SoundPlaybackControl = new SoundPlaybackControl(new Assets.sound1());
-			timeshifter.onSpeedChanged.add(function(val:Number):void { s.playbackSpeed = (val != 0)?val:0.01; } );
-			timeshifter.onEndOfBuffer.add(function():void { s.playbackSpeed = 0.01; } );
-			timeshifter.onDeactivated.add(function():void { s.playbackSpeed = 1; } );
+			var s:SoundPlaybackControl = new SoundPlaybackControl(new Assets.sound1(),timeshifter);
 		}
 		
 		private function shakeState():void
