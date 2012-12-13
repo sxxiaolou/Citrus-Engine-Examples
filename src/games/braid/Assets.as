@@ -1,4 +1,4 @@
-package games.braid.assets 
+package games.braid 
 {
 	public class Assets 
 	{

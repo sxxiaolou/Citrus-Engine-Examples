@@ -1,10 +1,8 @@
-package games.braid.states {
+package games.braid {
 
-	import games.braid.SoundPlaybackControl;
-	import games.braid.assets.Assets;
-	import games.braid.objects.nape.BraidEnemy;
-	import games.braid.objects.nape.BraidHero;
-	import games.braid.objects.nape.Key;
+	import games.braid.objects.BraidEnemy;
+	import games.braid.objects.BraidHero;
+	import games.braid.objects.Key;
 
 	import starling.display.BlendMode;
 	import starling.display.Image;
@@ -29,7 +27,7 @@ package games.braid.states {
 
 	import flash.geom.Rectangle;
 	
-	public class BraidTest extends StarlingState
+	public class BraidDemo extends StarlingState
 	{
 		public var background:CitrusSprite ;
 		public var overlay:CitrusSprite;
@@ -51,7 +49,7 @@ package games.braid.states {
 		private var _easeDuration:uint = 40;
 		private var _easeFunc:Function;
 		
-		public function BraidTest()
+		public function BraidDemo()
 		{
 			super();
 			

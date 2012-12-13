@@ -1,4 +1,4 @@
-package games.braid.objects.nape {
+package games.braid.objects {
 
 	import nape.geom.Vec2;
 

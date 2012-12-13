@@ -1,7 +1,5 @@
 package games.braid {
 
-	import games.braid.states.BraidTest;
-
 	import com.citrusengine.core.StarlingCitrusEngine;
 	import com.citrusengine.utils.Mobile;
 
@@ -17,7 +15,7 @@ package games.braid {
 			else
 				setUpStarling(true, 1);
 				
-			state = new BraidTest();
+			state = new BraidDemo();
 		}
 	
 	}
