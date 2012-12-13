@@ -1,7 +1,5 @@
-package games.braid.objects.nape
-{
-	import com.citrusengine.objects.NapePhysicsObject;
-	import com.citrusengine.view.starlingview.AnimationSequence;
+package games.braid.objects.nape {
+
 	import nape.callbacks.CbEvent;
 	import nape.callbacks.CbType;
 	import nape.callbacks.InteractionCallback;
@@ -9,6 +7,9 @@ package games.braid.objects.nape
 	import nape.callbacks.InteractionType;
 	import nape.geom.Vec2;
 	import nape.phys.Body;
+
+	import com.citrusengine.objects.NapePhysicsObject;
+	import com.citrusengine.view.starlingview.AnimationSequence;
 	
 	public class BraidHero extends NapePhysicsObject
 	{

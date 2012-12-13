@@ -1,25 +1,22 @@
-package games.braid
-{
-	import com.citrusengine.core.StarlingCitrusEngine;
-	import flash.display.Sprite;
-	import flash.events.Event;
+package games.braid {
+
 	import games.braid.states.BraidTest;
+
+	import com.citrusengine.core.StarlingCitrusEngine;
+	import com.citrusengine.utils.Mobile;
+
+	import flash.geom.Rectangle;
 	
 	public class Main extends StarlingCitrusEngine
 	{
 		
 		public function Main():void
 		{
-			if (stage)
-				init();
+			if (Mobile.isAndroid())
+				setUpStarling(true, 1, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
 			else
-				addEventListener(Event.ADDED_TO_STAGE, init);
-		}
-		
-		private function init(e:Event = null):void
-		{
-			removeEventListener(Event.ADDED_TO_STAGE, init);
-			setUpStarling(true, 1, stage);
+				setUpStarling(true, 1);
+				
 			state = new BraidTest();
 		}
 	

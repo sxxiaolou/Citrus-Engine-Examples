@@ -1,30 +1,32 @@
-package games.braid.states
-{
-	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.StarlingState;
-	import com.citrusengine.input.controllers.Keyboard;
-	import com.citrusengine.input.controllers.starling.VirtualButtons;
-	import com.citrusengine.input.controllers.starling.VirtualJoystick;
-	import com.citrusengine.input.controllers.TimeShifter;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.objects.platformer.nape.Platform;
-	import com.citrusengine.physics.nape.Nape;
-	import com.citrusengine.view.starlingview.AnimationSequence;
-	import com.citrusengine.view.starlingview.StarlingArt;
-	import flash.geom.Rectangle;
+package games.braid.states {
+
+	import games.braid.SoundPlaybackControl;
 	import games.braid.assets.Assets;
 	import games.braid.objects.nape.BraidEnemy;
 	import games.braid.objects.nape.BraidHero;
 	import games.braid.objects.nape.Key;
-	import games.braid.SoundPlaybackControl;
+
 	import starling.display.BlendMode;
 	import starling.display.Image;
 	import starling.display.Quad;
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
-	
-	
+
+	import com.citrusengine.core.CitrusEngine;
+	import com.citrusengine.core.StarlingState;
+	import com.citrusengine.input.controllers.Keyboard;
+	import com.citrusengine.input.controllers.TimeShifter;
+	import com.citrusengine.input.controllers.starling.VirtualButtons;
+	import com.citrusengine.input.controllers.starling.VirtualJoystick;
+	import com.citrusengine.math.MathVector;
+	import com.citrusengine.objects.CitrusSprite;
+	import com.citrusengine.objects.platformer.nape.Platform;
+	import com.citrusengine.physics.nape.Nape;
+	import com.citrusengine.utils.Mobile;
+	import com.citrusengine.view.starlingview.AnimationSequence;
+	import com.citrusengine.view.starlingview.StarlingArt;
+
+	import flash.geom.Rectangle;
 	
 	public class BraidTest extends StarlingState
 	{
@@ -137,14 +139,16 @@ package games.braid.states
 			view.setupCamera(hero.camTarget, new MathVector(stage.stageWidth / 2  , stage.stageHeight / 2 ),
 			new Rectangle(0, 0, 2400, 1200), new MathVector(.25, .25));
 			
-			
-			var vj:VirtualJoystick = new VirtualJoystick("joy",{radius:120});
-			vj.circularBounds = true;
-			
-			var vb:VirtualButtons = new VirtualButtons("buttons",{buttonradius:40});
-			vb.button1Action = "timeshift";
-			vb.button1Channel = 16;
-			vb.button2Action = "jump";
+			if (Mobile.isAndroid()) {
+				
+				var vj:VirtualJoystick = new VirtualJoystick("joy",{radius:120});
+				vj.circularBounds = true;
+				
+				var vb:VirtualButtons = new VirtualButtons("buttons",{buttonradius:40});
+				vb.button1Action = "timeshift";
+				vb.button1Channel = 16;
+				vb.button2Action = "jump";
+			}
 			
 			add(overlay);
 			

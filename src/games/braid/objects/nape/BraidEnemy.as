@@ -1,14 +1,14 @@
-package games.braid.objects.nape
-{
-	
+package games.braid.objects.nape {
+
+	import nape.callbacks.CbType;
+	import nape.geom.Vec2;
+
 	import com.citrusengine.objects.NapePhysicsObject;
 	import com.citrusengine.view.starlingview.AnimationSequence;
+
 	import flash.utils.clearTimeout;
 	import flash.utils.getDefinitionByName;
 	import flash.utils.setTimeout;
-	import nape.callbacks.CbType;
-	import nape.callbacks.InteractionCallback;
-	import nape.geom.Vec2;
 	
 	public class BraidEnemy extends NapePhysicsObject
 	{

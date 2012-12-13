@@ -1,9 +1,13 @@
 package games.braid.objects.nape {
-	
-	import flash.utils.getDefinitionByName;
-	import com.citrusengine.objects.platformer.nape.Sensor;
+
 	import nape.callbacks.InteractionCallback;
 
+	import com.citrusengine.objects.NapePhysicsObject;
+	import com.citrusengine.objects.platformer.nape.Sensor;
+	import com.citrusengine.physics.nape.NapeUtils;
+
+	import flash.utils.getDefinitionByName;
+	
 	public class Key extends Sensor {
 
 		protected var _collectorClass:Class = BraidHero;
@@ -26,9 +30,10 @@ package games.braid.objects.nape {
 			
 			super.handleBeginContact(interactionCallback);
 			
-			if (_collectorClass && interactionCallback.int2.userData.myData is _collectorClass) {
-				interactionCallback.int2.userData.myData.keySlot = this;
-			}
+			var other:NapePhysicsObject = NapeUtils.CollisionGetOther(this, interactionCallback);
+			
+			if (_collectorClass && other is _collectorClass)
+				(other as BraidHero) .keySlot = this;
 		}
 		
 		public function set inverted(value:Boolean):void
