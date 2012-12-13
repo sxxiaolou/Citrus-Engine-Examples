@@ -100,7 +100,7 @@ package games.braid.states {
 			add(key);
 			
 			var enemyanim:AnimationSequence = new AnimationSequence(Tatlas, ["monster-walking","monster-dyingMonster","monster-falling"], "monster-walking", 30, true);
-			var enemy:BraidEnemy = new BraidEnemy("enemy", { leftBound:350, rightBound:550, x:500, y:500, width:100, height:90, view:enemyanim } );
+			var enemy:BraidEnemy = new BraidEnemy("enemy", {speed:39, leftBound:350, rightBound:550, x:500, y:500, width:100, height:90, view:enemyanim } );
 			enemy.enemyClass = BraidHero;
 			add(enemy);
 			
