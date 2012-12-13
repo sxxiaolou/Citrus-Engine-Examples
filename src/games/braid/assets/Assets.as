@@ -15,6 +15,11 @@ package games.braid.assets
 		[Embed(source = "/../embed/games/braid/Gymnopedie No 3_compressed.mp3")]
 		public static const sound1:Class;
 		
+		[Embed(source = "/../embed/games/braid/particle.pex", mimeType="application/octet-stream")]
+		public static const particleXml:Class;
+		
+		[Embed(source = "/../embed/games/braid/texture.png")]
+		public static const particle:Class;
 	}
 
 }

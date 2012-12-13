@@ -9,6 +9,7 @@ package games.braid.states {
 	import starling.display.BlendMode;
 	import starling.display.Image;
 	import starling.display.Quad;
+	import starling.extensions.particles.PDParticleSystem;
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 
@@ -94,10 +95,14 @@ package games.braid.states {
 			
 			var enemyanim:AnimationSequence = new AnimationSequence(Tatlas, ["monster-walking","monster-dying","monster-falling"], "monster-walking", 30, true);
 			var enemy:BraidEnemy = new BraidEnemy("enemy", {speed:39, leftBound:350, rightBound:550, x:500, y:500, width:100, height:90, view:enemyanim } );
-			enemy.enemyClass = BraidHero;
 			add(enemy);
 			
-			add(new BraidEnemy("enemy", {speed:39, leftBound:800, rightBound:1600, x:1200, y:500, width:100, height:90, view:enemyanim.clone() } ));
+			var psconfig:XML = new XML(new Assets.particleXml());
+			var psTexture:Texture = Texture.fromBitmap(new Assets.particle());
+			
+			var enemyWithoutTimeManagement:BraidEnemy = new BraidEnemy("enemy", {speed:39, leftBound:800, rightBound:1600, x:1200, y:500, width:100, height:90, view:enemyanim.clone()});
+			add(enemyWithoutTimeManagement);
+			enemyWithoutTimeManagement.addParticle(new PDParticleSystem(psconfig, psTexture));
 			
 			timeshifter = new TimeShifter(20);
 			timeshifter.onSpeedChanged.add(changeOverlay);

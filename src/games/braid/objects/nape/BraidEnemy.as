@@ -2,16 +2,35 @@ package games.braid.objects.nape {
 
 	import nape.geom.Vec2;
 
+	import starling.extensions.particles.PDParticleSystem;
+
+	import com.citrusengine.objects.CitrusSprite;
 	import com.citrusengine.objects.platformer.nape.Enemy;
 	import com.citrusengine.view.starlingview.AnimationSequence;
 	
 	public class BraidEnemy extends Enemy
-	{		
+	{			
 		private var _collideable:Boolean = true;
+		
+		private var _particle:CitrusSprite;
 		
 		public function BraidEnemy(name:String, params:Object = null)
 		{
 			super(name, params);
+		}
+			
+		override public function destroy():void {
+			super.destroy();
+			
+			if (_particle)
+				_ce.state.remove(_particle);
+		}
+		
+		public function addParticle(particle:PDParticleSystem):void {
+			
+			_particle = new CitrusSprite("particle", {view:particle, x:300, y:300});
+			_ce.state.add(_particle);
+			particle.start();
 		}
 		
 		public function detachPhysics():void
@@ -41,6 +60,11 @@ package games.braid.objects.nape {
 				velocity.x = 0;
 			
 			_body.velocity = velocity;
+			
+			if (_particle) {
+				_particle.x = x;
+				_particle.y = y;
+			}
 			
 			updateAnimation();
 		}
