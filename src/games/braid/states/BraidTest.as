@@ -65,16 +65,15 @@ package games.braid.states {
 			add(nape);
 			
 			background = new CitrusSprite("background", { view:Image.fromBitmap(new Assets.bg1()) , parallax:0.2 } );
-			background.view.scaleX = 2;
-			background.view.scaleY = 2;
+			background.view.scaleX =background.view.scaleY = 2;
 			add(background);
 			
-			overlay = new CitrusSprite("overlay", {parallax:0});
+			overlay = new CitrusSprite("overlay", {parallax:0, group:1});
 			overlayQuadBlue = new Quad(stage.stageWidth*2, stage.stageHeight*2, 0x0000FF);
 			overlayQuadYellow = new Quad(stage.stageWidth * 2, stage.stageHeight * 2, 0xFFFF00);
 			overlayQuadBlue.blendMode = BlendMode.MULTIPLY;
 			overlayQuadYellow.blendMode = BlendMode.ADD;
-			
+			add(overlay);
 			
 			var floor:Platform = new Platform("floor2", { x:400, y:590, width:800, height:30 } );
 			floor.view = new Quad(800, 30, 0x000044);
@@ -133,8 +132,7 @@ package games.braid.states {
 			
 			StarlingArt.setLoopAnimations(["idle", "running","monster-walking","dying_loop"]);
 			
-			this.scaleX = 0.5;
-			this.scaleY = 0.5;
+			this.scaleX = this.scaleY = 0.5;
 			
 			view.setupCamera(hero.camTarget, new MathVector(stage.stageWidth / 2  , stage.stageHeight / 2 ),
 			new Rectangle(0, 0, 2400, 1200), new MathVector(.25, .25));
@@ -149,8 +147,6 @@ package games.braid.states {
 				vb.button1Channel = 16;
 				vb.button2Action = "jump";
 			}
-			
-			add(overlay);
 			
 			var s:SoundPlaybackControl = new SoundPlaybackControl(new Assets.sound1());
 			timeshifter.onSpeedChanged.add(function(val:Number):void { s.playbackSpeed = (val != 0)?val:0.01; } );
@@ -178,9 +174,7 @@ package games.braid.states {
 				targetAlphaOverlay = speed / 10;
 			}
 			else if (speed == 0)
-			{
 				targetAlphaOverlay = 0;
-			}
 		}
 		
 		override public function update(timeDelta:Number):void
@@ -188,23 +182,18 @@ package games.braid.states {
 			super.update(timeDelta);
 			
 			if (_shake)
-			{
 				shakeState();
-			}
 			
 			if (hero.y > 1700 && !timeshifter.paused)
-			{
 				timeshifter.pause();
-			}
 			
 			if (_easeTimer < _easeDuration)
 			{
 				_easeTimer++;
 				currentAlphaOverlay = _easeFunc(_easeTimer, currentAlphaOverlay, targetAlphaOverlay - currentAlphaOverlay, _easeDuration);
 			}
+			
 			overlayQuadBlue.alpha = overlayQuadYellow.alpha = currentAlphaOverlay;
-			
-			
 		}
 		
 		private function Tween_easeOut(t:Number, b:Number, c:Number, d:Number):Number { t /= d; return -c * t*(t-2) + b; }
