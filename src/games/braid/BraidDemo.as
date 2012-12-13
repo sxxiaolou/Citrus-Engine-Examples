@@ -44,9 +44,11 @@ package games.braid {
 		//screen shaking.
 		private var _shake:Boolean = false;
 		
+		private var _newBackScale:Number = 2;
+		
 		//overlay easing.
 		private var _easeTimer:uint = 0;
-		private var _easeDuration:uint = 40;
+		private var _easeDuration:uint = 240;
 		private var _easeFunc:Function;
 		
 		public function BraidDemo()
@@ -64,6 +66,9 @@ package games.braid {
 			add(nape);
 			
 			background = new CitrusSprite("background", { view:Image.fromBitmap(new Assets.bg1()) , parallax:0.2 } );
+			background.view.pivotX = background.x = background.view.width/2;
+			background.view.pivotY = background.y = background.view.height / 2;
+			background.y += 250;
 			background.view.scaleX =background.view.scaleY = 2;
 			add(background);
 			
@@ -113,9 +118,8 @@ package games.braid {
 			timeshifter.onDeactivated.add(hero.attachPhysics);
 			timeshifter.onDeactivated.add(enemy.attachPhysics);
 			
-			timeshifter.onActivated.add(function():void { _shake = true; });
-			timeshifter.onDeactivated.add(function():void { _shake = false; x = 0; y = 0; } );
-			timeshifter.onDeactivated.add(function():void { changeOverlay(0); } );
+			timeshifter.onActivated.add(function():void { _shake = true; _newBackScale = 2.1; } );
+			timeshifter.onDeactivated.add(function():void { _easeTimer = 0; changeOverlay(0); _shake = false; x = 0; y = 0; _newBackScale = 2; } );;
 			
 			var keyboard:Keyboard = CitrusEngine.getInstance().input.keyboard as Keyboard;
 			keyboard.addKeyAction("timeshift", Keyboard.SHIFT, 16);
@@ -184,6 +188,7 @@ package games.braid {
 			{
 				_easeTimer++;
 				currentAlphaOverlay = _easeFunc(_easeTimer, currentAlphaOverlay, targetAlphaOverlay - currentAlphaOverlay, _easeDuration);
+				background.view.scaleX = background.view.scaleY  =  _easeFunc(_easeTimer, background.view.scaleY, _newBackScale - background.view.scaleY, _easeDuration);
 			}
 			
 			overlayQuadBlue.alpha = overlayQuadYellow.alpha = currentAlphaOverlay;
