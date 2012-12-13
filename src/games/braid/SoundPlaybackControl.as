@@ -10,12 +10,14 @@ package games.braid
 	/**
 	 * based on MP3Player.as by Kelvin Luck (http://www.kelvinluck.com/2008/11/first-steps-with-flash-10-audio-programming/)
 	 * and MP3Pitch.as by Andre Michelle (http://blog.andre-michelle.com/upload/mp3pitch/MP3Pitch.as)
-	 * got the best from both, added speed tweening. Dynamic sound extraction is still missing to lower the memory used by the main ByteArray.
+	 * got the best ideas from both : forward play and reverse, linear interpolation.
+	 * added speed tweening (scratch effect) and looping.
+	 * Dynamic sound extraction is still missing to lower the memory used by the main ByteArray on runtime.
 	 */
 	public class SoundPlaybackControl 
 	{
 
-		private var _playbackSpeed:Number = 1;	
+		private var _playbackSpeed:Number = 0;	
 		private var _targetSpeed:Number = 1;	
 
 		private var _mp3:Sound;
@@ -59,7 +61,7 @@ package games.braid
 			_dynamicSound.addEventListener(SampleDataEvent.SAMPLE_DATA, onSampleData);
 			
 			_Samples = bytes;
-			_numSamples = bytes.length / 16;
+			_numSamples = _Samples.length/8;
 			
 			_phase = 0;
 			_dynamicSound.play();
@@ -76,7 +78,8 @@ package games.braid
 			
 			var outputLength:int = 0;
 			var newpos:int;
-			var alpha:Number = _phase - Math.floor(_phase);
+			//interpolation factor
+			var alpha:Number = _phase - int(_phase);
 			
 			//check all possible cases for targetspeed... since timeshifter resets to 0 when sound should play at a speed of 1 etc...
 			if (_timeshifter.targetSpeed == 0 && _timeshifter.active)
@@ -92,6 +95,13 @@ package games.braid
 			
 			while (outputLength < 2048 + 2) { 
 				
+				//loop both ways to prevent EOF errors
+				if (int(_phase) < 0)
+					_phase += _numSamples;
+				else if (int(_phase+_playbackSpeed) >= _numSamples)
+					_phase -= _numSamples; 
+				
+				//speed easing
 				if (_easeTimer < _easeDuration)
 				{
 					_easeTimer++;
@@ -99,14 +109,16 @@ package games.braid
 				}else
 					_playbackSpeed = _targetSpeed;
 				
+				//read ByteArray
 				newpos = int(_phase) * 8;
 				_Samples.position = newpos;
-
+				
 				l0 = _Samples.readFloat();
 				r0 = _Samples.readFloat();
 				l1 = _Samples.readFloat();
 				r1 = _Samples.readFloat();
 
+				//Write interpolated values
 				event.data.writeFloat((l0 + alpha * ( l1 - l0 ))* volume);
 				event.data.writeFloat((r0 + alpha * ( r1 - r0 ))* volume);
 				
@@ -115,16 +127,10 @@ package games.braid
 				_phase += _playbackSpeed;
 				
 				alpha += (_playbackSpeed >= 0) ? _playbackSpeed : -_playbackSpeed;
-				while( alpha >= 1.0 ) --alpha;
-				
-				//looping prevents EOF errors
-				if (_phase < 0) {
-					_phase += _numSamples;
-				} else if (_phase > _numSamples) {
-					_phase -= _numSamples;
-				}
+				while ( alpha >= 1.0 ) --alpha;
+
 			}
-			
+	
 		}
 		
 		public function get currentSpeed():Number
