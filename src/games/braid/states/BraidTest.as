@@ -88,20 +88,16 @@ package games.braid.states {
 			hero = new BraidHero("hero", { x:40, y:10, width:80, height:130, view: anim } );
 			add(hero);
 			
-			/*var anim2:AnimationSequence = new AnimationSequence(Tatlas, ["idle", "jump_prep_straight", "running", "fidget", "falling_downward", "looking_downward", "looking_upward","dying","dying_loop"], "idle", 30, true);
-			//hero 2 is immune to timeShift.
-			var hero2:BraidHero = new BraidHero("hero2", { x:1200, y:600, width:80, height:130, inverted:true, view: anim2 } );
-			hero2.inputChannel = 1;
-			add(hero2);*/
-			
 			var key:Key = new Key("key", { x: 1280, y: 600, height: 50, width: 50, view: new Image(Tatlas.getTexture("key1")) } );
 			key.view.scaleX = key.view.scaleY = 0.8;
 			add(key);
 			
-			var enemyanim:AnimationSequence = new AnimationSequence(Tatlas, ["monster-walking","monster-dyingMonster","monster-falling"], "monster-walking", 30, true);
+			var enemyanim:AnimationSequence = new AnimationSequence(Tatlas, ["monster-walking","monster-dying","monster-falling"], "monster-walking", 30, true);
 			var enemy:BraidEnemy = new BraidEnemy("enemy", {speed:39, leftBound:350, rightBound:550, x:500, y:500, width:100, height:90, view:enemyanim } );
 			enemy.enemyClass = BraidHero;
 			add(enemy);
+			
+			add(new BraidEnemy("enemy", {speed:39, leftBound:800, rightBound:1600, x:1200, y:500, width:100, height:90, view:enemyanim.clone() } ));
 			
 			timeshifter = new TimeShifter(20);
 			timeshifter.onSpeedChanged.add(changeOverlay);

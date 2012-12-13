@@ -17,10 +17,10 @@
     <SubTexture name="monster-bounce-2" x="1921" y="960" width="115" height="117"/>
     <SubTexture name="monster-bounce-3" x="1915" y="1219" width="113" height="119"/>
     <SubTexture name="monster-bounce-4" x="666" y="647" width="113" height="116"/>
-    <SubTexture name="monster-dyingMonster-1" x="985" y="924" width="112" height="115"/>
-    <SubTexture name="monster-dyingMonster-2" x="1100" y="866" width="112" height="116"/>
-    <SubTexture name="monster-dyingMonster-3" x="551" y="531" width="113" height="117"/>
-    <SubTexture name="monster-dyingMonster-4" x="1683" y="1116" width="114" height="118"/>
+    <SubTexture name="monster-dying-1" x="985" y="924" width="112" height="115"/>
+    <SubTexture name="monster-dying-2" x="1100" y="866" width="112" height="116"/>
+    <SubTexture name="monster-dying-3" x="551" y="531" width="113" height="117"/>
+    <SubTexture name="monster-dying-4" x="1683" y="1116" width="114" height="118"/>
     <SubTexture name="monster-falling-1" x="551" y="650" width="113" height="115"/>
     <SubTexture name="monster-falling-2" x="991" y="394" width="117" height="116"/>
     <SubTexture name="monster-falling-3" x="1345" y="787" width="116" height="120"/>

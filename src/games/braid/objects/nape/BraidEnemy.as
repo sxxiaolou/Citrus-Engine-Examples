@@ -67,7 +67,7 @@ package games.braid.objects.nape {
 		
 		override protected function updateAnimation():void
 		{
-			_animation = _shape.sensorEnabled ? "monster-dyingMonster" : "monster-walking";
+			_animation = _shape.sensorEnabled ? "monster-dying" : "monster-walking";
 		}
 		
 		public function set inverted(value:Boolean):void
