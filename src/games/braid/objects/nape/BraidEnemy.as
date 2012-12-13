@@ -1,15 +1,12 @@
 package games.braid.objects.nape {
 
-	import nape.callbacks.CbType;
 	import nape.geom.Vec2;
 
 	import com.citrusengine.objects.platformer.nape.Enemy;
 	import com.citrusengine.view.starlingview.AnimationSequence;
 	
 	public class BraidEnemy extends Enemy
-	{
-		public static const BRAID_ENEMY:CbType = new CbType();
-		
+	{		
 		private var _collideable:Boolean = true;
 		
 		public function BraidEnemy(name:String, params:Object = null)
@@ -29,22 +26,12 @@ package games.braid.objects.nape {
 		}
 		
 		override public function update(timeDelta:Number):void
-		{
-			
-			super.update(timeDelta);
-			
+		{			
 			var position:Vec2 = _body.position;
 			
 			//Turn around when they pass their left/right bounds
 			if ((!_inverted && position.x < leftBound) || (_inverted && position.x > rightBound))
 				turnAround();
-			else
-			{
-				if (position.x > rightBound)
-					position.x = rightBound - 1;
-				if (position.x < leftBound)
-					position.x = leftBound + 1;
-			}
 			
 			var velocity:Vec2 = _body.velocity;
 			
@@ -56,12 +43,6 @@ package games.braid.objects.nape {
 			_body.velocity = velocity;
 			
 			updateAnimation();
-		}
-		
-		override protected function createConstraint():void
-		{
-			_body.space = _nape.space;
-			_body.cbTypes.add(BRAID_ENEMY);
 		}
 		
 		public function noCollide():void

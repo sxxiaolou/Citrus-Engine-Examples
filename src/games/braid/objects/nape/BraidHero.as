@@ -1,29 +1,15 @@
 package games.braid.objects.nape {
 
-	import nape.callbacks.CbEvent;
-	import nape.callbacks.CbType;
 	import nape.callbacks.InteractionCallback;
-	import nape.callbacks.InteractionListener;
-	import nape.callbacks.InteractionType;
 	import nape.geom.Vec2;
-	import nape.phys.Body;
 
 	import com.citrusengine.objects.NapePhysicsObject;
+	import com.citrusengine.objects.platformer.nape.Hero;
+	import com.citrusengine.physics.nape.NapeUtils;
 	import com.citrusengine.view.starlingview.AnimationSequence;
 	
-	public class BraidHero extends NapePhysicsObject
-	{
-		public var inputChannel:uint = 0;
-		protected var _groundContacts:Array = [];
-		protected var _onGround:Boolean = false;
-		protected var _ducking:Boolean = false;
-		protected var _combinedGroundAngle:Number = 0;
-		
-		private var _beginContactListener:InteractionListener;
-		private var _endContactListener:InteractionListener;
-		
-		public static const BRAID_HERO:CbType = new CbType();
-		
+	public class BraidHero extends Hero
+	{		
 		public var camTarget:Object = { x: 0, y: 0 };
 		public var dead:Boolean = false;
 		public var keySlot:Key;
@@ -33,33 +19,6 @@ package games.braid.objects.nape {
 		public function BraidHero(name:String, params:Object = null)
 		{
 			super(name, params);
-		}
-		
-		override protected function createConstraint():void
-		{
-			
-			super.createConstraint();
-			
-			_beginContactListener = new InteractionListener(CbEvent.BEGIN, InteractionType.COLLISION, BRAID_HERO, CbType.ANY_BODY, handleBeginContact);
-			_endContactListener = new InteractionListener(CbEvent.END, InteractionType.COLLISION, BRAID_HERO, CbType.ANY_BODY, handleEndContact);
-			_body.cbTypes.add(BRAID_HERO);
-			_body.space.listeners.add(_beginContactListener);
-			_body.space.listeners.add(_endContactListener);
-		}
-		
-		override protected function createBody():void
-		{		
-			super.createBody();	
-			_body.allowRotation = false;
-		}
-		
-		override protected function createMaterial():void
-		{
-			
-			super.createMaterial();
-			
-			_material.elasticity = 0;
-			_material.dynamicFriction = 1.6;
 		}
 		
 		public function detachPhysics():void
@@ -92,8 +51,6 @@ package games.braid.objects.nape {
 		
 		override public function update(timeDelta:Number):void
 		{
-			super.update(timeDelta);
-			
 			if (keySlot)
 			{
 				keySlot.inverted = _inverted;
@@ -165,28 +122,30 @@ package games.braid.objects.nape {
 				animation = "dying_loop";
 		
 		}
+			
+		override protected function updateAnimation():void {}
 		
 		override public function handleBeginContact(e:InteractionCallback):void
 		{
-			var body2:Body = e.int2.castBody;
-			_groundContacts.push(body2);
+			var other:NapePhysicsObject = NapeUtils.CollisionGetOther(this, e);
+			_groundContacts.push(other);
 			
-			if (e.arbiters.length > 0 && e.arbiters.at(0).collisionArbiter && e.int1.castBody.userData.myData == this)
+			if (e.arbiters.length > 0 && e.arbiters.at(0).collisionArbiter)
 			{
 				var angle:Number = e.arbiters.at(0).collisionArbiter.normal.angle * 180 / Math.PI;
 				if ((45 < angle) && (angle < 135))
 				{
 					_onGround = true;
 					
-					if (body2.userData.myData is BraidEnemy)
+					if (other is BraidEnemy)
 					{
-						(body2.userData.myData as BraidEnemy).killNow();
+						(other as BraidEnemy).killNow();
 						_body.velocity.y -= 150;
 					}
 					
-				}else if (body2.userData.myData is BraidEnemy)
+				} else if (other is BraidEnemy)
 				{
-					var v:Vec2 = body2.position.sub(_body.position);
+					var v:Vec2 = other.body.position.sub(_body.position);
 					_body.velocity = v.normalise().muleq( -200);
 					killNow();
 				}
@@ -195,7 +154,7 @@ package games.braid.objects.nape {
 		
 		override public function handleEndContact(e:InteractionCallback):void
 		{
-			_groundContacts.splice(_groundContacts.indexOf(e.int2.castBody), 1);
+			_groundContacts.splice(_groundContacts.indexOf(NapeUtils.CollisionGetOther(this, e)), 1);
 			
 			if (e.arbiters.length > 0 && e.arbiters.at(0).collisionArbiter)
 			{
@@ -205,19 +164,9 @@ package games.braid.objects.nape {
 			}
 		}
 		
-		override public function get inverted():Boolean
-		{
-			return _inverted;
-		}
-		
 		public function set inverted(value:Boolean):void
 		{
 			_inverted = value;
-		}
-		
-		override public function get animation():String
-		{
-			return _animation;
 		}
 		
 		public function set animation(value:String):void
