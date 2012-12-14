@@ -4,6 +4,8 @@ package games.braid {
 	import citrus.utils.Mobile;
 
 	import flash.geom.Rectangle;
+	
+	[SWF(frameRate="60")]
 
 	public class Main extends StarlingCitrusEngine
 	{
