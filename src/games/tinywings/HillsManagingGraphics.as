@@ -1,6 +1,6 @@
 package games.tinywings {
 
-	import com.citrusengine.objects.platformer.nape.Hills;
+	import citrus.objects.platformer.nape.Hills;
 
 	/**
 	 * @author Aymeric

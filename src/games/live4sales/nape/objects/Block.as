@@ -1,16 +1,16 @@
 package games.live4sales.nape.objects {
 
+	import citrus.objects.platformer.nape.Platform;
+
 	import games.live4sales.nape.characters.ShopsWoman;
 	import games.live4sales.utils.Grid;
 
 	import nape.callbacks.InteractionCallback;
 	import nape.phys.Material;
 
-	import com.citrusengine.objects.platformer.nape.Platform;
-
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
-	
+
 	/**
 	 * @author Aymeric
 	 */

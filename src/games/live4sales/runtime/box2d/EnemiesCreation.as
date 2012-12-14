@@ -1,11 +1,11 @@
 package games.live4sales.runtime.box2d {
 
+	import citrus.core.CitrusEngine;
+	import citrus.view.starlingview.AnimationSequence;
+
 	import games.live4sales.assets.Assets;
 	import games.live4sales.box2d.characters.ShopsWoman;
 	import games.live4sales.utils.Grid;
-
-	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.view.starlingview.AnimationSequence;
 
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;

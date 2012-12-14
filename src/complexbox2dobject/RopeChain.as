@@ -8,8 +8,8 @@ package complexbox2dobject{
 	import Box2D.Dynamics.b2BodyDef;
 	import Box2D.Dynamics.b2FixtureDef;
 
-	import com.citrusengine.objects.Box2DPhysicsObject;
-	import com.citrusengine.physics.PhysicsCollisionCategories;
+	import citrus.objects.Box2DPhysicsObject;
+	import citrus.physics.PhysicsCollisionCategories;
 
 	import flash.geom.Point;
 

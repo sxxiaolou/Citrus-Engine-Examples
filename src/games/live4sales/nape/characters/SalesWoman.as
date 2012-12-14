@@ -1,5 +1,7 @@
 package games.live4sales.nape.characters {
 
+	import citrus.objects.platformer.nape.Cannon;
+
 	import games.live4sales.assets.Assets;
 	import games.live4sales.nape.weapons.Bag;
 	import games.live4sales.utils.Grid;
@@ -8,8 +10,6 @@ package games.live4sales.nape.characters {
 	import nape.phys.Material;
 
 	import starling.display.Image;
-
-	import com.citrusengine.objects.platformer.nape.Cannon;
 
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;

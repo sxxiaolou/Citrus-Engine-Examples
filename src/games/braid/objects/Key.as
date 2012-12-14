@@ -1,10 +1,10 @@
 package games.braid.objects {
 
-	import nape.callbacks.InteractionCallback;
+	import citrus.objects.NapePhysicsObject;
+	import citrus.objects.platformer.nape.Coin;
+	import citrus.physics.nape.NapeUtils;
 
-	import com.citrusengine.objects.NapePhysicsObject;
-	import com.citrusengine.objects.platformer.nape.Coin;
-	import com.citrusengine.physics.nape.NapeUtils;
+	import nape.callbacks.InteractionCallback;
 	
 	public class Key extends Coin {
 

@@ -2,17 +2,17 @@ package starlingdemo {
 
 	import Box2D.Dynamics.Contacts.b2Contact;
 
+	import citrus.core.CitrusEngine;
+	import citrus.core.StarlingState;
+	import citrus.objects.platformer.box2d.Coin;
+	import citrus.objects.platformer.box2d.Enemy;
+	import citrus.objects.platformer.box2d.Hero;
+	import citrus.objects.platformer.box2d.Platform;
+	import citrus.physics.box2d.Box2D;
+	import citrus.view.starlingview.AnimationSequence;
+
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
-
-	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.StarlingState;
-	import com.citrusengine.objects.platformer.box2d.Coin;
-	import com.citrusengine.objects.platformer.box2d.Enemy;
-	import com.citrusengine.objects.platformer.box2d.Hero;
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.physics.box2d.Box2D;
-	import com.citrusengine.view.starlingview.AnimationSequence;
 
 	import flash.display.Bitmap;
 

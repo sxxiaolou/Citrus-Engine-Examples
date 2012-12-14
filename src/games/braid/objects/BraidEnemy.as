@@ -1,12 +1,12 @@
 package games.braid.objects {
 
+	import citrus.objects.CitrusSprite;
+	import citrus.objects.platformer.nape.Enemy;
+	import citrus.view.starlingview.AnimationSequence;
+
 	import nape.geom.Vec2;
 
 	import starling.extensions.particles.PDParticleSystem;
-
-	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.objects.platformer.nape.Enemy;
-	import com.citrusengine.view.starlingview.AnimationSequence;
 	
 	public class BraidEnemy extends Enemy
 	{			

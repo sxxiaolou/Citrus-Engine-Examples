@@ -11,8 +11,8 @@
  *  
  */
 
-package games.hungryhero.com.hsharma.hungryHero.objectPools
-{
+package games.hungryhero.com.hsharma.hungryHero.objectPools {
+
 	import games.hungryhero.com.hsharma.hungryHero.gameElements.Particle;
 	
 	/**

@@ -1,6 +1,6 @@
 package box2dstarling {
 
-	import com.citrusengine.utils.AGameData;
+	import citrus.utils.AGameData;
 
 	/**
 	 * @author Aymeric

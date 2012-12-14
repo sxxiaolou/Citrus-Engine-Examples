@@ -24,17 +24,17 @@ package awayphysics.car {
 	import awayphysics.dynamics.vehicle.AWPVehicleTuning;
 	import awayphysics.dynamics.vehicle.AWPWheelInfo;
 
-	import com.citrusengine.core.State;
-	import com.citrusengine.objects.AwayPhysicsObject;
-	import com.citrusengine.physics.awayphysics.AwayPhysics;
-	import com.citrusengine.view.CitrusView;
-	import com.citrusengine.view.away3dview.Away3DView;
+	import citrus.core.State;
+	import citrus.objects.AwayPhysicsObject;
+	import citrus.physics.awayphysics.AwayPhysics;
+	import citrus.view.CitrusView;
+	import citrus.view.away3dview.Away3DView;
 
 	import flash.events.KeyboardEvent;
 	import flash.geom.Vector3D;
 	import flash.net.URLRequest;
 	import flash.ui.Keyboard;
-	
+
 	/**
 	 * @author Aymeric, car demo coming from AwayPhysics examples
 	 */

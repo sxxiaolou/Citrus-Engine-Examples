@@ -1,7 +1,7 @@
 package games.live4sales {
 
-	import com.citrusengine.core.StarlingCitrusEngine;
-	import com.citrusengine.utils.Mobile;
+	import citrus.core.StarlingCitrusEngine;
+	import citrus.utils.Mobile;
 
 	import flash.display.Stage;
 	import flash.geom.Rectangle;

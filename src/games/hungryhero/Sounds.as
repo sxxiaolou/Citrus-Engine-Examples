@@ -11,8 +11,8 @@
  *  
  */
 
-package games.hungryhero
-{
+package games.hungryhero {
+
 	import flash.media.Sound;
 
 	/**

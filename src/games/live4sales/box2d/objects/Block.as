@@ -2,11 +2,11 @@ package games.live4sales.box2d.objects {
 
 	import Box2D.Dynamics.Contacts.b2Contact;
 
+	import citrus.objects.platformer.box2d.Platform;
+	import citrus.physics.box2d.Box2DUtils;
+
 	import games.live4sales.box2d.characters.ShopsWoman;
 	import games.live4sales.utils.Grid;
-
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.physics.box2d.Box2DUtils;
 
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;

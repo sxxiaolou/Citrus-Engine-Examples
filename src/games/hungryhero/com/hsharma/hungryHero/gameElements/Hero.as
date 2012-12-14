@@ -13,10 +13,10 @@
 
 package games.hungryhero.com.hsharma.hungryHero.gameElements {
 
+	import citrus.objects.CitrusSprite;
+
 	import games.hungryhero.GameConstants;
 
-	import com.citrusengine.objects.CitrusSprite;
-	
 	/**
 	 * This class is the hero character.
 	 *  

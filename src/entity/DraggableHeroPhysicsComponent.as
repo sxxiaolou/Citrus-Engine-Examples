@@ -4,7 +4,7 @@ package entity {
 	import Box2D.Dynamics.Joints.b2MouseJoint;
 	import Box2D.Dynamics.Joints.b2MouseJointDef;
 
-	import com.citrusengine.system.components.box2d.hero.HeroPhysicsComponent;
+	import citrus.system.components.box2d.hero.HeroPhysicsComponent;
 
 	import flash.display.DisplayObject;
 

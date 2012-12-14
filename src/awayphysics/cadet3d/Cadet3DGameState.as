@@ -3,11 +3,11 @@ package awayphysics.cadet3d {
 	import away3d.controllers.HoverController;
 	import away3d.debug.AwayStats;
 
-	import com.citrusengine.core.State;
-	import com.citrusengine.physics.awayphysics.AwayPhysics;
-	import com.citrusengine.utils.objectmakers.ObjectMaker3D;
-	import com.citrusengine.view.CitrusView;
-	import com.citrusengine.view.away3dview.Away3DView;
+	import citrus.core.State;
+	import citrus.physics.awayphysics.AwayPhysics;
+	import citrus.utils.objectmakers.ObjectMaker3D;
+	import citrus.view.CitrusView;
+	import citrus.view.away3dview.Away3DView;
 
 	import flash.events.Event;
 	import flash.events.MouseEvent;

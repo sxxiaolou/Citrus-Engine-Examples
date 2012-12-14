@@ -1,14 +1,14 @@
 package games.tinywings {
 
+	import citrus.objects.platformer.nape.Hero;
+	import citrus.objects.platformer.nape.Platform;
+
 	import nape.callbacks.CbType;
 	import nape.callbacks.InteractionType;
 	import nape.callbacks.PreCallback;
 	import nape.callbacks.PreFlag;
 	import nape.callbacks.PreListener;
 	import nape.geom.Vec2;
-
-	import com.citrusengine.objects.platformer.nape.Hero;
-	import com.citrusengine.objects.platformer.nape.Platform;
 
 	/**
 	 * @author Aymeric

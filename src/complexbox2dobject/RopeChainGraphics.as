@@ -2,7 +2,7 @@ package complexbox2dobject{
 
 	import Box2D.Dynamics.b2Body;
 
-	import com.citrusengine.math.MathUtils;
+	import citrus.math.MathUtils;
 
 	import flash.display.Sprite;
 	import flash.geom.Point;

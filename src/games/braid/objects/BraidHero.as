@@ -1,13 +1,13 @@
 package games.braid.objects {
 
+	import citrus.objects.NapePhysicsObject;
+	import citrus.objects.platformer.nape.Hero;
+	import citrus.physics.nape.NapeUtils;
+	import citrus.view.starlingview.AnimationSequence;
+
 	import nape.callbacks.InteractionCallback;
 	import nape.geom.Vec2;
 
-	import com.citrusengine.objects.NapePhysicsObject;
-	import com.citrusengine.objects.platformer.nape.Hero;
-	import com.citrusengine.physics.nape.NapeUtils;
-	import com.citrusengine.view.starlingview.AnimationSequence;
-	
 	public class BraidHero extends Hero
 	{		
 		public var camTarget:Object = { x: 0, y: 0 };

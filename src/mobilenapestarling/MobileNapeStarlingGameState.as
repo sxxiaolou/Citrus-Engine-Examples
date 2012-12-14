@@ -1,5 +1,14 @@
 package mobilenapestarling {
 
+	import citrus.core.StarlingState;
+	import citrus.math.MathVector;
+	import citrus.objects.CitrusSprite;
+	import citrus.objects.platformer.nape.Platform;
+	import citrus.physics.nape.Nape;
+	import citrus.physics.nape.NapeUtils;
+	import citrus.view.starlingview.AnimationSequence;
+	import citrus.view.starlingview.StarlingArt;
+
 	import mobilenapestarling.assets.Assets;
 
 	import nape.callbacks.InteractionCallback;
@@ -15,20 +24,11 @@ package mobilenapestarling {
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 
-	import com.citrusengine.core.StarlingState;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.objects.platformer.nape.Platform;
-	import com.citrusengine.physics.nape.Nape;
-	import com.citrusengine.physics.nape.NapeUtils;
-	import com.citrusengine.view.starlingview.AnimationSequence;
-	import com.citrusengine.view.starlingview.StarlingArt;
-
 	import flash.display.Bitmap;
 	import flash.events.TimerEvent;
 	import flash.geom.Rectangle;
 	import flash.utils.Timer;
-	
+
 	/**
 	 * @author Aymeric
 	 */

@@ -11,13 +11,13 @@
  *  
  */
 
-package games.hungryhero
-{
-	import flash.display.Bitmap;
-	import flash.utils.Dictionary;
-	
+package games.hungryhero {
+
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
+
+	import flash.display.Bitmap;
+	import flash.utils.Dictionary;
 	
 	/**
 	 * This class holds all embedded textures, fonts and sounds and other embedded files.  

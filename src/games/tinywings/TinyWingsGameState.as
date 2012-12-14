@@ -1,13 +1,13 @@
 package games.tinywings {
 
+	import citrus.core.StarlingState;
+	import citrus.math.MathVector;
+	import citrus.physics.nape.Nape;
+	import citrus.view.starlingview.AnimationSequence;
+	import citrus.view.starlingview.StarlingArt;
+
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
-
-	import com.citrusengine.core.StarlingState;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.physics.nape.Nape;
-	import com.citrusengine.view.starlingview.AnimationSequence;
-	import com.citrusengine.view.starlingview.StarlingArt;
 
 	import flash.display.Bitmap;
 	import flash.geom.Rectangle;

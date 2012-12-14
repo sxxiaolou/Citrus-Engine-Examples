@@ -11,7 +11,7 @@ package soundpatchdemo {
 	import Box2D.Dynamics.b2Fixture;
 	import Box2D.Dynamics.b2FixtureDef;
 
-	import com.citrusengine.objects.Box2DPhysicsObject;
+	import citrus.objects.Box2DPhysicsObject;
 
 	public class WindmillArms extends Box2DPhysicsObject {
 

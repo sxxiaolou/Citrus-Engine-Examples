@@ -1,5 +1,7 @@
 package games.osmos {
 
+	import citrus.objects.NapePhysicsObject;
+
 	import nape.callbacks.CbEvent;
 	import nape.callbacks.CbType;
 	import nape.callbacks.InteractionCallback;
@@ -12,8 +14,6 @@ package games.osmos {
 	import nape.geom.Vec2;
 	import nape.phys.Body;
 	import nape.phys.BodyList;
-
-	import com.citrusengine.objects.NapePhysicsObject;
 
 	import flash.display.DisplayObject;
 

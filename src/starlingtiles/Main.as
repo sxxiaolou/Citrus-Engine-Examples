@@ -1,6 +1,6 @@
 package starlingtiles {
 
-	import com.citrusengine.core.StarlingCitrusEngine;
+	import citrus.core.StarlingCitrusEngine;
 
 	import flash.display.Loader;
 	import flash.events.Event;

@@ -13,11 +13,11 @@
 
 package games.hungryhero {
 
+	import citrus.core.StarlingCitrusEngine;
+
 	import games.hungryhero.com.hsharma.hungryHero.screens.InGame;
 
 	import starling.events.Event;
-
-	import com.citrusengine.core.StarlingCitrusEngine;
 
 	/**
 	 * SWF meta data defined for iPad 1 & 2 in landscape mode. 

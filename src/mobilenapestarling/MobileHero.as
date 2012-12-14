@@ -1,8 +1,8 @@
 package mobilenapestarling {
 
-	import nape.geom.Vec2;
+	import citrus.objects.platformer.nape.Hero;
 
-	import com.citrusengine.objects.platformer.nape.Hero;
+	import nape.geom.Vec2;
 
 	/**
 	 * @author Aymeric

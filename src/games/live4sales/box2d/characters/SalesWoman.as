@@ -2,15 +2,14 @@ package games.live4sales.box2d.characters {
 
 	import Box2D.Dynamics.Contacts.b2Contact;
 
+	import citrus.objects.platformer.box2d.Cannon;
+	import citrus.physics.box2d.Box2DUtils;
+
 	import games.live4sales.assets.Assets;
 	import games.live4sales.box2d.weapons.Bag;
 	import games.live4sales.utils.Grid;
 
 	import starling.display.Image;
-
-	import com.citrusengine.objects.Box2DPhysicsObject;
-	import com.citrusengine.objects.platformer.box2d.Cannon;
-	import com.citrusengine.physics.box2d.Box2DUtils;
 
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;

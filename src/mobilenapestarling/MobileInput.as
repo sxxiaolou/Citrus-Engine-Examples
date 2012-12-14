@@ -1,12 +1,12 @@
 package mobilenapestarling {
 
+	import citrus.core.CitrusEngine;
+	import citrus.core.StarlingCitrusEngine;
+	import citrus.input.Input;
+
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
-
-	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.StarlingCitrusEngine;
-	import com.citrusengine.input.Input;
 
 	/**
 	 * @author Aymeric

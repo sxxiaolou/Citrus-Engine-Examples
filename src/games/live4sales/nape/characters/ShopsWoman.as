@@ -1,5 +1,8 @@
 package games.live4sales.nape.characters {
 
+	import citrus.objects.NapePhysicsObject;
+	import citrus.physics.PhysicsCollisionCategories;
+
 	import games.live4sales.nape.objects.Block;
 	import games.live4sales.nape.objects.Cash;
 	import games.live4sales.nape.weapons.Bag;
@@ -10,9 +13,6 @@ package games.live4sales.nape.characters {
 	import nape.dynamics.InteractionFilter;
 	import nape.geom.Vec2;
 	import nape.phys.Material;
-
-	import com.citrusengine.objects.NapePhysicsObject;
-	import com.citrusengine.physics.PhysicsCollisionCategories;
 
 	import org.osflash.signals.Signal;
 

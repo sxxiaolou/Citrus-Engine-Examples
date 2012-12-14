@@ -1,11 +1,11 @@
 package games.braid 
 {
-	import com.citrusengine.input.controllers.TimeShifter;
-	import flash.events.Event;
+
+	import citrus.input.controllers.TimeShifter;
+
 	import flash.events.SampleDataEvent;
 	import flash.media.Sound;
-	import flash.net.URLRequest;
-	import flash.utils.ByteArray;	
+	import flash.utils.ByteArray;
 
 	/**
 	 * based on MP3Player.as by Kelvin Luck (http://www.kelvinluck.com/2008/11/first-steps-with-flash-10-audio-programming/)

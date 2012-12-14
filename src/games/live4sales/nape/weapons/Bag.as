@@ -1,11 +1,11 @@
 package games.live4sales.nape.weapons {
 
+	import citrus.objects.platformer.nape.Missile;
+	import citrus.physics.PhysicsCollisionCategories;
+
 	import nape.callbacks.InteractionCallback;
 	import nape.dynamics.InteractionFilter;
 	import nape.geom.Vec2;
-
-	import com.citrusengine.objects.platformer.nape.Missile;
-	import com.citrusengine.physics.PhysicsCollisionCategories;
 
 	/**
 	 * @author Aymeric

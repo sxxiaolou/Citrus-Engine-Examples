@@ -6,14 +6,14 @@ package awayphysics.platformer3d {
 	import away3d.materials.ColorMaterial;
 	import away3d.primitives.CubeGeometry;
 
-	import com.citrusengine.core.State;
-	import com.citrusengine.objects.AwayPhysicsObject;
-	import com.citrusengine.objects.platformer.awayphysics.Hero;
-	import com.citrusengine.objects.platformer.awayphysics.Platform;
-	import com.citrusengine.objects.platformer.awayphysics.Sensor;
-	import com.citrusengine.physics.awayphysics.AwayPhysics;
-	import com.citrusengine.view.CitrusView;
-	import com.citrusengine.view.away3dview.Away3DView;
+	import citrus.core.State;
+	import citrus.objects.AwayPhysicsObject;
+	import citrus.objects.platformer.awayphysics.Hero;
+	import citrus.objects.platformer.awayphysics.Platform;
+	import citrus.objects.platformer.awayphysics.Sensor;
+	import citrus.physics.awayphysics.AwayPhysics;
+	import citrus.view.CitrusView;
+	import citrus.view.away3dview.Away3DView;
 
 	import flash.events.Event;
 	import flash.events.MouseEvent;

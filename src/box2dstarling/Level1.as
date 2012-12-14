@@ -2,16 +2,16 @@ package box2dstarling {
 
 	import Box2D.Dynamics.Contacts.b2Contact;
 
+	import citrus.objects.platformer.box2d.Hero;
+	import citrus.objects.platformer.box2d.Sensor;
+	import citrus.physics.box2d.Box2DUtils;
+
 	import starling.extensions.particles.PDParticleSystem;
 	import starling.extensions.particles.ParticleSystem;
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
 	import starling.textures.Texture;
 	import starling.utils.Color;
-
-	import com.citrusengine.objects.platformer.box2d.Hero;
-	import com.citrusengine.objects.platformer.box2d.Sensor;
-	import com.citrusengine.physics.box2d.Box2DUtils;
 
 	import flash.display.MovieClip;
 

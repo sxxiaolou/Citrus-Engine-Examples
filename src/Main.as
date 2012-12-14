@@ -1,8 +1,8 @@
 package {
 
-	import games.osmos.OsmosGameState;
+	import citrus.core.CitrusEngine;
 
-	import com.citrusengine.core.CitrusEngine;
+	import games.osmos.OsmosGameState;
 
 	[SWF(frameRate="60")]
 

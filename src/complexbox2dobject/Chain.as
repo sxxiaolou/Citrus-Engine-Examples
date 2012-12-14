@@ -3,7 +3,7 @@ package complexbox2dobject{
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.Joints.b2RevoluteJointDef;
 
-	import com.citrusengine.objects.Box2DPhysicsObject;
+	import citrus.objects.Box2DPhysicsObject;
 
 	/**
 	 * @author Aymeric

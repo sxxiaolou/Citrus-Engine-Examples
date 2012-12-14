@@ -2,21 +2,21 @@ package soundpatchdemo {
 
 	import Box2D.Dynamics.Contacts.b2Contact;
 
-	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.CitrusObject;
-	import com.citrusengine.core.State;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.objects.platformer.box2d.Coin;
-	import com.citrusengine.objects.platformer.box2d.Crate;
-	import com.citrusengine.objects.platformer.box2d.Enemy;
-	import com.citrusengine.objects.platformer.box2d.Hero;
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.objects.platformer.box2d.Sensor;
-	import com.citrusengine.physics.box2d.Box2D;
-	import com.citrusengine.physics.box2d.Box2DUtils;
-	import com.citrusengine.physics.box2d.IBox2DPhysicsObject;
-	import com.citrusengine.utils.objectmakers.ObjectMaker2D;
+	import citrus.core.CitrusEngine;
+	import citrus.core.CitrusObject;
+	import citrus.core.State;
+	import citrus.math.MathVector;
+	import citrus.objects.CitrusSprite;
+	import citrus.objects.platformer.box2d.Coin;
+	import citrus.objects.platformer.box2d.Crate;
+	import citrus.objects.platformer.box2d.Enemy;
+	import citrus.objects.platformer.box2d.Hero;
+	import citrus.objects.platformer.box2d.Platform;
+	import citrus.objects.platformer.box2d.Sensor;
+	import citrus.physics.box2d.Box2D;
+	import citrus.physics.box2d.Box2DUtils;
+	import citrus.physics.box2d.IBox2DPhysicsObject;
+	import citrus.utils.objectmakers.ObjectMaker2D;
 
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;

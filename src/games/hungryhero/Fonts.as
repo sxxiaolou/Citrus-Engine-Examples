@@ -11,10 +11,10 @@
  *  
  */
 
-package games.hungryhero
-{
+package games.hungryhero {
+
 	import games.hungryhero.com.hsharma.hungryHero.customObjects.Font;
-	
+
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
 	import starling.textures.Texture;

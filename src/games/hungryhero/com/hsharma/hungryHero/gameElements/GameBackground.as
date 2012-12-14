@@ -13,9 +13,9 @@
 
 package games.hungryhero.com.hsharma.hungryHero.gameElements {
 
-	import starling.display.Sprite;
+	import citrus.objects.CitrusSprite;
 
-	import com.citrusengine.objects.CitrusSprite;
+	import starling.display.Sprite;
 	
 	/**
 	 * This class defines the whole InGame background containing multiple background layers.

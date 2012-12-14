@@ -1,12 +1,12 @@
 package tiledmap.displaylist {
 
-	import com.citrusengine.core.State;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.platformer.box2d.Hero;
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.physics.box2d.Box2D;
-	import com.citrusengine.utils.objectmakers.ObjectMaker2D;
-	import com.citrusengine.view.spriteview.SpriteArt;
+	import citrus.core.State;
+	import citrus.math.MathVector;
+	import citrus.objects.platformer.box2d.Hero;
+	import citrus.objects.platformer.box2d.Platform;
+	import citrus.physics.box2d.Box2D;
+	import citrus.utils.objectmakers.ObjectMaker2D;
+	import citrus.view.spriteview.SpriteArt;
 
 	import flash.display.Bitmap;
 	import flash.geom.Rectangle;

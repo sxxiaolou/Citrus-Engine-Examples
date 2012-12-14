@@ -13,6 +13,10 @@
 
 package games.hungryhero.com.hsharma.hungryHero.screens {
 
+	import citrus.core.StarlingState;
+	import citrus.objects.CitrusSprite;
+	import citrus.view.starlingview.StarlingArt;
+
 	import games.hungryhero.Assets;
 	import games.hungryhero.GameConstants;
 	import games.hungryhero.ParticleAssets;
@@ -39,10 +43,6 @@ package games.hungryhero.com.hsharma.hungryHero.screens {
 	import starling.events.TouchEvent;
 	import starling.extensions.particles.PDParticleSystem;
 	import starling.textures.Texture;
-
-	import com.citrusengine.core.StarlingState;
-	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.view.starlingview.StarlingArt;
 
 	import flash.geom.Rectangle;
 	import flash.media.SoundMixer;

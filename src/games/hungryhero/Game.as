@@ -11,17 +11,17 @@
  *  
  */
 
-package games.hungryhero
-{
+package games.hungryhero {
+
 	import games.hungryhero.com.hsharma.hungryHero.events.NavigationEvent;
 	import games.hungryhero.com.hsharma.hungryHero.screens.InGame;
 	import games.hungryhero.com.hsharma.hungryHero.screens.Welcome;
 	import games.hungryhero.com.hsharma.hungryHero.ui.SoundButton;
-	
-	import flash.media.SoundMixer;
-	
+
 	import starling.display.Sprite;
 	import starling.events.Event;
+
+	import flash.media.SoundMixer;
 	
 	/**
 	 * This class is the primary Starling Sprite based class

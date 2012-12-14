@@ -1,15 +1,15 @@
 package entity {
 
-	import com.citrusengine.core.CitrusObject;
-	import com.citrusengine.core.State;
-	import com.citrusengine.objects.platformer.box2d.Enemy;
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.physics.box2d.Box2D;
-	import com.citrusengine.system.Entity;
-	import com.citrusengine.system.components.InputComponent;
-	import com.citrusengine.system.components.box2d.hero.HeroCollisionComponent;
-	import com.citrusengine.system.components.box2d.hero.HeroMovementComponent;
-	import com.citrusengine.system.components.box2d.hero.HeroViewComponent;
+	import citrus.core.CitrusObject;
+	import citrus.core.State;
+	import citrus.objects.platformer.box2d.Enemy;
+	import citrus.objects.platformer.box2d.Platform;
+	import citrus.physics.box2d.Box2D;
+	import citrus.system.Entity;
+	import citrus.system.components.InputComponent;
+	import citrus.system.components.box2d.hero.HeroCollisionComponent;
+	import citrus.system.components.box2d.hero.HeroMovementComponent;
+	import citrus.system.components.box2d.hero.HeroViewComponent;
 
 	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;

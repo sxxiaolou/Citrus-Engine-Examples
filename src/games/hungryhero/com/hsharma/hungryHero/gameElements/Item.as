@@ -13,11 +13,11 @@
 
 package games.hungryhero.com.hsharma.hungryHero.gameElements {
 
+	import citrus.objects.CitrusSprite;
+
 	import games.hungryhero.Assets;
 
 	import starling.display.Image;
-
-	import com.citrusengine.objects.CitrusSprite;
 	
 	/**
 	 * This class represents the food items. 

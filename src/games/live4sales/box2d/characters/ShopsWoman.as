@@ -3,18 +3,18 @@ package games.live4sales.box2d.characters {
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.Contacts.b2Contact;
 
+	import citrus.objects.Box2DPhysicsObject;
+	import citrus.physics.PhysicsCollisionCategories;
+	import citrus.physics.box2d.Box2DUtils;
+	import citrus.physics.box2d.IBox2DPhysicsObject;
+
 	import games.live4sales.box2d.objects.Block;
 	import games.live4sales.box2d.objects.Cash;
 	import games.live4sales.box2d.weapons.Bag;
 	import games.live4sales.utils.Grid;
 
-	import com.citrusengine.objects.Box2DPhysicsObject;
-	import com.citrusengine.physics.PhysicsCollisionCategories;
-	import com.citrusengine.physics.box2d.Box2DUtils;
-	import com.citrusengine.physics.box2d.IBox2DPhysicsObject;
-
 	import org.osflash.signals.Signal;
-	
+
 	/**
 	 * @author Aymeric
 	 */

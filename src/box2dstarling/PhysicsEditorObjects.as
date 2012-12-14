@@ -3,7 +3,7 @@ package box2dstarling {
 	import Box2D.Collision.Shapes.b2PolygonShape;
 	import Box2D.Common.Math.b2Vec2;
 
-	import com.citrusengine.objects.platformer.box2d.Crate;
+	import citrus.objects.platformer.box2d.Crate;
 
 	/**
 	 * @author Aymeric

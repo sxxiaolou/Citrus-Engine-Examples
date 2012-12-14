@@ -1,6 +1,6 @@
 package tiledmap.starling {
 
-	import com.citrusengine.core.StarlingCitrusEngine;
+	import citrus.core.StarlingCitrusEngine;
 
 	[SWF(backgroundColor="#000000", frameRate="60")]
 

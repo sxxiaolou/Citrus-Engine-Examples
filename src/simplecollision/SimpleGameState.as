@@ -1,13 +1,13 @@
 package simplecollision {
 
-	import com.citrusengine.core.State;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.objects.platformer.simple.DynamicObject;
-	import com.citrusengine.objects.platformer.simple.Hero;
-	import com.citrusengine.objects.platformer.simple.Sensor;
-	import com.citrusengine.objects.platformer.simple.StaticObject;
-	import com.citrusengine.physics.simple.SimpleCitrusSolver;
+	import citrus.core.State;
+	import citrus.math.MathVector;
+	import citrus.objects.CitrusSprite;
+	import citrus.objects.platformer.simple.DynamicObject;
+	import citrus.objects.platformer.simple.Hero;
+	import citrus.objects.platformer.simple.Sensor;
+	import citrus.objects.platformer.simple.StaticObject;
+	import citrus.physics.simple.SimpleCitrusSolver;
 
 	/**
 	 * @author Aymeric

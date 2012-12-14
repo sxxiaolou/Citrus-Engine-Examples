@@ -3,9 +3,9 @@ package games.live4sales.box2d.weapons {
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.Contacts.b2Contact;
 
-	import com.citrusengine.objects.platformer.box2d.Missile;
-	import com.citrusengine.physics.PhysicsCollisionCategories;
-	
+	import citrus.objects.platformer.box2d.Missile;
+	import citrus.physics.PhysicsCollisionCategories;
+
 	/**
 	 * @author Aymeric
 	 */

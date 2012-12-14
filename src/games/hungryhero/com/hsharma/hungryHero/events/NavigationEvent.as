@@ -11,8 +11,8 @@
  *  
  */
 
-package games.hungryhero.com.hsharma.hungryHero.events
-{
+package games.hungryhero.com.hsharma.hungryHero.events {
+
 	import starling.events.Event;
 	
 	/**

@@ -2,6 +2,13 @@ package games.live4sales {
 
 	import Box2D.Common.Math.b2Vec2;
 
+	import citrus.core.CitrusEngine;
+	import citrus.core.StarlingState;
+	import citrus.objects.CitrusSprite;
+	import citrus.physics.box2d.Box2D;
+	import citrus.view.starlingview.AnimationSequence;
+	import citrus.view.starlingview.StarlingArt;
+
 	import games.live4sales.assets.Assets;
 	import games.live4sales.box2d.characters.SalesWoman;
 	import games.live4sales.box2d.objects.Block;
@@ -15,13 +22,6 @@ package games.live4sales {
 	import starling.core.Starling;
 	import starling.display.Image;
 
-	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.StarlingState;
-	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.physics.box2d.Box2D;
-	import com.citrusengine.view.starlingview.AnimationSequence;
-	import com.citrusengine.view.starlingview.StarlingArt;
-		
 	/**
 	 * @author Aymeric
 	 */

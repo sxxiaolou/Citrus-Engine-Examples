@@ -9,18 +9,18 @@ package away3dbox2d {
 	import away3d.primitives.CubeGeometry;
 	import away3d.primitives.SphereGeometry;
 
-	import com.citrusengine.core.State;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.Box2DPhysicsObject;
-	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.objects.platformer.box2d.Coin;
-	import com.citrusengine.objects.platformer.box2d.Hero;
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.physics.box2d.Box2D;
-	import com.citrusengine.view.CitrusView;
-	import com.citrusengine.view.away3dview.AnimationSequence;
-	import com.citrusengine.view.away3dview.Away3DArt;
-	import com.citrusengine.view.away3dview.Away3DView;
+	import citrus.core.State;
+	import citrus.math.MathVector;
+	import citrus.objects.Box2DPhysicsObject;
+	import citrus.objects.CitrusSprite;
+	import citrus.objects.platformer.box2d.Coin;
+	import citrus.objects.platformer.box2d.Hero;
+	import citrus.objects.platformer.box2d.Platform;
+	import citrus.physics.box2d.Box2D;
+	import citrus.view.CitrusView;
+	import citrus.view.away3dview.AnimationSequence;
+	import citrus.view.away3dview.Away3DArt;
+	import citrus.view.away3dview.Away3DView;
 
 	import flash.display.Sprite;
 	import flash.events.Event;

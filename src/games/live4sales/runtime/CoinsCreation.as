@@ -1,13 +1,13 @@
 package games.live4sales.runtime {
 
+	import citrus.core.CitrusEngine;
+
 	import games.live4sales.assets.Assets;
 	import games.live4sales.events.MoneyEvent;
 	import games.live4sales.objects.Coin;
 
 	import starling.core.Starling;
 	import starling.display.Sprite;
-
-	import com.citrusengine.core.CitrusEngine;
 
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;

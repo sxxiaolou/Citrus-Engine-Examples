@@ -1,18 +1,18 @@
 package blitting {
 
-	import com.citrusengine.core.State;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.objects.platformer.box2d.Hero;
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.physics.box2d.Box2D;
-	import com.citrusengine.view.CitrusView;
-	import com.citrusengine.view.blittingview.AnimationSequence;
-	import com.citrusengine.view.blittingview.BlittingArt;
-	import com.citrusengine.view.blittingview.BlittingView;
+	import citrus.core.State;
+	import citrus.math.MathVector;
+	import citrus.objects.CitrusSprite;
+	import citrus.objects.platformer.box2d.Hero;
+	import citrus.objects.platformer.box2d.Platform;
+	import citrus.physics.box2d.Box2D;
+	import citrus.view.CitrusView;
+	import citrus.view.blittingview.AnimationSequence;
+	import citrus.view.blittingview.BlittingArt;
+	import citrus.view.blittingview.BlittingView;
 
 	import flash.geom.Rectangle;
-
+	
 	/**
 	 * @author Aymeric
 	 */

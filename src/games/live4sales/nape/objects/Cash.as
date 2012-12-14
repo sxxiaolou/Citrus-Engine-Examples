@@ -1,10 +1,10 @@
 package games.live4sales.nape.objects {
 
+	import citrus.core.StarlingCitrusEngine;
+
 	import games.live4sales.assets.Assets;
 	import games.live4sales.events.MoneyEvent;
 	import games.live4sales.objects.Coin;
-
-	import com.citrusengine.core.StarlingCitrusEngine;
 
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;

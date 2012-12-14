@@ -1,12 +1,12 @@
 package cameramovement {
 
-	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.State;
-	import com.citrusengine.math.MathUtils;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.platformer.box2d.Hero;
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.physics.box2d.Box2D;
+	import citrus.core.CitrusEngine;
+	import citrus.core.State;
+	import citrus.math.MathUtils;
+	import citrus.math.MathVector;
+	import citrus.objects.platformer.box2d.Hero;
+	import citrus.objects.platformer.box2d.Platform;
+	import citrus.physics.box2d.Box2D;
 
 	import flash.events.MouseEvent;
 	import flash.geom.Point;

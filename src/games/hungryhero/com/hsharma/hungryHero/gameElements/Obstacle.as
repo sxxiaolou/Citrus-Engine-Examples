@@ -13,13 +13,13 @@
 
 package games.hungryhero.com.hsharma.hungryHero.gameElements {
 
+	import citrus.objects.CitrusSprite;
+
 	import games.hungryhero.Assets;
 	import games.hungryhero.GameConstants;
 
 	import starling.display.Image;
 	import starling.display.MovieClip;
-
-	import com.citrusengine.objects.CitrusSprite;
 	
 	/**
 	 * This class defines the obstacles in the game.

@@ -1,6 +1,6 @@
 package soundpatchdemo {
 
-	import com.citrusengine.core.CitrusEngine;
+	import citrus.core.CitrusEngine;
 
 	import flash.display.Loader;
 	import flash.display.MovieClip;

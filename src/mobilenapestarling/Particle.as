@@ -1,6 +1,6 @@
 package mobilenapestarling {
 
-	import com.citrusengine.objects.platformer.nape.Sensor;
+	import citrus.objects.platformer.nape.Sensor;
 
 	/**
 	 * @author Aymeric

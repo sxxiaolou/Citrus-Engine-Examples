@@ -1,8 +1,8 @@
 package box2dstarling {
 
-	import com.citrusengine.core.IState;
-	import com.citrusengine.core.StarlingCitrusEngine;
-	import com.citrusengine.utils.LevelManager;
+	import citrus.core.IState;
+	import citrus.core.StarlingCitrusEngine;
+	import citrus.utils.LevelManager;
 
 	[SWF(frameRate="60")]
 	

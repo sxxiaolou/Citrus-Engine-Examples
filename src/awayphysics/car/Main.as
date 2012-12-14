@@ -1,6 +1,6 @@
 package awayphysics.car {
-	
-	import com.citrusengine.core.CitrusEngine;
+
+	import citrus.core.CitrusEngine;
 
 	[SWF(frameRate="60")]
 

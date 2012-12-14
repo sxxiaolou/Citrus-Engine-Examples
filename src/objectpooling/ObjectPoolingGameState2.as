@@ -1,12 +1,12 @@
 package objectpooling {
 
-	import com.citrusengine.core.State;
-	import com.citrusengine.datastructures.DoublyLinkedListNode;
-	import com.citrusengine.datastructures.PoolObject;
-	import com.citrusengine.objects.NapePhysicsObject;
-	import com.citrusengine.objects.platformer.nape.Platform;
-	import com.citrusengine.physics.nape.Nape;
-	import com.citrusengine.view.spriteview.SpriteArt;
+	import citrus.core.State;
+	import citrus.datastructures.DoublyLinkedListNode;
+	import citrus.datastructures.PoolObject;
+	import citrus.objects.NapePhysicsObject;
+	import citrus.objects.platformer.nape.Platform;
+	import citrus.physics.nape.Nape;
+	import citrus.view.spriteview.SpriteArt;
 
 	import flash.utils.setTimeout;
 

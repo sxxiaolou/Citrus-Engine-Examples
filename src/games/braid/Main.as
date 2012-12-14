@@ -1,10 +1,10 @@
 package games.braid {
 
-	import com.citrusengine.core.StarlingCitrusEngine;
-	import com.citrusengine.utils.Mobile;
+	import citrus.core.StarlingCitrusEngine;
+	import citrus.utils.Mobile;
 
 	import flash.geom.Rectangle;
-	
+
 	public class Main extends StarlingCitrusEngine
 	{
 		

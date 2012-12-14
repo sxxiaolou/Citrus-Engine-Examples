@@ -2,25 +2,25 @@ package box2dstarling {
 
 	import Box2D.Dynamics.Contacts.b2Contact;
 
+	import citrus.core.CitrusEngine;
+	import citrus.core.StarlingState;
+	import citrus.math.MathVector;
+	import citrus.objects.CitrusSprite;
+	import citrus.objects.platformer.box2d.Enemy;
+	import citrus.objects.platformer.box2d.Hero;
+	import citrus.objects.platformer.box2d.Platform;
+	import citrus.objects.platformer.box2d.Sensor;
+	import citrus.physics.box2d.Box2D;
+	import citrus.physics.box2d.Box2DUtils;
+	import citrus.utils.objectmakers.ObjectMaker2D;
+	import citrus.view.starlingview.AnimationSequence;
+
 	import starling.display.Quad;
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 	import starling.utils.Color;
-
-	import com.citrusengine.core.CitrusEngine;
-	import com.citrusengine.core.StarlingState;
-	import com.citrusengine.math.MathVector;
-	import com.citrusengine.objects.CitrusSprite;
-	import com.citrusengine.objects.platformer.box2d.Enemy;
-	import com.citrusengine.objects.platformer.box2d.Hero;
-	import com.citrusengine.objects.platformer.box2d.Platform;
-	import com.citrusengine.objects.platformer.box2d.Sensor;
-	import com.citrusengine.physics.box2d.Box2D;
-	import com.citrusengine.physics.box2d.Box2DUtils;
-	import com.citrusengine.utils.objectmakers.ObjectMaker2D;
-	import com.citrusengine.view.starlingview.AnimationSequence;
 
 	import org.osflash.signals.Signal;
 

@@ -1,5 +1,7 @@
 package games.live4sales.ui {
 
+	import citrus.core.CitrusEngine;
+
 	import games.live4sales.assets.Assets;
 	import games.live4sales.events.MoneyEvent;
 	import games.live4sales.utils.Grid;
@@ -10,8 +12,6 @@ package games.live4sales.ui {
 	import starling.text.BitmapFont;
 	import starling.text.TextField;
 	import starling.textures.Texture;
-
-	import com.citrusengine.core.CitrusEngine;
 
 	import org.osflash.signals.Signal;
 
