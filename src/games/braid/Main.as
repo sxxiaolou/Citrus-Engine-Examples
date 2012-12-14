@@ -3,6 +3,8 @@ package games.braid {
 	import citrus.core.StarlingCitrusEngine;
 	import citrus.utils.Mobile;
 
+	import starling.core.Starling;
+
 	import flash.geom.Rectangle;
 	
 	[SWF(frameRate="60")]
@@ -12,9 +14,13 @@ package games.braid {
 		
 		public function Main():void
 		{
-			if (Mobile.isAndroid())
+			if (Mobile.isAndroid()) {
+				
+				Starling.handleLostContext = true;
+				Starling.multitouchEnabled = true;
+				
 				setUpStarling(true, 1, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
-			else
+			} else
 				setUpStarling(true, 1);
 				
 			state = new BraidDemo();
