@@ -1,5 +1,6 @@
 package games.live4sales.nape.objects {
 
+	import citrus.physics.nape.NapeUtils;
 	import citrus.objects.platformer.nape.Platform;
 
 	import games.live4sales.nape.characters.ShopsWoman;
@@ -18,20 +19,20 @@ package games.live4sales.nape.objects {
 		
 		public var life:uint = 5;
 		
-		public var timerHurt:Timer;
+		protected var _timerHurt:Timer;
 
 		public function Block(name:String, params:Object = null) {
 			
 			super(name, params);
 			
-			timerHurt = new Timer(1000);
-			timerHurt.addEventListener(TimerEvent.TIMER, _removeLife);
+			_timerHurt = new Timer(1000);
+			_timerHurt.addEventListener(TimerEvent.TIMER, _removeLife);
 		}
 		
 		override public function destroy():void {
 			
-			timerHurt.removeEventListener(TimerEvent.TIMER, _removeLife);
-			timerHurt = null;
+			_timerHurt.removeEventListener(TimerEvent.TIMER, _removeLife);
+			_timerHurt = null;
 			
 			super.destroy();
 		}
@@ -67,19 +68,19 @@ package games.live4sales.nape.objects {
 		
 		override public function handleBeginContact(callback:InteractionCallback):void {
 			
-			if (callback.int1.userData.myData is ShopsWoman) {
+			if (NapeUtils.CollisionGetOther(this, callback) is ShopsWoman) {
 				
-				if (!callback.int2.userData.myData.timerHurt.running)
-					callback.int2.userData.myData.timerHurt.start();
+				if (!_timerHurt.running)
+					_timerHurt.start();
 			}
 		}
 		
 		override public function handleEndContact(callback:InteractionCallback):void {
 			
-			if (callback.int1.userData.myData is ShopsWoman) {
+			if (NapeUtils.CollisionGetOther(this, callback) is ShopsWoman) {
 				
-				if (callback.int2.userData.myData.timerHurt)
-					callback.int2.userData.myData.timerHurt.stop();
+				if (_timerHurt && _timerHurt.running)
+					_timerHurt.stop();
 			}
 		}
 		

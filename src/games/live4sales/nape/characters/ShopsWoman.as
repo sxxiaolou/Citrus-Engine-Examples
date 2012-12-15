@@ -1,5 +1,6 @@
 package games.live4sales.nape.characters {
 
+	import citrus.physics.nape.NapeUtils;
 	import citrus.objects.NapePhysicsObject;
 	import citrus.physics.PhysicsCollisionCategories;
 
@@ -8,7 +9,6 @@ package games.live4sales.nape.characters {
 	import games.live4sales.nape.weapons.Bag;
 	import games.live4sales.utils.Grid;
 
-	import nape.callbacks.CbType;
 	import nape.callbacks.InteractionCallback;
 	import nape.dynamics.InteractionFilter;
 	import nape.geom.Vec2;
@@ -21,13 +21,12 @@ package games.live4sales.nape.characters {
 	 */
 	public class ShopsWoman extends NapePhysicsObject {
 		
-		public static const SHOPSWOMAN:CbType = new CbType();
-		
 		public var speed:Number = 21;
 		public var life:uint = 4;
-		public var fighting:Boolean = false;
 		
 		public var onTouchLeftSide:Signal;
+		
+		private var _fighting:Boolean = false;
 
 		public function ShopsWoman(name:String, params:Object = null) {
 			
@@ -47,12 +46,15 @@ package games.live4sales.nape.characters {
 			
 			super.update(timeDelta);
 			
-			var velocity:Vec2 = _body.velocity;
+			if (!_fighting) {
 			
-			velocity.x = -speed;
+				var velocity:Vec2 = _body.velocity;
 			
-			_body.velocity = velocity;
+				velocity.x = -speed;
 				
+				_body.velocity = velocity;
+			}
+			
 			if (x < 0) {
 				onTouchLeftSide.dispatch();
 				kill = true;
@@ -84,39 +86,31 @@ package games.live4sales.nape.characters {
 			
 			_body.setShapeFilters(new InteractionFilter(PhysicsCollisionCategories.Get("BadGuys"), PhysicsCollisionCategories.GetAllExcept("BadGuys")));
 		}
-		
-		override protected function createConstraint():void {
-			
-			_body.space = _nape.space;			
-			_body.cbTypes.add(SHOPSWOMAN);
-		}
 			
 		override public function handleBeginContact(callback:InteractionCallback):void {
 			
-			var self:ShopsWoman = callback.int1.userData.myData;
-			var other:NapePhysicsObject = callback.int2.userData.myData;
+			var other:NapePhysicsObject = NapeUtils.CollisionGetOther(this, callback);
 			
 			if (other is SalesWoman || other is Block || other is Cash)
-				self.fighting = true;
+				_fighting = true;
 				
 			else if (other is Bag) {
-				self.life--;
+				life--;
 				//cEvt.contact.Disable();
 			}
 		}
 			
 		override public function handleEndContact(callback:InteractionCallback):void {
 			
-			var self:ShopsWoman = callback.int1.userData.myData;
-			var other:NapePhysicsObject = callback.int2.userData.myData;
+			var other:NapePhysicsObject = NapeUtils.CollisionGetOther(this, callback);
 			
 			if (other is SalesWoman || other is Block || other is Cash)
-				self.fighting = false;
+				_fighting = false;
 		}
 		
 		protected function updateAnimation():void {
 			
-			_animation = fighting ? "attack" : "walk";
+			_animation = _fighting ? "attack" : "walk";
 		}
 
 	}
