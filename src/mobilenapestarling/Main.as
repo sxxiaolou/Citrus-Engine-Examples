@@ -1,9 +1,8 @@
 package mobilenapestarling {
 
-	import citrus.core.StarlingCitrusEngine;
+	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.utils.Mobile;
 
-	import flash.display.Stage;
 	import flash.geom.Rectangle;
 
 	[SWF(backgroundColor="#000000", frameRate="60")]
@@ -26,18 +25,18 @@ package mobilenapestarling {
 				isIpad = Mobile.isIpad();
 				
 				if (isIpad)
-					setUpStarling(true, 1, stage, new Rectangle(32, 64, stage.fullScreenWidth, stage.fullScreenHeight));
+					setUpStarling(true, 1, new Rectangle(32, 64, stage.fullScreenWidth, stage.fullScreenHeight));
 				else
-					setUpStarling(true, 1, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
+					setUpStarling(true, 1, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
 			} else 
 				setUpStarling(true);
 			
 			state = new MobileNapeStarlingGameState();
 		}
 		
-		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, flashStage:Stage = null, viewport:Rectangle = null):void {
+		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewport:Rectangle = null):void {
 			
-			super.setUpStarling(debugMode, antiAliasing, flashStage, viewport);
+			super.setUpStarling(debugMode, antiAliasing, viewport);
 			
 			if (compileForMobile) {
 				// set iPhone & iPad size, used for Starling contentScaleFactor

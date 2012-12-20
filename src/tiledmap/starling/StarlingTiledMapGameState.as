@@ -1,6 +1,6 @@
 package tiledmap.starling {
 
-	import citrus.core.StarlingState;
+	import citrus.core.starling.StarlingState;
 	import citrus.math.MathVector;
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
@@ -13,7 +13,7 @@ package tiledmap.starling {
 
 	import flash.display.Bitmap;
 	import flash.geom.Rectangle;
-
+	
 	/**
 	 * @author Aymeric
 	 */

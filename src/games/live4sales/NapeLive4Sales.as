@@ -1,7 +1,7 @@
 package games.live4sales {
 
 	import citrus.core.CitrusEngine;
-	import citrus.core.StarlingState;
+	import citrus.core.starling.StarlingState;
 	import citrus.objects.CitrusSprite;
 	import citrus.physics.nape.Nape;
 	import citrus.view.starlingview.AnimationSequence;

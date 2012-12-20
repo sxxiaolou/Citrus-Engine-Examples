@@ -3,7 +3,7 @@ package box2dstarling {
 	import Box2D.Dynamics.Contacts.b2Contact;
 
 	import citrus.core.CitrusEngine;
-	import citrus.core.StarlingState;
+	import citrus.core.starling.StarlingState;
 	import citrus.math.MathVector;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.box2d.Enemy;

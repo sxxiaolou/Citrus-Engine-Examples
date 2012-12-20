@@ -13,7 +13,7 @@
 
 package games.hungryhero.com.hsharma.hungryHero.screens {
 
-	import citrus.core.StarlingState;
+	import citrus.core.starling.StarlingState;
 	import citrus.objects.CitrusSprite;
 	import citrus.view.starlingview.StarlingArt;
 

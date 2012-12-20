@@ -1,11 +1,11 @@
 package starlingtiles {
 
-	import citrus.core.StarlingCitrusEngine;
+	import citrus.core.starling.StarlingCitrusEngine;
 
 	import flash.display.Loader;
 	import flash.events.Event;
 	import flash.net.URLRequest;
-	
+
 	//[SWF(backgroundColor="#000000", frameRate="60", width="1280", height="720")]
 	
 	/**

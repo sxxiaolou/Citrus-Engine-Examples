@@ -1,6 +1,6 @@
 package games.braid {
 
-	import citrus.core.StarlingCitrusEngine;
+	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.utils.Mobile;
 
 	import starling.core.Starling;
@@ -19,7 +19,7 @@ package games.braid {
 				Starling.handleLostContext = true;
 				Starling.multitouchEnabled = true;
 				
-				setUpStarling(true, 1, stage, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
+				setUpStarling(true, 1, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
 			} else
 				setUpStarling(true, 1);
 				

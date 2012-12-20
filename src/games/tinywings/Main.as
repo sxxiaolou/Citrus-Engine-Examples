@@ -1,6 +1,6 @@
 package games.tinywings {
 
-	import citrus.core.StarlingCitrusEngine;
+	import citrus.core.starling.StarlingCitrusEngine;
 	
 	[SWF(frameRate="60")]
 

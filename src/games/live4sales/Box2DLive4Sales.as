@@ -3,7 +3,7 @@ package games.live4sales {
 	import Box2D.Common.Math.b2Vec2;
 
 	import citrus.core.CitrusEngine;
-	import citrus.core.StarlingState;
+	import citrus.core.starling.StarlingState;
 	import citrus.objects.CitrusSprite;
 	import citrus.physics.box2d.Box2D;
 	import citrus.view.starlingview.AnimationSequence;

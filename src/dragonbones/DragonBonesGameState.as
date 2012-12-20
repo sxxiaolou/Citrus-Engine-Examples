@@ -1,6 +1,6 @@
 package dragonbones {
 
-	import citrus.core.StarlingState;
+	import citrus.core.starling.StarlingState;
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;

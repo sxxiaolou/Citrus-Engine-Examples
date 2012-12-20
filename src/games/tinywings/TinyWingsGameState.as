@@ -1,6 +1,6 @@
 package games.tinywings {
 
-	import citrus.core.StarlingState;
+	import citrus.core.starling.StarlingState;
 	import citrus.math.MathVector;
 	import citrus.physics.nape.Nape;
 	import citrus.view.starlingview.AnimationSequence;

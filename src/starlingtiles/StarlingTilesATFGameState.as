@@ -2,7 +2,7 @@ package starlingtiles
 {
 
 	import citrus.core.CitrusEngine;
-	import citrus.core.StarlingState;
+	import citrus.core.starling.StarlingState;
 	import citrus.math.MathVector;
 	import citrus.objects.Box2DPhysicsObject;
 	import citrus.objects.CitrusSprite;

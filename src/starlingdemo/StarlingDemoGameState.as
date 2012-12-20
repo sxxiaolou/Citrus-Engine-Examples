@@ -3,7 +3,7 @@ package starlingdemo {
 	import Box2D.Dynamics.Contacts.b2Contact;
 
 	import citrus.core.CitrusEngine;
-	import citrus.core.StarlingState;
+	import citrus.core.starling.StarlingState;
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Enemy;
 	import citrus.objects.platformer.box2d.Hero;
@@ -15,7 +15,7 @@ package starlingdemo {
 	import starling.textures.TextureAtlas;
 
 	import flash.display.Bitmap;
-
+	
 	/**
 	 * @author Aymeric
 	 */

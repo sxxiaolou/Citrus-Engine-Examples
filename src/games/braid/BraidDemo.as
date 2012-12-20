@@ -1,7 +1,7 @@
 package games.braid {
 
 	import citrus.core.CitrusEngine;
-	import citrus.core.StarlingState;
+	import citrus.core.starling.StarlingState;
 	import citrus.input.controllers.Keyboard;
 	import citrus.input.controllers.TimeShifter;
 	import citrus.input.controllers.starling.VirtualButtons;
