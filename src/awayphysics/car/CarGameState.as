@@ -2,7 +2,6 @@ package awayphysics.car {
 
 	import away3d.containers.ObjectContainer3D;
 	import away3d.containers.View3D;
-	import away3d.debug.AwayStats;
 	import away3d.entities.Mesh;
 	import away3d.events.LoaderEvent;
 	import away3d.library.AssetLibrary;
@@ -24,7 +23,9 @@ package awayphysics.car {
 	import awayphysics.dynamics.vehicle.AWPVehicleTuning;
 	import awayphysics.dynamics.vehicle.AWPWheelInfo;
 
-	import citrus.core.State;
+	import citrus.core.CitrusEngine;
+	import citrus.core.away3d.Away3DCitrusEngine;
+	import citrus.core.away3d.Away3DState;
 	import citrus.objects.AwayPhysicsObject;
 	import citrus.physics.awayphysics.AwayPhysics;
 	import citrus.view.CitrusView;
@@ -38,11 +39,12 @@ package awayphysics.car {
 	/**
 	 * @author Aymeric, car demo coming from AwayPhysics examples
 	 */
-	public class CarGameState extends State {
+	public class CarGameState extends Away3DState {
 
 		[Embed(source="/../embed/3D/carskin.jpg")]
 		private const CarSkin:Class;
-
+		
+		private var _ce:CitrusEngine;
 		private var _away3D:View3D;
 		private var _awayPhysics:AwayPhysics;
 
@@ -59,15 +61,15 @@ package awayphysics.car {
 
 		public function CarGameState() {
 			super();
+			
+			_ce = CitrusEngine.getInstance();
 		}
 
 		override public function initialize():void {
 
 			super.initialize();
 
-			_away3D = (view as Away3DView).viewRoot;
-
-			addChild(new AwayStats(_away3D));
+			_away3D = (_ce as Away3DCitrusEngine).away3D;
 
 			_awayPhysics = new AwayPhysics("AwayPhysics");
 			// awayPhysics.visible = true;
@@ -95,8 +97,8 @@ package awayphysics.car {
 			_away3D.camera.z = -2000;
 			_away3D.camera.rotationX = 40;
 
-			stage.addEventListener(KeyboardEvent.KEY_DOWN, _keyDownHandler);
-			stage.addEventListener(KeyboardEvent.KEY_UP, _keyUpHandler);
+			_ce.stage.addEventListener(KeyboardEvent.KEY_DOWN, _keyDownHandler);
+			_ce.stage.addEventListener(KeyboardEvent.KEY_UP, _keyUpHandler);
 		}
 		
 		// Make sure and call this override to specify Away3D view.
@@ -107,8 +109,8 @@ package awayphysics.car {
 
 		override public function destroy():void {
 
-			stage.removeEventListener(KeyboardEvent.KEY_DOWN, _keyDownHandler);
-			stage.removeEventListener(KeyboardEvent.KEY_UP, _keyUpHandler);
+			_ce.stage.removeEventListener(KeyboardEvent.KEY_DOWN, _keyDownHandler);
+			_ce.stage.removeEventListener(KeyboardEvent.KEY_UP, _keyUpHandler);
 
 			super.destroy();
 		}
@@ -116,7 +118,7 @@ package awayphysics.car {
 		private function _onSceneResourceComplete(event:LoaderEvent):void {
 
 			var container:ObjectContainer3D = ObjectContainer3D(event.target);
-			(view as Away3DView).container.addChild(container);
+			(view as Away3DView).viewRoot.addChild(container);
 
 			var materia:ColorMaterial = new ColorMaterial(0xfa6c16);
 			materia.lightPicker = _lightPicker;
@@ -154,7 +156,7 @@ package awayphysics.car {
 		private function _onCarResourceComplete(event:LoaderEvent):void {
 
 			var container:ObjectContainer3D = ObjectContainer3D(event.target);
-			(view as Away3DView).container.addChild(container);
+			(view as Away3DView).viewRoot.addChild(container);
 			var mesh:Mesh;
 
 			var carMaterial:TextureMaterial = new TextureMaterial(new BitmapTexture(new CarSkin().bitmapData));

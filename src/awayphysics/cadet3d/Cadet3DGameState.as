@@ -1,13 +1,12 @@
 package awayphysics.cadet3d {
 
 	import away3d.controllers.HoverController;
-	import away3d.debug.AwayStats;
 
-	import citrus.core.State;
+	import citrus.core.CitrusEngine;
+	import citrus.core.away3d.Away3DCitrusEngine;
+	import citrus.core.away3d.Away3DState;
 	import citrus.physics.awayphysics.AwayPhysics;
 	import citrus.utils.objectmakers.ObjectMaker3D;
-	import citrus.view.CitrusView;
-	import citrus.view.away3dview.Away3DView;
 
 	import flash.events.Event;
 	import flash.events.MouseEvent;
@@ -16,10 +15,12 @@ package awayphysics.cadet3d {
 	/**
 	 * @author Aymeric
 	 */
-	public class Cadet3DGameState extends State {
+	public class Cadet3DGameState extends Away3DState {
 		
 		[Embed(source="/../embed/3D/simpletest.away3d4", mimeType="application/octet-stream")]
 		private const _CADET_LEVEL:Class;
+		
+		private var _ce:CitrusEngine;
 		
 		// navigation variables
 		private var _cameraController:HoverController;
@@ -34,13 +35,13 @@ package awayphysics.cadet3d {
 		public function Cadet3DGameState() {
 			
 			super();
+			
+			_ce = CitrusEngine.getInstance();
 		}
 
 		override public function initialize():void {
 			
 			super.initialize();
-			
-			addChild(new AwayStats((view as Away3DView).viewRoot));
 			
 			var awayPhysics:AwayPhysics = new AwayPhysics("awayPhysics");
 			awayPhysics.visible = true;
@@ -48,26 +49,20 @@ package awayphysics.cadet3d {
 			
 			ObjectMaker3D.FromCadetEditor3D(XML(new _CADET_LEVEL()));
 			
-			_cameraController = new HoverController((view as Away3DView).viewRoot.camera, null, 175, 20, 1000);
+			_cameraController = new HoverController((_ce as Away3DCitrusEngine).away3D.camera, null, 175, 20, 1000);
 			
-			stage.addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
-			stage.addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
-			stage.addEventListener(Event.MOUSE_LEAVE, _onMouseUp);
-			stage.addEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
-		}
-		
-		// Make sure and call this override to specify Away3D view.
-		override protected function createView():CitrusView {
-
-			return new Away3DView(this);
+			_ce.stage.addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
+			_ce.stage.addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
+			_ce.stage.addEventListener(Event.MOUSE_LEAVE, _onMouseUp);
+			_ce.stage.addEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
 		}
 		
 		override public function destroy():void {
 
-			stage.removeEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
-			stage.removeEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
-			stage.removeEventListener(Event.MOUSE_LEAVE, _onMouseUp);
-			stage.removeEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
+			_ce.stage.removeEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
+			_ce.stage.removeEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
+			_ce.stage.removeEventListener(Event.MOUSE_LEAVE, _onMouseUp);
+			_ce.stage.removeEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
 
 			super.destroy();
 		}
@@ -77,8 +72,8 @@ package awayphysics.cadet3d {
 			super.update(timeDelta);
 
 			if (_move) {
-				_cameraController.panAngle = 0.3 * (stage.mouseX - _lastMouseX) + _lastPanAngle;
-				_cameraController.tiltAngle = 0.3 * (stage.mouseY - _lastMouseY) + _lastTiltAngle;
+				_cameraController.panAngle = 0.3 * (_ce.stage.mouseX - _lastMouseX) + _lastPanAngle;
+				_cameraController.tiltAngle = 0.3 * (_ce.stage.mouseY - _lastMouseY) + _lastTiltAngle;
 			}
 
 			_cameraController.lookAtPosition = _lookAtPosition;
@@ -87,8 +82,8 @@ package awayphysics.cadet3d {
 		private function _onMouseDown(mEvt:MouseEvent):void {
 			_lastPanAngle = _cameraController.panAngle;
 			_lastTiltAngle = _cameraController.tiltAngle;
-			_lastMouseX = stage.mouseX;
-			_lastMouseY = stage.mouseY;
+			_lastMouseX = _ce.stage.mouseX;
+			_lastMouseY = _ce.stage.mouseY;
 			_move = true;
 		}
 

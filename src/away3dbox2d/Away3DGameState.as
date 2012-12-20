@@ -1,7 +1,6 @@
 package away3dbox2d {
 
 	import away3d.controllers.HoverController;
-	import away3d.debug.AwayStats;
 	import away3d.entities.Mesh;
 	import away3d.library.AssetLibrary;
 	import away3d.loaders.parsers.MD2Parser;
@@ -9,7 +8,9 @@ package away3dbox2d {
 	import away3d.primitives.CubeGeometry;
 	import away3d.primitives.SphereGeometry;
 
-	import citrus.core.State;
+	import citrus.core.CitrusEngine;
+	import citrus.core.away3d.Away3DCitrusEngine;
+	import citrus.core.away3d.Away3DState;
 	import citrus.math.MathVector;
 	import citrus.objects.Box2DPhysicsObject;
 	import citrus.objects.CitrusSprite;
@@ -31,13 +32,15 @@ package away3dbox2d {
 	/**
 	 * @author Aymeric
 	 */
-	public class Away3DGameState extends State {
+	public class Away3DGameState extends Away3DState {
 
 		[Embed(source="/../embed/3D/pknight3.png")]
 		public static var PKnightTexture3:Class;
 
 		[Embed(source="/../embed/3D/pknight.md2", mimeType="application/octet-stream")]
 		public static var PKnightModel:Class;
+		
+		private var _ce:CitrusEngine;
 
 		// navigation variables
 		private var _cameraController:HoverController;
@@ -56,16 +59,16 @@ package away3dbox2d {
 
 		public function Away3DGameState() {
 			super();
+			
+			_ce = CitrusEngine.getInstance();
 		}
 
 		override public function initialize():void {
 
 			super.initialize();
 
-			addChild(new AwayStats((view as Away3DView).viewRoot));
-
 			var box2D:Box2D = new Box2D("box2D");
-			// box2D.visible = true;
+			//box2D.visible = true;
 			add(box2D);
 
 			AssetLibrary.enableParser(MD2Parser);
@@ -81,7 +84,7 @@ package away3dbox2d {
 			(view.getArt(cloud) as Away3DArt).z = 300;
 			// equivalent to -> cube1.z = 300;
 
-			add(new Platform("platformBottom", {x:stage.stageWidth / 2, y:stage.stageHeight - 30, width:2500, height:10, view:cube3}));
+			add(new Platform("platformBottom", {x:_ce.stage.stageWidth / 2, y:_ce.stage.stageHeight - 30, width:2500, height:10, view:cube3}));
 
 			_hero = new Hero("hero", {x:150, y:50, width:80, height:90, view:_heroArt});
 			add(_hero);
@@ -90,20 +93,20 @@ package away3dbox2d {
 			add(coin);
 
 			view.setupCamera(_hero, new MathVector(320, 240), new Rectangle(0, 0, 1550, 450), new MathVector(.25, .05));
-			_cameraController = new HoverController((view as Away3DView).viewRoot.camera, null, 175, 20, 500);
+			_cameraController = new HoverController((_ce as Away3DCitrusEngine).away3D.camera, null, 175, 20, 500);
 
 			_clickMe = new Sprite();
-			_clickMe.y = stage.stageHeight - 50;
-			addChild(_clickMe);
+			_clickMe.y = _ce.stage.stageHeight - 50;
+			_ce.stage.addChild(_clickMe);
 			_clickMe.graphics.beginFill(0xFF0000);
 			_clickMe.graphics.drawRect(10, 0, 40, 40);
 			_clickMe.graphics.endFill();
 			_clickMe.buttonMode = true;
 
-			stage.addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
-			stage.addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
-			stage.addEventListener(Event.MOUSE_LEAVE, _onMouseUp);
-			stage.addEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
+			_ce.stage.addEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
+			_ce.stage.addEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
+			_ce.stage.addEventListener(Event.MOUSE_LEAVE, _onMouseUp);
+			_ce.stage.addEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
 
 			_clickMe.addEventListener(MouseEvent.CLICK, _addBoxes);
 		}
@@ -116,13 +119,13 @@ package away3dbox2d {
 
 		override public function destroy():void {
 
-			stage.removeEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
-			stage.removeEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
-			stage.removeEventListener(Event.MOUSE_LEAVE, _onMouseUp);
-			stage.removeEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
+			_ce.stage.removeEventListener(MouseEvent.MOUSE_DOWN, _onMouseDown);
+			_ce.stage.removeEventListener(MouseEvent.MOUSE_UP, _onMouseUp);
+			_ce.stage.removeEventListener(Event.MOUSE_LEAVE, _onMouseUp);
+			_ce.stage.removeEventListener(MouseEvent.MOUSE_WHEEL, _onMouseWheel);
 
 			_clickMe.addEventListener(MouseEvent.CLICK, _addBoxes);
-			removeChild(_clickMe);
+			_ce.stage.removeChild(_clickMe);
 
 			super.destroy();
 		}
@@ -132,22 +135,22 @@ package away3dbox2d {
 			super.update(timeDelta);
 
 			if (_move) {
-				_cameraController.panAngle = 0.3 * (stage.mouseX - _lastMouseX) + _lastPanAngle;
-				_cameraController.tiltAngle = 0.3 * (stage.mouseY - _lastMouseY) + _lastTiltAngle;
+				_cameraController.panAngle = 0.3 * (_ce.stage.mouseX - _lastMouseX) + _lastPanAngle;
+				_cameraController.tiltAngle = 0.3 * (_ce.stage.mouseY - _lastMouseY) + _lastTiltAngle;
 			}
 
 			_cameraController.lookAtPosition = _lookAtPosition;
 		}
 
 		private function _addBoxes(mEvt:MouseEvent):void {
-			add(new Box2DPhysicsObject("box" + new Date().time, {x:Math.random() * stage.stageWidth, view:new Mesh(new CubeGeometry(30, 30, 30), new ColorMaterial(Math.random() * 0xFFFFFF))}));
+			add(new Box2DPhysicsObject("box" + new Date().time, {x:Math.random() * _ce.stage.stageWidth, view:new Mesh(new CubeGeometry(30, 30, 30), new ColorMaterial(Math.random() * 0xFFFFFF))}));
 		}
 
 		private function _onMouseDown(mEvt:MouseEvent):void {
 			_lastPanAngle = _cameraController.panAngle;
 			_lastTiltAngle = _cameraController.tiltAngle;
-			_lastMouseX = stage.mouseX;
-			_lastMouseY = stage.mouseY;
+			_lastMouseX = _ce.stage.mouseX;
+			_lastMouseY = _ce.stage.mouseY;
 			_move = true;
 		}
 
