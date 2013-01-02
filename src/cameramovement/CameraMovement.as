@@ -2,6 +2,7 @@ package cameramovement {
 
 	import citrus.core.CitrusEngine;
 	import citrus.core.State;
+	import citrus.input.controllers.Keyboard;
 	import citrus.math.MathUtils;
 	import citrus.math.MathVector;
 	import citrus.objects.platformer.box2d.Hero;
@@ -17,9 +18,13 @@ package cameramovement {
 	 * @author Aymeric
 	 */
 	public class CameraMovement extends State {
+		
+		private var _ce:CitrusEngine;
 
 		public function CameraMovement() {
 			super();
+			
+			_ce = CitrusEngine.getInstance();
 		}
 
 		override public function initialize():void {
@@ -35,6 +40,9 @@ package cameramovement {
 
 			add(new Platform("platBot", {x:stage.stageWidth / 2, y:stage.stageHeight, width:3000}));
 			add(new Platform("cloud", {x:450, y:250, width:200, oneWay:true}));
+			
+			var keyboard:citrus.input.controllers.Keyboard = _ce.input.keyboard
+			keyboard.addKeyAction("rotateCamera", flash.ui.Keyboard.R);
 
 			view.setupCamera(hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1550, 450), new MathVector(.25, .05));
 
@@ -52,14 +60,14 @@ package cameramovement {
 
 			super.update(timeDelta);
 			
-			if (CitrusEngine.getInstance().input.isDown(Keyboard.R)) {
+			if (_ce.input.isDoing("rotateCamera")) {
 				
 				// if you use Starling, just move the pivot point!
 				
 				MathUtils.RotateAroundInternalPoint(this, new Point(stage.stageWidth / 2, stage.stageHeight / 2), 1);
 				
-				view.cameraOffset = new MathVector(stage.stageWidth / 2, stage.stageHeight / 2);
-				view.cameraBounds = new Rectangle(0, 0, 1550, 450);
+				view.camera.offset = new MathVector(stage.stageWidth / 2, stage.stageHeight / 2);
+				view.camera.bounds = new Rectangle(0, 0, 1550, 450);
 			}
 		}
 		
@@ -68,8 +76,8 @@ package cameramovement {
 			scaleX = mEvt.delta > 0 ? scaleX + 0.03 : scaleX - 0.03;
 			scaleY = scaleX;
 			
-			view.cameraOffset = new MathVector(stage.stageWidth / 2 / scaleX, stage.stageHeight / 2 / scaleY);
-			view.cameraBounds = new Rectangle(0, 0, 1550 * scaleX, 450 * scaleY);
+			view.camera.offset = new MathVector(stage.stageWidth / 2 / scaleX, stage.stageHeight / 2 / scaleY);
+			view.camera.bounds = new Rectangle(0, 0, 1550 * scaleX, 450 * scaleY);
 		}
 	}
 }

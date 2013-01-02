@@ -52,7 +52,7 @@ package box2dstarling {
 			
 			// PhysicsEditorObjects class is created by the software PhysicsEditor and its additional CitrusEngine template.
 			// Muffins are not in front of everything due to the foreground group param set to 1 in the Level Editor, default is 0.
-			var muffin:PhysicsEditorObjects = new PhysicsEditorObjects("muffin", {peObject:"muffin", view:"muffin.png", registration:"topLeft", x:Math.random() * view.cameraBounds.width});
+			var muffin:PhysicsEditorObjects = new PhysicsEditorObjects("muffin", {peObject:"muffin", view:"muffin.png", registration:"topLeft", x:Math.random() * view.camera.bounds.width});
 			add(muffin);
 		}
 

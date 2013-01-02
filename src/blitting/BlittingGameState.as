@@ -61,8 +61,8 @@ package blitting {
 			view.setupCamera(hero, new MathVector(320, 240), new Rectangle(0, 0, 1200, 400));
 
 			// If you update any properties on the state's view, call updateCanvas() afterwards.
-			view.cameraLensWidth = 800;
-			view.cameraLensHeight = 400;
+			view.camera.cameraLensWidth = 800;
+			view.camera.cameraLensHeight = 400;
 			BlittingView(view).backgroundColor = 0xffffcc88;
 			BlittingView(view).updateCanvas(); // Don't forget to call this
 		}
