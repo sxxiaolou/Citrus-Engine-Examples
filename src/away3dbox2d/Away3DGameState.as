@@ -18,7 +18,7 @@ package away3dbox2d {
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
-	import citrus.view.CitrusView;
+	import citrus.view.ACitrusView;
 	import citrus.view.away3dview.AnimationSequence;
 	import citrus.view.away3dview.Away3DArt;
 	import citrus.view.away3dview.Away3DView;
@@ -112,7 +112,7 @@ package away3dbox2d {
 		}
 
 		// Make sure and call this override to specify Away3D view.
-		override protected function createView():CitrusView {
+		override protected function createView():ACitrusView {
 
 			return new Away3DView(this, "2D");
 		}

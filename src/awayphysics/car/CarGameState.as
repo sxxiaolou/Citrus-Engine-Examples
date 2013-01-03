@@ -28,7 +28,6 @@ package awayphysics.car {
 	import citrus.core.away3d.Away3DState;
 	import citrus.objects.AwayPhysicsObject;
 	import citrus.physics.awayphysics.AwayPhysics;
-	import citrus.view.CitrusView;
 	import citrus.view.away3dview.Away3DView;
 
 	import flash.events.KeyboardEvent;
@@ -99,12 +98,6 @@ package awayphysics.car {
 
 			_ce.stage.addEventListener(KeyboardEvent.KEY_DOWN, _keyDownHandler);
 			_ce.stage.addEventListener(KeyboardEvent.KEY_UP, _keyUpHandler);
-		}
-		
-		// Make sure and call this override to specify Away3D view.
-		override protected function createView():CitrusView {
-
-			return new Away3DView(this);
 		}
 
 		override public function destroy():void {

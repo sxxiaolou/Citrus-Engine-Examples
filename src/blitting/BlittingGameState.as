@@ -6,7 +6,7 @@ package blitting {
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
-	import citrus.view.CitrusView;
+	import citrus.view.ACitrusView;
 	import citrus.view.blittingview.AnimationSequence;
 	import citrus.view.blittingview.BlittingArt;
 	import citrus.view.blittingview.BlittingView;
@@ -68,7 +68,7 @@ package blitting {
 		}
 
 		// Make sure and call this override to specify Blitting mode.
-		override protected function createView():CitrusView {
+		override protected function createView():ACitrusView {
 			
 			return new BlittingView(this);
 		}
