@@ -12,8 +12,6 @@ package games.osmos {
 	import nape.callbacks.PreListener;
 	import nape.constraint.PivotJoint;
 	import nape.geom.Vec2;
-	import nape.phys.Body;
-	import nape.phys.BodyList;
 
 	import flash.display.DisplayObject;
 
@@ -50,7 +48,7 @@ package games.osmos {
 			
 			_nape.space.listeners.add(_onGoingInteraction);
 
-			_hand = new PivotJoint(_nape.space.world, null, new Vec2(), new Vec2());
+			_hand = new PivotJoint(_nape.space.world, _body, new Vec2(), new Vec2());
 			_hand.active = false;
 			_hand.stiff = false;
 			_hand.space = _nape.space;
@@ -99,16 +97,8 @@ package games.osmos {
 			_mouseScope = mouseScope;
 			
 			var mp:Vec2 = new Vec2(mouseScope.mouseX, mouseScope.mouseY);
-            var bodies:BodyList = _nape.space.bodiesUnderPoint(mp);
-            for(var i:int = 0; i < bodies.length; ++i) {
-                var b:Body = bodies.at(i);
-                if(!b.isDynamic()) continue;
-                _hand.body2 = b;
-                _hand.anchor2 = b.worldPointToLocal(mp);
-                _hand.active = true;
-                break;
-            }
-			
+            _hand.anchor2 = _body.worldPointToLocal(mp);
+            _hand.active = true;
 		}
 
 		public function disableHolding():void {
