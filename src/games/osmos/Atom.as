@@ -52,7 +52,7 @@ package games.osmos {
 			_hand.active = false;
 			_hand.stiff = false;
 			_hand.space = _nape.space;
-			_hand.maxForce = 5;
+			_hand.maxForce = 5; //no gravity so very low value!
 		}
 
 		override public function destroy():void {
