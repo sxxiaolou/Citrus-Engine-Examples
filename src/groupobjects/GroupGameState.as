@@ -1,6 +1,5 @@
 package groupobjects {
 
-	import flash.utils.setTimeout;
 	import citrus.core.CitrusGroup;
 	import citrus.core.starling.StarlingState;
 	import citrus.objects.NapePhysicsObject;
@@ -9,6 +8,8 @@ package groupobjects {
 
 	import starling.display.BlendMode;
 	import starling.display.Quad;
+
+	import flash.utils.setTimeout;
 
 	/**
 	 * @author Aymeric
@@ -36,21 +37,28 @@ package groupobjects {
 			add(new Platform("platform right", {x:stage.stageWidth, y:stage.stageHeight / 2, height:stage.stageHeight}));
 			
 			_group = new CitrusGroup("a group");
+			addEntity(_group);
 			
 			var box:NapePhysicsObject;
 			for (var i:uint = 0; i < 7; ++i) {
 					
 				box = new NapePhysicsObject(String(i), {x:_Box_SIZE + Math.random() * (stage.stageWidth - _Box_SIZE), width:_Box_SIZE, height:_Box_SIZE, view:new Quad(_Box_SIZE, _Box_SIZE, Math.random() * 0xFFFFFF)});
 				add(box);
-				_group.add(box);
+				_group.addObject(box);
 			}
 			
 			setTimeout(_addProperties, 3000);
 			
+			var moveComponent:MoveComponent = new MoveComponent("move", {x:100});
+			
+			_group.add(moveComponent);
+			_group.initialize();
 		}
 
 		private function _addProperties():void {
 			
+			setTimeout(_addProperties, 3000);
+						
 			_group.setParamsOnObjects({x:150});
 			_group.setParamsOnViews({blendMode:BlendMode.ERASE});
 			
