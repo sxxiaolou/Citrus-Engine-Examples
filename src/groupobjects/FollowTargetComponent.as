@@ -1,27 +1,31 @@
 package groupobjects {
 
 	import citrus.core.CitrusGroup;
+	import citrus.objects.NapePhysicsObject;
 	import citrus.system.Component;
 
 	/**
 	 * @author Aymeric
 	 */
-	public class MoveComponent extends Component {
-
-		public function MoveComponent(name:String, params:Object = null) {
-			super(name, params);
-		}
+	public class FollowTargetComponent extends Component {
 		
-		override public function initialize(poolObjectParams:Object = null):void {
-			
-			(entity as CitrusGroup).setParamsOnObjects(_params);
+		public var follow:NapePhysicsObject;
+
+		public function FollowTargetComponent(name:String, params:Object = null) {
+			super(name, params);
 		}
 
 		override public function update(timeDelta:Number):void {
 			super.update(timeDelta);
 			
 			for each (var object:Object in (entity as CitrusGroup).groupObjects) {
-				object.x++;
+				
+				if (follow != object) {
+					
+					object.x = follow.x;
+					object.y = follow.y;
+				}
+				
 			}
 		}
 
