@@ -30,6 +30,7 @@ Project Setup
 - bin : pictures, animations, levels, ... loaded at runtime.
 - embed : embedded assets (e.g. fonts, pictures, texture atlas, ...).
 - fla : two levels used in the box2dstarling demo, and two animate characters in two versions one for SpriteArt and one for StarlingArt thanks to the DynamicTextureAtlas class (loaded at runtime).
+- lib : the different swcs used by some demo.
 - src : different demos ready to use! You just need to copy & paste the Main from the package you want into the src/Main.as and the demo will run. Be careful with package & import.
 
 [API](http://citrusengine.com/api/)
