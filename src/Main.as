@@ -13,9 +13,8 @@ package {
 
 		public function Main() {
 
-			// copy & paste here the Main of the differents src project,
-			// be careful with the package & import!
-			// import libraries from the libs folder, select just one Nape swc.
+			// copy & paste here the Main of the differents src project, be careful with the package & import!
+			// you may need the external libraries in the lib folder to run the demo.
 
 			// If you wish to use Starling, the Main class must extends StarlingCitrusEngine!
 			//setUpStarling(true);
