@@ -1,5 +1,5 @@
-package cameramovement
-{
+package cameramovement {
+
 	import citrus.core.CitrusEngine;
 	import citrus.core.CitrusObject;
 	import citrus.core.starling.StarlingState;
@@ -11,12 +11,14 @@ package cameramovement
 	import citrus.physics.nape.Nape;
 	import citrus.view.starlingview.StarlingCamera;
 	import citrus.view.starlingview.StarlingView;
-	import flash.display.Sprite;
-	import flash.events.MouseEvent;
-	import flash.geom.Rectangle;
+
 	import starling.core.Starling;
 	import starling.display.Image;
 	import starling.display.Quad;
+
+	import flash.display.Sprite;
+	import flash.events.MouseEvent;
+	import flash.geom.Rectangle;
 	
 	/**
 	 * ...
