@@ -61,25 +61,29 @@ package cameramovement {
 			
 			_bounds = new Rectangle(0, 0, 2048, 1200);
 			
+			//Background Quad
 			var bq:Quad = new Quad(_bounds.width, _bounds.height, 0xE5E5E5);
 			//do some linear gradient using VertexColor
 			bq.setVertexColor(0, 0x666666);
 			bq.setVertexColor(1, 0x666666);
-			add(new CitrusSprite("back", {x: 0, y: 0, width: _bounds.width, height: _bounds.height, view: bq}));
 			
+			//Floor Quad
 			var fq:Quad = new Quad(2048, 300, 0xCCCCCC);
 			fq.setVertexColor(2, 0xFFFFFF);
 			fq.setVertexColor(3, 0xFFFFFF);
+			
 			_floor = new Platform("floor", {x: 1024, y: 1050, width: 2048, height: 300, group: 1000});
 			_floor.view = fq;
 			
 			_hero = new Hero("hero", {x: 800, y: 500, width: 40, dynamicFriction: 10, height: 80, view: new Quad(40, 80, 0x333333), group: 1000});
 			
 			//additional patforms
-			var f1:Platform = add(new Platform("floor1", {x: 850, y: 750, width: 300, height: 30, view: new Quad(300, 30, 0xCCCCCC), group: 1000})) as Platform;
-			add(new Platform("floor2", {x: 1300, y: 750, width: 300, height: 30, view: new Quad(300, 30, 0xCCCCCC), group: 1000}));
+			add(new Platform("platform1", {x: 850, y: 750, width: 300, height: 30, view: new Quad(300, 30, 0xCCCCCC), group: 1000}));
+			add(new Platform("platform2", {x: 1300, y: 750, width: 300, height: 30, view: new Quad(300, 30, 0xCCCCCC), group: 1000}));
 			add(new Platform("wall1", {x: 1765, y: 800, width: 30, height: 250, view: new Quad(30, 250, 0xCCCCCC), group: 1000}));
 			add(new Platform("wall2", {x: 500, y: 800, width: 30, height: 250, view: new Quad(30, 250, 0xCCCCCC), group: 1000}));
+			
+			add(new CitrusSprite("background", { x: 0, y: 0, width: _bounds.width, height: _bounds.height, view: bq } ));
 			
 			add(_floor);
 			add(_hero);
