@@ -134,7 +134,7 @@ package games.braid {
 			
 			this.scaleX = this.scaleY = 0.5;
 			
-			view.setupCamera(hero.camTarget, new MathVector(stage.stageWidth / 2  , stage.stageHeight / 2 ),
+			view.camera.setUp(hero.camTarget, new MathVector(stage.stageWidth / 2  , stage.stageHeight / 2 ),
 			new Rectangle(0, 0, 2400, 1200), new MathVector(.25, .25));
 			
 			if (Mobile.isAndroid()) {

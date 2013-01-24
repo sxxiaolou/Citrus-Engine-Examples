@@ -52,7 +52,7 @@ package tiledmap.starling {
 
 			var hero:Hero = getObjectByName("hero") as Hero;
 
-			view.setupCamera(hero, new MathVector(stage.stageWidth / 2, 240), new Rectangle(0, 0, 1280, 640), new MathVector(.25, .05));
+			view.camera.setUp(hero, new MathVector(stage.stageWidth / 2, 240), new Rectangle(0, 0, 1280, 640), new MathVector(.25, .05));
 
 			(view.getArt(getObjectByName("foreground")) as StarlingArt).alpha = 0.3;
 		}

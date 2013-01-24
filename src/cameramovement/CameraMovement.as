@@ -44,7 +44,7 @@ package cameramovement {
 			var keyboard:citrus.input.controllers.Keyboard = _ce.input.keyboard
 			keyboard.addKeyAction("rotateCamera", flash.ui.Keyboard.R);
 
-			view.setupCamera(hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1550, 450), new MathVector(.25, .05));
+			view.camera.setUp(hero, new MathVector(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 1550, 450), new MathVector(.25, .05));
 
 			stage.addEventListener(MouseEvent.MOUSE_WHEEL, _mouseWheel);
 		}

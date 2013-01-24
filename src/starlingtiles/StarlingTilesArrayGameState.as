@@ -79,7 +79,7 @@ package starlingtiles
 			_hero.view = heroImage;
 			
 			// setup camera to follow hero
-			view.setupCamera(_hero, new MathVector(400, 300), new Rectangle(0, 0, 4096, 1024), new MathVector(0.25, 0.15));
+			view.camera.setUp(_hero, new MathVector(400, 300), new Rectangle(0, 0, 4096, 1024), new MathVector(0.25, 0.15));
 			
 			
 			// bitmaps in array converted to tiles

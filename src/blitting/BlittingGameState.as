@@ -58,7 +58,7 @@ package blitting {
 			var hero:Hero = new Hero("Hero", {x:320, y:150, view:heroArt});
 			add(hero);
 
-			view.setupCamera(hero, new MathVector(320, 240), new Rectangle(0, 0, 1200, 400));
+			view.camera.setUp(hero, new MathVector(320, 240), new Rectangle(0, 0, 1200, 400));
 
 			// If you update any properties on the state's view, call updateCanvas() afterwards.
 			view.camera.cameraLensWidth = 800;

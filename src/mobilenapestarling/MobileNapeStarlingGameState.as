@@ -111,7 +111,7 @@ package mobilenapestarling {
 
 			add(new Platform("platformBot", {x:gameLength / 2, y:320, width:gameLength, height:10}));
 
-			view.setupCamera(_mobileHero, new MathVector(_mobileHero.width, 0), new Rectangle(0, 0, gameLength, 0), new MathVector(.25, .05));
+			view.camera.setUp(_mobileHero, new MathVector(_mobileHero.width, 0), new Rectangle(0, 0, gameLength, 0), new MathVector(.25, .05));
 
 			_timerParticle = new Timer(500);
 			_timerParticle.addEventListener(TimerEvent.TIMER, _particleCreation);
