@@ -1,47 +1,25 @@
 package {
 
-	import box2dstarling.ALevel;
-	import box2dstarling.MyGameData;
+	import citrus.core.CitrusEngine;
 
-	import citrus.core.IState;
-	import citrus.core.starling.StarlingCitrusEngine;
-	import citrus.utils.LevelManager;
+	import games.osmos.OsmosGameState;
 
 	[SWF(frameRate="60")]
-	
+
 	/**
-	 * @author Aymeric
-	 */
-	public class Main extends StarlingCitrusEngine {
-		
+	* @author Aymeric
+	*/
+	public class Main extends CitrusEngine {
+
 		public function Main() {
-			
-			setUpStarling(true);
-			
-			gameData = new MyGameData();
-			
-			levelManager = new LevelManager(ALevel);
-			levelManager.onLevelChanged.add(_onLevelChanged);
-			levelManager.levels = gameData.levels;
-			levelManager.gotoLevel();
-		}
-		
-		private function _onLevelChanged(lvl:ALevel):void {
 
-			state = lvl;
+			// copy & paste here the Main of the differents src project, be careful with the package & import!
+			// you may need the external libraries in the lib folder to run the demo.
 
-			lvl.lvlEnded.add(_nextLevel);
-			lvl.restartLevel.add(_restartLevel);
-		}
+			// If you wish to use Starling, the Main class must extends StarlingCitrusEngine!
+			//setUpStarling(true);
 
-		private function _nextLevel():void {
-
-			levelManager.nextLevel();
-		}
-
-		private function _restartLevel():void {
-
-			state = levelManager.currentLevel as IState;
+			state = new OsmosGameState();
 		}
 	}
 }
