@@ -18,14 +18,17 @@ package cameramovement
 	import starling.display.Image;
 	import starling.display.Quad;
 	
-	import cameramovement.Assets;
-	
 	/**
 	 * ...
 	 * @author gsynuh
 	 */
 	public class CameraMovement extends StarlingState
 	{
+		
+		[Embed(source = "/../embed/cloud.png")]
+		public const Cloud:Class;
+		
+		
 		private var _nape:Nape;
 		
 		private var _bounds:Rectangle;
@@ -89,7 +92,7 @@ package cameramovement
 			var total:uint = 80;
 			for (i = 0; i < total; i++)
 			{
-				cloudIMG = Image.fromBitmap(new Assets.cloud());
+				cloudIMG = Image.fromBitmap(new Cloud());
 				cloudIMG.scaleX = cloudIMG.scaleY = (i / total + 0.5);
 				cloudIMG.scaleX *= (Math.random() <= 0.5) ? -1 : 1;
 				cloud = new CitrusSprite("cloud" + String(i), {view: cloudIMG, group: i});
@@ -117,7 +120,7 @@ package cameramovement
 			//X will rotate by 90°
 			kb.addKeyAction("rotate", Keyboard.X);
 			
-			//R resets cloud positions
+			//R randomizes cloud positions
 			kb.addKeyAction("regen", Keyboard.R);
 		
 		}
