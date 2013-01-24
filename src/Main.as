@@ -13,7 +13,7 @@ package {
 
 		public function Main() {
 
-			// copy & paste here the Main of the differents src project, be careful with the package & import!
+			// copy & paste here the Main class of the differents src project, be careful with the package & import!
 			// you may need the external libraries in the lib folder to run the demo.
 
 			// If you wish to use Starling, the Main class must extends StarlingCitrusEngine!
