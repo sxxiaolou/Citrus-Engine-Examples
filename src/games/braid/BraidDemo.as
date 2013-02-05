@@ -4,7 +4,7 @@ package games.braid {
 	import citrus.core.starling.StarlingState;
 	import citrus.input.controllers.Keyboard;
 	import citrus.input.controllers.TimeShifter;
-	import citrus.input.controllers.starling.VirtualButtons;
+	import citrus.input.controllers.starling.VirtualButton;
 	import citrus.input.controllers.starling.VirtualJoystick;
 	import citrus.math.MathVector;
 	import citrus.objects.CitrusSprite;
@@ -142,10 +142,9 @@ package games.braid {
 				var vj:VirtualJoystick = new VirtualJoystick("joy",{radius:120});
 				vj.circularBounds = true;
 				
-				var vb:VirtualButtons = new VirtualButtons("buttons",{buttonradius:40});
-				vb.button1Action = "timeshift";
-				vb.button1Channel = 16;
-				vb.button2Action = "jump";
+				var vb:VirtualButton = new VirtualButton("buttons",{buttonradius:40});
+				vb.buttonAction = "timeshift";
+				vb.buttonChannel = 16;
 			}
 			
 			var s:SoundPlaybackControl = new SoundPlaybackControl(new Assets.sound1(),timeshifter);
