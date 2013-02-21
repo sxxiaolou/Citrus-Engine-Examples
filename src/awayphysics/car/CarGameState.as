@@ -43,7 +43,6 @@ package awayphysics.car {
 		[Embed(source="/../embed/3D/carskin.jpg")]
 		private const CarSkin:Class;
 		
-		private var _ce:CitrusEngine;
 		private var _away3D:View3D;
 		private var _awayPhysics:AwayPhysics;
 
@@ -60,8 +59,6 @@ package awayphysics.car {
 
 		public function CarGameState() {
 			super();
-			
-			_ce = CitrusEngine.getInstance();
 		}
 
 		override public function initialize():void {

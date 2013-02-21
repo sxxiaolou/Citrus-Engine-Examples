@@ -18,7 +18,7 @@ package games.live4sales.objects {
 		
 		public var onDestroyed:Signal;
 		
-		private var _coinDurationTimeoutID:Number = 0;
+		private var _coinDurationTimeoutID:uint = 0;
 
 		public function Coin(texture:Texture) {
 			

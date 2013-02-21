@@ -1,7 +1,6 @@
 package starlingtiles 
 {
 
-	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingState;
 	import citrus.math.MathVector;
 	import citrus.objects.Box2DPhysicsObject;
@@ -38,7 +37,6 @@ package starlingtiles
 		public var lvlEnded:Signal;
 		public var restartLevel:Signal;
 		
-		protected var _ce:CitrusEngine;
 		protected var _level:MovieClip;
 		
 		private var _hero:Hero;
@@ -46,8 +44,6 @@ package starlingtiles
 		public function StarlingTilesGameState(level:MovieClip = null) 
 		{
 			super();
-			
-			_ce = CitrusEngine.getInstance();
 			
 			_level = level;
 			

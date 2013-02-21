@@ -1,4 +1,7 @@
 package box2dstarling {
+	
+	import box2dstarling.ALevel;
+	import box2dstarling.MyGameData;
 
 	import citrus.core.IState;
 	import citrus.core.starling.StarlingCitrusEngine;

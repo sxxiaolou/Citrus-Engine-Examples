@@ -2,6 +2,8 @@ package games.braid {
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.utils.Mobile;
+	
+	import games.braid.BraidDemo;
 
 	import starling.core.Starling;
 

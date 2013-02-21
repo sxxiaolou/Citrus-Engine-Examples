@@ -1,6 +1,5 @@
 package games.braid {
 
-	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingState;
 	import citrus.input.controllers.Keyboard;
 	import citrus.input.controllers.TimeShifter;
@@ -121,7 +120,7 @@ package games.braid {
 			timeshifter.onActivated.add(function():void { _shake = true; _newBackScale = 2.1; } );
 			timeshifter.onDeactivated.add(function():void { _easeTimer = 0; changeOverlay(0); _shake = false; x = 0; y = 0; _newBackScale = 2; } );;
 			
-			var keyboard:Keyboard = CitrusEngine.getInstance().input.keyboard as Keyboard;
+			var keyboard:Keyboard = _ce.input.keyboard as Keyboard;
 			keyboard.addKeyAction("timeshift", Keyboard.SHIFT, 16);
 			
 			keyboard.addKeyAction("left", Keyboard.Q,1);

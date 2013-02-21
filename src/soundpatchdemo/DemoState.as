@@ -2,7 +2,6 @@ package soundpatchdemo {
 
 	import Box2D.Dynamics.Contacts.b2Contact;
 
-	import citrus.core.CitrusEngine;
 	import citrus.core.CitrusObject;
 	import citrus.core.State;
 	import citrus.math.MathVector;
@@ -30,13 +29,11 @@ package soundpatchdemo {
 		private var _clickScreen:ClickScreen;
 		private var _signMessage:SignMessage;
 		private var _hero:Hero;
-		private var _ce:CitrusEngine;
 		private var _sign:Sensor;
 		private var _jewels:Vector.<CitrusObject>;
 
 		public function DemoState(objectsMC:MovieClip) {
 			super();
-			_ce = CitrusEngine.getInstance();
 			_objectsMC = objectsMC;
 			
 			var objects:Array = [Platform, Hero, CitrusSprite, Sensor, Coin, Enemy, WindmillArms, Crate];

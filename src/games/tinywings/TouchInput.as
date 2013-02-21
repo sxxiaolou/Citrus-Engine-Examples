@@ -3,10 +3,10 @@ package games.tinywings {
 	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.input.Input;
+
 	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
-
 
 	/**
 	 * @author Aymeric

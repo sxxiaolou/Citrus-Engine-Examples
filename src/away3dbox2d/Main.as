@@ -1,5 +1,7 @@
 package away3dbox2d {
-
+	
+	import away3dbox2d.Away3DGameState;
+	
 	import citrus.core.away3d.Away3DCitrusEngine;
 
 	[SWF(frameRate="60")]

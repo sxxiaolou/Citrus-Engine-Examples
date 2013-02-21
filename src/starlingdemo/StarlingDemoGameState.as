@@ -2,7 +2,6 @@ package starlingdemo {
 
 	import Box2D.Dynamics.Contacts.b2Contact;
 
-	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingState;
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Enemy;
@@ -26,8 +25,6 @@ package starlingdemo {
 		
 		[Embed(source="/../embed/Hero.png")]
 		private var _heroPng:Class;
-		
-		private var _ce:CitrusEngine;
 
 		public function StarlingDemoGameState() {
 			super();
@@ -35,8 +32,6 @@ package starlingdemo {
 
 		override public function initialize():void {
 			super.initialize();
-			
-			_ce = CitrusEngine.getInstance();
 			
 			var box2D:Box2D = new Box2D("box2D");
 			box2D.visible = true;

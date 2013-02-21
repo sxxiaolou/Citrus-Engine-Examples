@@ -5,7 +5,6 @@ package awayphysics.platformer3d {
 	import away3d.materials.ColorMaterial;
 	import away3d.primitives.CubeGeometry;
 
-	import citrus.core.CitrusEngine;
 	import citrus.core.away3d.Away3DCitrusEngine;
 	import citrus.core.away3d.Away3DState;
 	import citrus.objects.AwayPhysicsObject;
@@ -23,8 +22,6 @@ package awayphysics.platformer3d {
 	 */
 	public class Platformer3DGameState extends Away3DState {
 		
-		private var _ce:CitrusEngine;
-		
 		// navigation variables
 		private var _cameraController:HoverController;
 
@@ -37,8 +34,6 @@ package awayphysics.platformer3d {
 
 		public function Platformer3DGameState() {
 			super();
-			
-			_ce = CitrusEngine.getInstance();
 		}
 
 		override public function initialize():void {

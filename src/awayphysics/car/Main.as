@@ -1,4 +1,6 @@
 package awayphysics.car {
+	
+	import awayphysics.car.CarGameState;
 
 	import citrus.core.away3d.Away3DCitrusEngine;
 

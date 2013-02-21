@@ -2,7 +2,6 @@ package box2dstarling {
 
 	import Box2D.Dynamics.Contacts.b2Contact;
 
-	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingState;
 	import citrus.math.MathVector;
 	import citrus.objects.CitrusSprite;
@@ -36,7 +35,6 @@ package box2dstarling {
 		public var lvlEnded:Signal;
 		public var restartLevel:Signal;
 		
-		protected var _ce:CitrusEngine;
 		protected var _level:MovieClip;
 		
 		protected var _hero:Hero;
@@ -59,8 +57,6 @@ package box2dstarling {
 		public function ALevel(level:MovieClip = null) {
 			
 			super();
-			
-			_ce = CitrusEngine.getInstance();
 			
 			_level = level;
 			

@@ -1,6 +1,5 @@
 package games.live4sales {
 
-	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingState;
 	import citrus.objects.CitrusSprite;
 	import citrus.physics.nape.Nape;
@@ -27,7 +26,6 @@ package games.live4sales {
 	 */
 	public class NapeLive4Sales extends StarlingState {
 
-		private var _ce:CitrusEngine;
 		private var _hud:Hud;
 		private var _coinsCreation:CoinsCreation;
 		private var _enemiesCreation:EnemiesCreation;
@@ -35,8 +33,6 @@ package games.live4sales {
 		public function NapeLive4Sales() {
 			
 			super();
-
-			_ce = CitrusEngine.getInstance();
 		}
 
 		override public function initialize():void {

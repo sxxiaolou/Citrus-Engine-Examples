@@ -1,4 +1,6 @@
 package cameramovement {
+	
+	import cameramovement.CameraMovement;
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	

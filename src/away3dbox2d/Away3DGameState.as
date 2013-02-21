@@ -8,7 +8,6 @@ package away3dbox2d {
 	import away3d.primitives.CubeGeometry;
 	import away3d.primitives.SphereGeometry;
 
-	import citrus.core.CitrusEngine;
 	import citrus.core.away3d.Away3DCitrusEngine;
 	import citrus.core.away3d.Away3DState;
 	import citrus.math.MathVector;
@@ -39,8 +38,6 @@ package away3dbox2d {
 
 		[Embed(source="/../embed/3D/pknight.md2", mimeType="application/octet-stream")]
 		public static var PKnightModel:Class;
-		
-		private var _ce:CitrusEngine;
 
 		// navigation variables
 		private var _cameraController:HoverController;
@@ -59,8 +56,6 @@ package away3dbox2d {
 
 		public function Away3DGameState() {
 			super();
-			
-			_ce = CitrusEngine.getInstance();
 		}
 
 		override public function initialize():void {

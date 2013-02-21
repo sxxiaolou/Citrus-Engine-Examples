@@ -2,7 +2,6 @@ package awayphysics.cadet3d {
 
 	import away3d.controllers.HoverController;
 
-	import citrus.core.CitrusEngine;
 	import citrus.core.away3d.Away3DCitrusEngine;
 	import citrus.core.away3d.Away3DState;
 	import citrus.physics.awayphysics.AwayPhysics;
@@ -20,8 +19,6 @@ package awayphysics.cadet3d {
 		[Embed(source="/../embed/3D/simpletest.away3d4", mimeType="application/octet-stream")]
 		private const _CADET_LEVEL:Class;
 		
-		private var _ce:CitrusEngine;
-		
 		// navigation variables
 		private var _cameraController:HoverController;
 
@@ -33,10 +30,7 @@ package awayphysics.cadet3d {
 		private var _lookAtPosition:Vector3D = new Vector3D();
 
 		public function Cadet3DGameState() {
-			
 			super();
-			
-			_ce = CitrusEngine.getInstance();
 		}
 
 		override public function initialize():void {

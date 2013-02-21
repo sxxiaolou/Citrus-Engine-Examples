@@ -1,6 +1,5 @@
 package cameramovement {
 
-	import citrus.core.CitrusEngine;
 	import citrus.core.CitrusObject;
 	import citrus.core.starling.StarlingState;
 	import citrus.input.controllers.Keyboard;
@@ -40,8 +39,6 @@ package cameramovement {
 		private var _clouds:Vector.<CitrusSprite>;
 		
 		private var _camera:StarlingCamera;
-		
-		private var _ce:CitrusEngine;
 		
 		private var _debugSprite:Sprite;
 		
@@ -120,7 +117,6 @@ package cameramovement {
 			Starling.current.nativeStage.addEventListener(MouseEvent.MOUSE_WHEEL, onWheel);
 			
 			// get the keyboard, and add actions.
-			_ce = CitrusEngine.getInstance();
 			var kb:Keyboard = _ce.input.keyboard;
 			
 			//X will rotate by 90°

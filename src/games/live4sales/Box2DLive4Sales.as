@@ -2,7 +2,6 @@ package games.live4sales {
 
 	import Box2D.Common.Math.b2Vec2;
 
-	import citrus.core.CitrusEngine;
 	import citrus.core.starling.StarlingState;
 	import citrus.objects.CitrusSprite;
 	import citrus.physics.box2d.Box2D;
@@ -27,7 +26,6 @@ package games.live4sales {
 	 */
 	public class Box2DLive4Sales extends StarlingState {
 
-		private var _ce:CitrusEngine;
 		private var _hud:Hud;
 		private var _coinsCreation:CoinsCreation;
 		private var _enemiesCreation:EnemiesCreation;
@@ -35,8 +33,6 @@ package games.live4sales {
 		public function Box2DLive4Sales() {
 			
 			super();
-
-			_ce = CitrusEngine.getInstance();
 		}
 
 		override public function initialize():void {
