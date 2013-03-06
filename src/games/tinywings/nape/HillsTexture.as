@@ -1,4 +1,4 @@
-package games.tinywings {
+package games.tinywings.nape {
 
 	import nape.phys.Body;
 

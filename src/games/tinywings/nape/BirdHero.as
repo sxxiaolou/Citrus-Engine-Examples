@@ -1,4 +1,4 @@
-package games.tinywings {
+package games.tinywings.nape {
 
 	import citrus.objects.platformer.nape.Hero;
 	import citrus.objects.platformer.nape.Platform;
