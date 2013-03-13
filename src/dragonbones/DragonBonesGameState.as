@@ -104,7 +104,7 @@ package dragonbones {
 			super.update(timeDelta);
 			
 			// call update on each dragonbones animation
-			WorldClock.clock.advanceTime(-1);
+			WorldClock.clock.advanceTime(timeDelta);
 		}
 
 	}
