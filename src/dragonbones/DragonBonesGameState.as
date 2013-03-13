@@ -8,7 +8,6 @@ package dragonbones {
 
 	import dragonBones.Armature;
 	import dragonBones.Bone;
-	import dragonBones.animation.WorldClock;
 	import dragonBones.factorys.StarlingFactory;
 
 	import starling.display.Image;
@@ -98,13 +97,6 @@ package dragonbones {
 			var _bone:Bone = _armature.getBone("clothes");
 			_bone.display.dispose();
 			_bone.display = _image;
-		}
-			
-		override public function update(timeDelta:Number):void {
-			super.update(timeDelta);
-			
-			// call update on each dragonbones animation
-			WorldClock.clock.advanceTime(timeDelta);
 		}
 
 	}
