@@ -8,6 +8,7 @@ package dragonbones {
 
 	import dragonBones.Armature;
 	import dragonBones.Bone;
+	import dragonBones.animation.WorldClock;
 	import dragonBones.factorys.StarlingFactory;
 
 	import starling.display.Image;
@@ -92,11 +93,18 @@ package dragonbones {
 
 			// Get image instance from texture data.
 			var _textureName:String = _textures[_textureIndex];
-			var _image:Image = StarlingFactory.getTextureDisplay(_factory.textureAtlasData, _textureName);
+			var _image:Image = _factory.getTextureDisplay(_textureName) as Image;
 			// Replace bone.display by the new texture. Don't forget to dispose.
 			var _bone:Bone = _armature.getBone("clothes");
 			_bone.display.dispose();
 			_bone.display = _image;
+		}
+			
+		override public function update(timeDelta:Number):void {
+			super.update(timeDelta);
+			
+			// call update on each dragonbones animation
+			WorldClock.clock.advanceTime(-1);
 		}
 
 	}
