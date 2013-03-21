@@ -22,6 +22,8 @@ package games.live4sales.box2d.objects {
 
 		public function Block(name:String, params:Object = null) {
 			
+			updateCallEnabled = true;
+			
 			super(name, params);
 			
 			_timerHurt = new Timer(1000);

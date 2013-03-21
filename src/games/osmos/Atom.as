@@ -31,7 +31,9 @@ package games.osmos {
 		private var _mouseScope:DisplayObject;
 
 		public function Atom(name:String, params:Object = null) {
-
+			
+			updateCallEnabled = true;
+			
 			super(name, params);
 		}
 			
