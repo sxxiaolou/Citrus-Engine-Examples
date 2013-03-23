@@ -27,6 +27,8 @@ package games.live4sales.nape.characters {
 		public function SalesWoman(name:String, params:Object = null) {
 			
 			updateCallEnabled = true;
+			_beginContactCallEnabled = true;
+			_endContactCallEnabled = true;
 			
 			super(name, params);
 			
