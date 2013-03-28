@@ -72,7 +72,7 @@ package mobilenapestarling {
 			
 			var gameLength:uint = 25000;
 			
-			add(new CitrusSprite("backgroud", {parallax:0.02, view:new Image(Assets.getTexture("Background"))}));
+			add(new CitrusSprite("backgroud", {parallaxX:0.02, parallaxY:0.02, view:new Image(Assets.getTexture("Background"))}));
 			
 			var bitmap:Bitmap = new _fontPng();
 			var texture:Texture = Texture.fromBitmap(bitmap);

@@ -79,7 +79,7 @@ package starlingtiles
 			
 			
 			// bitmaps in array converted to tiles
-			var tileSprite:CitrusSprite = new CitrusSprite("tile_bg_sprite_0", { x:0, y:0, parallax:0.6 } );
+			var tileSprite:CitrusSprite = new CitrusSprite("tile_bg_sprite_0", { x:0, y:0, parallaxX:0.6, parallaxY:0.6 } );
 			var tiles:Array = MyTiles.tile_0;
 			var tileSystem:StarlingTileSystem = new StarlingTileSystem(tiles);
 			
@@ -97,7 +97,7 @@ package starlingtiles
 			if (Starling.current.context.driverInfo.toLowerCase().search("software") < 0) {
 				
 				// add upper background
-				tileSprite = new CitrusSprite("tile_bg_sprite_1", { x:0, y:0, parallax:0.8 } );
+				tileSprite = new CitrusSprite("tile_bg_sprite_1", { x:0, y:0, parallaxX:0.8, parallaxY:0.8 } );
 				tiles = MyTiles.tile_1;
 				tileSystem = new StarlingTileSystem(tiles);
 				

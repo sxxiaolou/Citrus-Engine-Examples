@@ -74,7 +74,7 @@ package away3dbox2d {
 			var cube2:Mesh = new Mesh(new SphereGeometry(15), new ColorMaterial(0xFFFF00));
 			var cube3:Mesh = new Mesh(new CubeGeometry(2500, 10, 300), new ColorMaterial(0xFFFFFF));
 
-			var cloud:CitrusSprite = new CitrusSprite("cloud", {x:150, y:50, width:300, height:300, view:cube1, parallax:0.3});
+			var cloud:CitrusSprite = new CitrusSprite("cloud", {x:150, y:50, width:300, height:300, view:cube1, parallaxX:0.3, parallaxY:0.3});
 			add(cloud);
 			(view.getArt(cloud) as Away3DArt).z = 300;
 			// equivalent to -> cube1.z = 300;

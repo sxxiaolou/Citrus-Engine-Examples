@@ -78,7 +78,7 @@ package starlingtiles
 			
 			
 			// movieclip on stage converted to tiles
-			var tileSprite:CitrusSprite = new CitrusSprite("tile_bg_sprite_0", { x:0, y:0, parallax:0.6 } );
+			var tileSprite:CitrusSprite = new CitrusSprite("tile_bg_sprite_0", { x:0, y:0, parallaxX:0.6, parallaxY:0.6 } );
 			var tileSystem:StarlingTileSystem = new StarlingTileSystem(MovieClip(_level.getChildByName("tile_background_0")));
 			
 			tileSystem.parallax = 0.6;
@@ -97,7 +97,7 @@ package starlingtiles
 			if (Starling.current.context.driverInfo.toLowerCase().search("software") < 0) {
 				
 				// add upper background
-				tileSprite = new CitrusSprite("tile_bg_sprite_1", { x:0, y:0, parallax:0.8 } );
+				tileSprite = new CitrusSprite("tile_bg_sprite_1", { x:0, y:0, parallaxX:0.8, parallaxY:0.8 } );
 				tileSystem = new StarlingTileSystem(MovieClip(_level.getChildByName("tile_background_1")));
 				
 				tileSystem.parallax = 0.8;

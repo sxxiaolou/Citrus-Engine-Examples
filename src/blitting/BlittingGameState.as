@@ -46,7 +46,7 @@ package blitting {
 			add(new Platform("P1", {x:320, y:400, width:2000, height:20}));
 
 			// You can quickly create a graphic by passing the embedded class into a new blitting art object.
-			add(new CitrusSprite("Hills", {parallax:0.5, view:new BlittingArt(_hillsClass)}));
+			add(new CitrusSprite("Hills", {parallaxX:0.5, parallaxY:0.5, view:new BlittingArt(_hillsClass)}));
 
 			// Set up your game object's animations like this;
 			var heroArt:BlittingArt = new BlittingArt();

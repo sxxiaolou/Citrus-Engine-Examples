@@ -64,7 +64,7 @@ package games.braid {
 			var nape:Nape = new Nape("nape");
 			add(nape);
 			
-			background = new CitrusSprite("background", { view:Image.fromBitmap(new Assets.bg1()) , parallax:0.2 } );
+			background = new CitrusSprite("background", { view:Image.fromBitmap(new Assets.bg1()) , parallaxX:0.2 } );
 			background.view.pivotX = background.x = background.view.width/2;
 			background.view.pivotY = background.y = background.view.height / 2;
 			background.y += 250;
@@ -72,7 +72,7 @@ package games.braid {
 			add(background);
 			
 			// the overlay will be above everything thanks to the grou property
-			overlay = new CitrusSprite("overlay", {parallax:0, group:1});
+			overlay = new CitrusSprite("overlay", {parallaxX:0,parallaxY:0, group:1});
 			overlayQuadBlue = new Quad(stage.stageWidth*2, stage.stageHeight*2, 0x0000FF);
 			overlayQuadYellow = new Quad(stage.stageWidth * 2, stage.stageHeight * 2, 0xFFFF00);
 			overlayQuadBlue.blendMode = BlendMode.MULTIPLY;

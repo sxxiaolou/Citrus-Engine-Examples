@@ -83,7 +83,8 @@ package starlingtiles
 			var tiles:Array = MyTiles.tile_atf_0;
 			var tileSystem:StarlingTileSystem = new StarlingTileSystem(tiles);
 			
-			tileSystem.parallax = 0.8;
+			tileSystem.parallaxX = 0.8;
+			tileSystem.parallaxY = 0.8;
 			tileSystem.atf = true;
 			tileSystem.name = "tile_bg_tiles_0";
 			tileSystem.tileWidth = 1024;
@@ -120,7 +121,8 @@ package starlingtiles
 			tiles = MyTiles.tile_2;
 			tileSystem = new StarlingTileSystem(tiles);
 			
-			tileSystem.parallax = 1.2;
+			tileSystem.parallaxX = 1.2;
+			tileSystem.parallaxY = 1.2;
 			tileSystem.atf = true;
 			tileSystem.name = "tile_bg_tiles_2";
 			tileSystem.tileWidth = 1024;
@@ -139,7 +141,8 @@ package starlingtiles
 			tiles = MyTiles.tile_atf_3;
 			tileSystem = new StarlingTileSystem(tiles);
 			
-			tileSystem.parallax = 1.4;
+			tileSystem.parallaxX = 1.4;
+			tileSystem.parallaxY = 1.4;
 			tileSystem.atf = true;
 			tileSystem.tileWidth = 1024;
 			tileSystem.tileHeight = 1024;
