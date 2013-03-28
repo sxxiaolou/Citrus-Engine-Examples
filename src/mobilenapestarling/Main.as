@@ -34,9 +34,9 @@ package mobilenapestarling {
 			state = new MobileNapeStarlingGameState();
 		}
 		
-		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewport:Rectangle = null):void {
+		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewport:Rectangle = null, profile:String = "baseline"):void {
 			
-			super.setUpStarling(debugMode, antiAliasing, viewport);
+			super.setUpStarling(debugMode, antiAliasing, viewport, profile);
 			
 			if (compileForMobile) {
 				// set iPhone & iPad size, used for Starling contentScaleFactor

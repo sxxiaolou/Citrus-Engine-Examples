@@ -1,13 +1,13 @@
 package games.live4sales.box2d.objects {
 
 	import citrus.core.starling.StarlingCitrusEngine;
-	import flash.events.TimerEvent;
-	import flash.utils.Timer;
+
 	import games.live4sales.assets.Assets;
 	import games.live4sales.events.MoneyEvent;
 	import games.live4sales.objects.Coin;
 
-
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
 
 	/**
 	 * @author Aymeric

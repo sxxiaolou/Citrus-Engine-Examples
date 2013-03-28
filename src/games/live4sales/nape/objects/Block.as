@@ -23,6 +23,10 @@ package games.live4sales.nape.objects {
 
 		public function Block(name:String, params:Object = null) {
 			
+			updateCallEnabled = true;
+			_beginContactCallEnabled = true;
+			_endContactCallEnabled = true;
+			
 			super(name, params);
 			
 			_timerHurt = new Timer(1000);

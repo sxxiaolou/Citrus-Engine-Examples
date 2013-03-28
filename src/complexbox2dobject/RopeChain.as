@@ -33,11 +33,14 @@ package complexbox2dobject{
 		private var _shapeChain:b2Shape;
 
 		public function RopeChain(name:String, params:Object = null) {
+			
+			updateCallEnabled = true;
+			
 			super(name, params);
 		}
 			
-		override public function initialize(poolObjectParams:Object = null):void {
-			super.initialize(poolObjectParams);
+		override public function addPhysics():void {
+			super.addPhysics();
 			
 			if (view)
 				(view as RopeChainGraphics).init(numChain, widthChain, heightChain);

@@ -25,6 +25,10 @@ package games.live4sales.box2d.characters {
 
 		public function SalesWoman(name:String, params:Object = null) {
 			
+			updateCallEnabled = true;
+			_beginContactCallEnabled = true;
+			_endContactCallEnabled = true;
+			
 			super(name, params);
 			
 			_timerHurt = new Timer(1000);
@@ -54,6 +58,8 @@ package games.live4sales.box2d.characters {
 				_firing = true;
 			else
 				_firing = false;
+				
+			_updateAnimation();
 		}
 
 		override public function handleBeginContact(contact:b2Contact):void {

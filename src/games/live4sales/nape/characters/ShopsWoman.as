@@ -30,6 +30,10 @@ package games.live4sales.nape.characters {
 
 		public function ShopsWoman(name:String, params:Object = null) {
 			
+			updateCallEnabled = true;
+			_beginContactCallEnabled = true;
+			_endContactCallEnabled = true;
+			
 			super(name, params);
 			
 			onTouchLeftSide = new Signal();
