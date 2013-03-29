@@ -6,8 +6,6 @@ package games.braid {
 	import games.braid.BraidDemo;
 
 	import starling.core.Starling;
-
-	import flash.geom.Rectangle;
 	
 	[SWF(frameRate="60")]
 
@@ -20,10 +18,9 @@ package games.braid {
 				
 				Starling.handleLostContext = true;
 				Starling.multitouchEnabled = true;
-				
-				setUpStarling(true, 1, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
-			} else
-				setUpStarling(true, 1);
+			}
+			
+			setUpStarling(true);
 				
 			state = new BraidDemo();
 		}
