@@ -33,6 +33,7 @@ package games.osmos {
 		public function Atom(name:String, params:Object = null) {
 			
 			updateCallEnabled = true;
+			touchable = true;
 			
 			super(name, params);
 		}

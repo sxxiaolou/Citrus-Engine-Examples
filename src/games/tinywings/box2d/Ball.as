@@ -17,9 +17,14 @@ package games.tinywings.box2d {
 
 			super(name, params);
 
-			body.SetFixedRotation(false);
 			_friction = 40;
 			maxVelocity = 10;
+		}
+			
+		override public function addPhysics():void {
+			super.addPhysics();
+			
+			body.SetFixedRotation(false);
 		}
 
 		override public function destroy():void {
