@@ -42,7 +42,7 @@ package entity {
 			var input:InputComponent = new InputComponent("input");
 			var collision:HeroCollisionComponent = new HeroCollisionComponent("collision");
 			var move:HeroMovementComponent = new HeroMovementComponent("move");
-			_view = new HeroViewComponent("view", {view:"PatchSpriteArt.swf"});
+			_view = new HeroViewComponent("view", {touchable:true, view:"PatchSpriteArt.swf"});
 			
 			_heroEntity.add(_physics).add(input).add(collision).add(move).add(_view);
 			_heroEntity.initialize();
