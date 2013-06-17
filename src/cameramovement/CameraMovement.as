@@ -3,7 +3,6 @@ package cameramovement {
 	import citrus.core.CitrusObject;
 	import citrus.core.starling.StarlingState;
 	import citrus.input.controllers.Keyboard;
-	import citrus.math.MathVector;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.nape.Hero;
 	import citrus.objects.platformer.nape.Platform;
@@ -17,6 +16,7 @@ package cameramovement {
 
 	import flash.display.Sprite;
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
 	/**
@@ -108,7 +108,7 @@ package cameramovement {
 			
 			//camera setup
 			_camera = view.camera as StarlingCamera;
-			_camera.setUp(_hero, new MathVector(stage.stageWidth / 2 - 150, stage.stageHeight / 2 + 50), _bounds, new MathVector(0.05, 0.05));
+			_camera.setUp(_hero, new Point(stage.stageWidth / 2 - 150, stage.stageHeight / 2 + 50), _bounds, new Point(0.05, 0.05));
 			_camera.restrictZoom = true;
 			_camera.allowRotation = true;
 			_camera.allowZoom = true;

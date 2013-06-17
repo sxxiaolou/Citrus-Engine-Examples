@@ -103,11 +103,11 @@ package statetransitions {
 		}
 
 		private function heroHurt():void {
-			_ce.sound.playSound("Hurt", 1, 0);
+			_ce.sound.playSound("Hurt");
 		}
 
 		private function heroAttack():void {
-			_ce.sound.playSound("Kill", 1, 0);
+			_ce.sound.playSound("Kill");
 		}
 
 		private function coinTouched(contact:b2Contact):void {

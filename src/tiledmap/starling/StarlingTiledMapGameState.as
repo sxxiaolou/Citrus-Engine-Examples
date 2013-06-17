@@ -1,7 +1,6 @@
 package tiledmap.starling {
 
 	import citrus.core.starling.StarlingState;
-	import citrus.math.MathVector;
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.physics.box2d.Box2D;
@@ -12,6 +11,7 @@ package tiledmap.starling {
 	import starling.textures.TextureAtlas;
 
 	import flash.display.Bitmap;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
 	/**
@@ -52,7 +52,7 @@ package tiledmap.starling {
 
 			var hero:Hero = getObjectByName("hero") as Hero;
 
-			view.camera.setUp(hero, new MathVector(stage.stageWidth / 2, 240), new Rectangle(0, 0, 1280, 640), new MathVector(.25, .05));
+			view.camera.setUp(hero, new Point(stage.stageWidth / 2, 240), new Rectangle(0, 0, 1280, 640), new Point(.25, .05));
 
 			(view.getArt(getObjectByName("foreground")) as StarlingArt).alpha = 0.3;
 		}

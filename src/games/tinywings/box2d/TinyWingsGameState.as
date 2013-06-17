@@ -1,10 +1,11 @@
 package games.tinywings.box2d {
 
 	import Box2D.Common.Math.b2Vec2;
-	
+
 	import citrus.core.starling.StarlingState;
-	import citrus.math.MathVector;
 	import citrus.physics.box2d.Box2D;
+
+	import flash.geom.Point;
 
 	/**
 	 * @author Cyril Poëtte
@@ -42,7 +43,7 @@ package games.tinywings.box2d {
 			var hills:HillsManagingGraphics = new HillsManagingGraphics("hills",{rider:_ball, sliceWidth:30, roundFactor:20, sliceHeight:800, widthHills:stage.stageWidth, registration:"topLeft", view:_hillsTexture});
 			add(hills);
 			
-			view.camera.setUp(_ball, new MathVector(stage.stageWidth/4 , stage.stageHeight/2));
+			view.camera.setUp(_ball, new Point(stage.stageWidth/4 , stage.stageHeight/2));
 			
 		}
 			

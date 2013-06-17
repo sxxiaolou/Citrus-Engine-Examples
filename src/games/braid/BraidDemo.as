@@ -5,7 +5,6 @@ package games.braid {
 	import citrus.input.controllers.TimeShifter;
 	import citrus.input.controllers.starling.VirtualButton;
 	import citrus.input.controllers.starling.VirtualJoystick;
-	import citrus.math.MathVector;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.nape.Platform;
 	import citrus.physics.nape.Nape;
@@ -24,6 +23,7 @@ package games.braid {
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
 
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 
 	public class BraidDemo extends StarlingState
@@ -133,8 +133,8 @@ package games.braid {
 			
 			this.scaleX = this.scaleY = 0.5;
 			
-			view.camera.setUp(hero.camTarget, new MathVector(stage.stageWidth / 2  , stage.stageHeight / 2 ),
-			new Rectangle(0, 0, 2400, 1200), new MathVector(.25, .25));
+			view.camera.setUp(hero.camTarget, new Point(stage.stageWidth / 2  , stage.stageHeight / 2 ),
+			new Rectangle(0, 0, 2400, 1200), new Point(.25, .25));
 			
 			if (Mobile.isAndroid()) {
 				

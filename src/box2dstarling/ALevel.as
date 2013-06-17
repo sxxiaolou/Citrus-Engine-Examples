@@ -3,7 +3,6 @@ package box2dstarling {
 	import Box2D.Dynamics.Contacts.b2Contact;
 
 	import citrus.core.starling.StarlingState;
-	import citrus.math.MathVector;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.box2d.Enemy;
 	import citrus.objects.platformer.box2d.Hero;
@@ -25,6 +24,7 @@ package box2dstarling {
 
 	import flash.display.Bitmap;
 	import flash.display.MovieClip;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 
 	/**
@@ -113,7 +113,7 @@ package box2dstarling {
 			_hero.view = new AnimationSequence(sTextureAtlas, ["walk", "duck", "idle", "jump", "hurt"], "idle");
 			_hero.hurtDuration = 500;
 
-			view.camera.setUp(_hero, new MathVector(320, 240), new Rectangle(0, 0, 1550, 450), new MathVector(.25, .05));
+			view.camera.setUp(_hero, new Point(320, 240), new Rectangle(0, 0, 1550, 450), new Point(.25, .05));
 		}
 		
 		protected function _changeLevel(contact:b2Contact):void {

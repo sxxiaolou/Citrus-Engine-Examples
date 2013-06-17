@@ -1,7 +1,6 @@
 package blitting {
 
 	import citrus.core.State;
-	import citrus.math.MathVector;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
@@ -11,6 +10,7 @@ package blitting {
 	import citrus.view.blittingview.BlittingArt;
 	import citrus.view.blittingview.BlittingView;
 
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
 	/**
@@ -58,7 +58,7 @@ package blitting {
 			var hero:Hero = new Hero("Hero", {x:320, y:150, view:heroArt});
 			add(hero);
 
-			view.camera.setUp(hero, new MathVector(320, 240), new Rectangle(0, 0, 1200, 400));
+			view.camera.setUp(hero, new Point(320, 240), new Rectangle(0, 0, 1200, 400));
 
 			// If you update any properties on the state's view, call updateCanvas() afterwards.
 			view.camera.cameraLensWidth = 800;
