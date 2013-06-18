@@ -5,7 +5,6 @@ package soundpatchdemo {
 
 	import citrus.core.CitrusObject;
 	import citrus.core.State;
-	import citrus.math.MathVector;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Crate;
@@ -80,9 +79,6 @@ package soundpatchdemo {
 			_jewels = getObjectsByType(Coin);
 			for each (var jewel:Coin in _jewels)
 				jewel.onBeginContact.add(handleJewelCollected);
-				
-			_ce.sound.masterVolume = 1;
-			_ce.sound.masterMute = false;
 		}
 
 		override public function update(timeDelta:Number):void {

@@ -13,7 +13,7 @@ package dragonbones {
 
 			setUpStarling(true);
 
-			state = new DragonBonesGameState();
+			state = new DragonBonesStarling();
 		}
 	}
 }

@@ -18,15 +18,14 @@ package soundpatchdemo {
 		public function Main() {
 
 			// Create audio assets
-			sound.addSound("Collect", {sound:"sounds/collect.mp3",volume:1,group:CitrusSoundGroup.SFX});
-			sound.addSound("Hurt", {sound:"sounds/hurt.mp3",volume:1,group:CitrusSoundGroup.SFX});
-			sound.addSound("Jump", {sound:"sounds/jump.mp3",volume:1,group:CitrusSoundGroup.SFX});
-			sound.addSound("Kill", {sound:"sounds/kill.mp3",volume:1,group:CitrusSoundGroup.SFX});
-			sound.addSound("Skid", {sound:"sounds/skid.mp3",volume:1,group:CitrusSoundGroup.SFX});
-			sound.addSound("Song", {sound:"sounds/song.mp3",volume:1,timesToPlay:-1,group:CitrusSoundGroup.BGM});
-			sound.addSound("Walk", { sound:"sounds/walk.mp3", timesToPlay: -1, volume:1, group:CitrusSoundGroup.SFX } );
+			sound.addSound("Collect", {sound:"sounds/collect.mp3",group:CitrusSoundGroup.SFX});
+			sound.addSound("Hurt", {sound:"sounds/hurt.mp3",group:CitrusSoundGroup.SFX});
+			sound.addSound("Jump", {sound:"sounds/jump.mp3",group:CitrusSoundGroup.SFX});
+			sound.addSound("Kill", {sound:"sounds/kill.mp3",group:CitrusSoundGroup.SFX});
+			sound.addSound("Skid", {sound:"sounds/skid.mp3",group:CitrusSoundGroup.SFX});
+			sound.addSound("Song", {sound:"sounds/song.mp3",timesToPlay:-1,group:CitrusSoundGroup.BGM});
+			sound.addSound("Walk", { sound:"sounds/walk.mp3",timesToPlay: -1, volume:1, group:CitrusSoundGroup.SFX } );
 			
-			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.4; 
 
 			var loader:Loader = new Loader();
 			loader.load(new URLRequest("levels/SoundPatchDemo/SoundPatchDemo.swf"));

@@ -1,8 +1,8 @@
-package starlingdemo {
+package statetransitions {
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	
-	import starlingdemo.StarlingDemoGameState;
+	import statetransitions.StarlingDemoStateTransition;
 
 	[SWF(frameRate="60")]
 
@@ -18,7 +18,7 @@ package starlingdemo {
 			sound.addSound("Hurt", {sound:"sounds/hurt.mp3"});
 			sound.addSound("Kill", {sound:"sounds/kill.mp3"});
 
-			state = new StarlingDemoGameState();
+			state = new StarlingDemoStateTransition();
 		}
 	}
 }
