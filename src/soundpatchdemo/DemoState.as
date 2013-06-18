@@ -4,7 +4,6 @@ package soundpatchdemo {
 
 	import citrus.core.CitrusObject;
 	import citrus.core.State;
-	import citrus.math.MathVector;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Crate;
@@ -19,6 +18,7 @@ package soundpatchdemo {
 
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 
 	public class DemoState extends State {
@@ -70,7 +70,7 @@ package soundpatchdemo {
 			_hero.onAnimationChange.add(handleHeroAnimationChange);
 			_hero.controlsEnabled = false;
 
-			view.camera.setUp(_hero, new MathVector(320, 240), new Rectangle(0, 0, 3300, 417), new MathVector(.25, .05));
+			view.camera.setUp(_hero, new Point(320, 240), new Rectangle(0, 0, 3300, 417), new Point(.25, .05));
 
 			_sign = getObjectByName("signSensor") as Sensor;
 			_sign.onBeginContact.add(handleEnterSign);
@@ -136,7 +136,7 @@ package soundpatchdemo {
 			if (Box2DUtils.CollisionGetOther(self, contact) != _hero)
 				return;
 
-			_ce.sound.playSound("Collect", 1, 0);
+			_ce.sound.playSound("Collect");
 
 			_jewelMeter.collectJewel();
 			if (_jewelMeter.jewelsCollected == 5) {
@@ -147,28 +147,28 @@ package soundpatchdemo {
 		}
 
 		private function handleHeroJump():void {
-			_ce.sound.playSound("Jump", 1, 0);
+			_ce.sound.playSound("Jump");
 		}
 
 		private function handleHeroGiveDamage():void {
-			_ce.sound.playSound("Kill", 1, 0);
+			_ce.sound.playSound("Kill");
 		}
 
 		private function handleHeroTakeDamage():void {
-			_ce.sound.playSound("Hurt", 1, 0);
+			_ce.sound.playSound("Hurt");
 		}
 
 		private function handleHeroAnimationChange():void {
 			if (_hero.animation == "walk") {
 				_ce.sound.stopSound("Skid");
-				_ce.sound.playSound("Walk", 1);
+				_ce.sound.playSound("Walk");
 				return;
 			} else {
 				_ce.sound.stopSound("Walk");
 			}
 
 			if (_hero.animation == "skid") {
-				_ce.sound.playSound("Skid", 1, 0);
+				_ce.sound.playSound("Skid");
 				return;
 			} else {
 				_ce.sound.stopSound("Skid");

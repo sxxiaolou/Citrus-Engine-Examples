@@ -15,8 +15,8 @@ package starlingdemo {
 
 			setUpStarling(true);
 			
-			sound.addSound("Hurt", "sounds/hurt.mp3");
-			sound.addSound("Kill", "sounds/kill.mp3");
+			sound.addSound("Hurt", {sound:"sounds/hurt.mp3"});
+			sound.addSound("Kill", {sound:"sounds/kill.mp3"});
 
 			state = new StarlingDemoGameState();
 		}

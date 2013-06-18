@@ -2,7 +2,6 @@ package starlingtiles
 {
 
 	import citrus.core.starling.StarlingState;
-	import citrus.math.MathVector;
 	import citrus.objects.Box2DPhysicsObject;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.box2d.Hero;
@@ -21,6 +20,7 @@ package starlingtiles
 
 	import flash.display.Bitmap;
 	import flash.display.MovieClip;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
 	
 	/**
@@ -75,7 +75,7 @@ package starlingtiles
 			_hero.view = heroImage;
 			
 			// setup camera to follow hero
-			view.camera.setUp(_hero, new MathVector(400, 300), new Rectangle(0, 0, 4096, 1024), new MathVector(0.25, 0.15));
+			view.camera.setUp(_hero, new Point(400, 300), new Rectangle(0, 0, 4096, 1024), new Point(0.25, 0.15));
 			
 			
 			// bitmaps in array converted to tiles
