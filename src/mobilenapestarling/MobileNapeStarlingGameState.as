@@ -72,7 +72,7 @@ package mobilenapestarling {
 			
 			var gameLength:uint = 25000;
 			
-			add(new CitrusSprite("backgroud", {parallaxX:0.02, parallaxY:0.02, view:new Image(Assets.getTexture("Background"))}));
+			add(new CitrusSprite("backgroud", {parallaxX:0.02, parallaxY:0, view:new Image(Assets.getTexture("Background"))}));
 			
 			var bitmap:Bitmap = new _fontPng();
 			var texture:Texture = Texture.fromBitmap(bitmap);
@@ -109,10 +109,9 @@ package mobilenapestarling {
 			_psconfig = new XML(new _particleConfig());
 			_psTexture = Texture.fromBitmap(new _particlePng());
 
-			add(new Platform("platformBot", {x:gameLength / 2, y:320, width:gameLength, height:10}));
-
-			view.camera.setUp(_mobileHero, new Point(_mobileHero.width, 0), new Rectangle(0, 0, gameLength, 0), new Point(.25, .05));
-
+			add(new Platform("platformBot", { x:gameLength / 2, y:320, width:gameLength, height:10 } ));
+			
+			view.camera.setUp(_mobileHero, new Point(_mobileHero.width, 0), new Rectangle(0, 0, gameLength, _mobileHero.y), new Point(.25, .05));
 			_timerParticle = new Timer(500);
 			_timerParticle.addEventListener(TimerEvent.TIMER, _particleCreation);
 			_timerParticle.start();	
