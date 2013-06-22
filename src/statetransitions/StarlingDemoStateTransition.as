@@ -77,6 +77,9 @@ package statetransitions {
 
 				randomTransition(_ce.state as StarlingState, _ce.futureState as StarlingState).onComplete(function():void {
 					_ce.state = _ce.futureState;
+					
+					// you may call a function from your new state here to initialize many objects.
+					// it may be lagging to do it directly in your initialize method if you're on mobile.
 				});
 			}, 4000);
 		}
