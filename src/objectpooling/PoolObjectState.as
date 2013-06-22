@@ -1,14 +1,15 @@
 package objectpooling 
 {
+
 	import citrus.core.CitrusObject;
 	import citrus.core.starling.StarlingState;
 	import citrus.datastructures.PoolObject;
 	import citrus.objects.NapeObjectPool;
 	import citrus.objects.platformer.nape.Crate;
 	import citrus.physics.nape.Nape;
-	import flash.events.KeyboardEvent;
-	import flash.utils.Dictionary;
+
 	import nape.geom.Vec2;
+
 	import starling.core.Starling;
 	import starling.display.Quad;
 	import starling.display.Sprite;
@@ -16,7 +17,9 @@ package objectpooling
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	import starling.utils.Color;
-	
+
+	import flash.events.KeyboardEvent;
+	import flash.utils.Dictionary;	
 
 	public class PoolObjectState extends StarlingState
 	{
@@ -38,7 +41,6 @@ package objectpooling
 		{
 			
 		}
-
 		
 		override public function initialize():void
 		{
@@ -75,7 +77,7 @@ package objectpooling
 			});
 			
 			
-			Starling.current.stage.addEventListener(TouchEvent.TOUCH, _onTouch);
+			stage.addEventListener(TouchEvent.TOUCH, _onTouch);
 			Starling.current.nativeStage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		}
 		
@@ -140,7 +142,7 @@ package objectpooling
 		 */
 		private function _onTouch(e:TouchEvent):void
 		{
-			var t:Touch = e.getTouch(Starling.current.stage);
+			var t:Touch = e.getTouch(stage);
 			
 			if (t)
 			{
@@ -241,7 +243,7 @@ package objectpooling
 		override public function destroy():void
 		{
 			Starling.current.nativeStage.removeEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
-			Starling.current.stage.removeEventListener(TouchEvent.TOUCH, _onTouch);
+			stage.removeEventListener(TouchEvent.TOUCH, _onTouch);
 			
 			super.destroy();
 			touchDic = null;
