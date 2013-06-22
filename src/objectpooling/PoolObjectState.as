@@ -131,9 +131,6 @@ package objectpooling
 			delete touchDic[(c.view as Sprite).getChildByName("main")];
 		}
 		
-		private var touchX:uint = 0;
-		private var touchY:uint = 0;
-		
 		/**
 		 * When touching a crate, I want to dispose of it.
 		 * when touching outside of a crate, I want to create one at that position, using a free object if there is one.
@@ -141,13 +138,7 @@ package objectpooling
 		private function _onTouch(e:TouchEvent):void
 		{
 			var t:Touch = e.getTouch(Starling.current.stage);
-			
-			if (t)
-			{
-				touchX = t.globalX;
-				touchY = t.globalY;
-			}
-			
+
 			if (t && t.phase == TouchPhase.BEGAN)
 			{
 				if (t.target in touchDic)
