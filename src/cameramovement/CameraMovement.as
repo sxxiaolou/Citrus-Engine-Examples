@@ -9,12 +9,17 @@ package cameramovement {
 	import citrus.physics.nape.Nape;
 	import citrus.view.starlingview.StarlingCamera;
 	import citrus.view.starlingview.StarlingView;
+	import starling.events.Touch;
+	import starling.events.TouchEvent;
+	import starling.events.TouchPhase;
 
 	import starling.core.Starling;
 	import starling.display.Image;
 	import starling.display.Quad;
 
 	import flash.display.Sprite;
+	import starling.display.Sprite;
+	
 	import flash.events.MouseEvent;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -40,9 +45,11 @@ package cameramovement {
 		
 		private var _camera:StarlingCamera;
 		
-		private var _debugSprite:Sprite;
+		private var _debugSprite:flash.display.Sprite;
 		
-		public function CameraMovement(dsprite:Sprite)
+		private var _mouseTarget:Point = new Point();
+		
+		public function CameraMovement(dsprite:flash.display.Sprite)
 		{
 			super();
 			_debugSprite = dsprite;
@@ -112,6 +119,8 @@ package cameramovement {
 			_camera.allowRotation = true;
 			_camera.allowZoom = true;
 			
+			_camera.target = _mouseTarget;
+			
 			//Listen to MouseWheel
 			Starling.current.nativeStage.addEventListener(MouseEvent.MOUSE_WHEEL, onWheel);
 			
@@ -123,6 +132,8 @@ package cameramovement {
 			
 			//R randomizes cloud positions
 			kb.addKeyAction("regen", Keyboard.R);
+			
+			Starling.current.stage.addEventListener(TouchEvent.TOUCH,onTouch);
 		
 		}
 		
@@ -134,13 +145,24 @@ package cameramovement {
 				_camera.setZoom(_camera.getZoom() - 0.1);
 		}
 		
+		private var p:Point = new Point();
+		private function onTouch(e:TouchEvent):void
+		{
+			var t:Touch = e.getTouch(Starling.current.stage);
+			if (t)
+			{
+				p.setTo(t.globalX, t.globalY);
+				((view as StarlingView).viewRoot as starling.display.Sprite).globalToLocal(p,_mouseTarget);
+			}
+		}
+		
 		override public function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
 			
 			//camera render debug 
 			
-			_camera.renderDebug(_debugSprite);
+			_camera.renderDebug(_debugSprite as flash.display.Sprite);
 			_debugSprite.scaleX = 0.2 * 0.6;
 			_debugSprite.scaleY = 0.2 * 0.6;
 			_debugSprite.x = 500;
