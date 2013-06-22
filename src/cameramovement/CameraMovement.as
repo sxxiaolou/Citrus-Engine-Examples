@@ -109,7 +109,6 @@ package cameramovement {
 			//camera setup
 			_camera = view.camera as StarlingCamera;
 			_camera.setUp(_hero, new Point(stage.stageWidth / 2 - 150, stage.stageHeight / 2 + 50), _bounds, new Point(0.05, 0.05));
-			_camera.restrictZoom = true;
 			_camera.allowRotation = true;
 			_camera.allowZoom = true;
 			
