@@ -123,6 +123,9 @@ package cameramovement {
 			_camera.parallaxMode = ACitrusCamera.PARALLAX_MODE_DEPTH;
 			_camera.boundsMode = ACitrusCamera.BOUNDS_MODE_AABB;
 			
+			_camera.setZoom(1.2);
+			_camera.reset();
+			
 			_camera.target = _mouseTarget;
 			
 			//Listen to MouseWheel
