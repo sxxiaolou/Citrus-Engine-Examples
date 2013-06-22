@@ -152,8 +152,14 @@ package objectpooling
 			{
 				if (t.target in touchDic)
 				{
-					/*touchDic links all colored quad to their corresponding citrus object (crate).
-					 * setting a pooled object to kill will not destroy it, it will simply be disposed and joined the pool of other free objects.
+					/* touchDic links all colored quad to their corresponding citrus object (crate).
+					 * (we create this link in _handleCrateRecycle)
+					 * 
+					 * setting a pooled object to kill will not destroy it, it will simply be disposed and join the pool of other free objects.
+					 * 
+					 * When disposing of an object,
+					 * the view (display objects) is turned invisible, the updates are no longer called, and the bodies are rendered inactive.
+					 * this is the default behavior. if you do need more things to happen when disposing of an object, that's what the signals are for !
 					 * */
 					(touchDic[t.target] as CitrusObject).kill = true;
 				}
@@ -194,19 +200,19 @@ package objectpooling
 			var c:Crate;
 			
 			if(disposeAll)
-				_napeCrate.disposeAll(); //disposes of all objects -> throws them in the pool and makes them free for future use.
+				_napeCrate.disposeAll(); //disposes of all objects -> makes them free for future use.
 			
 			//create a new set of crates from the pool
 			for (i = 0; i < objNum; i++)
 			{
-				//create or recycle a new crate, giving the a new x/y position
+				//create or recycle a new crate, giving them a new x/y position
 				c = (
 				_napeCrate.get(
 				{ x:stage.stageWidth / 2 +(Math.random() * 300 - 150),
 				y:stage.stageHeight / 2 +(Math.random() * 300 - 150) }
 				).data 
 				as Crate);
-				//randomize the color of the centered quad
+				//randomize the color of the crate
 				((c.view as Sprite).getChildByName("main") as Quad).color = Color.rgb(122,80,80) * Math.random() + 0x555555;
 				
 				//kill some recycled crates randomly (just to show that we can do this anytime.)
