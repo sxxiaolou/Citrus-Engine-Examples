@@ -84,7 +84,7 @@ package objectpooling
 		 */
 		private function onKeyDown(e:KeyboardEvent):void
 		{
-			_ce.state = new NapePoolObjectTest();
+			_ce.state = new PoolObjectState();
 		}
 		
 		/**
