@@ -7,6 +7,7 @@ package cameramovement {
 	import citrus.objects.platformer.nape.Hero;
 	import citrus.objects.platformer.nape.Platform;
 	import citrus.physics.nape.Nape;
+	import citrus.view.ACitrusCamera;
 	import citrus.view.starlingview.StarlingCamera;
 	import citrus.view.starlingview.StarlingView;
 	import starling.events.Touch;
@@ -118,6 +119,9 @@ package cameramovement {
 			_camera.setUp(_hero, new Point(stage.stageWidth / 2 - 150, stage.stageHeight / 2 + 50), _bounds, new Point(0.05, 0.05));
 			_camera.allowRotation = true;
 			_camera.allowZoom = true;
+			
+			_camera.parallaxMode = ACitrusCamera.PARALLAX_MODE_DEPTH;
+			_camera.boundsMode = ACitrusCamera.BOUNDS_MODE_AABB;
 			
 			_camera.target = _mouseTarget;
 			
