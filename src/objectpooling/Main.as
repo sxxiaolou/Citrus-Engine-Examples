@@ -11,7 +11,7 @@ package objectpooling {
 		
 		public function Main() {
 			
-			state = new ObjectPoolingGameState();
+			state = new PoolObjectState();
 		}
 	}
 }
