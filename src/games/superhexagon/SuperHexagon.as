@@ -10,6 +10,12 @@ package games.superhexagon
 	import flash.text.TextFieldAutoSize;
 	import flash.text.TextFormat;
 	
+	/**
+	 * A quick example inspired by the awesome SuperHexagon game : http://superhexagon.com/
+	 * 
+	 * This state uses flash only and the Graphics class to draw the entire game.
+	 * The existing structure CE provides lets us focus on what's more important when prototyping games !
+	 */
 	public class SuperHexagon extends State
 	{
 		//reference to the camera
@@ -67,6 +73,8 @@ package games.superhexagon
 		{
 			super.initialize();
 			
+			_ce.onStageResize.add(handleResize);
+			
 			camTarget = new MathVector(0, 0);
 			camOffset =  new Point(_ce.screenWidth * 0.5, _ce.screenHeight *0.5);
 			
@@ -76,8 +84,7 @@ package games.superhexagon
 			cam.rotationEasing = 1;
 			cam.zoomEasing = 1;
 			
-			//fit 700x700 in current stage and store ratio in baseZoom (used to create the 'pulsing' effect in update)
-			cam.baseZoom = cam.zoomFit(700, 700);
+			handleResize(_ce.screenWidth, _ce.screenHeight);
 			
 			//grab reference to the state container
 			stateSprite = ((view as SpriteView).viewRoot as Sprite);
@@ -216,6 +223,19 @@ package games.superhexagon
 				else
 					hexCanvas.graphics.moveTo(pp.x, pp.y);
 			}
+		}
+		
+		/**
+		 * resets the camera so that we always see what we want to see (here a 700x700 area)
+		 */
+		protected function handleResize(w:int, h:int):void
+		{
+			cam.cameraLensWidth = w;
+			cam.cameraLensHeight = h;
+			camOffset.x = w * 0.5;
+			camOffset.y = h * 0.5;
+			cam.baseZoom = cam.zoomFit(700, 700);
+			cam.setZoom(1);
 		}
 		
 		override public function update(timeDelta:Number):void
@@ -365,6 +385,7 @@ package games.superhexagon
 		 */
 		override public function destroy():void
 		{
+			_ce.onStageResize.remove(handleResize);
 			removeChild(timerText);
 			stateSprite.removeChild(hexCanvas);
 			map.length = 0;
