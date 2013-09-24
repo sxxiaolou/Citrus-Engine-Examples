@@ -234,8 +234,7 @@ package games.superhexagon
 			cam.cameraLensHeight = h;
 			camOffset.x = w * 0.5;
 			camOffset.y = h * 0.5;
-			cam.baseZoom = cam.zoomFit(700, 700);
-			cam.setZoom(1);
+			cam.zoomFit(700, 700, true);
 		}
 		
 		override public function update(timeDelta:Number):void
