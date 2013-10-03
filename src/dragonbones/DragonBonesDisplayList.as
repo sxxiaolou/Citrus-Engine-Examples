@@ -7,7 +7,7 @@ package dragonbones {
 
 	import dragonBones.Armature;
 	import dragonBones.Bone;
-	import dragonBones.factorys.BaseFactory;
+	import dragonBones.factorys.NativeFactory;
 
 	import flash.display.Shape;
 	import flash.display.Sprite;
@@ -28,7 +28,7 @@ package dragonbones {
 		[Embed(source="/../embed/Hero.png")]
 		private const _heroPng:Class;
 
-		private var _factory:BaseFactory;
+		private var _factory:NativeFactory;
 		private var _armature:Armature;
 
 		private var _textures:Array = ["parts/clothes1", "parts/clothes2", "parts/clothes3", "parts/clothes4"];
@@ -41,7 +41,7 @@ package dragonbones {
 		override public function initialize():void {
 			super.initialize();
 
-			_factory = new BaseFactory();
+			_factory = new NativeFactory();
 			_factory.addEventListener(Event.COMPLETE, _textureCompleteHandler);
 			_factory.parseData(new _ResourcesData());
 			
