@@ -2,6 +2,7 @@ package multiresolutions {
 
 	import citrus.core.starling.StarlingCitrusEngine;
 
+	import multiresolutions.Assets;
 	import multiresolutions.MultiResolutionsState;
 	import multiresolutions.Utils;
 
@@ -9,9 +10,10 @@ package multiresolutions {
 	import starling.utils.AssetManager;
 
 	import flash.display3D.Context3DProfile;
+	import flash.events.Event;
 	import flash.geom.Rectangle;
 
-	[SWF(backgroundColor="#FFFFFF", frameRate="60", width="960", height="640")]
+	[SWF(backgroundColor="#86f8ff", frameRate="60", width="480", height="320")]
 	
 	/**
 	 * @author Aymeric
@@ -21,12 +23,18 @@ package multiresolutions {
 		static public var ScaleFactor:Number;
 
 		public function Main() {
+			
+		}
+			
+		override protected function handleAddedToStage(e:flash.events.Event):void {
+			super.handleAddedToStage(e);
+			
 			setUpStarling(true);
 		}
 
 		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewPort:Rectangle = null, profile:String = "baseline"):void {
 			
-			ScaleFactor = Utils.FindScaleFactor(stage.stageWidth, stage.stageHeight);
+			ScaleFactor = Utils.FindScaleFactor(screenWidth, screenHeight);
 
 			// -swf-version=21
 			if (ScaleFactor >= 4)
@@ -35,7 +43,7 @@ package multiresolutions {
 				super.setUpStarling(debugMode, antiAliasing, viewPort, profile);
 		}
 
-		override protected function _context3DCreated(evt:Event):void {
+		override protected function _context3DCreated(evt:starling.events.Event):void {
 			super._context3DCreated(evt);
 
 			Assets.assets = new AssetManager();

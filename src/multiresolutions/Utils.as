@@ -5,9 +5,9 @@ package multiresolutions {
 	 */
 	public class Utils {
 
-		static public function FindScaleFactor(fullScreenWidth:Number, fullScreenHeight:Number):Number {
+		static public function FindScaleFactor(screenWidth:Number, screenHeight:Number):Number {
 			
-			var minValue:Number = Math.min(fullScreenWidth, fullScreenHeight);
+			var minValue:Number = Math.min(screenWidth, screenHeight);
 
 			if (minValue < 330) //iPhone3GS
 				return 1; // 0.2 in TexturePacker

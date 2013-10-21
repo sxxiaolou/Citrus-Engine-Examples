@@ -7,6 +7,7 @@ package multiresolutions {
 	import citrus.objects.platformer.box2d.Sensor;
 	import citrus.physics.box2d.Box2D;
 	import citrus.utils.objectmakers.ObjectMakerStarling;
+	import citrus.view.starlingview.AnimationSequence;
 
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -18,6 +19,8 @@ package multiresolutions {
 		
 		[Embed(source="/../embed/tiledmap/multi-resolutions/map.tmx", mimeType="application/octet-stream")]
 		private const _Map:Class;
+		
+		private var _hero:Hero;
 
 		public function MultiResolutionsState() {
 			super();
@@ -35,9 +38,13 @@ package multiresolutions {
 
 			ObjectMakerStarling.FromTiledMap(XML(new _Map()), Assets.assets);
 
-			var hero:Hero = getObjectByName("hero") as Hero;
+			_hero = getFirstObjectByType(Hero) as Hero;
+			_hero.registration = "topLeft";
+			_hero.view = new AnimationSequence(Assets.assets, ["walk", "duck", "idle", "jump", "hurt"], "idle");
+			_hero.offsetX = -_hero.view.width * 0.5;
+			_hero.offsetY = -_hero.view.height * 0.5; 
 
-			view.camera.setUp(hero, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 6000, 7000), new Point(.25, .05));
+			view.camera.setUp(_hero, new Point(_ce.screenWidth / 2, _ce.screenHeight / 2), new Rectangle(0, 0, 6000, 7000), new Point(.25, .05));
 		}
 
 	}
