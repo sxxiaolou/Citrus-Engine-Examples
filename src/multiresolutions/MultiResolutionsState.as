@@ -1,8 +1,10 @@
 package multiresolutions {
 
 	import citrus.core.starling.StarlingState;
+	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
+	import citrus.objects.platformer.box2d.Sensor;
 	import citrus.physics.box2d.Box2D;
 	import citrus.utils.objectmakers.ObjectMakerStarling;
 
@@ -21,7 +23,7 @@ package multiresolutions {
 			super();
 			
 			// Useful for not forgetting to import object from the Level Editor
-			var objects:Array = [Hero, Platform];
+			var objects:Array = [Hero, Platform, Sensor, Coin];
 		}
 
 		override public function initialize():void {
