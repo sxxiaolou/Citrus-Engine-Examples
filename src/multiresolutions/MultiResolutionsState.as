@@ -31,7 +31,7 @@ package multiresolutions {
 			box2D.visible = true;
 			add(box2D);
 
-			ObjectMakerStarling.FromTiledMap(XML(new _Map()), Main.Assets);
+			ObjectMakerStarling.FromTiledMap(XML(new _Map()), Assets.assets);
 
 			var hero:Hero = getObjectByName("hero") as Hero;
 

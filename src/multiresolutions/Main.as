@@ -18,7 +18,6 @@ package multiresolutions {
 	 */
 	public class Main extends StarlingCitrusEngine {
 
-		static public var Assets:AssetManager;
 		static public var ScaleFactor:Number;
 
 		public function Main() {
@@ -39,13 +38,16 @@ package multiresolutions {
 		override protected function _context3DCreated(evt:Event):void {
 			super._context3DCreated(evt);
 
-			Assets = new AssetManager();
-			Assets.enqueue("multi-resolutions/assets" + ScaleFactor + "x.png");
-			Assets.enqueue("multi-resolutions/assets" + ScaleFactor + "x.xml");
+			Assets.assets = new AssetManager();
+			
+			// We don't use the Assets.assets.enqueue(File.applicationDirectory.resolvePath(formatString("assets/{0}x", scaleFactor)));
+			// syntax because we want to be able to run this game everywhere (Web & AIR).
+			Assets.assets.enqueue("multi-resolutions/assets" + ScaleFactor + "x.png");
+			Assets.assets.enqueue("multi-resolutions/assets" + ScaleFactor + "x.xml");
 
-			Assets.verbose = true;
+			Assets.assets.verbose = true;
 
-			Assets.loadQueue(function(ratio:Number):void {
+			Assets.assets.loadQueue(function(ratio:Number):void {
 				if (ratio == 1)
 					state = new MultiResolutionsState();
 			});
