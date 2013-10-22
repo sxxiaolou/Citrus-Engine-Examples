@@ -56,6 +56,7 @@ package multiresolutions {
 			new GamePadManager().onControllerAdded.addOnce(function(gamepad:Gamepad):void
 			{
 				gamepad.setStickActions(GamePadMap.STICK_LEFT, "up", "right", "duck", "left");
+				gamepad.setStickActions(GamePadMap.STICK_RIGHT, "zoomIn", "rotate-", "zoomOut", "rotate+");
 				gamepad.setButtonAction(GamePadMap.DPAD_DOWN, "duck");
 				gamepad.setButtonAction(GamePadMap.BUTTON_BOTTOM, "jump");
 			});
