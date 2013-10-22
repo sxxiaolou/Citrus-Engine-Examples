@@ -8,5 +8,6 @@ package multiresolutions {
 	public class Assets {
 		
 		static public var assets:AssetManager;
+		static public var ScaleFactor:Number;
 	}
 }

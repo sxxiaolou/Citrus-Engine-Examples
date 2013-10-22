@@ -20,8 +20,6 @@ package multiresolutions {
 	 */
 	public class Main extends StarlingCitrusEngine {
 
-		static public var ScaleFactor:Number;
-
 		public function Main() {
 			
 		}
@@ -34,10 +32,10 @@ package multiresolutions {
 
 		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewPort:Rectangle = null, profile:String = "baseline"):void {
 			
-			ScaleFactor = Utils.FindScaleFactor(screenWidth, screenHeight);
+			Assets.ScaleFactor = Utils.FindScaleFactor(screenWidth, screenHeight);
 
 			// -swf-version=21
-			if (ScaleFactor >= 4)
+			if (Assets.ScaleFactor >= 4)
 				super.setUpStarling(debugMode, antiAliasing, viewPort, Context3DProfile.BASELINE_EXTENDED);
 			else
 				super.setUpStarling(debugMode, antiAliasing, viewPort, profile);
@@ -50,8 +48,8 @@ package multiresolutions {
 			
 			// We don't use the Assets.assets.enqueue(File.applicationDirectory.resolvePath(formatString("assets/{0}x", scaleFactor)));
 			// syntax because we want to be able to run this game everywhere (Web & AIR).
-			Assets.assets.enqueue("multi-resolutions/assets" + ScaleFactor + "x.png");
-			Assets.assets.enqueue("multi-resolutions/assets" + ScaleFactor + "x.xml");
+			Assets.assets.enqueue("multi-resolutions/assets" + Assets.ScaleFactor + "x.png");
+			Assets.assets.enqueue("multi-resolutions/assets" + Assets.ScaleFactor + "x.xml");
 
 			Assets.assets.verbose = true;
 
