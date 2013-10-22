@@ -44,7 +44,7 @@ package multiresolutions {
 				super.setUpStarling(debugMode, antiAliasing, viewPort, profile);
 				
 			_starling.stage.stageWidth = Constants.GameWidth;
-            _starling.stage.stageHeight = Constants.GameHeight;
+			_starling.stage.stageHeight = Constants.GameHeight;
 		}
 
 		override protected function _context3DCreated(evt:starling.events.Event):void {
