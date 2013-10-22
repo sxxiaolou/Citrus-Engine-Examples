@@ -13,6 +13,7 @@ package multiresolutions {
 	import starling.core.Starling;
 	import starling.display.Quad;
 	import starling.display.Sprite;
+	import starling.utils.ScaleMode;
 
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -59,8 +60,20 @@ package multiresolutions {
 		{
 			super.update(timeDelta);
 			
-			view.camera.cameraLensWidth = Starling.current.viewPort.width;
-			view.camera.cameraLensHeight = Starling.current.viewPort.height;
+			if (Starling.current.viewPort.width > _ce.screenWidth ||  Starling.current.viewPort.height > _ce.screenHeight)
+			{
+				view.camera.cameraLensWidth = Starling.current.stage.stageWidth;
+				view.camera.cameraLensHeight =Starling.current.stage.stageHeight;
+				
+				view.camera.offset.setTo(view.camera.cameraLensWidth * .5, view.camera.cameraLensHeight * .5);
+			}
+			else
+			{
+				view.camera.cameraLensWidth = Starling.current.viewPort.width;
+				view.camera.cameraLensHeight = Starling.current.viewPort.height;
+				
+				view.camera.offset.setTo(480 * .5, 320 * .5); // middle of base dimensions.
+			}
 			
 			//fix box2D debug view...
 			var m:Matrix = box2D.debugView.transformMatrix;

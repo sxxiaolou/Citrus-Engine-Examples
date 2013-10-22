@@ -20,10 +20,11 @@ package multiresolutions {
 	import flash.events.Event;
 	import flash.geom.Rectangle;
 
-	[SWF(backgroundColor="#000000", frameRate="60", width="500", height="400")] // 1
+	//[SWF(backgroundColor="#000000", frameRate="60", width="500", height="400")] // 1
 	//[SWF(backgroundColor="#000000", frameRate="60", width="960", height="640")] // 2
+	//[SWF(backgroundColor="#000000", frameRate="60", width="1000", height="640")] // 2
 	//[SWF(backgroundColor="#000000", frameRate="60", width="1200", height="600")] // 1.5
-	//[SWF(backgroundColor="#000000", frameRate="60", width="1024", height="768")] //2
+	[SWF(backgroundColor="#000000", frameRate="60", width="1024", height="768")] //2
 	//[SWF(backgroundColor="#000000", frameRate="60", width="1536", height="1536")] // 4
 	//[SWF(backgroundColor="#000000", frameRate="60", width="1537", height="1537")] // 5
 	
@@ -36,13 +37,14 @@ package multiresolutions {
 		public static var baseWidth:Number = 480;
 		public static var baseHeight:Number = 320;
 		
+		private var _scaleFactor:Number;
 		
 		/**
 		 * SHOW_ALL = LETTERBOX
 		 * NONE = 100%
 		 * NO_BORDER = FULLSCREEN
 		 */
-		public static var ViewportMode:String = ScaleMode.NONE;
+		public static var ViewportMode:String = ScaleMode.SHOW_ALL;
 		
 		/**
 		 * keeping a ref to viewport rectangle
@@ -73,6 +75,7 @@ package multiresolutions {
 			if (!_starling)
 				return;
 			
+			scaleFactor =  Utils.FindScaleFactor(screenWidth, screenHeight);
 			resetViewport();
 		}
 			
@@ -93,10 +96,12 @@ package multiresolutions {
 					viewport.y = screenHeight * .5 - viewport.height * .5;
 					break;
 				case ScaleMode.NO_BORDER:
-					viewport.x = screenWidth * .5 - viewport.width * .5;
-					viewport.y = screenHeight * .5 - viewport.height * .5;
+					viewport.x = 0;
+					viewport.y = 0;
 					break;
 				case ScaleMode.SHOW_ALL:
+					viewport.x = screenWidth * .5 - viewport.width * .5;
+					viewport.y = screenHeight * .5 - viewport.height * .5;
 					break;
 			}
 			
@@ -112,15 +117,12 @@ package multiresolutions {
 
 		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewPort:Rectangle = null, profile:String = "baseline"):void {
 			
-			Assets.ScaleFactor = Utils.FindScaleFactor(screenWidth, screenHeight);
-			trace("USING SCALE FACTOR", Assets.ScaleFactor);
-			
 			resetViewport();
 			// -swf-version=21
-			if (Assets.ScaleFactor >= 4)
+			//if (Assets.ScaleFactor >= 4)
 				super.setUpStarling(debugMode, antiAliasing, viewPort, Context3DProfile.BASELINE_EXTENDED);
-			else
-				super.setUpStarling(debugMode, antiAliasing, viewPort, profile);
+			//else
+				//super.setUpStarling(debugMode, antiAliasing, viewPort, profile);
 				
 			// fixed starling stage dimensions using baseWidth/baseHeight
 			_starling.stage.stageWidth = baseWidth;
@@ -129,8 +131,25 @@ package multiresolutions {
 
 		override protected function _context3DCreated(evt:starling.events.Event):void {
 			super._context3DCreated(evt);
-
-			Assets.assets = new AssetManager(Assets.ScaleFactor);
+			
+			Assets.assets = new AssetManager();
+			scaleFactor =  Utils.FindScaleFactor(screenWidth, screenHeight);
+		}
+		
+		public function set scaleFactor(value:Number):void
+		{
+			if (value == scaleFactor)
+				return;
+			
+			if (!Assets.assets)
+				return;
+				
+			Assets.ScaleFactor = _scaleFactor = value;
+			trace("NOW USING SCALE FACTOR", Assets.ScaleFactor);
+			
+			//Assets.assets.dispose();
+			
+			Assets.assets.scaleFactor = _scaleFactor;
 			
 			// We don't use the Assets.assets.enqueue(File.applicationDirectory.resolvePath(formatString("assets/{0}x", scaleFactor)));
 			// syntax because we want to be able to run this game everywhere (Web & AIR).
@@ -143,6 +162,11 @@ package multiresolutions {
 				if (ratio == 1)
 					state = new MultiResolutionsState();
 			});
+		}
+		
+		public function get scaleFactor():Number
+		{
+			return _scaleFactor;
 		}
 	}
 }
