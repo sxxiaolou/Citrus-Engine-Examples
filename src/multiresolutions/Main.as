@@ -25,6 +25,7 @@ package multiresolutions {
 
 		public function Main() {
 			
+			//we have designed our game for an iPhone 3GS, so the Constants.GameWidth & Constants.GameHeight are 480 & 320.
 		}
 			
 		override protected function handleAddedToStage(e:flash.events.Event):void {
@@ -50,7 +51,7 @@ package multiresolutions {
 		override protected function _context3DCreated(evt:starling.events.Event):void {
 			super._context3DCreated(evt);
 
-			Assets.assets = new AssetManager();
+			Assets.assets = new AssetManager(Assets.ScaleFactor);
 			
 			// We don't use the Assets.assets.enqueue(File.applicationDirectory.resolvePath(formatString("assets/{0}x", scaleFactor)));
 			// syntax because we want to be able to run this game everywhere (Web & AIR).
