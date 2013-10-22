@@ -8,6 +8,11 @@ package multiresolutions {
 	import citrus.physics.box2d.Box2D;
 	import citrus.utils.objectmakers.ObjectMakerStarling;
 	import citrus.view.starlingview.AnimationSequence;
+	import citrus.view.starlingview.StarlingView;
+	import flash.geom.Matrix;
+	import starling.core.Starling;
+	import starling.display.Quad;
+	import starling.display.Sprite;
 
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -19,7 +24,7 @@ package multiresolutions {
 		
 		[Embed(source="/../embed/tiledmap/multi-resolutions/map.tmx", mimeType="application/octet-stream")]
 		private const _Map:Class;
-		
+		private var box2D:Box2D;
 		private var _hero:Hero;
 
 		public function MultiResolutionsState() {
@@ -32,7 +37,10 @@ package multiresolutions {
 		override public function initialize():void {
 			super.initialize();
 			
-			var box2D:Box2D = new Box2D("box2D");
+			var q:Quad = parent.addChild(new Quad(10000, 10000, 0x86f8ff)) as Quad;
+			parent.swapChildren(this, q);
+			
+			box2D = new Box2D("box2D");
 			box2D.visible = true;
 			add(box2D);
 			
@@ -44,7 +52,21 @@ package multiresolutions {
 			_hero.offsetX = -_hero.view.width * 0.5;
 			_hero.offsetY = -_hero.view.height * 0.5; 
 
-			view.camera.setUp(_hero, new Point(_ce.screenWidth / 2, _ce.screenHeight / 2), new Rectangle(0, 0, 6000, 7000), new Point(.25, .05));
+			view.camera.setUp(_hero, new Point(480 * .5,320 * .5), new Rectangle(0, 0, 6000, 7000), new Point(.25, .05));
+		}
+		
+		override public function update(timeDelta:Number):void
+		{
+			super.update(timeDelta);
+			
+			view.camera.cameraLensWidth = Starling.current.viewPort.width;
+			view.camera.cameraLensHeight = Starling.current.viewPort.height;
+			
+			//fix box2D debug view...
+			var m:Matrix = box2D.debugView.transformMatrix;
+			m.translate(Starling.current.viewPort.x/Starling.current.contentScaleFactor, Starling.current.viewPort.y/Starling.current.contentScaleFactor);
+			m.scale(Starling.current.contentScaleFactor, Starling.current.contentScaleFactor);
+			box2D.debugView.transformMatrix = m;
 		}
 
 	}
