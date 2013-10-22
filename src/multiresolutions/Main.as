@@ -3,11 +3,14 @@ package multiresolutions {
 	import citrus.core.starling.StarlingCitrusEngine;
 
 	import multiresolutions.Assets;
+	import multiresolutions.Constants;
 	import multiresolutions.MultiResolutionsState;
 	import multiresolutions.Utils;
 
 	import starling.events.Event;
 	import starling.utils.AssetManager;
+	import starling.utils.RectangleUtil;
+	import starling.utils.ScaleMode;
 
 	import flash.display3D.Context3DProfile;
 	import flash.events.Event;
@@ -27,7 +30,7 @@ package multiresolutions {
 		override protected function handleAddedToStage(e:flash.events.Event):void {
 			super.handleAddedToStage(e);
 			
-			setUpStarling(true);
+			setUpStarling(true, 1, RectangleUtil.fit(new Rectangle(0, 0, Constants.GameWidth, Constants.GameHeight), new Rectangle(0, 0, screenWidth, screenHeight), ScaleMode.SHOW_ALL));
 		}
 
 		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewPort:Rectangle = null, profile:String = "baseline"):void {
@@ -39,6 +42,9 @@ package multiresolutions {
 				super.setUpStarling(debugMode, antiAliasing, viewPort, Context3DProfile.BASELINE_EXTENDED);
 			else
 				super.setUpStarling(debugMode, antiAliasing, viewPort, profile);
+				
+			_starling.stage.stageWidth = Constants.GameWidth;
+            _starling.stage.stageHeight = Constants.GameHeight;
 		}
 
 		override protected function _context3DCreated(evt:starling.events.Event):void {
