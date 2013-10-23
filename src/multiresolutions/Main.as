@@ -7,7 +7,6 @@ package multiresolutions {
 	import starling.core.Starling;
 
 	import multiresolutions.Assets;
-	import multiresolutions.Constants;
 	import multiresolutions.MultiResolutionsState;
 	import multiresolutions.Utils;
 
