@@ -60,7 +60,7 @@ package multiresolutions {
 				gamepad.setButtonAction(GamePadMap.BUTTON_BOTTOM, "jump");
 			});
 			
-			//we have designed our game for an iPhone 3GS, so the Constants.GameWidth & Constants.GameHeight are 480 & 320.
+			//we have designed our game for an iPhone 3GS, so the baseWidth & baseHeight are 480 & 320.
 		}
 		
 		protected function closestNumberByStep(val:Number, step:Number = .5):Number
