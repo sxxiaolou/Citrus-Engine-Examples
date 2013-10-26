@@ -1,6 +1,7 @@
 package multiresolutions {
 
 	import citrus.core.starling.StarlingState;
+	import citrus.input.controllers.Keyboard;
 	import citrus.input.InputAction;
 	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.box2d.Coin;
@@ -71,26 +72,20 @@ package multiresolutions {
 			view.camera.setUp(_hero, new Point(Starling.current.stage.stageWidth * .5, Starling.current.stage.stageHeight * .5), new Rectangle(0, 0, 6000, 7000), new Point(.25, .05));
 			view.camera.allowZoom = true;
 			view.camera.allowRotation = true;
+			
+			_ce.input.keyboard.addKeyAction("rotate+", Keyboard.D);
+			_ce.input.keyboard.addKeyAction("rotate-", Keyboard.S);
+			_ce.input.keyboard.addKeyAction("zoomIn", Keyboard.C);
+			_ce.input.keyboard.addKeyAction("zoomOut", Keyboard.X);
 		}
 		
 		override public function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
 			
-			if (Starling.current.viewPort.width > _ce.screenWidth ||  Starling.current.viewPort.height > _ce.screenHeight)
-			{
-				view.camera.cameraLensWidth = Starling.current.stage.stageWidth;
-				view.camera.cameraLensHeight =Starling.current.stage.stageHeight;
-				
-				view.camera.offset.setTo(view.camera.cameraLensWidth * .5, view.camera.cameraLensHeight * .5);
-			}
-			else
-			{
-				view.camera.cameraLensWidth = Starling.current.viewPort.width;
-				view.camera.cameraLensHeight = Starling.current.viewPort.height;
-				
-				view.camera.offset.setTo(Starling.current.stage.stageWidth * .5, Starling.current.stage.stageHeight * .5); // middle of base dimensions.
-			}
+			view.camera.cameraLensWidth = Starling.current.viewPort.width;
+			view.camera.cameraLensHeight = Starling.current.viewPort.height;
+			view.camera.offset.setTo(Starling.current.stage.stageWidth * .5, Starling.current.stage.stageHeight * .5);
 			
 			var action:InputAction;
 			if ((action = _ce.input.isDoing("zoomOut"))!= null)
@@ -102,11 +97,6 @@ package multiresolutions {
 			if ((action = _ce.input.isDoing("rotate+"))!= null)
 				view.camera.rotate(-0.03 * action.value);
 			
-			//fix box2D debug view...
-			var m:Matrix = box2D.debugView.transformMatrix;
-			m.translate(Starling.current.viewPort.x/Starling.current.contentScaleFactor, Starling.current.viewPort.y/Starling.current.contentScaleFactor);
-			m.scale(Starling.current.contentScaleFactor, Starling.current.contentScaleFactor);
-			box2D.debugView.transformMatrix = m;
 			
 			baseSprite.x = view.camera.offset.x;
 			baseSprite.y = view.camera.offset.y;

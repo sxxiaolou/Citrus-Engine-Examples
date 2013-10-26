@@ -2,19 +2,13 @@ package multiresolutions {
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.core.starling.ViewportMode;
-	import citrus.input.controllers.gamepad.Gamepad;
-	import citrus.input.controllers.gamepad.GamePadManager;
-	import citrus.input.controllers.gamepad.maps.GamePadMap;
 	import flash.display3D.Context3DProfile;
 	import flash.events.Event;
-	import flash.geom.Rectangle;
 	import multiresolutions.Assets;
 	import multiresolutions.MultiResolutionsState;
 	import multiresolutions.Utils;
 	import starling.events.Event;
 	import starling.utils.AssetManager;
-	import starling.utils.RectangleUtil;
-	import starling.utils.ScaleMode;
 
 
 
@@ -37,7 +31,7 @@ package multiresolutions {
 			
 			_baseWidth = 480;
 			_baseHeigth = 320;
-			_viewportMode = ViewportMode.LETTERBOX;
+			_viewportMode = ViewportMode.MANUAL;
 			
 		}
 		
