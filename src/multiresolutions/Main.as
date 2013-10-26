@@ -88,7 +88,7 @@ package multiresolutions {
 			switch(viewportMode)
 			{
 				case ViewportMode.LETTERBOX:
-					viewport = RectangleUtil.fit(baseRect, screenRect, ScaleMode.SHOW_ALL);
+					RectangleUtil.fit(baseRect, screenRect, ScaleMode.SHOW_ALL,false,viewport);
 					viewport.x = screenWidth * .5 - viewport.width * .5;
 					viewport.y = screenHeight * .5 - viewport.height * .5;
 					
@@ -100,24 +100,18 @@ package multiresolutions {
 					
 					break;
 				case ViewportMode.FULLSCREEN:
-					viewport = RectangleUtil.fit(baseRect, screenRect, ScaleMode.NO_BORDER);
+					RectangleUtil.fit(baseRect, screenRect, ScaleMode.SHOW_ALL,false,viewport);
+					var ratioW:Number = viewport.width / baseRect.width;
+					var ratioH:Number = viewport.height / baseRect.height;
+					viewport.copyFrom(screenRect);
+					
 					viewport.x = 0;
 					viewport.y = 0;
 					
 					if (_starling)
 					{
-						var ratioW:Number = viewport.width/screenRect.width;
-						var ratioH:Number = viewport.height / screenRect.height;
-					
-						if (ratioW > ratioH)
-						{
-							_starling.stage.stageWidth = baseWidth / ratioW;
-							_starling.stage.stageHeight = baseHeight;
-						}else
-						{
-							_starling.stage.stageWidth = baseWidth;
-							_starling.stage.stageHeight = baseHeight / ratioH;
-						}
+						_starling.stage.stageWidth = screenRect.width / ratioW;
+						_starling.stage.stageHeight = screenRect.height / ratioH;
 					}
 					
 					break;
@@ -134,6 +128,8 @@ package multiresolutions {
 					
 					break;
 				case ViewportMode.MANUAL:
+					if (viewport == null)
+						viewport = screenRect;
 					break;
 			}
 				
