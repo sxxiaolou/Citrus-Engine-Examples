@@ -53,7 +53,7 @@ package multiresolutions {
 			baseQuad.pivotX = baseQuad.width * .5;
 			baseQuad.pivotY = baseQuad.height * .5;
 			
-			baseSprite = new CitrusSprite("base", { view:baseQuad} );
+			baseSprite = new CitrusSprite("base", { view:baseQuad, parallaxX:0, parallaxY:0} );
 			add(baseSprite);
 			
 			box2D = new Box2D("box2D");
@@ -108,8 +108,8 @@ package multiresolutions {
 			m.scale(Starling.current.contentScaleFactor, Starling.current.contentScaleFactor);
 			box2D.debugView.transformMatrix = m;
 			
-			baseSprite.x = view.camera.target.x;
-			baseSprite.y = view.camera.target.y;
+			baseSprite.x = view.camera.offset.x;
+			baseSprite.y = view.camera.offset.y;
 		}
 
 	}
