@@ -52,7 +52,7 @@ package multiresolutions {
 			_hero.offsetX = -_hero.view.width * 0.5;
 			_hero.offsetY = -_hero.view.height * 0.5; 
 
-			view.camera.setUp(_hero, new Point(480 * .5, 320 * .5), new Rectangle(0, 0, 6000, 7000), new Point(.25, .05));
+			view.camera.setUp(_hero, new Point(Starling.current.stage.stageWidth * .5, Starling.current.stage.stageHeight * .5), new Rectangle(0, 0, 6000, 7000), new Point(.25, .05));
 			view.camera.allowZoom = true;
 			view.camera.allowRotation = true;
 		}
@@ -73,7 +73,7 @@ package multiresolutions {
 				view.camera.cameraLensWidth = Starling.current.viewPort.width;
 				view.camera.cameraLensHeight = Starling.current.viewPort.height;
 				
-				view.camera.offset.setTo(480 * .5, 320 * .5); // middle of base dimensions.
+				view.camera.offset.setTo(Starling.current.stage.stageWidth * .5, Starling.current.stage.stageHeight * .5); // middle of base dimensions.
 			}
 			
 			var action:InputAction;

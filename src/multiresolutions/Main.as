@@ -38,12 +38,7 @@ package multiresolutions {
 		
 		private var _scaleFactor:Number;
 		
-		/**
-		 * SHOW_ALL = LETTERBOX
-		 * NONE = 100%
-		 * NO_BORDER = FULLSCREEN
-		 */
-		public static var ViewportMode:String = ScaleMode.SHOW_ALL;
+		public static var viewportMode:String = ViewportMode.FULLSCREEN;
 		
 		/**
 		 * keeping a ref to viewport rectangle
@@ -87,29 +82,59 @@ package multiresolutions {
 		
 		protected function resetViewport():Rectangle
 		{
-			viewport = RectangleUtil.fit(new Rectangle(0, 0, baseWidth, baseHeight), new Rectangle(0, 0, screenWidth, screenHeight), ViewportMode);
+			var baseRect:Rectangle = new Rectangle(0, 0, baseWidth, baseHeight);
+			var screenRect:Rectangle = new Rectangle(0, 0, screenWidth, screenHeight);
 			
-			switch(ViewportMode)
+			switch(viewportMode)
 			{
-				case ScaleMode.NONE:
+				case ViewportMode.LETTERBOX:
+					viewport = RectangleUtil.fit(baseRect, screenRect, ScaleMode.SHOW_ALL);
 					viewport.x = screenWidth * .5 - viewport.width * .5;
 					viewport.y = screenHeight * .5 - viewport.height * .5;
+					
+					if (_starling)
+					{
+						_starling.stage.stageWidth = baseWidth;
+						_starling.stage.stageHeight = baseHeight;
+					}
+					
 					break;
-				case ScaleMode.NO_BORDER:
+				case ViewportMode.FULLSCREEN:
+					viewport = RectangleUtil.fit(baseRect, screenRect, ScaleMode.NO_BORDER);
 					viewport.x = 0;
 					viewport.y = 0;
+					
+					if (_starling)
+					{
+						var ratioW:Number = viewport.width/screenRect.width;
+						var ratioH:Number = viewport.height / screenRect.height;
+					
+						if (ratioW > ratioH)
+						{
+							_starling.stage.stageWidth = baseWidth / ratioW;
+							_starling.stage.stageHeight = baseHeight;
+						}else
+						{
+							_starling.stage.stageWidth = baseWidth;
+							_starling.stage.stageHeight = baseHeight / ratioH;
+						}
+					}
+					
 					break;
-				case ScaleMode.SHOW_ALL:
+				case ViewportMode.NO_SCALE:
+					viewport.copyFrom(baseRect);
 					viewport.x = screenWidth * .5 - viewport.width * .5;
 					viewport.y = screenHeight * .5 - viewport.height * .5;
+					
+					if (_starling)
+					{
+						_starling.stage.stageWidth = baseWidth;
+						_starling.stage.stageHeight = baseHeight;
+					}
+					
 					break;
-			}
-			
-			if (_starling)
-			{
-				_starling.viewPort.copyFrom(viewport);
-				_starling.stage.stageWidth = baseWidth;
-				_starling.stage.stageHeight = baseHeight;
+				case ViewportMode.MANUAL:
+					break;
 			}
 				
 			return viewport;
