@@ -2,6 +2,7 @@ package multiresolutions {
 
 	import citrus.core.starling.StarlingState;
 	import citrus.input.InputAction;
+	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
@@ -9,6 +10,7 @@ package multiresolutions {
 	import citrus.physics.box2d.Box2D;
 	import citrus.utils.objectmakers.ObjectMakerStarling;
 	import citrus.view.starlingview.AnimationSequence;
+	import starling.display.Sprite;
 
 	import starling.core.Starling;
 	import starling.display.Quad;
@@ -25,6 +27,10 @@ package multiresolutions {
 		[Embed(source="/../embed/tiledmap/multi-resolutions/map.tmx", mimeType="application/octet-stream")]
 		private const _Map:Class;
 		private var box2D:Box2D;
+		
+		//base represents the base dimensions of the game defined in Main.
+		private var baseSprite:CitrusSprite;
+		
 		private var _hero:Hero;
 
 		public function MultiResolutionsState() {
@@ -39,6 +45,16 @@ package multiresolutions {
 			
 			var q:Quad = parent.addChild(new Quad(10000, 10000, 0x86f8ff)) as Quad;
 			parent.swapChildren(this, q);
+			
+			var baseQuad:Quad = new Quad(480, 320, 0xFF0000);
+			baseQuad.setVertexColor(1, 0x00FF00);
+			baseQuad.setVertexColor(2, 0x0000FF);
+			baseQuad.setVertexColor(3, 0xFF00FF);
+			baseQuad.pivotX = baseQuad.width * .5;
+			baseQuad.pivotY = baseQuad.height * .5;
+			
+			baseSprite = new CitrusSprite("base", { view:baseQuad} );
+			add(baseSprite);
 			
 			box2D = new Box2D("box2D");
 			box2D.visible = true;
@@ -91,6 +107,9 @@ package multiresolutions {
 			m.translate(Starling.current.viewPort.x/Starling.current.contentScaleFactor, Starling.current.viewPort.y/Starling.current.contentScaleFactor);
 			m.scale(Starling.current.contentScaleFactor, Starling.current.contentScaleFactor);
 			box2D.debugView.transformMatrix = m;
+			
+			baseSprite.x = view.camera.target.x;
+			baseSprite.y = view.camera.target.y;
 		}
 
 	}
