@@ -31,7 +31,7 @@ package multiresolutions {
 			
 			_baseWidth = 480;
 			_baseHeigth = 320;
-			_viewportMode = ViewportMode.MANUAL;
+			_viewportMode = ViewportMode.LETTERBOX;
 			
 		}
 		
