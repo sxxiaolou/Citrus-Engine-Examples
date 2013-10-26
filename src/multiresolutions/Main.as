@@ -43,7 +43,7 @@ package multiresolutions {
 		/**
 		 * keeping a ref to viewport rectangle
 		 */
-		public static var viewport:Rectangle = new Rectangle();
+		public static var viewport:Rectangle;
 		
 		public function Main() {
 			
@@ -58,20 +58,33 @@ package multiresolutions {
 			//we have designed our game for an iPhone 3GS, so the baseWidth & baseHeight are 480 & 320.
 		}
 		
-		protected function closestNumberByStep(val:Number, step:Number = .5):Number
-		{
-			var div:Number = 1 / step;
-			return Math.round(val*div)/div;
-		}
-		
 		override protected function handleStageResize(e:flash.events.Event = null):void
 		{
-			super.handleStageResize(e);
+			
+			//-- code from CitrusEngine.handleStageResize
+			
+			if (_fullScreen)
+			{
+				_screenWidth = stage.fullScreenWidth;
+				_screenHeight = stage.fullScreenHeight;
+			}
+			else
+			{
+				_screenWidth = stage.stageWidth;
+				_screenHeight = stage.stageHeight;
+			}
+			
+			onStageResize.dispatch(_screenWidth, _screenHeight);
+			
+			//------
+			
 			if (!_starling)
 				return;
 			
 			scaleFactor =  Utils.FindScaleFactor(screenWidth, screenHeight);
+			
 			resetViewport();
+			_starling.viewPort.copyFrom(viewport);
 		}
 			
 		override protected function handleAddedToStage(e:flash.events.Event):void {
@@ -82,13 +95,18 @@ package multiresolutions {
 		
 		protected function resetViewport():Rectangle
 		{
+			if (viewport == null)
+					viewport = new Rectangle(0, 0, _screenWidth, _screenHeight);
+					
 			var baseRect:Rectangle = new Rectangle(0, 0, baseWidth, baseHeight);
 			var screenRect:Rectangle = new Rectangle(0, 0, screenWidth, screenHeight);
+			
+			trace("VIEWPORT MODE:", viewportMode);
 			
 			switch(viewportMode)
 			{
 				case ViewportMode.LETTERBOX:
-					RectangleUtil.fit(baseRect, screenRect, ScaleMode.SHOW_ALL,false,viewport);
+					viewport = RectangleUtil.fit(baseRect, screenRect, ScaleMode.SHOW_ALL);
 					viewport.x = screenWidth * .5 - viewport.width * .5;
 					viewport.y = screenHeight * .5 - viewport.height * .5;
 					
@@ -100,7 +118,7 @@ package multiresolutions {
 					
 					break;
 				case ViewportMode.FULLSCREEN:
-					RectangleUtil.fit(baseRect, screenRect, ScaleMode.SHOW_ALL,false,viewport);
+					viewport = RectangleUtil.fit(baseRect, screenRect, ScaleMode.SHOW_ALL);
 					var ratioW:Number = viewport.width / baseRect.width;
 					var ratioH:Number = viewport.height / baseRect.height;
 					viewport.copyFrom(screenRect);
@@ -128,8 +146,6 @@ package multiresolutions {
 					
 					break;
 				case ViewportMode.MANUAL:
-					if (viewport == null)
-						viewport = screenRect;
 					break;
 			}
 				
@@ -138,16 +154,18 @@ package multiresolutions {
 
 		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewPort:Rectangle = null, profile:String = "baseline"):void {
 			
-			resetViewport();
 			// -swf-version=21
 			//if (Assets.ScaleFactor >= 4)
-				super.setUpStarling(debugMode, antiAliasing, viewPort, Context3DProfile.BASELINE_EXTENDED);
+			
+			resetViewport();
+			super.setUpStarling(debugMode, antiAliasing, viewport, Context3DProfile.BASELINE_EXTENDED);
+			
 			//else
 				//super.setUpStarling(debugMode, antiAliasing, viewPort, profile);
 				
 			// fixed starling stage dimensions using baseWidth/baseHeight
-			_starling.stage.stageWidth = baseWidth;
-			_starling.stage.stageHeight = baseHeight;
+			//_starling.stage.stageWidth = baseWidth;
+			//_starling.stage.stageHeight = baseHeight;
 		}
 
 		override protected function _context3DCreated(evt:starling.events.Event):void {
