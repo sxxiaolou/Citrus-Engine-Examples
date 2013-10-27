@@ -53,10 +53,7 @@ package multiresolutions {
 			ObjectMakerStarling.FromTiledMap(XML(new _Map()), Assets.assets);
 
 			_hero = getFirstObjectByType(Hero) as Hero;
-			_hero.registration = "topLeft";
 			_hero.view = new AnimationSequence(Assets.assets, ["walk", "duck", "idle", "jump", "hurt"], "idle");
-			_hero.offsetX = -_hero.view.width * 0.5;
-			_hero.offsetY = -_hero.view.height * 0.5; 
 
 			view.camera.setUp(_hero, new Point(Starling.current.stage.stageWidth * .5, Starling.current.stage.stageHeight * .5), null, new Point(.25, .05));
 			view.camera.allowZoom = true;
