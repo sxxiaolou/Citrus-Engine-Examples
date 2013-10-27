@@ -9,13 +9,13 @@ package multiresolutions {
 	import starling.events.Event;
 	import starling.utils.AssetManager;
 
-	//[SWF(backgroundColor="#000000", frameRate="60", width="500", height="400")] // 1
-	//[SWF(backgroundColor="#000000", frameRate="60", width="960", height="640")] // 2
-	//[SWF(backgroundColor="#000000", frameRate="60", width="1000", height="640")] // 2
-	//[SWF(backgroundColor="#000000", frameRate="60", width="1200", height="600")] // 1.5
-	[SWF(backgroundColor="#000000", frameRate="60", width="1024", height="768")] //2
-	//[SWF(backgroundColor="#000000", frameRate="60", width="1536", height="1536")] // 4
-	//[SWF(backgroundColor="#000000", frameRate="60", width="1537", height="1537")] // 5
+	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="500", height="400")] // 1
+	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="960", height="640")] // 2
+	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="1000", height="640")] // 2
+	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="1200", height="600")] // 1.5
+	[SWF(backgroundColor="#FFFFFF", frameRate="60", width="1024", height="768")] //2
+	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="1536", height="1536")] // 4
+	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="1537", height="1537")] // 5
 	
 	/**
 	 * @author Aymeric
@@ -26,7 +26,7 @@ package multiresolutions {
 		public function Main() {
 			
 			_baseWidth = 480;
-			_baseHeigth = 320;
+			_baseHeight = 320;
 			_viewportMode = ViewportMode.LETTERBOX;
 			
 		}
