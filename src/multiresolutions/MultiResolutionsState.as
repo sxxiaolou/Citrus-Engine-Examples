@@ -4,7 +4,6 @@ package multiresolutions {
 	import citrus.core.starling.StarlingState;
 	import citrus.input.controllers.Keyboard;
 	import citrus.input.InputAction;
-	import citrus.objects.CitrusSprite;
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
@@ -12,14 +11,15 @@ package multiresolutions {
 	import citrus.physics.box2d.Box2D;
 	import citrus.utils.objectmakers.ObjectMakerStarling;
 	import citrus.view.starlingview.AnimationSequence;
-	import starling.display.Sprite;
-
-	import starling.core.Starling;
-	import starling.display.Quad;
-
-	import flash.geom.Matrix;
 	import flash.geom.Point;
-	import flash.geom.Rectangle;
+	import starling.core.Starling;
+	import starling.display.Image;
+	import starling.display.Quad;
+	import starling.textures.Texture;
+	import starling.utils.HAlign;
+	import starling.utils.VAlign;
+
+
 
 	/**
 	 * @author Aymeric
@@ -63,6 +63,60 @@ package multiresolutions {
 			_ce.input.keyboard.addKeyAction("rotate-", Keyboard.S);
 			_ce.input.keyboard.addKeyAction("zoomIn", Keyboard.C);
 			_ce.input.keyboard.addKeyAction("zoomOut", Keyboard.X);
+			
+			setupUi();
+		}
+		
+		/**
+		 * dynamically position elements on screen like you would for a ui (here we simply place tiles)
+		 */
+		protected function setupUi():void
+		{
+			var tex:Texture = Assets.assets.getTexture("grass/grass_003");
+			var stageWidth:int = Starling.current.stage.stageWidth;
+			var stageHeight:int = Starling.current.stage.stageHeight;
+			
+			var uiTopLeft:Image = new Image(tex);
+			
+			var uiTop:Image = new Image(tex);
+			uiTop.alignPivot(HAlign.CENTER, VAlign.TOP);
+			uiTop.x = stageWidth * .5;
+			
+			var uiTopRight:Image = new Image(tex);
+			uiTopRight.alignPivot(HAlign.RIGHT, VAlign.TOP);
+			uiTopRight.x = stageWidth;
+			
+			var uiMiddleLeft:Image = new Image(tex);
+			uiMiddleLeft.alignPivot(HAlign.LEFT, VAlign.CENTER);
+			uiMiddleLeft.y = stageHeight * .5;
+			
+			var uiMiddleRight:Image = new Image(tex);
+			uiMiddleRight.alignPivot(HAlign.RIGHT,VAlign.CENTER);
+			uiMiddleRight.x = stageWidth;
+			uiMiddleRight.y = stageHeight*.5;
+			
+			var uiBottomLeft:Image = new Image(tex);
+			uiBottomLeft.alignPivot(HAlign.LEFT,VAlign.BOTTOM);
+			uiBottomLeft.y = stageHeight;
+			
+			var uiBottomRight:Image = new Image(tex);
+			uiBottomRight.alignPivot(HAlign.RIGHT,VAlign.BOTTOM);
+			uiBottomRight.x = stageWidth;
+			uiBottomRight.y = stageHeight;
+			
+			var uiBottom:Image = new Image(tex);
+			uiBottom.alignPivot(HAlign.CENTER,VAlign.BOTTOM);
+			uiBottom.x = stageWidth*.5;
+			uiBottom.y = stageHeight;
+			
+			addChild(uiTopLeft);
+			addChild(uiTop);
+			addChild(uiTopRight);
+			addChild(uiMiddleLeft);
+			addChild(uiMiddleRight);
+			addChild(uiBottomLeft);
+			addChild(uiBottom);
+			addChild(uiBottomRight);
 		}
 		
 		override public function update(timeDelta:Number):void
