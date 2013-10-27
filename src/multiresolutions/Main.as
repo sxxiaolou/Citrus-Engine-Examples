@@ -2,16 +2,12 @@ package multiresolutions {
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.core.starling.ViewportMode;
-	import flash.display3D.Context3DProfile;
 	import flash.events.Event;
 	import multiresolutions.Assets;
 	import multiresolutions.MultiResolutionsState;
 	import multiresolutions.Utils;
 	import starling.events.Event;
 	import starling.utils.AssetManager;
-
-
-
 
 	//[SWF(backgroundColor="#000000", frameRate="60", width="500", height="400")] // 1
 	//[SWF(backgroundColor="#000000", frameRate="60", width="960", height="640")] // 2
@@ -34,53 +30,22 @@ package multiresolutions {
 			_viewportMode = ViewportMode.LETTERBOX;
 			
 		}
-		
-		override protected function handleStageResize(e:flash.events.Event = null):void
-		{
-			
-			super.handleStageResize(e);
-			
-			if (!_starling)
-				return;
-			
-			scaleFactor =  Utils.FindScaleFactor(_screenWidth, _screenHeight);
-		}
 			
 		override protected function handleAddedToStage(e:flash.events.Event):void {
 			super.handleAddedToStage(e);
 			
-			setUpStarling(true, 1, null,Context3DProfile.BASELINE_EXTENDED);
+			scaleFactor = Utils.FindScaleFactor(_screenWidth, _screenHeight);
+			
+			setUpStarling(true, 1, null);
 		}
 
 		override protected function _context3DCreated(evt:starling.events.Event):void {
 			super._context3DCreated(evt);
 			
-			Assets.assets = new AssetManager();
+			Assets.assets = new AssetManager(scaleFactor);
 			
-			scaleFactor =  Utils.FindScaleFactor(_screenWidth, _screenHeight);
-		}
-		
-		/**
-		 * overriding scaleFactor setter to load assets dynamically.
-		 */
-		override public function set scaleFactor(value:Number):void
-		{
-			if (value == scaleFactor)
-				return;
-			
-			if (!Assets.assets)
-				return;
-				
-			Assets.ScaleFactor = _scaleFactor = value;
-			
-			//Assets.assets.dispose();
-			
-			Assets.assets.scaleFactor = _scaleFactor;
-			
-			// We don't use the Assets.assets.enqueue(File.applicationDirectory.resolvePath(formatString("assets/{0}x", scaleFactor)));
-			// syntax because we want to be able to run this game everywhere (Web & AIR).
-			Assets.assets.enqueue("multi-resolutions/assets" + Assets.ScaleFactor + "x.png");
-			Assets.assets.enqueue("multi-resolutions/assets" + Assets.ScaleFactor + "x.xml");
+			Assets.assets.enqueue("multi-resolutions/assets" + scaleFactor + "x.png");
+			Assets.assets.enqueue("multi-resolutions/assets" + scaleFactor + "x.xml");
 
 			Assets.assets.verbose = true;
 
@@ -89,6 +54,5 @@ package multiresolutions {
 					state = new MultiResolutionsState();
 			});
 		}
-		
 	}
 }
