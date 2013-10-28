@@ -2,12 +2,11 @@ package multiresolutions {
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.core.starling.ViewportMode;
-	import flash.events.Event;
-	import multiresolutions.Assets;
-	import multiresolutions.MultiResolutionsState;
-	import multiresolutions.Utils;
+
 	import starling.events.Event;
 	import starling.utils.AssetManager;
+
+	import flash.events.Event;
 
 	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="500", height="400")] // 1
 	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="960", height="640")] // 2
@@ -28,7 +27,6 @@ package multiresolutions {
 			_baseWidth = 480;
 			_baseHeight = 320;
 			_viewportMode = ViewportMode.LETTERBOX;
-			
 		}
 			
 		override protected function handleAddedToStage(e:flash.events.Event):void {
@@ -36,7 +34,7 @@ package multiresolutions {
 			
 			scaleFactor = Utils.FindScaleFactor(_screenWidth, _screenHeight);
 			
-			setUpStarling(true, 1, null);
+			setUpStarling(true);
 		}
 
 		override protected function _context3DCreated(evt:starling.events.Event):void {

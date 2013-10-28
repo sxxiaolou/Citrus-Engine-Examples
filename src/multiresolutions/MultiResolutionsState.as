@@ -1,9 +1,8 @@
-package multiresolutions
-{
-	
+package multiresolutions {
+
 	import citrus.core.starling.StarlingState;
-	import citrus.input.controllers.Keyboard;
 	import citrus.input.InputAction;
+	import citrus.input.controllers.Keyboard;
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
@@ -12,12 +11,14 @@ package multiresolutions
 	import citrus.utils.objectmakers.ObjectMakerStarling;
 	import citrus.view.starlingview.AnimationSequence;
 	import citrus.view.starlingview.StarlingCamera;
-	import flash.geom.Point;
+
 	import starling.display.Image;
 	import starling.display.Quad;
 	import starling.textures.Texture;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
+
+	import flash.geom.Point;	
 	
 	/**
 	 * @author Aymeric
@@ -65,8 +66,7 @@ package multiresolutions
 			_input.keyboard.addKeyAction("zoomIn", Keyboard.C);
 			_input.keyboard.addKeyAction("zoomOut", Keyboard.X);
 			
-			setupUi();
-		
+			setupUi();		
 		}
 		
 		/**
@@ -75,8 +75,8 @@ package multiresolutions
 		protected function setupUi():void
 		{
 			var tex:Texture = Assets.assets.getTexture("grass/grass_003");
-			var stageWidth:int = _stage.stageWidth;
-			var stageHeight:int = _stage.stageHeight;
+			var stageWidth:int = stage.stageWidth;
+			var stageHeight:int = stage.stageHeight;
 			
 			var uiTopLeft:Image = new Image(tex);
 			
