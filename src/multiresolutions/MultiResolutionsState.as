@@ -57,7 +57,7 @@ package multiresolutions {
 			_hero = getFirstObjectByType(Hero) as Hero;
 			_hero.view = new AnimationSequence(Assets.assets, ["walk", "duck", "idle", "jump", "hurt"], "idle");
 			
-			_camera = view.camera.setUp(_hero, new Point(_stage.stageWidth * .5, _stage.stageHeight * .5), null, new Point(.25, .05)) as StarlingCamera;
+			_camera = view.camera.setUp(_hero, new Point(stage.stageWidth * .5, stage.stageHeight * .5), null, new Point(.25, .05)) as StarlingCamera;
 			_camera.allowZoom = true;
 			_camera.allowRotation = true;
 			
@@ -66,7 +66,7 @@ package multiresolutions {
 			_input.keyboard.addKeyAction("zoomIn", Keyboard.C);
 			_input.keyboard.addKeyAction("zoomOut", Keyboard.X);
 			
-			setupUi();		
+			setupUi();
 		}
 		
 		/**
