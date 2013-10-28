@@ -1,6 +1,6 @@
-package multiresolutions {
-
-	import citrus.core.starling.StarlingCitrusEngine;
+package multiresolutions
+{
+	
 	import citrus.core.starling.StarlingState;
 	import citrus.input.controllers.Keyboard;
 	import citrus.input.InputAction;
@@ -11,39 +11,40 @@ package multiresolutions {
 	import citrus.physics.box2d.Box2D;
 	import citrus.utils.objectmakers.ObjectMakerStarling;
 	import citrus.view.starlingview.AnimationSequence;
+	import citrus.view.starlingview.StarlingCamera;
 	import flash.geom.Point;
-	import starling.core.Starling;
 	import starling.display.Image;
 	import starling.display.Quad;
 	import starling.textures.Texture;
 	import starling.utils.HAlign;
 	import starling.utils.VAlign;
-
-
-
+	
 	/**
 	 * @author Aymeric
 	 */
-	public class MultiResolutionsState extends StarlingState {
+	public class MultiResolutionsState extends StarlingState
+	{
 		
-		[Embed(source="/../embed/tiledmap/multi-resolutions/map.tmx", mimeType="application/octet-stream")]
+		[Embed(source="/../embed/tiledmap/multi-resolutions/map.tmx",mimeType="application/octet-stream")]
 		private const _Map:Class;
 		private var box2D:Box2D;
-		
+		private var _camera:StarlingCamera;
 		private var _hero:Hero;
-
-		public function MultiResolutionsState() {
+		
+		public function MultiResolutionsState()
+		{
 			super();
 			
 			// Useful for not forgetting to import object from the Level Editor
 			var objects:Array = [Hero, Platform, Sensor, Coin];
 		}
-
-		override public function initialize():void {
+		
+		override public function initialize():void
+		{
 			super.initialize();
 			
 			//background quad
-			var q:Quad = parent.addChild(new Quad((_ce as StarlingCitrusEngine).baseWidth, (_ce as StarlingCitrusEngine).baseHeight, 0x86f8ff)) as Quad;
+			var q:Quad = parent.addChild(new Quad(_ce.baseWidth, _ce.baseHeight, 0x86f8ff)) as Quad;
 			parent.swapChildren(this, q);
 			
 			box2D = new Box2D("box2D");
@@ -51,13 +52,13 @@ package multiresolutions {
 			add(box2D);
 			
 			ObjectMakerStarling.FromTiledMap(XML(new _Map()), Assets.assets);
-
+			
 			_hero = getFirstObjectByType(Hero) as Hero;
 			_hero.view = new AnimationSequence(Assets.assets, ["walk", "duck", "idle", "jump", "hurt"], "idle");
-
-			view.camera.setUp(_hero, new Point(Starling.current.stage.stageWidth * .5, Starling.current.stage.stageHeight * .5), null, new Point(.25, .05));
-			view.camera.allowZoom = true;
-			view.camera.allowRotation = true;
+			
+			_camera = view.camera.setUp(_hero, new Point(_stage.stageWidth * .5, _stage.stageHeight * .5), null, new Point(.25, .05)) as StarlingCamera;
+			_camera.allowZoom = true;
+			_camera.allowRotation = true;
 			
 			_ce.input.keyboard.addKeyAction("rotate+", Keyboard.D);
 			_ce.input.keyboard.addKeyAction("rotate-", Keyboard.S);
@@ -65,6 +66,7 @@ package multiresolutions {
 			_ce.input.keyboard.addKeyAction("zoomOut", Keyboard.X);
 			
 			setupUi();
+		
 		}
 		
 		/**
@@ -73,8 +75,8 @@ package multiresolutions {
 		protected function setupUi():void
 		{
 			var tex:Texture = Assets.assets.getTexture("grass/grass_003");
-			var stageWidth:int = Starling.current.stage.stageWidth;
-			var stageHeight:int = Starling.current.stage.stageHeight;
+			var stageWidth:int = _stage.stageWidth;
+			var stageHeight:int = _stage.stageHeight;
 			
 			var uiTopLeft:Image = new Image(tex);
 			
@@ -91,22 +93,22 @@ package multiresolutions {
 			uiMiddleLeft.y = stageHeight * .5;
 			
 			var uiMiddleRight:Image = new Image(tex);
-			uiMiddleRight.alignPivot(HAlign.RIGHT,VAlign.CENTER);
+			uiMiddleRight.alignPivot(HAlign.RIGHT, VAlign.CENTER);
 			uiMiddleRight.x = stageWidth;
-			uiMiddleRight.y = stageHeight*.5;
+			uiMiddleRight.y = stageHeight * .5;
 			
 			var uiBottomLeft:Image = new Image(tex);
-			uiBottomLeft.alignPivot(HAlign.LEFT,VAlign.BOTTOM);
+			uiBottomLeft.alignPivot(HAlign.LEFT, VAlign.BOTTOM);
 			uiBottomLeft.y = stageHeight;
 			
 			var uiBottomRight:Image = new Image(tex);
-			uiBottomRight.alignPivot(HAlign.RIGHT,VAlign.BOTTOM);
+			uiBottomRight.alignPivot(HAlign.RIGHT, VAlign.BOTTOM);
 			uiBottomRight.x = stageWidth;
 			uiBottomRight.y = stageHeight;
 			
 			var uiBottom:Image = new Image(tex);
-			uiBottom.alignPivot(HAlign.CENTER,VAlign.BOTTOM);
-			uiBottom.x = stageWidth*.5;
+			uiBottom.alignPivot(HAlign.CENTER, VAlign.BOTTOM);
+			uiBottom.x = stageWidth * .5;
 			uiBottom.y = stageHeight;
 			
 			addChild(uiTopLeft);
@@ -124,18 +126,18 @@ package multiresolutions {
 			super.update(timeDelta);
 			
 			var action:InputAction;
-			if ((action = _ce.input.isDoing("zoomOut"))!= null)
-				view.camera.zoom(1 - 0.05 * action.value);
-			if ((action = _ce.input.isDoing("zoomIn"))!= null)
-				view.camera.zoom(1 + 0.05 * action.value);
-			if ((action = _ce.input.isDoing("rotate-"))!= null)
-				view.camera.rotate(0.03 * action.value);
-			if ((action = _ce.input.isDoing("rotate+"))!= null)
-				view.camera.rotate( -0.03 * action.value);
-				
-			if (view.camera.getZoom() < 1)
-				view.camera.setZoom(1);
+			if ((action = _input.isDoing("zoomOut")) != null)
+				_camera.zoom(1 - 0.05 * action.value);
+			if ((action = _input.isDoing("zoomIn")) != null)
+				_camera.zoom(1 + 0.05 * action.value);
+			if ((action = _input.isDoing("rotate-")) != null)
+				_camera.rotate(0.03 * action.value);
+			if ((action = _input.isDoing("rotate+")) != null)
+				_camera.rotate(-0.03 * action.value);
+			
+			if (_camera.getZoom() < 1)
+				_camera.setZoom(1);
 		}
-
+	
 	}
 }
