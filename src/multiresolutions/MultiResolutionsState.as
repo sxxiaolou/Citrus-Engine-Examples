@@ -60,10 +60,10 @@ package multiresolutions
 			_camera.allowZoom = true;
 			_camera.allowRotation = true;
 			
-			_ce.input.keyboard.addKeyAction("rotate+", Keyboard.D);
-			_ce.input.keyboard.addKeyAction("rotate-", Keyboard.S);
-			_ce.input.keyboard.addKeyAction("zoomIn", Keyboard.C);
-			_ce.input.keyboard.addKeyAction("zoomOut", Keyboard.X);
+			_input.keyboard.addKeyAction("rotate+", Keyboard.D);
+			_input.keyboard.addKeyAction("rotate-", Keyboard.S);
+			_input.keyboard.addKeyAction("zoomIn", Keyboard.C);
+			_input.keyboard.addKeyAction("zoomOut", Keyboard.X);
 			
 			setupUi();
 		
