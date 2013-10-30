@@ -113,6 +113,8 @@ package multiresolutions {
 			//put stats forward
 			_ce.starling.showStats = false;
 			_ce.starling.showStats = true;
+			
+			_uiLayout.margin = 10;
 		}
 		
 		override public function update(timeDelta:Number):void
