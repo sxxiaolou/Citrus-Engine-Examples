@@ -8,6 +8,7 @@ package multiresolutions {
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.objects.platformer.box2d.Sensor;
 	import citrus.physics.box2d.Box2D;
+	import citrus.ui.starling.BasicUIElement;
 	import citrus.ui.starling.BasicUILayout;
 	import citrus.utils.objectmakers.ObjectMakerStarling;
 	import citrus.view.starlingview.AnimationSequence;
@@ -90,6 +91,9 @@ package multiresolutions {
 			
 			var tex:Texture = Assets.assets.getTexture("grass/grass_003");
 			
+			var el:BasicUIElement;
+			
+			
 			_uiLayout.addElement(new Image(tex), BasicUILayout.TOP_LEFT);
 			_uiLayout.addElement(new Image(tex), BasicUILayout.TOP_CENTER);
 			_uiLayout.addElement(new Image(tex), BasicUILayout.TOP_RIGHT);
@@ -99,10 +103,12 @@ package multiresolutions {
 			_uiLayout.addElement(new Image(tex), BasicUILayout.MIDDLE_RIGHT);
 			
 			_uiLayout.addElement(new Image(tex), BasicUILayout.BOTTOM_LEFT);
-			_uiLayout.addElement(new Image(tex), BasicUILayout.BOTTOM_CENTER);
+			el =  _uiLayout.addElement(new Image(tex), BasicUILayout.BOTTOM_CENTER);
 			_uiLayout.addElement(new Image(tex), BasicUILayout.BOTTOM_RIGHT);
 			
 			_uiLayout.alpha = 0.8;
+			
+			_uiLayout.removeElement(el);
 			
 			//put stats forward
 			_ce.starling.showStats = false;
