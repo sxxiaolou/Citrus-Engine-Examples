@@ -8,9 +8,12 @@ package multiresolutions {
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.objects.platformer.box2d.Sensor;
 	import citrus.physics.box2d.Box2D;
+	import citrus.ui.starling.BasicUILayout;
 	import citrus.utils.objectmakers.ObjectMakerStarling;
 	import citrus.view.starlingview.AnimationSequence;
 	import citrus.view.starlingview.StarlingCamera;
+	import flash.geom.Rectangle;
+	import starling.core.Starling;
 
 	import starling.display.Image;
 	import starling.display.Quad;
@@ -31,6 +34,7 @@ package multiresolutions {
 		private var box2D:Box2D;
 		private var _camera:StarlingCamera;
 		private var _hero:Hero;
+		private var _uiLayout:BasicUILayout;
 		
 		public function MultiResolutionsState()
 		{
@@ -67,6 +71,14 @@ package multiresolutions {
 			_input.keyboard.addKeyAction("zoomOut", Keyboard.X);
 			
 			setupUi();
+			
+			//optional uiLayout and background resizing
+			_ce.onStageResize.add(function(width:Number,height:Number):void
+			{
+				_uiLayout.rect = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
+				q.width = stage.stageWidth;
+				q.height = stage.stageHeight;
+			});
 		}
 		
 		/**
@@ -74,51 +86,27 @@ package multiresolutions {
 		 */
 		protected function setupUi():void
 		{
+			_uiLayout = new BasicUILayout(this,new Rectangle(0, 0, stage.stageWidth, stage.stageHeight));
+			
 			var tex:Texture = Assets.assets.getTexture("grass/grass_003");
-			var stageWidth:int = stage.stageWidth;
-			var stageHeight:int = stage.stageHeight;
 			
-			var uiTopLeft:Image = new Image(tex);
+			_uiLayout.addElement(new Image(tex), BasicUILayout.TOP_LEFT);
+			_uiLayout.addElement(new Image(tex), BasicUILayout.TOP_CENTER);
+			_uiLayout.addElement(new Image(tex), BasicUILayout.TOP_RIGHT);
 			
-			var uiTop:Image = new Image(tex);
-			uiTop.alignPivot(HAlign.CENTER, VAlign.TOP);
-			uiTop.x = stageWidth * .5;
+			_uiLayout.addElement(new Image(tex), BasicUILayout.MIDDLE_LEFT);
+			//_uiLayout.addElement(new Image(tex), BasicUILayout.MIDDLE_CENTER);
+			_uiLayout.addElement(new Image(tex), BasicUILayout.MIDDLE_RIGHT);
 			
-			var uiTopRight:Image = new Image(tex);
-			uiTopRight.alignPivot(HAlign.RIGHT, VAlign.TOP);
-			uiTopRight.x = stageWidth;
+			_uiLayout.addElement(new Image(tex), BasicUILayout.BOTTOM_LEFT);
+			_uiLayout.addElement(new Image(tex), BasicUILayout.BOTTOM_CENTER);
+			_uiLayout.addElement(new Image(tex), BasicUILayout.BOTTOM_RIGHT);
 			
-			var uiMiddleLeft:Image = new Image(tex);
-			uiMiddleLeft.alignPivot(HAlign.LEFT, VAlign.CENTER);
-			uiMiddleLeft.y = stageHeight * .5;
+			_uiLayout.alpha = 0.8;
 			
-			var uiMiddleRight:Image = new Image(tex);
-			uiMiddleRight.alignPivot(HAlign.RIGHT, VAlign.CENTER);
-			uiMiddleRight.x = stageWidth;
-			uiMiddleRight.y = stageHeight * .5;
-			
-			var uiBottomLeft:Image = new Image(tex);
-			uiBottomLeft.alignPivot(HAlign.LEFT, VAlign.BOTTOM);
-			uiBottomLeft.y = stageHeight;
-			
-			var uiBottomRight:Image = new Image(tex);
-			uiBottomRight.alignPivot(HAlign.RIGHT, VAlign.BOTTOM);
-			uiBottomRight.x = stageWidth;
-			uiBottomRight.y = stageHeight;
-			
-			var uiBottom:Image = new Image(tex);
-			uiBottom.alignPivot(HAlign.CENTER, VAlign.BOTTOM);
-			uiBottom.x = stageWidth * .5;
-			uiBottom.y = stageHeight;
-			
-			addChild(uiTopLeft);
-			addChild(uiTop);
-			addChild(uiTopRight);
-			addChild(uiMiddleLeft);
-			addChild(uiMiddleRight);
-			addChild(uiBottomLeft);
-			addChild(uiBottom);
-			addChild(uiBottomRight);
+			//put stats forward
+			_ce.starling.showStats = false;
+			_ce.starling.showStats = true;
 		}
 		
 		override public function update(timeDelta:Number):void

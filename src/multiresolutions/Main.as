@@ -10,8 +10,8 @@ package multiresolutions
 	import flash.events.Event;
 	
 	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="500", height="400")] // 1
-	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="960", height="640")] // 2
-	[SWF(backgroundColor="#FFFFFF", frameRate="60", width="1000", height="640")] // 2
+	[SWF(backgroundColor="#FFFFFF", frameRate="60", width="960", height="640")] // 2
+	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="1000", height="640")] // 2
 	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="1200", height="600")] // 1.5
 	//[SWF(backgroundColor="#FFFFFF",frameRate="60",width="1024",height="768")] //2
 	
@@ -29,8 +29,9 @@ package multiresolutions
 			
 			_baseWidth = 480;
 			_baseHeight = 320;
-			_viewportMode = ViewportMode.LETTERBOX;
-			_assetSizes = [1,1.5,2,4,5];
+			_viewportMode = ViewportMode.FULLSCREEN;
+			_assetSizes = [1, 1.5, 2, 4, 5];
+			
 		}
 		
 		override protected function handleAddedToStage(e:flash.events.Event):void
