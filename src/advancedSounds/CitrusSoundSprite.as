@@ -167,7 +167,6 @@ package advancedSounds
 			e.soundInstance.removeSelfFromVector(soundInstances);
 			if(_image)
 				_image.alpha = 0.1;
-			trace(this,soundInstances.length);
 		}
 		
 		override public function destroy():void
