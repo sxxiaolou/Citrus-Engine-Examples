@@ -1,28 +1,25 @@
-package multiresolutions {
-
+package multiresolutions
+{
+	
 	import citrus.core.starling.StarlingState;
-	import citrus.input.InputAction;
 	import citrus.input.controllers.Keyboard;
+	import citrus.input.InputAction;
 	import citrus.objects.platformer.box2d.Coin;
 	import citrus.objects.platformer.box2d.Hero;
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.objects.platformer.box2d.Sensor;
 	import citrus.physics.box2d.Box2D;
-	import citrus.ui.starling.BasicUIElement;
-	import citrus.ui.starling.BasicUILayout;
+	import citrus.ui.starling.basic.BasicUI;
+	import citrus.ui.starling.basic.BasicUIHearts;
+	import citrus.ui.starling.basic.BasicUILayout;
 	import citrus.utils.objectmakers.ObjectMakerStarling;
 	import citrus.view.starlingview.AnimationSequence;
 	import citrus.view.starlingview.StarlingCamera;
+	import flash.geom.Point;
 	import flash.geom.Rectangle;
-	import starling.core.Starling;
-
 	import starling.display.Image;
 	import starling.display.Quad;
 	import starling.textures.Texture;
-	import starling.utils.HAlign;
-	import starling.utils.VAlign;
-
-	import flash.geom.Point;	
 	
 	/**
 	 * @author Aymeric
@@ -35,7 +32,11 @@ package multiresolutions {
 		private var box2D:Box2D;
 		private var _camera:StarlingCamera;
 		private var _hero:Hero;
-		private var _uiLayout:BasicUILayout;
+		private var _ui:BasicUI;
+		
+		private var _lifeBar:BasicUIHearts;
+		
+		private var time:uint = 0;
 		
 		public function MultiResolutionsState()
 		{
@@ -74,12 +75,12 @@ package multiresolutions {
 			setupUi();
 			
 			//optional uiLayout and background resizing
-			_ce.onStageResize.add(function(width:Number,height:Number):void
-			{
-				_uiLayout.rect = new Rectangle(0, 0, stage.stageWidth, stage.stageHeight);
-				q.width = stage.stageWidth;
-				q.height = stage.stageHeight;
-			});
+			_ce.onStageResize.add(function(width:Number, height:Number):void
+				{
+					_ui.setFrame(0, 0, stage.stageWidth, stage.stageHeight);
+					q.width = stage.stageWidth;
+					q.height = stage.stageHeight;
+				});
 		}
 		
 		/**
@@ -87,39 +88,32 @@ package multiresolutions {
 		 */
 		protected function setupUi():void
 		{
-			_uiLayout = new BasicUILayout(this,new Rectangle(0, 0, stage.stageWidth, stage.stageHeight));
+			var tex:Texture = Assets.assets.getTexture("heart");
 			
-			var tex:Texture = Assets.assets.getTexture("grass/grass_003");
+			BasicUI.defaultContentScale = 0.6;
 			
-			var el:BasicUIElement;
+			_ui = new BasicUI(stage, new Rectangle(0, 0, stage.stageWidth, stage.stageHeight));
 			
+			_lifeBar = new BasicUIHearts(100, 100, [Assets.assets.getTexture("heart"), Assets.assets.getTexture("heart_half_full"), Assets.assets.getTexture("heart_full")], 5, 3);
 			
-			_uiLayout.addElement(new Image(tex), BasicUILayout.TOP_LEFT);
-			_uiLayout.addElement(new Image(tex), BasicUILayout.TOP_CENTER);
-			_uiLayout.addElement(new Image(tex), BasicUILayout.TOP_RIGHT);
+			_ui.add(_lifeBar, BasicUILayout.TOP_CENTER);
 			
-			_uiLayout.addElement(new Image(tex), BasicUILayout.MIDDLE_LEFT);
-			//_uiLayout.addElement(new Image(tex), BasicUILayout.MIDDLE_CENTER);
-			_uiLayout.addElement(new Image(tex), BasicUILayout.MIDDLE_RIGHT);
+			_ui.add(new Image(tex), BasicUILayout.MIDDLE_LEFT);
+			_ui.add(new Image(tex), BasicUILayout.MIDDLE_RIGHT);
+			_ui.add(new Image(tex), BasicUILayout.BOTTOM_LEFT);
+			_ui.add(new Image(tex), BasicUILayout.BOTTOM_CENTER);
+			_ui.add(new Image(tex), BasicUILayout.BOTTOM_RIGHT);
 			
-			_uiLayout.addElement(new Image(tex), BasicUILayout.BOTTOM_LEFT);
-			el =  _uiLayout.addElement(new Image(tex), BasicUILayout.BOTTOM_CENTER);
-			_uiLayout.addElement(new Image(tex), BasicUILayout.BOTTOM_RIGHT);
-			
-			_uiLayout.alpha = 0.8;
-			
-			_uiLayout.removeElement(el);
-			
-			//put stats forward
-			_ce.starling.showStats = false;
-			_ce.starling.showStats = true;
-			
-			_uiLayout.margin = 10;
+			_lifeBar.contentScale = 0.5;
+			_ui.container.alpha = 0.7;
+			_ui.padding = 15;
 		}
 		
 		override public function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
+			
+			_lifeBar.life = ((Math.cos(++time / 25) + 1) / 2) * _lifeBar.maxLife;
 			
 			var action:InputAction;
 			if ((action = _input.isDoing("zoomOut")) != null)
