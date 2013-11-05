@@ -16,7 +16,10 @@ package multiplayer {
 			// http://gafferongames.com/game-physics/networked-physics/
 
 			setUpStarling(true);
-
+		}
+		
+		override public function handleStarlingReady():void
+		{
 			state = new MultiPlayerGameState();
 		}
 	}

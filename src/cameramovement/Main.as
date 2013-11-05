@@ -1,6 +1,7 @@
 package cameramovement {
 	
 	import cameramovement.CameraMovement;
+	import flash.events.Event;
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	
@@ -16,9 +17,16 @@ package cameramovement {
 		public function Main() {
 			
 			addChild(debugSpriteRectangle);
-			
+		}
+		
+		override protected function handleAddedToStage(e:Event):void
+		{
+			super.handleAddedToStage(e);
 			setUpStarling(true, 1);
-			
+		}
+		
+		override public function handleStarlingReady():void
+		{
 			state = new CameraMovement(debugSpriteRectangle);
 		}
 	}

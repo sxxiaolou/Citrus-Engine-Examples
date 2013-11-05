@@ -21,7 +21,10 @@ package games.braid {
 			}
 			
 			setUpStarling(true);
-				
+		}
+		
+		override public function handleStarlingReady():void
+		{
 			state = new BraidDemo();
 		}
 	

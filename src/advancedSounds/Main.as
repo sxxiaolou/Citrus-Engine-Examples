@@ -1,13 +1,11 @@
 package advancedSounds
 {
+	import advancedSounds.AdvancedSoundsState;
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.sounds.CitrusSoundGroup;
-	import citrus.view.starlingview.StarlingArt;
-	import flash.display.Sprite;
 	import flash.events.Event;
 	import starling.events.Event;
 	import starling.utils.AssetManager;
-	import advancedSounds.AdvancedSoundsState;
 	
 	public class Main extends StarlingCitrusEngine
 	{
@@ -21,9 +19,8 @@ package advancedSounds
 			setUpStarling(true, 1);
 		}
 		
-		override protected function _context3DCreated(e:starling.events.Event):void
+		override public function handleStarlingReady():void
 		{
-			super._context3DCreated(e);
 			
 			assets = new AssetManager();
 			

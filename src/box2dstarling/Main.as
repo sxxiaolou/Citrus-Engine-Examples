@@ -2,6 +2,7 @@ package box2dstarling {
 	
 	import box2dstarling.ALevel;
 	import box2dstarling.MyGameData;
+	import flash.events.Event;
 
 	import citrus.core.IState;
 	import citrus.core.starling.StarlingCitrusEngine;
@@ -16,10 +17,17 @@ package box2dstarling {
 		
 		public function Main() {
 			
-			setUpStarling(true);
-			
 			gameData = new MyGameData();
-			
+		}
+		
+		override protected function handleAddedToStage(e:Event):void
+		{
+			super.handleAddedToStage(e);
+			setUpStarling(true);
+		}
+		
+		override public function handleStarlingReady():void
+		{
 			levelManager = new LevelManager(ALevel);
 			levelManager.onLevelChanged.add(_onLevelChanged);
 			levelManager.levels = gameData.levels;

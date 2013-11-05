@@ -14,7 +14,10 @@ package groupobjects {
 		public function Main() {
 
 			setUpStarling(true);
-
+		}
+		
+		override public function handleStarlingReady():void
+		{
 			state = new GroupGameState();
 		}
 	}

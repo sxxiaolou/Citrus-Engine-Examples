@@ -32,19 +32,12 @@ package multiresolutions
 			_viewportMode = ViewportMode.FULLSCREEN;
 			_assetSizes = [1, 1.5, 2, 4, 5];
 			
-		}
-		
-		override protected function handleAddedToStage(e:flash.events.Event):void
-		{
-			super.handleAddedToStage(e);
-			
 			setUpStarling(true);
+			
 		}
 		
-		override protected function _context3DCreated(evt:starling.events.Event):void
+		override public function handleStarlingReady():void
 		{
-			super._context3DCreated(evt);
-			
 			Assets.assets = new AssetManager(scaleFactor);
 			
 			Assets.assets.enqueue("multi-resolutions/assets" + scaleFactor + "x.png");

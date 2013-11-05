@@ -29,10 +29,6 @@ package games.live4sales {
 					setUpStarling(true, 1, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
 			} else 
 				setUpStarling(true);
-			
-			// select Box2D or Nape demo
-			state = new NapeLive4Sales();
-			//state = new Box2DLive4Sales();
 		}
 		
 		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewport:Rectangle = null, profile:String = "baseline"):void {
@@ -45,6 +41,13 @@ package games.live4sales {
 				_starling.stage.stageWidth = isIpad ? 512 : 480;
 				_starling.stage.stageHeight = isIpad ? 384 : 320;
 			}
+		}
+		
+		override public function handleStarlingReady():void
+		{
+			// select Box2D or Nape demo
+			state = new NapeLive4Sales();
+			//state = new Box2DLive4Sales();
 		}
 	}
 }

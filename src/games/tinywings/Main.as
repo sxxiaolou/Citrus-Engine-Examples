@@ -14,9 +14,11 @@ package games.tinywings {
 		public function Main() {
 			
 			setUpStarling(true);
-			
+		}
+		
+		override public function handleStarlingReady():void
+		{
 			// There is a demo for nape and box2d. You just need to change the package!
-			
 			state = new TinyWingsGameState();
 		}
 	}
