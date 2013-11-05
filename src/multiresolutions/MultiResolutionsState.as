@@ -83,9 +83,6 @@ package multiresolutions
 				});
 		}
 		
-		/**
-		 * dynamically position elements on screen like you would for a ui (here we simply place tiles)
-		 */
 		protected function setupUi():void
 		{
 			var tex:Texture = Assets.assets.getTexture("heart");
@@ -127,6 +124,12 @@ package multiresolutions
 			
 			if (_camera.getZoom() < 1)
 				_camera.setZoom(1);
+		}
+		
+		override public function destroy():void
+		{
+			_ui.destroy();
+			super.destroy();
 		}
 	
 	}
