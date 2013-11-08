@@ -23,8 +23,8 @@ package soundpatchdemo {
 			sound.addSound("Jump", {sound:"sounds/jump.mp3",group:CitrusSoundGroup.SFX});
 			sound.addSound("Kill", {sound:"sounds/kill.mp3",group:CitrusSoundGroup.SFX});
 			sound.addSound("Skid", {sound:"sounds/skid.mp3",group:CitrusSoundGroup.SFX});
-			sound.addSound("Song", {sound:"sounds/song.mp3",timesToPlay:-1,group:CitrusSoundGroup.BGM});
-			sound.addSound("Walk", { sound:"sounds/walk.mp3",timesToPlay: -1, volume:1, group:CitrusSoundGroup.SFX } );
+			sound.addSound("Song", {sound:"sounds/song.mp3",loops:-1,group:CitrusSoundGroup.BGM});
+			sound.addSound("Walk", { sound:"sounds/walk.mp3",loops: -1, volume:1, group:CitrusSoundGroup.SFX } );
 			
 
 			var loader:Loader = new Loader();
