@@ -6,6 +6,7 @@ package advancedSounds
 	import citrus.objects.CitrusSpritePool;
 	import citrus.sounds.CitrusSoundEvent;
 	import citrus.sounds.CitrusSoundInstance;
+	import citrus.sounds.CitrusSoundSpace;
 	import citrus.view.starlingview.StarlingCamera;
 	import flash.geom.Point;
 	import starling.text.TextField;
@@ -16,6 +17,7 @@ package advancedSounds
 		public var camTarget:Point = new Point();
 		public var textDisplay:TextField;
 		
+		public var soundSpace:CitrusSoundSpace;
 		public var soundSpritePool:CitrusSpritePool;
 		
 		protected var _playing:uint = 0;
@@ -32,6 +34,10 @@ package advancedSounds
 			textDisplay = new TextField(stage.stageWidth, 100, "", "Verdana", 28);
 			addChild(textDisplay);
 			
+			soundSpace = new CitrusSoundSpace("sound space");
+			soundSpace.visible = false;
+			add(soundSpace);
+			
 			soundSpritePool = new CitrusSpritePool(CitrusSoundSprite, {});
 			addPoolObject(soundSpritePool);
 			
@@ -47,19 +53,11 @@ package advancedSounds
 				soundSprite = soundSpritePool.get({x: pos.x, y: pos.y, view: "muffin.png"}).data as CitrusSoundSprite;
 			}
 			
-			var soundSprite:CitrusSoundSprite = new CitrusSoundSprite("looper", {x: 0, y: 0, loop: "loop", view: "muffin.png"});
+			soundSprite = new CitrusSoundSprite("looper", {x: 0, y: 0, loop: "loop", view: "muffin.png"});
 			add(soundSprite);
 			
-			_ce.sound.addEventListener(CitrusSoundEvent.FORCE_STOP, function():void
-				{
-					rejected++;
-				});
-			
-			_ce.sound.addEventListener(CitrusSoundEvent.SOUND_LOOP, function():void
-				{
-					looped++;
-				});
-			
+			_ce.sound.addEventListener(CitrusSoundEvent.FORCE_STOP, function():void  {rejected++;});
+			_ce.sound.addEventListener(CitrusSoundEvent.SOUND_LOOP, function():void {looped++;});
 			_ce.sound.addEventListener(CitrusSoundEvent.SOUND_END, function():void
 				{
 					_playing--;
@@ -90,9 +88,7 @@ package advancedSounds
 			timer++;
 			
 			if (_input.justDid("jump"))
-			{
 				_ce.state = new AdvancedSoundsState();
-			}
 			
 			camera.rotate(0.02);
 			camera.offset.setTo(Math.cos(timer / 50) * .5 * stage.stageWidth + stage.stageWidth * .5, stage.stageHeight * .5);
