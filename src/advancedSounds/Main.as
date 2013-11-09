@@ -3,6 +3,7 @@ package advancedSounds
 	import advancedSounds.AdvancedSoundsState;
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.sounds.CitrusSoundGroup;
+	import citrus.sounds.CitrusSoundInstance;
 	import flash.events.Event;
 	import starling.events.Event;
 	import starling.utils.AssetManager;
@@ -38,6 +39,9 @@ package advancedSounds
 		
 		protected function start():void
 		{
+			//offset the sounds (less gap in the looping sound)
+			CitrusSoundInstance.startPositionOffset = 80;
+			
 			//sound added with asset manager
 			sound.addSound("loop", { sound:assets.getSound("loop") ,permanent:true, volume:0.6 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
 			
