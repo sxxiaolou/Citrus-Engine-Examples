@@ -6,6 +6,7 @@ package advancedSounds
 	import citrus.sounds.CitrusSoundObject;
 	import citrus.view.ICitrusArt;
 	import citrus.view.starlingview.StarlingArt;
+	import citrus.view.starlingview.StarlingCamera;
 	import starling.display.Image;
 	
 	public class CitrusSoundSprite extends CitrusSprite
@@ -19,9 +20,8 @@ package advancedSounds
 		public function CitrusSoundSprite(name:String, params:Object = null)
 		{
 			updateCallEnabled = true;
-			super(name, params);
-			
 			soundObject = new CitrusSoundObject(this);
+			super(name, params);
 		}
 		
 		override public function initialize(poolObjectParams:Object = null):void
@@ -42,9 +42,7 @@ package advancedSounds
 			{
 				citrusSound = _ce.sound.getSound(loop);
 				if (!citrusSound.isPlaying)
-				{
 					soundObject.play(citrusSound);
-				}
 			}
 		}
 		
@@ -65,7 +63,8 @@ package advancedSounds
 			if (_image)
 			{
 				_image.alpha = 0.1+vol*10;
-				_image.scaleX = _image.scaleY = 1+vol*4;
+				_image.scaleX = _image.scaleY = 1 + vol * 4;
+				_image.rotation = -StarlingCamera(_ce.state.view.camera).getRotation();
 			}
 
 		}
@@ -73,6 +72,8 @@ package advancedSounds
 		override public function destroy():void
 		{
 			soundObject.destroy();
+			soundObject = null;
+			
 			super.destroy();
 		}
 		

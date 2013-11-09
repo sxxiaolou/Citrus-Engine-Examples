@@ -31,6 +31,16 @@ package advancedSounds
 		{
 			super.initialize();
 			
+			camera = view.camera.setUp(camTarget, new Point(stage.stageWidth * .5, stage.stageHeight * 0.5)) as StarlingCamera;
+			camera.allowRotation = true;
+			camera.allowZoom = true;
+			camera.easing.setTo(1, 1);
+			camera.rotationEasing = 1;
+			camera.zoomEasing = 1;
+			
+			camera.zoomFit(400, 400, true);
+			camera.reset();
+			
 			textDisplay = new TextField(stage.stageWidth, 100, "", "Verdana", 28);
 			addChild(textDisplay);
 			
@@ -63,16 +73,6 @@ package advancedSounds
 					_playing--;
 					totalplayed++;
 				});
-			
-			camera = view.camera.setUp(camTarget, new Point(stage.stageWidth * .5, stage.stageHeight * 0.5)) as StarlingCamera;
-			camera.allowRotation = true;
-			camera.allowZoom = true;
-			camera.easing.setTo(1, 1);
-			camera.rotationEasing = 1;
-			camera.zoomEasing = 1;
-			
-			camera.zoomFit(400, 400, true);
-			camera.reset();
 		
 		}
 		
@@ -83,18 +83,25 @@ package advancedSounds
 		
 		override public function update(timeDelta:Number):void
 		{
-			super.update(timeDelta);
+			/**
+			 * we move the camera BEFORE calling super.update() so that the citrus sound space will have the right camera position when updated on the first frame.
+			 */
+			moveCamera();
 			
-			timer++;
+			super.update(timeDelta);
 			
 			if (_input.justDid("jump"))
 				_ce.state = new AdvancedSoundsState();
 			
+			textDisplay.text = "active/rejected/looped/total played\n" + CitrusSoundInstance.activeSoundInstances.length.toString() + " / " + rejected + " / " + looped + " / " + totalplayed;
+		}
+		
+		public function moveCamera():void
+		{
 			camera.rotate(0.02);
 			camera.offset.setTo(Math.cos(timer / 50) * .5 * stage.stageWidth + stage.stageWidth * .5, stage.stageHeight * .5);
 			camera.setZoom(Math.cos(timer / 10) * 0.05 + 0.95);
-			
-			textDisplay.text = "active/rejected/looped/total played\n" + CitrusSoundInstance.activeSoundInstances.length.toString() + " / " + rejected + " / " + looped + " / " + totalplayed;
+			timer++;
 		}
 		
 		override public function destroy():void
