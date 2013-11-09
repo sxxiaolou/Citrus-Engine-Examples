@@ -43,13 +43,13 @@ package advancedSounds
 			CitrusSoundInstance.startPositionOffset = 80;
 			
 			//sound added with asset manager
-			sound.addSound("loop", { sound:assets.getSound("loop") ,permanent:true, volume:0.6 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
+			sound.addSound("loop", { sound:assets.getSound("loop") ,permanent:true, volume:0.5 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
 			
 			//sounds added with url
 			sound.addSound("beep1", { sound:"sounds/beep1.mp3" ,autoload:true , group:CitrusSoundGroup.SFX } );
 			sound.addSound("beep2", { sound:"sounds/beep2.mp3" ,autoload:true , group:CitrusSoundGroup.SFX } );
 			
-			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.12;
+			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.05;
 			
 			state = new AdvancedSoundsState();
 		}

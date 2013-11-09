@@ -43,10 +43,13 @@ package advancedSounds
 			
 			textDisplay = new TextField(stage.stageWidth, 100, "", "Verdana", 28);
 			addChild(textDisplay);
-			
+
 			soundSpace = new CitrusSoundSpace("sound space");
 			soundSpace.visible = false;
 			add(soundSpace);
+			
+			soundSprite = new CitrusSoundSprite("looper", {x: 0, y: 0, loop: "loop", view: "muffin.png"});
+			add(soundSprite);
 			
 			soundSpritePool = new CitrusSpritePool(CitrusSoundSprite, {});
 			addPoolObject(soundSpritePool);
@@ -62,9 +65,6 @@ package advancedSounds
 				
 				soundSprite = soundSpritePool.get({x: pos.x, y: pos.y, view: "muffin.png"}).data as CitrusSoundSprite;
 			}
-			
-			soundSprite = new CitrusSoundSprite("looper", {x: 0, y: 0, loop: "loop", view: "muffin.png"});
-			add(soundSprite);
 			
 			_ce.sound.addEventListener(CitrusSoundEvent.FORCE_STOP, function():void  {rejected++;});
 			_ce.sound.addEventListener(CitrusSoundEvent.SOUND_LOOP, function():void {looped++;});
