@@ -217,7 +217,7 @@ package cameramovement {
 				_input.startRouting(1000);
 				
 				var newTarget:Object = _camera.target == _hero ? _hero2 : _hero;
-				_camera.switchToTarget(newTarget,1,null,function():void
+				_camera.switchToTarget(newTarget,5,function():void
 				{
 					_input.stopRouting();
 					_input.keyboard.defaultChannel = newTarget.inputChannel;
