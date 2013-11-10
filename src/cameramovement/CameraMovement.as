@@ -42,6 +42,7 @@ package cameramovement {
 		
 		private var _floor:Platform;
 		private var _hero:Hero;
+		private var _hero2:Hero;
 		private var _clouds:Vector.<CitrusSprite>;
 		
 		private var _camera:StarlingCamera;
@@ -82,6 +83,8 @@ package cameramovement {
 			
 			_hero = new Hero("hero", {x: 800, y: 500, width: 40, dynamicFriction: 10, height: 80, view: new Quad(40, 80, 0x333333), group: 1000});
 			
+			_hero2 = new Hero("hero2", {x: 1000, y: 500, width: 40, dynamicFriction: 10, height: 80, view: new Quad(40, 80, 0x333333), group: 1000});
+			_hero2.inputChannel = 1;
 			//additional patforms
 			add(new Platform("platform1", {x: 850, y: 750, width: 300, height: 30, view: new Quad(300, 30, 0xCCCCCC), group: 1000}));
 			add(new Platform("platform2", {x: 1300, y: 750, width: 300, height: 30, view: new Quad(300, 30, 0xCCCCCC), group: 1000}));
@@ -92,6 +95,7 @@ package cameramovement {
 			
 			add(_floor);
 			add(_hero);
+			add(_hero2);
 			
 			//generate clouds and keep them in a list
 			
@@ -116,7 +120,7 @@ package cameramovement {
 			
 			//camera setup
 			_camera = view.camera as StarlingCamera;
-			_camera.setUp(_hero,_bounds, new Point(0.25, 0.6), new Point(0.05, 0.05));
+			_camera.setUp(_hero,_bounds, new Point(0.5, 0.5), new Point(0.05, 0.05));
 			_camera.allowRotation = true;
 			_camera.allowZoom = true;
 			
@@ -126,7 +130,7 @@ package cameramovement {
 			_camera.setZoom(1.2);
 			_camera.reset();
 			
-			_camera.target = _mouseTarget;
+			_camera.target = _hero;
 			
 			//Listen to MouseWheel
 			Starling.current.nativeStage.addEventListener(MouseEvent.MOUSE_WHEEL, onWheel);
@@ -140,8 +144,8 @@ package cameramovement {
 			//R randomizes cloud positions
 			kb.addKeyAction("regen", Keyboard.R);
 			
-			Starling.current.stage.addEventListener(TouchEvent.TOUCH,onTouch);
-		
+			
+			kb.addKeyAction("switch", Keyboard.A);
 		}
 		
 		private function onWheel(e:MouseEvent):void
@@ -150,17 +154,6 @@ package cameramovement {
 				_camera.setZoom(_camera.getZoom() + 0.1);
 			else if (e.delta < 0)
 				_camera.setZoom(_camera.getZoom() - 0.1);
-		}
-		
-		private var p:Point = new Point();
-		private function onTouch(e:TouchEvent):void
-		{
-			var t:Touch = e.getTouch(Starling.current.stage);
-			if (t)
-			{
-				p.setTo(t.globalX, t.globalY);
-				((view as StarlingView).viewRoot as starling.display.Sprite).globalToLocal(p,_mouseTarget);
-			}
 		}
 		
 		override public function update(timeDelta:Number):void
@@ -218,6 +211,29 @@ package cameramovement {
 					cloud.x = Math.random() * _bounds.width;
 					cloud.y = Math.random() * 3 * _bounds.height / 4;
 				}
+				
+			if (_input.justDid("switch"))
+			{
+				_input.startRouting(1000);
+				
+				if (_camera.target == _hero)
+				{
+					_camera.switchToTarget(_hero2,1,null,function():void
+					{
+						_input.stopRouting();
+						_input.keyboard.defaultChannel = _hero2.inputChannel;
+					});
+				}
+				
+				if (_camera.target == _hero2)
+				{
+					_camera.switchToTarget(_hero,1,null,function():void
+					{
+						_input.stopRouting();
+						_input.keyboard.defaultChannel = _hero.inputChannel;
+					});
+				}
+			}
 		
 		}
 	
