@@ -145,7 +145,7 @@ package cameramovement {
 			kb.addKeyAction("regen", Keyboard.R);
 			
 			
-			kb.addKeyAction("switch", Keyboard.A);
+			kb.addKeyAction("switch", Keyboard.Q);
 		}
 		
 		private function onWheel(e:MouseEvent):void
