@@ -74,7 +74,7 @@ package starlingtiles
 			_hero.view = heroImage;
 			
 			// setup camera to follow hero
-			view.camera.setUp(_hero, new Point(400, 300), new Rectangle(0, 0, 4096, 1024), new Point(0.25, 0.15));
+			view.camera.setUp(_hero, new Rectangle(0, 0, 4096, 1024),null, new Point(0.25, 0.15));
 			
 			
 			// movieclip on stage converted to tiles

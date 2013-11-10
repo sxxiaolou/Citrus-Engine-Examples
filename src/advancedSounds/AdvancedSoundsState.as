@@ -7,13 +7,16 @@ package advancedSounds
 	import citrus.sounds.CitrusSoundEvent;
 	import citrus.sounds.CitrusSoundInstance;
 	import citrus.sounds.CitrusSoundSpace;
+	import citrus.view.starlingview.StarlingArt;
 	import citrus.view.starlingview.StarlingCamera;
 	import flash.geom.Point;
+	import flash.geom.Rectangle;
+	import starling.display.DisplayObject;
+	import starling.display.Image;
 	import starling.text.TextField;
 	
 	public class AdvancedSoundsState extends StarlingState
 	{
-		public var camera:StarlingCamera;
 		public var camTarget:Point = new Point();
 		public var textDisplay:TextField;
 		
@@ -31,7 +34,8 @@ package advancedSounds
 		{
 			super.initialize();
 			
-			camera = view.camera.setUp(camTarget, new Point(stage.stageWidth * .5, stage.stageHeight * 0.5)) as StarlingCamera;
+			camera.setUp(camTarget);
+			camera.center.setTo(0.5, 0.5);
 			camera.allowRotation = true;
 			camera.allowZoom = true;
 			camera.easing.setTo(1, 1);
@@ -43,7 +47,7 @@ package advancedSounds
 			
 			textDisplay = new TextField(stage.stageWidth, 100, "", "Verdana", 28);
 			addChild(textDisplay);
-
+			
 			soundSpace = new CitrusSoundSpace("sound space");
 			soundSpace.visible = false;
 			add(soundSpace);
@@ -66,8 +70,14 @@ package advancedSounds
 				soundSprite = soundSpritePool.get({x: pos.x, y: pos.y, view: "muffin.png"}).data as CitrusSoundSprite;
 			}
 			
-			_ce.sound.addEventListener(CitrusSoundEvent.FORCE_STOP, function():void  {rejected++;});
-			_ce.sound.addEventListener(CitrusSoundEvent.SOUND_LOOP, function():void {looped++;});
+			_ce.sound.addEventListener(CitrusSoundEvent.FORCE_STOP, function():void
+				{
+					rejected++;
+				});
+			_ce.sound.addEventListener(CitrusSoundEvent.SOUND_LOOP, function():void
+				{
+					looped++;
+				});
 			_ce.sound.addEventListener(CitrusSoundEvent.SOUND_END, function():void
 				{
 					_playing--;
@@ -90,6 +100,25 @@ package advancedSounds
 			
 			super.update(timeDelta);
 			
+			var art:StarlingArt;
+			var objectBounds:Rectangle = new Rectangle();
+			var area:Rectangle = new Rectangle(200, 200, stage.stageWidth-400, stage.stageHeight-400);
+			
+			soundSpritePool.foreachRecycled(function(soundSprite:CitrusSoundSprite):Boolean
+				{
+					art = view.getArt(soundSprite) as StarlingArt;
+					if (art.content is Image)
+					{
+						(art.content as Image).getBounds(art.parent, objectBounds)
+						
+						if (camera.intersectsRect(objectBounds,area))
+							(art.content as Image).color = 0xFF0000;
+						else
+							(art.content as Image).color = 0xFFFFFF;
+					}
+					return false;
+				});
+			
 			if (_input.justDid("jump"))
 				_ce.state = new AdvancedSoundsState();
 			
@@ -98,8 +127,8 @@ package advancedSounds
 		
 		public function moveCamera():void
 		{
-			camera.rotate(0.02);
-			camera.offset.setTo(Math.cos(timer / 50) * .5 * stage.stageWidth + stage.stageWidth * .5, stage.stageHeight * .5);
+			camera.rotate(0.02 + Math.PI*2);
+			camera.center.setTo(Math.cos(timer / 50) * .5 + .5, .5);
 			camera.setZoom(Math.cos(timer / 10) * 0.05 + 0.95);
 			timer++;
 		}
@@ -109,7 +138,6 @@ package advancedSounds
 			_ce.sound.stopAllPlayingSounds();
 			_ce.sound.removeAllEventListeners();
 			removeChild(textDisplay);
-			camera = null;
 			camTarget = null;
 			super.destroy();
 		}

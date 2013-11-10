@@ -4,7 +4,6 @@ package multiresolutions
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.core.starling.ViewportMode;
 	
-	import starling.events.Event;
 	import starling.utils.AssetManager;
 	
 	import flash.events.Event;
@@ -32,8 +31,12 @@ package multiresolutions
 			_viewportMode = ViewportMode.FULLSCREEN;
 			_assetSizes = [1, 1.5, 2, 4, 5];
 			
+		}
+		
+		override protected function handleAddedToStage(e:Event):void
+		{
+			super.handleAddedToStage(e);
 			setUpStarling(true);
-			
 		}
 		
 		override public function handleStarlingReady():void

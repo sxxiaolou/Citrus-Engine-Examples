@@ -1,6 +1,7 @@
 package groupobjects {
 
 	import citrus.core.starling.StarlingCitrusEngine;
+	import flash.events.Event;
 
 	import groupobjects.GroupGameState;
 
@@ -12,7 +13,11 @@ package groupobjects {
 	public class Main extends StarlingCitrusEngine {
 
 		public function Main() {
-
+		}
+		
+		override protected function handleAddedToStage(e:Event):void
+		{
+			super.handleAddedToStage(e);
 			setUpStarling(true);
 		}
 		

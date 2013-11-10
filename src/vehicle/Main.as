@@ -1,8 +1,8 @@
 package vehicle {
 
 	import citrus.core.starling.StarlingCitrusEngine;
+	import flash.events.Event;
 
-	import starling.events.Event;
 	import starling.utils.AssetManager;
 
 	import vehicle.Assets;
@@ -16,13 +16,16 @@ package vehicle {
 	public class Main extends StarlingCitrusEngine {
 
 		public function Main() {
-
+		}
+		
+		override protected function handleAddedToStage(e:Event):void
+		{
+			super.handleAddedToStage(e);
 			setUpStarling(true);
 		}
-
-		override protected function _context3DCreated(evt:Event):void {
-			super._context3DCreated(evt);
-			
+		
+		override public function handleStarlingReady():void
+		{
 			Assets.assets = new AssetManager(starling.contentScaleFactor);
 			Assets.assets.enqueue("vehicle/Vehicle.png", "vehicle/Vehicle.xml");
 			Assets.assets.verbose = true;

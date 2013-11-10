@@ -87,7 +87,7 @@ package away3dbox2d {
 			var coin:Coin = new Coin("coin", {x:300, y:200, width:30, height:30, view:cube2});
 			add(coin);
 
-			view.camera.setUp(_hero, new Point(320, 240), new Rectangle(0, 0, 1550, 450), new Point(.25, .05));
+			view.camera.setUp(_hero, new Rectangle(0, 0, 1550, 450),null, new Point(.25, .05));
 			_cameraController = new HoverController((_ce as Away3DCitrusEngine).away3D.camera, null, 175, 20, 500);
 
 			_clickMe = new Sprite();

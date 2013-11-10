@@ -43,7 +43,7 @@ package games.tinywings.box2d {
 			var hills:HillsManagingGraphics = new HillsManagingGraphics("hills",{rider:_ball, sliceWidth:30, roundFactor:20, sliceHeight:800, widthHills:stage.stageWidth, registration:"topLeft", view:_hillsTexture});
 			add(hills);
 			
-			view.camera.setUp(_ball, new Point(stage.stageWidth/4 , stage.stageHeight/2));
+			view.camera.setUp(_ball,null,new Point(0.25 , 0.5));
 			
 		}
 			

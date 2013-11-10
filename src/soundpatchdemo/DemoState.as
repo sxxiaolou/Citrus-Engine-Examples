@@ -70,7 +70,7 @@ package soundpatchdemo {
 			_hero.onAnimationChange.add(handleHeroAnimationChange);
 			_hero.controlsEnabled = false;
 
-			view.camera.setUp(_hero, new Point(stage.stageWidth/2, stage.stageHeight/2), new Rectangle(0, 0, 3300, 417), new Point(.25, .05));
+			view.camera.setUp(_hero,new Rectangle(0, 0, 3300, 417),null, new Point(.25, .05));
 
 			_sign = getObjectByName("signSensor") as Sensor;
 			_sign.onBeginContact.add(handleEnterSign);

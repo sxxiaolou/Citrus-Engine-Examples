@@ -15,7 +15,7 @@ package starlingdemo {
 		public function Main() {
 		}
 		
-		override public function handleAddedToStage(e:Event):void
+		override protected function handleAddedToStage(e:Event):void
 		{
 			super.handleAddedToStage(e);
 			setUpStarling(true);

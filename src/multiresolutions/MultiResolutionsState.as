@@ -30,7 +30,6 @@ package multiresolutions
 		[Embed(source="/../embed/tiledmap/multi-resolutions/map.tmx",mimeType="application/octet-stream")]
 		private const _Map:Class;
 		private var box2D:Box2D;
-		private var _camera:StarlingCamera;
 		private var _hero:Hero;
 		private var _ui:BasicUI;
 		
@@ -51,7 +50,7 @@ package multiresolutions
 			super.initialize();
 			
 			//background quad
-			var q:Quad = parent.addChild(new Quad(_ce.baseWidth, _ce.baseHeight, 0x86f8ff)) as Quad;
+			var q:Quad = parent.addChild(new Quad(stage.stageWidth, stage.stageHeight, 0x86f8ff)) as Quad;
 			parent.swapChildren(this, q);
 			
 			box2D = new Box2D("box2D");
@@ -63,9 +62,11 @@ package multiresolutions
 			_hero = getFirstObjectByType(Hero) as Hero;
 			_hero.view = new AnimationSequence(Assets.assets, ["walk", "duck", "idle", "jump", "hurt"], "idle");
 			
-			_camera = view.camera.setUp(_hero, new Point(stage.stageWidth * .5, stage.stageHeight * .5), null, new Point(.25, .05)) as StarlingCamera;
-			_camera.allowZoom = true;
-			_camera.allowRotation = true;
+			camera.target = _hero;
+			camera.allowZoom = true;
+			camera.allowRotation = true;
+			camera.enabled = true;
+			camera.reset();
 			
 			_input.keyboard.addKeyAction("rotate+", Keyboard.D);
 			_input.keyboard.addKeyAction("rotate-", Keyboard.S);
@@ -114,16 +115,16 @@ package multiresolutions
 			
 			var action:InputAction;
 			if ((action = _input.isDoing("zoomOut")) != null)
-				_camera.zoom(1 - 0.05 * action.value);
+				camera.zoom(1 - 0.05 * action.value);
 			if ((action = _input.isDoing("zoomIn")) != null)
-				_camera.zoom(1 + 0.05 * action.value);
+				camera.zoom(1 + 0.05 * action.value);
 			if ((action = _input.isDoing("rotate-")) != null)
-				_camera.rotate(0.03 * action.value);
+				camera.rotate(0.03 * action.value);
 			if ((action = _input.isDoing("rotate+")) != null)
-				_camera.rotate(-0.03 * action.value);
+				camera.rotate(-0.03 * action.value);
 			
-			if (_camera.getZoom() < 1)
-				_camera.setZoom(1);
+			if (camera.getZoom() < 1)
+				camera.setZoom(1);
 		}
 		
 		override public function destroy():void

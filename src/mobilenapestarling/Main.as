@@ -2,6 +2,7 @@ package mobilenapestarling {
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.utils.Mobile;
+	import flash.events.Event;
 
 	import flash.geom.Rectangle;
 
@@ -19,6 +20,12 @@ package mobilenapestarling {
 
 			compileForMobile = Mobile.isIOS() ? true : false;
 			
+		}
+		
+		override protected function handleAddedToStage(e:Event):void
+		{
+			super.handleAddedToStage(e);
+			
 			if (compileForMobile) {
 				
 				// detect if iPad
@@ -30,7 +37,6 @@ package mobilenapestarling {
 					setUpStarling(true, 1, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
 			} else 
 				setUpStarling(true);
-			
 		}
 		
 		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewport:Rectangle = null, profile:String = "baseline"):void {

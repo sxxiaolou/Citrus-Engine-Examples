@@ -2,6 +2,7 @@ package games.live4sales {
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.utils.Mobile;
+	import flash.events.Event;
 
 	import flash.geom.Rectangle;
 
@@ -17,30 +18,11 @@ package games.live4sales {
 		
 		public function Main() {
 
-			compileForMobile = Mobile.isIOS() ? true : Mobile.isAndroid() ? true : false;
-			
-			if (compileForMobile) {
-				
-				isIpad = Mobile.isIpad();
-				
-				if (isIpad)
-					setUpStarling(true, 1, new Rectangle(64, 128, stage.fullScreenWidth, stage.fullScreenHeight));
-				else
-					setUpStarling(true, 1, new Rectangle(0, 0, stage.fullScreenWidth, stage.fullScreenHeight));
-			} else 
-				setUpStarling(true);
 		}
 		
-		override public function setUpStarling(debugMode:Boolean = false, antiAliasing:uint = 1, viewport:Rectangle = null, profile:String = "baseline"):void {
-			
-			super.setUpStarling(debugMode, antiAliasing, viewport, profile);
-			
-			if (compileForMobile) {
-				// set iPhone & iPad size, used for Starling contentScaleFactor
-				// landscape mode!
-				_starling.stage.stageWidth = isIpad ? 512 : 480;
-				_starling.stage.stageHeight = isIpad ? 384 : 320;
-			}
+		override protected function handleAddedToStage(e:Event):void
+		{
+				setUpStarling(true);
 		}
 		
 		override public function handleStarlingReady():void

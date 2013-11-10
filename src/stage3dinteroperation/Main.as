@@ -27,7 +27,12 @@ package stage3dinteroperation {
 		public var starlingSceneFront:Starling;
 
 		public function Main() {
-
+		}
+		
+		override protected function handleAddedToStage(e:Event):void
+		{
+			super.handleAddedToStage(e);
+			
 			stage3DManager = Stage3DManager.getInstance(stage);
 
 			// Create a new Stage3D proxy to contain the separate views

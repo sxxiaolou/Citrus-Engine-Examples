@@ -47,7 +47,7 @@ package vehicle {
 			var hills:Hills = new Hills("hills", {rider:car, currentYPoint:600, sliceWidth:50, widthHills:stage.stageWidth * 2, registration:"topLeft"});
 			add(hills);
 
-			view.camera.setUp(car, new Point(stage.stageWidth / 2, stage.stageHeight / 2), new Rectangle(0, 0, 250000, 6000), new Point(.25, .05));
+			camera.setUp(car,new Rectangle(0, 0, 250000, 6000));
 
 			(getFirstObjectByType(Driver) as Driver).onGroundTouched.add(_gameOver);
 

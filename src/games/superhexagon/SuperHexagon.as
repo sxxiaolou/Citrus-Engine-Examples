@@ -1,6 +1,7 @@
 package games.superhexagon 
 {
 	import citrus.core.State;
+	import citrus.math.MathUtils;
 	import citrus.math.MathVector;
 	import citrus.view.spriteview.SpriteCamera;
 	import citrus.view.spriteview.SpriteView;
@@ -22,8 +23,8 @@ package games.superhexagon
 		protected var cam:SpriteCamera;
 		//camera target
 		protected var camTarget:MathVector;
-		//camera offset
-		protected var camOffset:Point;
+		//camera center
+		protected var camCenter:Point;
 		
 		//reference to the state container (where every citrus object goes)
 		protected var stateSprite:Sprite;
@@ -72,19 +73,15 @@ package games.superhexagon
 		override public function initialize():void
 		{
 			super.initialize();
-			
-			_ce.onStageResize.add(handleResize);
-			
+
 			camTarget = new MathVector(0, 0);
-			camOffset =  new Point(_ce.screenWidth * 0.5, _ce.screenHeight *0.5);
+			camCenter =  new Point(0.5, 0.5);
 			
-			cam = view.camera.setUp(camTarget,camOffset) as SpriteCamera;
+			cam = view.camera.setUp(camTarget,null,camCenter) as SpriteCamera;
 			cam.allowRotation = true;
 			cam.allowZoom = true;
 			cam.rotationEasing = 1;
 			cam.zoomEasing = 1;
-			
-			handleResize(_ce.screenWidth, _ce.screenHeight);
 			
 			//grab reference to the state container
 			stateSprite = ((view as SpriteView).viewRoot as Sprite);
@@ -225,18 +222,6 @@ package games.superhexagon
 			}
 		}
 		
-		/**
-		 * resets the camera so that we always see what we want to see (here a 700x700 area)
-		 */
-		protected function handleResize(w:int, h:int):void
-		{
-			cam.cameraLensWidth = w;
-			cam.cameraLensHeight = h;
-			camOffset.x = w * 0.5;
-			camOffset.y = h * 0.5;
-			cam.zoomFit(700, 700, true);
-		}
-		
 		override public function update(timeDelta:Number):void
 		{
 			super.update(timeDelta);
@@ -359,24 +344,10 @@ package games.superhexagon
 			{
 				if (sides[i] == 0)
 					continue;
-				if ( angleBetween(angle, int(i) * hexangle, (int(i) + 1) * hexangle) )
+				if ( MathUtils.angleBetween(angle, int(i) * hexangle, (int(i) + 1) * hexangle) )
 					return true;
 			}
 			return false;
-		}
-		
-		/**
-		 * check if angle is between angle a and b
-		 * thanks to http://www.xarg.org/2010/06/is-an-angle-between-two-other-angles/
-		 */
-		protected function angleBetween(angle:Number, a:Number, b:Number):Boolean {
-			var mod:Number = Math.PI * 2;
-			angle = (mod + (angle % mod)) % mod;
-			a = (mod * 100 + a) % mod;
-			b = (mod * 100 + b) % mod;
-			if (a < b)
-				return a <= angle && angle <= b;
-			return a <= angle || angle <= b;
 		}
 		
 		/**
@@ -384,7 +355,6 @@ package games.superhexagon
 		 */
 		override public function destroy():void
 		{
-			_ce.onStageResize.remove(handleResize);
 			removeChild(timerText);
 			stateSprite.removeChild(hexCanvas);
 			map.length = 0;

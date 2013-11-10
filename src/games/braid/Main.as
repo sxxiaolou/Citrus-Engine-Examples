@@ -2,6 +2,7 @@ package games.braid {
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.utils.Mobile;
+	import flash.events.Event;
 	
 	import games.braid.BraidDemo;
 
@@ -19,7 +20,11 @@ package games.braid {
 				Starling.handleLostContext = true;
 				Starling.multitouchEnabled = true;
 			}
-			
+		}
+		
+		override protected function handleAddedToStage(e:Event):void
+		{
+			super.handleAddedToStage(e);
 			setUpStarling(true);
 		}
 		

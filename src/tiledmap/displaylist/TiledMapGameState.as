@@ -46,7 +46,7 @@ package tiledmap.displaylist {
 			
 			var hero:Hero = getObjectByName("hero") as Hero;
 			
-			view.camera.setUp(hero, new Point(stage.stageWidth / 2, 240), new Rectangle(0, 0, 1280, 640), new Point(.25, .05));
+			view.camera.setUp(hero, new Rectangle(0, 0, 1280, 640));
 			
 			(view.getArt(getObjectByName("foreground")) as SpriteArt).alpha = 0.3;
 		}

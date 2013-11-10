@@ -14,7 +14,11 @@ package starlingtiles {
 	public class Main extends StarlingCitrusEngine {
 		
 		public function Main():void {
-			
+		}
+		
+		override protected function handleAddedToStage(e:Event):void
+		{
+			super.handleAddedToStage(e);
 			setUpStarling(true);
 			
 			var loader:Loader = new Loader();

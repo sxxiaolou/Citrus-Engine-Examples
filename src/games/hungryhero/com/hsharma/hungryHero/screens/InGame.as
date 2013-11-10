@@ -656,6 +656,7 @@ package games.hungryhero.com.hsharma.hungryHero.screens {
 			playerSpeed = 0;
 			
 			// Touch interaction
+			touchable = true;
 			this.addEventListener(TouchEvent.TOUCH, onTouch);
 			
 			// Game tick

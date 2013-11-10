@@ -40,7 +40,7 @@ package tiledmap.starling {
 			super.initialize();
 
 			var box2D:Box2D = new Box2D("box2D");
-			// box2D.visible = true;
+			 box2D.visible = true;
 			add(box2D);
 
 			var bitmap:Bitmap = new _MapAtlasPng();
@@ -52,7 +52,7 @@ package tiledmap.starling {
 
 			var hero:Hero = getObjectByName("hero") as Hero;
 
-			view.camera.setUp(hero, new Point(stage.stageWidth / 2, 240), new Rectangle(0, 0, 1280, 640), new Point(.25, .05));
+			view.camera.setUp(hero, new Rectangle(0, 0, 1280, 640), new Point(.5,.6), new Point(.25, .05));
 
 			(view.getArt(getObjectByName("foreground")) as StarlingArt).alpha = 0.3;
 		}
