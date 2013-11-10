@@ -212,27 +212,16 @@ package cameramovement {
 					cloud.y = Math.random() * 3 * _bounds.height / 4;
 				}
 				
-			if (_input.justDid("switch"))
+			if (_input.justDid("switch",_input.keyboard.defaultChannel))
 			{
 				_input.startRouting(1000);
 				
-				if (_camera.target == _hero)
+				var newTarget:Object = _camera.target == _hero ? _hero2 : _hero;
+				_camera.switchToTarget(newTarget,1,null,function():void
 				{
-					_camera.switchToTarget(_hero2,1,null,function():void
-					{
-						_input.stopRouting();
-						_input.keyboard.defaultChannel = _hero2.inputChannel;
-					});
-				}
-				
-				if (_camera.target == _hero2)
-				{
-					_camera.switchToTarget(_hero,1,null,function():void
-					{
-						_input.stopRouting();
-						_input.keyboard.defaultChannel = _hero.inputChannel;
-					});
-				}
+					_input.stopRouting();
+					_input.keyboard.defaultChannel = newTarget.inputChannel;
+				});
 			}
 		
 		}
