@@ -123,7 +123,7 @@ package cameramovement {
 			_camera.setUp(_hero,_bounds, new Point(0.5, 0.5), new Point(0.05, 0.05));
 			_camera.allowRotation = true;
 			_camera.allowZoom = true;
-			
+			_camera.deadZone = new Rectangle(0, 0, 2*stage.stageWidth/3, stage.stageHeight/3);
 			_camera.parallaxMode = ACitrusCamera.PARALLAX_MODE_DEPTH;
 			_camera.boundsMode = ACitrusCamera.BOUNDS_MODE_AABB;
 			
@@ -146,6 +146,7 @@ package cameramovement {
 			
 			
 			kb.addKeyAction("switch", Keyboard.Q);
+			
 		}
 		
 		private function onWheel(e:MouseEvent):void
