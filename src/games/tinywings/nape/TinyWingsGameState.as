@@ -54,8 +54,8 @@ package games.tinywings.nape {
 
 			var hills:HillsManagingGraphics = new HillsManagingGraphics("hills", {sliceHeight:200, sliceWidth:70, currentYPoint:350, registration:"topLeft", view:_hillsTexture});
 			add(hills);
-
-			view.camera.setUp(_hero, new Point(stage.stageWidth /2, stage.stageHeight / 2), new Rectangle(0, 0, int.MAX_VALUE, int.MAX_VALUE), new Point(.25, .05));
+			
+			view.camera.setUp(_hero,null,new Point(0.25 , 0.5));
 		}
 			
 		override public function update(timeDelta:Number):void {
