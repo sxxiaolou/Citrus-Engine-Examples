@@ -13,7 +13,7 @@ package stage3dinteroperation {
 	import flash.events.Event;
 
 
-	[SWF(frameRate="60")]
+	[SWF(frameRate="60",backgroundColor="CCCCCC")]
 
 	/**
 	 * @author Aymeric
@@ -37,9 +37,9 @@ package stage3dinteroperation {
 
 			// Create a new Stage3D proxy to contain the separate views
 			stage3DProxy = stage3DManager.getFreeStage3DProxy();
+			stage3DProxy.color = 0x00000000;
 			stage3DProxy.addEventListener(Stage3DEvent.CONTEXT3D_CREATED, _onContextCreated);
 			stage3DProxy.antiAlias = 8;
-			stage3DProxy.color = 0x0;
 		}
 
 		private function _onContextCreated(evt:Stage3DEvent):void {
@@ -53,12 +53,22 @@ package stage3dinteroperation {
 		}
 
 		override protected function handleEnterFrame(e:Event):void {
-			
 			starlingSceneBack.nextFrame();
-			
 			super.handleEnterFrame(e);
-			
 			starlingSceneFront.nextFrame();
+		}
+		
+		override protected function handleStageResize(e:Event):void
+		{
+			super.handleStageResize(e);
+			if (starlingSceneBack && starlingSceneFront)
+			{
+				starlingSceneBack.stage.stageWidth = starlingSceneBack.viewPort.width = stage.stageWidth;
+				starlingSceneBack.stage.stageHeight = starlingSceneBack.viewPort.height = stage.stageHeight;
+				
+				starlingSceneFront.stage.stageWidth = starlingSceneFront.viewPort.width = stage.stageWidth;
+				starlingSceneFront.stage.stageHeight = starlingSceneFront.viewPort.height = stage.stageHeight;
+			}
 		}
 	}
 }
