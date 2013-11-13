@@ -7,10 +7,6 @@ package
 	 * How to use :
 	 * change the packageName constant to the folder name of the example you want to try.
 	 * (don't forget the directory structure, to test the braid demo, set it to "games.braid")
-	 * 
-	 * TODO/NOTES :
-	 * example 3 (Blitting) fails with physics.
-	 * example 22 (stage3dinteroperation: resize event problem)
 	 */
 	
 	
