@@ -40,13 +40,13 @@ package blitting {
 			super.initialize();
 
 			var box2D:Box2D = new Box2D("box2D");
-			//box2D.visible = true;
+			box2D.visible = true;
 			add(box2D);
 
 			add(new Platform("P1", {x:320, y:400, width:2000, height:20}));
 
 			// You can quickly create a graphic by passing the embedded class into a new blitting art object.
-			add(new CitrusSprite("Hills", {parallaxX:0.5, parallaxY:0.5, view:new BlittingArt(_hillsClass)}));
+			add(new CitrusSprite("Hills", {y:-400, parallaxX:0.4, parallaxY:0.4, view:new BlittingArt(_hillsClass)}));
 
 			// Set up your game object's animations like this;
 			var heroArt:BlittingArt = new BlittingArt();
@@ -58,13 +58,16 @@ package blitting {
 			var hero:Hero = new Hero("Hero", {x:320, y:150, view:heroArt});
 			add(hero);
 
-			view.camera.setUp(hero, new Rectangle(0, 0, 1200, 400));
+			view.camera.setUp(hero, new Rectangle(0, -200, 1200, 600));
 
 			// If you update any properties on the state's view, call updateCanvas() afterwards.
-			view.camera.cameraLensWidth = 800;
-			view.camera.cameraLensHeight = 400;
 			BlittingView(view).backgroundColor = 0xffffcc88;
 			BlittingView(view).updateCanvas(); // Don't forget to call this
+				
+			_ce.onStageResize.add(function(w:Number, h:Number):void
+			{
+				BlittingView(view).updateCanvas();
+			});
 		}
 
 		// Make sure and call this override to specify Blitting mode.
