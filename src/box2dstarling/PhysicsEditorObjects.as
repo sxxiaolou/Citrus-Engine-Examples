@@ -98,7 +98,6 @@ package box2dstarling {
 				
 				case "muffin":
 					return 1;
-					break;
 			
 			}
 
@@ -111,7 +110,6 @@ package box2dstarling {
 				
 				case "muffin":
 					return 0.6;
-					break;
 			
 			}
 
@@ -123,9 +121,7 @@ package box2dstarling {
 			switch (peObject) {
 				
 				case "muffin":
-					return 0.3;
-					break;
-			
+					return 0.3;			
 			}
 
 			return 0.3;
