@@ -136,7 +136,7 @@ package advancedSounds
 		override public function destroy():void
 		{
 			_ce.sound.stopAllPlayingSounds();
-			_ce.sound.removeAllEventListeners();
+			_ce.sound.removeEventListeners();
 			removeChild(textDisplay);
 			camTarget = null;
 			super.destroy();
