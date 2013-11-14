@@ -2,6 +2,7 @@ package advancedSounds
 {
 	import advancedSounds.AdvancedSoundsState;
 	import citrus.core.starling.StarlingCitrusEngine;
+	import citrus.sounds.CitrusSoundEvent;
 	import citrus.sounds.CitrusSoundGroup;
 	import citrus.sounds.CitrusSoundInstance;
 	import flash.events.Event;
@@ -46,12 +47,19 @@ package advancedSounds
 			sound.addSound("loop", { sound:assets.getSound("loop") ,permanent:true, volume:0.5 , loops:int.MAX_VALUE , group:CitrusSoundGroup.BGM } );
 			
 			//sounds added with url
-			sound.addSound("beep1", { sound:"sounds/beep1.mp3" ,autoload:true , group:CitrusSoundGroup.SFX } );
-			sound.addSound("beep2", { sound:"sounds/beep2.mp3" ,autoload:true , group:CitrusSoundGroup.SFX } );
+			sound.addSound("beep1", { sound:"sounds/beep1.mp3" , group:CitrusSoundGroup.SFX } );
+			sound.addSound("beep2", { sound:"sounds/beep2.mp3" , group:CitrusSoundGroup.SFX } );
+			
+			sound.getGroup(CitrusSoundGroup.SFX).addEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED, function(e:CitrusSoundEvent):void
+			{
+				e.currentTarget.removeEventListener(CitrusSoundEvent.ALL_SOUNDS_LOADED,arguments.callee);
+				trace("SOUND EFFECTS ARE PRELOADED");
+				
+				state = new AdvancedSoundsState();
+			});
 			
 			sound.getGroup(CitrusSoundGroup.SFX).volume = 0.05;
-			
-			state = new AdvancedSoundsState();
+			sound.getGroup(CitrusSoundGroup.SFX).preloadSounds();
 		}
 		
 	}
