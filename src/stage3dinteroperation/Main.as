@@ -61,6 +61,10 @@ package stage3dinteroperation {
 		override protected function handleStageResize(e:Event):void
 		{
 			super.handleStageResize(e);
+			if (stage3DProxy)
+			{
+				stage3DProxy.configureBackBuffer(stage.stageWidth, stage.stageHeight, _antiAliasing, stage3DProxy.enableDepthAndStencil);
+			}
 			if (starlingSceneBack && starlingSceneFront)
 			{
 				starlingSceneBack.stage.stageWidth = starlingSceneBack.viewPort.width = stage.stageWidth;
