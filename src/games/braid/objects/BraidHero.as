@@ -169,11 +169,6 @@ package games.braid.objects {
 			_inverted = value;
 		}
 		
-		public function set animation(value:String):void
-		{
-			_animation = value;
-		}
-		
 		public function get animationFrame():uint
 		{
 			return (_view as AnimationSequence).mcSequences[_animation].currentFrame;

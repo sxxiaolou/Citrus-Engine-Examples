@@ -100,11 +100,6 @@ package games.braid.objects {
 			_inverted = value;
 		}
 		
-		public function set animation(value:String):void
-		{
-			_animation = value;
-		}
-		
 		public function get collideable():Boolean
 		{
 			return _collideable;
