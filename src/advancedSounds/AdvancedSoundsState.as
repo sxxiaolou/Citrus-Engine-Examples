@@ -4,7 +4,7 @@ package advancedSounds
 	import citrus.core.starling.StarlingState;
 	import citrus.math.MathVector;
 	import citrus.objects.CitrusSpritePool;
-	import citrus.sounds.CitrusSoundEvent;
+	import citrus.events.CitrusSoundEvent;
 	import citrus.sounds.CitrusSoundInstance;
 	import citrus.sounds.CitrusSoundSpace;
 	import citrus.view.starlingview.StarlingArt;

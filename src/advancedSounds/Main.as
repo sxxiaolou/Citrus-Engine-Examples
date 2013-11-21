@@ -2,7 +2,7 @@ package advancedSounds
 {
 	import advancedSounds.AdvancedSoundsState;
 	import citrus.core.starling.StarlingCitrusEngine;
-	import citrus.sounds.CitrusSoundEvent;
+	import citrus.events.CitrusSoundEvent;
 	import citrus.sounds.CitrusSoundGroup;
 	import citrus.sounds.CitrusSoundInstance;
 	import flash.events.Event;
