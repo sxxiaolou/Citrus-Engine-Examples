@@ -49,7 +49,7 @@ package advancedSounds
 			addChild(textDisplay);
 			
 			soundSpace = new CitrusSoundSpace("sound space");
-			soundSpace.visible = false;
+			soundSpace.visible = true;
 			add(soundSpace);
 			
 			soundSprite = new CitrusSoundSprite("looper", {x: 0, y: 0, loop: "loop", view: "muffin.png"});
