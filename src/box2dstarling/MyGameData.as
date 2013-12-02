@@ -5,7 +5,9 @@ package box2dstarling {
 	/**
 	 * @author Aymeric
 	 */
-	public class MyGameData extends AGameData {
+	public class MyGameData extends AGameData
+	{
+		private var _levels:Array;
 
 		public function MyGameData() {
 			
