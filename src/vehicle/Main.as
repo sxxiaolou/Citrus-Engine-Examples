@@ -1,10 +1,7 @@
 package vehicle {
 
 	import citrus.core.starling.StarlingCitrusEngine;
-	import flash.events.Event;
-
 	import starling.utils.AssetManager;
-
 	import vehicle.Assets;
 	import vehicle.CarGameState;
 
@@ -18,9 +15,8 @@ package vehicle {
 		public function Main() {
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
 			setUpStarling(true);
 		}
 		

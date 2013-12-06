@@ -1,12 +1,9 @@
 package cameramovement {
 	
 	import cameramovement.CameraMovement;
-	import flash.events.Event;
-
 	import citrus.core.starling.StarlingCitrusEngine;
-	
 	import flash.display.Sprite;
-
+	
 	[SWF(frameRate="60",width="800", height="600")]
 	
 	public class Main extends StarlingCitrusEngine {
@@ -15,13 +12,11 @@ package cameramovement {
 		public var debugSpriteRectangle:Sprite = new Sprite();
 		
 		public function Main() {
-			
-			addChild(debugSpriteRectangle);
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
+			addChild(debugSpriteRectangle);
 			setUpStarling(true, 1);
 		}
 		

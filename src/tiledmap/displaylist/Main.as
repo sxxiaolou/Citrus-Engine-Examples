@@ -10,8 +10,10 @@ package tiledmap.displaylist {
 	public class Main extends CitrusEngine {
 
 		public function Main() {
-			
-            state = new TiledMapGameState();
+		}
+		
+		override public function initialize():void {
+			 state = new TiledMapGameState();
 		}
 	}
 }

@@ -2,11 +2,10 @@ package games.braid {
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.utils.Mobile;
-	import flash.events.Event;
-	
 	import games.braid.BraidDemo;
-
 	import starling.core.Starling;
+	
+
 	
 	[SWF(frameRate="60")]
 
@@ -22,9 +21,8 @@ package games.braid {
 			}
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
 			setUpStarling(true);
 		}
 		

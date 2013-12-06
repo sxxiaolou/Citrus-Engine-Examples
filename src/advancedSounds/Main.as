@@ -5,8 +5,6 @@ package advancedSounds
 	import citrus.events.CitrusSoundEvent;
 	import citrus.sounds.CitrusSoundGroup;
 	import citrus.sounds.CitrusSoundInstance;
-	import flash.events.Event;
-	import starling.events.Event;
 	import starling.utils.AssetManager;
 	
 	public class Main extends StarlingCitrusEngine
@@ -15,9 +13,8 @@ package advancedSounds
 		
 		public function Main():void {}
 		
-		override protected function handleAddedToStage(e:flash.events.Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
 			setUpStarling(true, 1);
 		}
 		

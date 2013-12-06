@@ -3,10 +3,9 @@ package multiresolutions
 	
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.core.starling.ViewportMode;
-	
 	import starling.utils.AssetManager;
 	
-	import flash.events.Event;
+	
 	
 	//[SWF(backgroundColor="#FFFFFF", frameRate="60", width="500", height="400")] // 1
 	[SWF(backgroundColor="#FFFFFF", frameRate="60", width="960", height="640")] // 2
@@ -33,9 +32,8 @@ package multiresolutions
 			
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
 			setUpStarling(true);
 		}
 		

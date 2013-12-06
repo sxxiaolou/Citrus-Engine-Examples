@@ -1,8 +1,6 @@
 package statetransitions {
 
 	import citrus.core.starling.StarlingCitrusEngine;
-	import flash.events.Event;
-	
 	import statetransitions.StarlingDemoStateTransition;
 
 	[SWF(frameRate="60")]
@@ -15,10 +13,8 @@ package statetransitions {
 		public function Main() {
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
-			
 			setUpStarling(true);
 			
 			sound.addSound("Hurt", {sound:"sounds/hurt.mp3"});

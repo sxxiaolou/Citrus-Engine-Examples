@@ -9,8 +9,10 @@ package simplecollision {
 	 */
 	public class Main extends CitrusEngine {
 		
-		public function Main() {
-			
+		public function Main() {	
+		}
+		
+		override public function initialize():void {
 			state = new SimpleGameState();
 		}
 	}

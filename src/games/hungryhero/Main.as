@@ -14,9 +14,8 @@
 package games.hungryhero {
 
 	import citrus.core.starling.StarlingCitrusEngine;
-	import flash.events.Event;
-
 	import games.hungryhero.com.hsharma.hungryHero.screens.InGame;
+
 
 	/**
 	 * SWF meta data defined for iPad 1 & 2 in landscape mode. 
@@ -36,9 +35,8 @@ package games.hungryhero {
 			super();
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
 			setUpStarling(true);
 		}
 		

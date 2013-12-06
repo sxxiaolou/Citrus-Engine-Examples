@@ -12,9 +12,11 @@ package away3dbox2d {
 	public class Main extends Away3DCitrusEngine {
 
 		public function Main() {
-			
+		}
+		
+		override public function initialize():void 
+		{
 			setUpAway3D(true);
-
 			state = new Away3DGameState();
 		}
 	}

@@ -1,7 +1,6 @@
 package objectpooling {
 
 	import citrus.core.starling.StarlingCitrusEngine;
-	import flash.events.Event;
 
 	[SWF(frameRate="60")]
 	
@@ -13,9 +12,8 @@ package objectpooling {
 		public function Main() {
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
 			setUpStarling(true);
 		}
 		

@@ -2,21 +2,23 @@ package soundpatchdemo {
 
 	import citrus.core.CitrusEngine;
 	import citrus.sounds.CitrusSoundGroup;
-	
-	import soundpatchdemo.DemoState;
-	import soundpatchdemo.WebsiteFrame;
-
 	import flash.display.Loader;
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.net.URLRequest;
+	import soundpatchdemo.DemoState;
+	import soundpatchdemo.WebsiteFrame;
+	
+
 	
 	[SWF(backgroundColor="#000000", frameRate="60", width="940", height="410")]
 
 	public class Main extends CitrusEngine {
 
 		public function Main() {
-
+		}
+		
+		override public function initialize():void {
 			// Create audio assets
 			sound.addSound("Collect", {sound:"sounds/collect.mp3",group:CitrusSoundGroup.SFX});
 			sound.addSound("Hurt", {sound:"sounds/hurt.mp3",group:CitrusSoundGroup.SFX});

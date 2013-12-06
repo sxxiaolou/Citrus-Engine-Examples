@@ -1,9 +1,8 @@
 package groupobjects {
 
 	import citrus.core.starling.StarlingCitrusEngine;
-	import flash.events.Event;
-
 	import groupobjects.GroupGameState;
+
 
 	[SWF(frameRate="60")]
 
@@ -15,9 +14,8 @@ package groupobjects {
 		public function Main() {
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
 			setUpStarling(true);
 		}
 		

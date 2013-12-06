@@ -2,11 +2,10 @@ package box2dstarling {
 	
 	import box2dstarling.ALevel;
 	import box2dstarling.MyGameData;
-	import flash.events.Event;
-
 	import citrus.core.IState;
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.utils.LevelManager;
+
 
 	[SWF(frameRate="60")]
 	
@@ -20,9 +19,8 @@ package box2dstarling {
 			gameData = new MyGameData();
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
 			setUpStarling(true);
 		}
 		

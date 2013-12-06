@@ -1,10 +1,10 @@
 package starlingtiles {
 
 	import citrus.core.starling.StarlingCitrusEngine;
-
 	import flash.display.Loader;
 	import flash.events.Event;
 	import flash.net.URLRequest;
+
 
 	//[SWF(backgroundColor="#000000", frameRate="60", width="1280", height="720")]
 	
@@ -16,9 +16,8 @@ package starlingtiles {
 		public function Main():void {
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
 			setUpStarling(true);
 			
 			var loader:Loader = new Loader();

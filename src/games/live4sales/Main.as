@@ -1,10 +1,7 @@
 package games.live4sales {
 
 	import citrus.core.starling.StarlingCitrusEngine;
-	import citrus.utils.Mobile;
-	import flash.events.Event;
 
-	import flash.geom.Rectangle;
 
 	[SWF(backgroundColor="#000000", frameRate="60")]
 	
@@ -20,7 +17,7 @@ package games.live4sales {
 
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
 				setUpStarling(true);
 		}

@@ -12,7 +12,9 @@ package complexbox2dobject {
 	public class Main extends CitrusEngine {
 
 		public function Main() {
-
+		}
+		
+		override public function initialize():void {
 			state = new ComplexBox2DObjectGameState();
 		}
 	}

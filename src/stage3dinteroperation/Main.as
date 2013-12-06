@@ -3,15 +3,10 @@ package stage3dinteroperation {
 	import away3d.core.managers.Stage3DManager;
 	import away3d.core.managers.Stage3DProxy;
 	import away3d.events.Stage3DEvent;
-
 	import away3dbox2d.Away3DGameState;
-
 	import citrus.core.away3d.Away3DCitrusEngine;
-
-	import starling.core.Starling;
-
 	import flash.events.Event;
-
+	import starling.core.Starling;
 
 	[SWF(frameRate="60",backgroundColor="CCCCCC")]
 
@@ -29,10 +24,8 @@ package stage3dinteroperation {
 		public function Main() {
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
-			
 			stage3DManager = Stage3DManager.getInstance(stage);
 
 			// Create a new Stage3D proxy to contain the separate views

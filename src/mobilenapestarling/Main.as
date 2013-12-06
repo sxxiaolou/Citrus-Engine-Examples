@@ -2,9 +2,8 @@ package mobilenapestarling {
 
 	import citrus.core.starling.StarlingCitrusEngine;
 	import citrus.utils.Mobile;
-	import flash.events.Event;
-
 	import flash.geom.Rectangle;
+
 
 	[SWF(backgroundColor="#000000", frameRate="60")]
 	
@@ -22,9 +21,8 @@ package mobilenapestarling {
 			
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
 			
 			if (compileForMobile) {
 				

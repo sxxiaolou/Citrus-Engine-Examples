@@ -1,9 +1,8 @@
 package games.tinywings {
 
 	import citrus.core.starling.StarlingCitrusEngine;
-	import flash.events.Event;
-
 	import games.tinywings.box2d.TinyWingsGameState;
+
 	
 	[SWF(frameRate="60")]
 
@@ -15,9 +14,8 @@ package games.tinywings {
 		public function Main() {
 		}
 		
-		override protected function handleAddedToStage(e:Event):void
+		override public function initialize():void
 		{
-			super.handleAddedToStage(e);
 			setUpStarling(true);
 		}
 		
