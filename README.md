@@ -47,7 +47,7 @@ Project Setup
 - lib : the different swcs used by some demo.
 - src : different demos ready to use! You just need to copy & paste the Main from the package you want into the src/Main.as and the demo will run. Be careful with package & import.
 
-[API](http://citrusengine.com/api/)
+[Wiki](http://wiki.starling-framework.org/citrus/start) & [API](http://citrusengine.com/api/)
 
 The Citrus Engine is proudly supported by:
 [![FDT](http://aymericlamboley.fr/blog/wp-content/uploads/2013/12/fdt.png)](http://fdt.powerflasher.com/)[![Jetbrains](http://aymericlamboley.fr/blog/wp-content/uploads/2013/12/jetbrains.png)](http://www.jetbrains.com/)
