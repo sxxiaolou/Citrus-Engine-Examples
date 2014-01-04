@@ -119,7 +119,7 @@ package games.braid.objects {
 					_animation = "falling_downward";
 			
 			if (body.position.y > 1200)
-				animation = "dying_loop";
+				_animation = "dying_loop";
 		
 		}
 			
