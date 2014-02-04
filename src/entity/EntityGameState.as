@@ -47,7 +47,7 @@ package entity {
 			_heroEntity.add(_physics).add(input).add(collision).add(move).add(_view);
 			_heroEntity.initialize();
 			
-			addEntity(_heroEntity, _view);
+			addEntity(_heroEntity);
 			
 			var draggableHeroArt:DisplayObject = view.getArt(_view) as DisplayObject;
 			draggableHeroArt.addEventListener(MouseEvent.MOUSE_DOWN, _handleGrab);
