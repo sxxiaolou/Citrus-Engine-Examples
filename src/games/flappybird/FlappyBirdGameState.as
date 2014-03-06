@@ -100,13 +100,13 @@ package games.flappybird
 			eaze(box).to(0.4, { y: 150 } );
 			eaze(textField).to(0.4, { y: 150 } );
 			
-			ce.stage.addEventListener(MouseEvent.CLICK, start);
+			ce.stage.addEventListener(MouseEvent.MOUSE_DOWN, start);
 			function start(e:MouseEvent):void
 			{
 				eaze(box).to(0.2, { y: -200 } );
 				eaze(textField).to(0.2, { y: -200 } );
 				newGame();
-				ce.stage.removeEventListener(MouseEvent.CLICK, start);
+				ce.stage.removeEventListener(MouseEvent.MOUSE_DOWN, start);
 			}
 		
 		}
@@ -133,7 +133,7 @@ package games.flappybird
 			thing.view = thingImage;
 			add(thing);
 			thingBounds = new Rectangle(0, 0, 35, 45);
-			ce.stage.addEventListener(MouseEvent.CLICK, fly);
+			ce.stage.addEventListener(MouseEvent.MOUSE_DOWN, fly);
 			
 			// move box to top
 			var container:Sprite = view.getArt(box).parent;
@@ -254,7 +254,7 @@ package games.flappybird
 			{
 				gameOver = true;
 				assets.playSound("smack");
-				ce.stage.removeEventListener(MouseEvent.CLICK, fly);
+				ce.stage.removeEventListener(MouseEvent.MOUSE_DOWN, fly);
 				// prevent clicking briefly to let the player see their score
 				var t:Timer = new Timer(500, 1);
 				t.addEventListener(TimerEvent.TIMER_COMPLETE, cont);
@@ -265,7 +265,7 @@ package games.flappybird
 					scoreText.text = "";
 					eaze(box).to(0.4, { y: 150 } );
 					eaze(textField).to(0.4, { y: 150 } );
-					ce.stage.addEventListener(MouseEvent.CLICK, startOver);
+					ce.stage.addEventListener(MouseEvent.MOUSE_DOWN, startOver);
 				}
 			}
 		}
@@ -283,8 +283,8 @@ package games.flappybird
 			gravity = 0.4;
 			gameOver = false;
 			randomizePipeY();
-			ce.stage.removeEventListener(MouseEvent.CLICK, startOver);
-			ce.stage.addEventListener(MouseEvent.CLICK, fly);
+			ce.stage.removeEventListener(MouseEvent.MOUSE_DOWN, startOver);
+			ce.stage.addEventListener(MouseEvent.MOUSE_DOWN, fly);
 		}
 	}
 }
