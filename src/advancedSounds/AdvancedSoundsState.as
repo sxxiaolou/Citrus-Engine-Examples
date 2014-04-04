@@ -109,7 +109,7 @@ package advancedSounds
 					art = view.getArt(soundSprite) as StarlingArt;
 					if (art.content is Image)
 					{
-						(art.content as Image).getBounds(art.parent, objectBounds)
+						(art.content as Image).getBounds(art.stage, objectBounds)
 						
 						if (camera.intersectsRect(objectBounds,area))
 							(art.content as Image).color = 0xFF0000;
