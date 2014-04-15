@@ -8,7 +8,7 @@ package stage3dinteroperation {
 	import flash.events.Event;
 	import starling.core.Starling;
 
-	[SWF(frameRate="60",backgroundColor="CCCCCC")]
+	[SWF(frameRate="60",backgroundColor="0xCCCCCC")]
 
 	/**
 	 * @author Aymeric
