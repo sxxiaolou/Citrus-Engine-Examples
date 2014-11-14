@@ -10,7 +10,7 @@ package box2dstarling {
 	import citrus.objects.platformer.box2d.Sensor;
 	import citrus.physics.box2d.Box2D;
 	import citrus.physics.box2d.Box2DUtils;
-	import citrus.utils.objectmakers.ObjectMaker2D;
+	import citrus.utils.objectmakers.ObjectMakerStarling;
 	import citrus.view.starlingview.AnimationSequence;
 
 	import starling.display.Quad;
@@ -101,7 +101,7 @@ package box2dstarling {
 			view.loadManager.onLoadComplete.addOnce(_handleLoadComplete);
 			
 			// create objects from our level made with Flash Pro
-			ObjectMaker2D.FromMovieClip(_level);
+			ObjectMakerStarling.FromMovieClip(_level);
 			
 			// the hero view come from a sprite sheet, for the enemy that was a swf
 			bitmap = new _heroPng();
