@@ -15,6 +15,10 @@ It offers many options, you may use :
 
 Games References
 ----------------
+[![Mission Eau!](http://aymericlamboley.fr/blog/wp-content/uploads/2014/12/mission_eau.png)](http://www.aymericlamboley.fr/blog/mission-eau-being-agile-with-flash-pro/)
+[![Chickdoom!](http://aymericlamboley.fr/blog/wp-content/uploads/2014/11/Chickdoom.png)](https://itunes.apple.com/us/app/chickdoom-chicken-vs-aliens/id860555162?mt=8)
+[![FRNZY](http://aymericlamboley.fr/blog/wp-content/uploads/2014/11/FRNZY.png)](http://www.carefirstsocial.com/frnzy/)
+[![Penguin Up!](http://aymericlamboley.fr/blog/wp-content/uploads/2014/11/Penguin-Up!.png)](https://itunes.apple.com/sg/app/penguin-up!/id900800765?mt=8)
 [![Silly Family](http://aymericlamboley.fr/blog/wp-content/uploads/2014/04/silly-family.png)](http://rdrct.it/sillyfamily)
 [![Paint Over](http://aymericlamboley.fr/blog/wp-content/uploads/2014/04/paintover.png)](http://www.newgrounds.com/portal/view/637713)
 [![Revenge of Robots](http://aymericlamboley.fr/blog/wp-content/uploads/2014/04/revengeofrobots.png)](https://itunes.apple.com/us/app/revenge-of-robots/id855173133)

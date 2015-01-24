@@ -8,7 +8,7 @@ package starlingtiles
 	import citrus.objects.platformer.box2d.Platform;
 	import citrus.objects.platformer.box2d.Sensor;
 	import citrus.physics.box2d.Box2D;
-	import citrus.utils.objectmakers.ObjectMaker2D;
+	import citrus.utils.objectmakers.ObjectMakerStarling;
 	import citrus.view.starlingview.StarlingTileSystem;
 
 	import starling.core.Starling;
@@ -64,7 +64,7 @@ package starlingtiles
 			add(box2d);
 			
 			// create objects from our level made with Flash Pro
-			ObjectMaker2D.FromMovieClip(_level);
+			ObjectMakerStarling.FromMovieClip(_level);
 			
 			// the hero view from sprite sheet
 			var heroBitmap:Bitmap = new _heroPng();
